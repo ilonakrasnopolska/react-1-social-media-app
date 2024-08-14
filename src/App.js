@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-import Header from "./modules/header";
-import Technologies from "./modules/technologies";
+import Header from "./modules/Header";
+import Sidebar from "./modules/Sidebar";
+import Footer from "./modules/Footer";
+import Main from "./modules/Main";
 
 const App = () => {
   return (
-    <div>
+    <div className="app-container">
       <Header />
-      <Technologies />
+      <Sidebar />
+      <Main />
+      <Footer />
     </div>
   );
 }
