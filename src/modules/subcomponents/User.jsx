@@ -1,13 +1,13 @@
 import React from "react";
 
-const Profile = () => {
+const User = () => {
   return (
-    <section className="section-profile">
-      <div className="profile">
-        <div className="profile__avatar-wrapper">
-          <img className="profile__avatar" src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png" alt="Avatar" />
+    <section className="section-user">
+      <div className="user">
+        <div className="user__avatar-wrapper">
+          <img className="user__avatar" src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png" alt="Avatar" />
         </div>
-        <div className="profile__info">
+        <div className="user__info">
           Информация о пользователе
         </div>
       </div>
@@ -15,4 +15,4 @@ const Profile = () => {
   );
 }
 
-export default Profile;
+export default User;

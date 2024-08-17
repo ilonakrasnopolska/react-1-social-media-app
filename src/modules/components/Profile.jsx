@@ -4,7 +4,7 @@ import User from "../subcomponents/User";
 import PostMaker from "../subcomponents/PostMaker";
 import Timeline from "../subcomponents/Timeline";
 
-const Main = () => {
+const Profile = () => {
   return (
     <main className="content">
       <Hero />
@@ -15,4 +15,4 @@ const Main = () => {
   );
 }
 
-export default Main;
+export default Profile;

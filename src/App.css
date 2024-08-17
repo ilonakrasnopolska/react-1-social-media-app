@@ -109,6 +109,10 @@ button {
   padding: 0;
 }
 
+.footer__link {
+  display: block;
+}
+
 .footer__text {
   grid-area: text;
   text-align: center;
