@@ -7,10 +7,12 @@ import Timeline from "../subcomponents/Timeline";
 const Profile = () => {
   return (
     <main className="content">
+      <div className="content-container">
       <Hero />
       <User />
       <PostMaker />
       <Timeline />
+      </div>
     </main>
   );
 }

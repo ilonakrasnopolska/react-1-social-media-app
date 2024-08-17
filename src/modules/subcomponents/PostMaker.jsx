@@ -6,8 +6,10 @@ const PostMaker = () => {
       <div className="post">
         <h3 className="post__title">My posts</h3>
         <form className="post__form" action="" method="POST">
-          <textarea className="post__content" placeholder="your news..."></textarea>
-          <button className="post__submit" type="submit">Send</button>
+          <textarea className="post__textarea" placeholder="Your news..."></textarea>
+          <div className="post__button-wrapper">
+            <button className="post__button-submit" type="submit">Send</button>
+          </div>
         </form>
       </div>
     </section>
