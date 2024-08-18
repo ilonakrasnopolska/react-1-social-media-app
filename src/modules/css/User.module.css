@@ -1,0 +1,35 @@
+.content {
+  padding: 0 30px;
+  display: grid;
+  grid-gap: 10px;
+}
+
+.content {
+  grid-template-areas:
+    "avatar about";
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 30px;
+}
+
+.avatar {
+  grid-area: avatar;
+  width: 200px;
+}
+
+.about {
+  grid-area: about;
+  display: grid;
+  grid-template-rows: max-content; /* Автоматический размер рядов */
+  row-gap: 20px; /* Отступ между h2 и ul */
+}
+
+.list {
+  display: grid;
+  grid-template-rows: max-content; /* Автоматический размер рядов */
+  padding: 0;
+}
+
+.item {
+  font-size: 20px;
+  color: #194770;
+}

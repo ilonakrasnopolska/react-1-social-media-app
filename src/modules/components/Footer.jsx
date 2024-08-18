@@ -1,28 +1,29 @@
 import React from "react";
 import {Instagram, Facebook, Telegram} from "../helpers/SVG-icons";
+import Classes from '../css/Footer.module.css';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer__container">
-        <ul className="footer__icons">
-          <li className="footer__icon">
-            <a className="footer__link" href="#">
+    <footer className={Classes.footer}>
+      <div className={Classes.wrapper}>
+        <ul className={Classes.list}>
+          <li>
+            <a className={Classes.icon} href="#">
               <Instagram />
             </a>
           </li>
-          <li className="footer__icon">
-            <a className="footer__link" href="#">
+          <li>
+            <a className={Classes.icon} href="#">
               <Facebook/>
             </a>
           </li>
-          <li className="footer__icon">
-            <a className="footer__link" href="#">
+          <li>
+            <a className={Classes.icon} href="#">
               <Telegram/>
             </a>
           </li>
         </ul>
-        <div className="footer__text">
+        <div className={Classes.copyright}>
           Copyright @ 2024 Chakra
         </div>
       </div>

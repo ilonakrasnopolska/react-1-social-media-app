@@ -1,23 +1,24 @@
 import React from "react";
+import Classes from "../css/Sidebar.module.css";
 
 const Sidebar = () => {
   return (
-    <nav className="nav">
-      <ul className="nav__list">
-        <li className="nav__list-item">
-          <a className="nav__list-item-link" href="#s">Profile</a>
+    <nav className={Classes.nav}>
+      <ul className={Classes.list}>
+        <li className={Classes.item}>
+          <a className={Classes.link} href="#">Profile</a>
         </li>
-        <li className="nav__list-item">
-          <a className="nav__list-item-link" href="#s">Messages</a>
+        <li className={Classes.item}>
+          <a className={Classes.link} href="#">Messages</a>
         </li>
-        <li className="nav__list-item">
-          <a className="nav__list-item-link" href="#s">News</a>
+        <li className={Classes.item}>
+          <a className={Classes.link} href="#">News</a>
         </li>
-        <li className="nav__list-item">
-          <a className="nav__list-item-link" href="#s">Music</a>
+        <li className={Classes.item}>
+          <a className={Classes.link} href="#">Music</a>
         </li>
-        <li className="nav__list-item">
-          <a className="nav__list-item-link" href="#s">Settings</a>
+        <li className={Classes.item}>
+          <a className={Classes.link} href="#">Settings</a>
         </li>
       </ul>
     </nav>

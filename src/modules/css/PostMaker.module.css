@@ -1,0 +1,30 @@
+.content {
+  padding: 0 30px;
+  display: grid;
+  grid-gap: 10px;
+}
+
+.form {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+  border: none;
+  border-radius: 5px;
+}
+
+.buttonBox {
+  display: grid;
+  justify-content: flex-end;
+}
+
+.button {
+  width: 130px;
+  padding: 10px 20px;
+  font-size: 15px;
+  background-color: #194770;
+  color: #ffffff;
+}

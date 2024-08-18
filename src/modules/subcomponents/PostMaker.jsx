@@ -1,14 +1,15 @@
 import React from "react";
+import Classes from '../css/PostMaker.module.css';
 
 const PostMaker = () => {
   return (
-    <section className="section-post">
-      <div className="post">
-        <h3 className="post__title">My posts</h3>
-        <form className="post__form" action="" method="POST">
-          <textarea className="post__textarea" placeholder="Your news..."></textarea>
-          <div className="post__button-wrapper">
-            <button className="post__button-submit" type="submit">Send</button>
+    <section className="post section">
+      <div className={Classes.content}>
+        <h3>My posts</h3>
+        <form className={Classes.form} action="" method="POST">
+          <textarea className={Classes.textarea} placeholder="Your news..."></textarea>
+          <div className={Classes.buttonBox}>
+            <button className={Classes.button} type="submit">Send</button>
           </div>
         </form>
       </div>
