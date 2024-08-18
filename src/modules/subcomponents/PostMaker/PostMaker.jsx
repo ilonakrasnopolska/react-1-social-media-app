@@ -1,5 +1,5 @@
 import React from "react";
-import Classes from '../css/PostMaker.module.css';
+import Classes from './PostMaker.module.css';
 
 const PostMaker = () => {
   return (

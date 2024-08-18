@@ -1,5 +1,5 @@
 import React from "react";
-import Classes from '../css/User.module.css';
+import Classes from './User.module.css';
 
 const User = () => {
   return (
