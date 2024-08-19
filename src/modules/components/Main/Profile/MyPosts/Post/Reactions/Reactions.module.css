@@ -1,0 +1,45 @@
+.btnBox {
+  grid-area: reactions;
+  grid-template-areas: "comment like";
+  display: grid;
+  gap: 10px;
+  align-items: center;
+}
+
+.btnComment {
+  grid-area: comment;
+  border-radius: 30px;
+  background-color: transparent;
+}
+
+.btnLike {
+  grid-area: like;
+  position: relative;
+  width: 16px; /* Ширина кнопки */
+  height: 16px; /* Высота кнопки */
+  background-color: #194770; /* Цвет сердца */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transform: rotate(-45deg); /* Поворот для создания формы сердца */
+}
+
+.btnLike::before,
+.btnLike::after {
+  content: "";
+  position: absolute;
+  width: 16px; /* Размер верхних полукругов */
+  height: 16px; /* Размер верхних полукругов */
+  background-color: #194770; /* Цвет сердца */
+  border-radius: 50%; /* Создание полукруга */
+}
+
+.btnLike::before {
+  top: -10px; /* Расположение верхнего полукруга */
+  left: 0;
+}
+
+.btnLike::after {
+  left: 10px; /* Расположение правого полукруга */
+  top: 0;
+}

@@ -9,30 +9,6 @@
   display: grid;
   grid-template-rows: max-content; /* Автоматический размер рядов */
   padding: 0;
-}
-
-.list {
   gap: 40px;
 }
 
-.item {
-  display: grid;
-  grid-template-areas: "pic post";
-  grid-template-columns: max-content;
-  align-items: center;
-  grid-gap: 30px;
-  background-color: #ffffff;
-  padding: 15px 10px;
-  border-radius: 10px;
-}
-
-.avatar {
-  grid-area: pic;
-  width: 70px;
-  border-radius: 50%;
-}
-
-.post {
-  grid-area: post;
-  font-size: 18px;
-}

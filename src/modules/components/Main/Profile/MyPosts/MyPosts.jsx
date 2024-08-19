@@ -1,33 +1,21 @@
 import React from "react";
-import Classes from './Timeline.module.css';
+import Classes from "./MyPosts.module.css"
+import Post from "./Post/Post"
 
-const Timeline = () => {
+const MyPosts = () => {
   return (
-    <section className="timeline section">
+    <section className="myPosts section">
       <div className={Classes.content}>
         <ul className={Classes.list}>
-          <li className={Classes.item}>
-            <img className={Classes.avatar}
-                 src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png"
-                 alt="User avatar"
-            />
-            <div className={Classes.post}>
-              Who is your favourite character in Naruto?
-            </div>
-          </li>
-          <li className={Classes.item}>
-            <img className={Classes.avatar}
-                 src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png"
-                 alt="User avatar"
-            />
-            <div className={Classes.post}>
-              Hello people!
-            </div>
-          </li>
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
         </ul>
       </div>
     </section>
   );
 }
 
-export default Timeline;
+export default MyPosts;

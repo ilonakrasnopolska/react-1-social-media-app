@@ -1,15 +1,14 @@
 import React from "react";
-import User from "../../subcomponents/User/User";
-import PostMaker from "../../subcomponents/PostMaker/PostMaker";
-import Timeline from "../../subcomponents/Timeline/Timeline";
-import Classes from './Profile.module.css';
+import User from "./User/User";
+import PostMaker from "./PostMaker/PostMaker";
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
   return (
     <div>
       <User />
       <PostMaker />
-      <Timeline />
+      <MyPosts />
     </div>
   );
 }

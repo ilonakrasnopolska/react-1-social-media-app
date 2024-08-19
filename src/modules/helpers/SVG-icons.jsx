@@ -46,3 +46,10 @@ export const Telegram = () => {
     </svg>
   )
 }
+
+export const CommentIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+    <path d="M21 3H3c-1.1 0-1.99.9-1.99 2L1 21l4-4h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 11H5v-2h14v2zm0-4H5V8h14v2z"
+    fill="#194770"/>
+  </svg>
+);
