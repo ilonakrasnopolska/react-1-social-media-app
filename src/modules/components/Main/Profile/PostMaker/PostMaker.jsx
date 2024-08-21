@@ -3,7 +3,7 @@ import Classes from './PostMaker.module.css';
 
 const PostMaker = () => {
   return (
-    <section className="post section">
+    <section className="newPost section">
       <div className={Classes.content}>
         <h3>My posts</h3>
         <form className={Classes.form} action="" method="POST">

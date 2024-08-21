@@ -2,7 +2,7 @@ import React from "react";
 import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 
-const Post = () => {
+const Post = (props) => {
   return (
           <li className={Classes.item}>
             <img className={Classes.avatar}
@@ -10,9 +10,9 @@ const Post = () => {
                  alt="User avatar"
             />
             <div className={Classes.post}>
-              Who is your favourite character in Naruto?
+              {props.message}
             </div>
-            <Reactions/>
+            <Reactions comments={props.comments} likes={props.likes} />
           </li>
   );
 }
