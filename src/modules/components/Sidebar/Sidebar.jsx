@@ -6,19 +6,19 @@ const Sidebar = () => {
     <nav className={Classes.nav}>
       <ul className={Classes.list}>
         <li className={Classes.item}>
-          <a className={Classes.link} href="#">Profile</a>
+          <a className={Classes.link} href="/profile">Profile</a>
         </li>
         <li className={Classes.item}>
-          <a className={Classes.link} href="#">Messages</a>
+          <a className={Classes.link} href="/messages">Messages</a>
         </li>
         <li className={Classes.item}>
-          <a className={Classes.link} href="#">News</a>
+          <a className={Classes.link} href="/news">News</a>
         </li>
         <li className={Classes.item}>
-          <a className={Classes.link} href="#">Music</a>
+          <a className={Classes.link} href="/music">Music</a>
         </li>
         <li className={Classes.item}>
-          <a className={Classes.link} href="#">Settings</a>
+          <a className={Classes.link} href="/settings">Settings</a>
         </li>
       </ul>
     </nav>
