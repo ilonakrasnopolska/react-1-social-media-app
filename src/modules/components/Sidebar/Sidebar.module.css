@@ -1,6 +1,7 @@
 .nav {
   grid-area: nav;
   background-color: #194770;
+  padding: 20px;
 }
 
 .list {
@@ -20,4 +21,8 @@
   color: #dcdcff;
   font-size: 30px;
   font-weight: 500;
+}
+
+.active {
+  color: #a4fde5;
 }

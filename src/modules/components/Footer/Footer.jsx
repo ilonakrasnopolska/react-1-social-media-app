@@ -8,17 +8,20 @@ const Footer = () => {
       <div className={Classes.wrapper}>
         <ul className={Classes.list}>
           <li>
-            <a className={Classes.icon} href="#">
+            <a className={Classes.icon} href="https://www.instagram.com/" target="_blank"
+               rel="noopener noreferrer">
               <Instagram />
             </a>
           </li>
           <li>
-            <a className={Classes.icon} href="#">
+            <a className={Classes.icon} href="https://www.facebook.com/" target="_blank"
+               rel="noopener noreferrer">
               <Facebook/>
             </a>
           </li>
           <li>
-            <a className={Classes.icon} href="#">
+            <a className={Classes.icon} href="https://web.telegram.org/a/" target="_blank"
+               rel="noopener noreferrer">
               <Telegram/>
             </a>
           </li>
