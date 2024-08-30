@@ -1,0 +1,17 @@
+.item:first-child {
+  padding-top: 20px;
+}
+
+.item:nth-child(4n) {
+  margin-bottom: 50px;
+}
+
+.link {
+  color: #dcdcff;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.active {
+  color: #a4fde5;
+}

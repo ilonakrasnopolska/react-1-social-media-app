@@ -7,13 +7,13 @@ const UsersList = () => {
   return (
     <section className="users section">
         <ul className={Classes.list}>
-          <DialogUser name='Mark' src={avatars.markPic} />
-          <DialogUser name='Vikky' src={avatars.vikkyPic} />
-          <DialogUser name='Sunny' src={avatars.sunnyPic} />
-          <DialogUser name='Phillip' src={avatars.phillipPic} />
-          <DialogUser name='Elon' src={avatars.elonPic} />
-          <DialogUser name='Sakura' src={avatars.sakuraPic} />
-          <DialogUser name='Ino' src={avatars.inoPic} />
+          <DialogUser url='/messages/mark' name='Mark' src={avatars.markPic} />
+          <DialogUser url='/messages/vikky' name='Vikky' src={avatars.vikkyPic} />
+          <DialogUser url='/messages/sunny' name='Sunny' src={avatars.sunnyPic} />
+          <DialogUser url='/messages/phillip' name='Phillip' src={avatars.phillipPic} />
+          <DialogUser url='/messages/elon' name='Elon' src={avatars.elonPic} />
+          <DialogUser url='/messages/sakura' name='Sakura' src={avatars.sakuraPic} />
+          <DialogUser url='/messages/ino' name='Ino' src={avatars.inoPic} />
         </ul>
     </section>
   )
