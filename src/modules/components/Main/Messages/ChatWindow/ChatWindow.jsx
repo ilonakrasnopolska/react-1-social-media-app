@@ -1,18 +1,19 @@
 import Classes from "./ChatWindow.module.css";
 import React from "react";
 import Chat from "./Chat/Chat";
+import {messages} from "../../../../helpers/MessagesData";
 
 const ChatWindow = () => {
   return (
     <section className="chats section">
         <ul className={Classes.list}>
-          <Chat message="Hello there!" data="17:28"/>
-          <Chat message="How old are you?" data="16:00"/>
-          <Chat message="Have you seen the last episode of Jujutsu K?" data="13:00"/>
-          <Chat message="Bye!" data="Thu"/>
-          <Chat message="Look at at this.." data="Wed"/>
-          <Chat message="Can I call u?" data="Mon"/>
-          <Chat message="Where are u? Are u still here?" data="Mon"/>
+          <Chat message={messages[0].message} data={messages[0].data}/>
+          <Chat message={messages[1].message} data={messages[1].data}/>
+          <Chat message={messages[2].message} data={messages[2].data}/>
+          <Chat message={messages[3].message} data={messages[3].data}/>
+          <Chat message={messages[4].message} data={messages[4].data}/>
+          <Chat message={messages[5].message} data={messages[5].data}/>
+          <Chat message={messages[6].message} data={messages[6].data}/>
         </ul>
     </section>
   )
