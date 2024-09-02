@@ -37,6 +37,11 @@ button {
   grid-gap: 10px;
   max-width: 1600px;
   margin: 0 auto;
+  height: 100vh;
+}
+
+.app-container main {
+  background-color: #e2eaff;
 }
 
 .section {

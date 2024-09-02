@@ -12,11 +12,11 @@ const Main = () => {
     <main>
       <div className={Classes.content}>
         <Routes>
-        <Route path="/messages" element={<Messages />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/music" element={<Music />} />
-        <Route path="/settings" element={<Settings />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/messages" element={<Messages />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/music" element={<Music />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
     </main>
