@@ -1,5 +1,5 @@
 import React from "react";
-import {CommentIcon} from "../../../../../../helpers/SVG-icons";
+import {CommentIcon} from "../../../../../../../assets/SVG-icons";
 import Classes from "./Reactions.module.css"
 
 const Reactions = (props) => {

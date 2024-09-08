@@ -1,12 +1,11 @@
 import Classes from "./UsersList.module.css";
 import React from "react";
 import DialogUser from "./DialogUser/DialogUser";
-import {users} from "../../../../helpers/MessagesData";
 
-let usersElements = users.map(el =>
-  <DialogUser url={el.url} name={el.name} src={el.avatar} key={el.id} />)
 
-const UsersList = () => {
+const UsersList = (props) => {
+  let usersElements = props.users.map(el =>
+    <DialogUser url={el.url} name={el.name} src={el.avatar} key={el.id} />)
   return (
     <section className="users section">
         <ul className={Classes.list}>

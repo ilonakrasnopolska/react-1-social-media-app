@@ -6,13 +6,13 @@ import Footer from "./modules/components/Footer/Footer";
 import Main from "./modules/components/Main/Main";
 import {BrowserRouter} from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
     <div className="app-container">
       <Header />
       <Sidebar />
-      <Main />
+      <Main state={props.state} />
       <Footer />
     </div>
     </BrowserRouter>

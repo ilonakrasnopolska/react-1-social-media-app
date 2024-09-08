@@ -7,13 +7,13 @@ import News from "./News/News";
 import Music from "./Music/Music";
 import Settings from "./Settings/Settings";
 
-const Main = () => {
+const Main = (props) => {
   return (
     <main>
       <div className={Classes.content}>
         <Routes>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/messages" element={<Messages />} />
+          <Route path="/profile" element={<Profile profile={props.state.profilePage} />} />
+          <Route path="/messages" element={<Messages dialogs={props.state.dialogsPage} />} />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />
           <Route path="/settings" element={<Settings />} />

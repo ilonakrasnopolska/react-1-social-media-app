@@ -1,5 +1,5 @@
 import React from "react";
-import {Instagram, Facebook, Telegram} from "../../helpers/SVG-icons";
+import {Instagram, Facebook, Telegram} from "../../../assets/SVG-icons";
 import Classes from './Footer.module.css';
 
 const Footer = () => {
