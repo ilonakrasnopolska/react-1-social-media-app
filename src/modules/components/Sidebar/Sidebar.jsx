@@ -1,25 +1,16 @@
 import React from "react";
 import Classes from "./Sidebar.module.css";
+import NavItem from "./NavItem/NavItem";
 
 const Sidebar = () => {
   return (
     <nav className={Classes.nav}>
       <ul className={Classes.list}>
-        <li className={Classes.item}>
-          <a className={Classes.link} href="#">Profile</a>
-        </li>
-        <li className={Classes.item}>
-          <a className={Classes.link} href="#">Messages</a>
-        </li>
-        <li className={Classes.item}>
-          <a className={Classes.link} href="#">News</a>
-        </li>
-        <li className={Classes.item}>
-          <a className={Classes.link} href="#">Music</a>
-        </li>
-        <li className={Classes.item}>
-          <a className={Classes.link} href="#">Settings</a>
-        </li>
+        <NavItem url='/profile' name='Profile' />
+        <NavItem url='/messages' name='Messages' />
+        <NavItem url='/news' name='News' />
+        <NavItem url='/music' name='Music' />
+        <NavItem url='/settings' name='Settings' />
       </ul>
     </nav>
   );

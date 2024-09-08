@@ -18,6 +18,7 @@ a {
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 button {
@@ -36,6 +37,11 @@ button {
   grid-gap: 10px;
   max-width: 1600px;
   margin: 0 auto;
+  height: 100vh;
+}
+
+.app-container main {
+  background-color: #e2eaff;
 }
 
 .section {
@@ -46,5 +52,11 @@ button {
   margin-bottom: 0;
 }
 
+.users.section,
+.chats.section {
+  margin: 0;
+}
 
-
+.users.section {
+  background-color: #bfd1ff;
+}

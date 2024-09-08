@@ -1,6 +1,7 @@
 .nav {
   grid-area: nav;
   background-color: #194770;
+  padding: 20px;
 }
 
 .list {
@@ -8,16 +9,4 @@
   grid-gap: 10px;
 }
 
-.item:first-child {
-  padding-top: 20px;
-}
 
-.item:nth-child(4n) {
-  margin-bottom: 50px;
-}
-
-.link {
-  color: #dcdcff;
-  font-size: 30px;
-  font-weight: 500;
-}

@@ -1,14 +1,23 @@
 import React from "react";
-import Hero from "./Hero/Hero";
+import {Route, Routes} from "react-router-dom";
 import Profile from "./Profile/Profile";
 import Classes from "./Main.module.css"
+import Messages from "./Messages/Messages";
+import News from "./News/News";
+import Music from "./Music/Music";
+import Settings from "./Settings/Settings";
 
-const Main = () => {
+const Main = (props) => {
   return (
     <main>
       <div className={Classes.content}>
-        <Hero />
-        <Profile />
+        <Routes>
+          <Route path="/profile" element={<Profile profile={props.state.profilePage} />} />
+          <Route path="/messages" element={<Messages dialogs={props.state.dialogsPage} />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/music" element={<Music />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
       </div>
     </main>
   );

@@ -27,6 +27,7 @@
 
 .icon {
   display: block;
+  position: relative;
 }
 
 .copyright {
