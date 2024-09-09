@@ -1,0 +1,18 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #dcdcff;
+}
+
+.user__name {
+  color: #dcdcff;
+  font-size: 20px;
+}

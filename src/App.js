@@ -11,7 +11,7 @@ const App = (props) => {
     <BrowserRouter>
     <div className="app-container">
       <Header />
-      <Sidebar />
+      <Sidebar sidebar={props.state.sideBar} />
       <Main state={props.state} />
       <Footer />
     </div>

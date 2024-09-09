@@ -1,12 +1,6 @@
 .nav {
   grid-area: nav;
   background-color: #194770;
-  padding: 20px;
+  padding: 20px 40px 20px 30px;
 }
-
-.list {
-  display: grid;
-  grid-gap: 10px;
-}
-
 

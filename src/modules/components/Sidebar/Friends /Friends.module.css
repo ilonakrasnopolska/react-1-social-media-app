@@ -1,0 +1,15 @@
+.content {
+  display: grid;
+  gap: 30px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 500;
+  color: #dcdcff;
+}
+
+.list {
+  display: flex;
+  gap: 15px;
+}

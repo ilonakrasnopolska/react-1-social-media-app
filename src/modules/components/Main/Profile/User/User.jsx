@@ -9,7 +9,7 @@ const User = () => {
           <img className={Classes.avatar} src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png" alt="Avatar" />
         </div>
         <div className={Classes.about}>
-          <h2>Ilona Sue</h2>
+          <h1>Ilona Sue</h1>
           <ul className={Classes.list}>
             <li className={Classes.item}>Day of Birth: 9 July.</li>
             <li className={Classes.item}>City: Haifa.</li>

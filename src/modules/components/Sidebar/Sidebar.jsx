@@ -1,17 +1,13 @@
 import React from "react";
 import Classes from "./Sidebar.module.css";
-import NavItem from "./NavItem/NavItem";
+import Nav from "./Nav/Nav";
+import Friends from "./Friends /Friends";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <nav className={Classes.nav}>
-      <ul className={Classes.list}>
-        <NavItem url='/profile' name='Profile' />
-        <NavItem url='/messages' name='Messages' />
-        <NavItem url='/news' name='News' />
-        <NavItem url='/music' name='Music' />
-        <NavItem url='/settings' name='Settings' />
-      </ul>
+      <Nav />
+      <Friends sidebar={props.sidebar} />
     </nav>
   );
 }
