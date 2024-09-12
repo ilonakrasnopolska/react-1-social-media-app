@@ -1,17 +1,16 @@
 import Classes from "./Chat.module.css";
 import React from "react";
+import ChatBubble from "./ChatBubble/ChatBubble";
 
 const Chat = (props) => {
+  let chatBubbles = props.bubbles.map(el =>
+    <ChatBubble name={el.name} message={el.message} data={el.data} key={el.id} avatar={el.avatar} />)
   return (
-        <li className={Classes.chat}>
-          <button className={Classes.message__btn}>
-            <div className={Classes.message}>
-              <img className={Classes.avatar} src={props.avatar} alt="avatar"/>
-              <span>{props.message}</span>
-            </div>
-            <span className={Classes.data}>{props.data}</span>
-          </button>
-        </li>
+    <section className="chat section">
+      <ul className={Classes.list}>
+        {chatBubbles}
+      </ul>
+    </section>
   )
 }
 

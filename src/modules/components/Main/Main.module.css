@@ -1,4 +1,11 @@
 .content {
   background-color: #e2eaff;
   min-height: 325px;
+  overflow: auto;
+  scrollbar-width: none; /* Скрыть скролл в Firefox */
+  -ms-overflow-style: none; /* Скрыть скролл в Internet Explorer и Edge */
+}
+
+.scrollable-block::-webkit-scrollbar {
+  display: none; /* Скрыть скролл в Chrome, Safari и Opera */
 }

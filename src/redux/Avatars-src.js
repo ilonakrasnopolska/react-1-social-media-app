@@ -10,7 +10,8 @@ const avatars = {
   sakuraPic: 'https://img2.akspic.ru/previews/5/8/2/7/6/167285/167285-anime_' +
     'devushka_pozy-anime-anime_art-doch-art-x750.jpg',
   inoPic: 'https://img2.akspic.ru/previews/7/6/4/5/7/175467/175467-anime-izuku_midoriya-vse_' +
-    'vozmozhno-moj_geroj_akademii-anime_art-x750.jpg'
+    'vozmozhno-moj_geroj_akademii-anime_art-x750.jpg',
+  ilonaSue: 'https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png'
 
 }
  export default avatars

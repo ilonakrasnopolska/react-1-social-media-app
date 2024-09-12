@@ -1,0 +1,37 @@
+.item {
+  display: grid;
+  grid-template-columns: 1fr 0fr;
+  grid-template-areas: "content data";
+  align-items: center;
+  gap: 10px;
+  background-color: #194770;
+  border-radius: 30px;
+  padding: 30px 20px;
+  width: 85%;
+}
+
+.content {
+  grid-area: content;
+  display: flex;
+  gap: 10px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #dcdcff;
+  font-size: 20px;
+}
+
+.data {
+  grid-area: data;
+  color: #dcdcff;
+  font-size: 20px;
+}
