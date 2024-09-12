@@ -5,7 +5,7 @@ const PostMaker = () => {
   return (
     <section className="newPost section">
       <div className={Classes.content}>
-        <h3>My posts</h3>
+        <span className={Classes.title}>My posts</span>
         <form className={Classes.form} action="" method="POST">
           <textarea className={Classes.textarea} placeholder="Your news..."></textarea>
           <div className={Classes.buttonBox}>

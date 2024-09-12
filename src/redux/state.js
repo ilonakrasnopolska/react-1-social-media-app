@@ -30,6 +30,13 @@ let state = {
       {message:'Where are u? Are u still here?', id: 7, data:'Mon', avatar: `${avatars.inoPic}`},
     ],
   },
+  sideBar: {
+    friends: [
+      {name: 'Sunny', id: 1, avatar: `${avatars.sunnyPic}`},
+      {name: 'Phillip', id: 2, avatar: `${avatars.phillipPic}`},
+      {name: 'Elon', id: 3, avatar: `${avatars.elonPic}`},
+    ]
+  }
 }
 
 export default state

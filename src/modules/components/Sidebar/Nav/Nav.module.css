@@ -1,3 +1,9 @@
+.list {
+  display: grid;
+  grid-gap: 10px;
+  margin-bottom: 100px;
+}
+
 .item:first-child {
   padding-top: 20px;
 }
@@ -15,3 +21,4 @@
 .active {
   color: #a4fde5;
 }
+

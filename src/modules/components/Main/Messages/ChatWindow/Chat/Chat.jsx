@@ -2,7 +2,6 @@ import Classes from "./Chat.module.css";
 import React from "react";
 
 const Chat = (props) => {
-  console.log(props)
   return (
         <li className={Classes.chat}>
           <button className={Classes.message__btn}>
