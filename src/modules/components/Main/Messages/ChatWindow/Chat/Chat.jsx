@@ -1,6 +1,7 @@
 import Classes from "./Chat.module.css";
 import React from "react";
 import ChatBubble from "./ChatBubble/ChatBubble";
+import NewMessage from "./NewMessage/NewMessage";
 
 const Chat = (props) => {
   let chatBubbles = props.bubbles.map(el =>
@@ -10,6 +11,7 @@ const Chat = (props) => {
       <ul className={Classes.list}>
         {chatBubbles}
       </ul>
+      <NewMessage />
     </section>
   )
 }

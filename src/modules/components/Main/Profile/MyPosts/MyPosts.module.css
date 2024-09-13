@@ -2,6 +2,12 @@
   padding: 0 30px;
   display: grid;
   grid-gap: 10px;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
 }
 
 .list {

@@ -1,6 +1,7 @@
 .content {
   display: grid;
   gap: 30px;
+  width: 230px;
 }
 
 .title {
@@ -11,5 +12,10 @@
 
 .list {
   display: flex;
-  gap: 15px;
+  gap: 18px;
+  overflow-y: auto;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }

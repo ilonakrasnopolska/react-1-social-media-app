@@ -9,9 +9,6 @@
   padding: 10px 0;
   border-bottom: 1px solid #ffffff;
   border-top: 1px solid #ffffff;
-}
-
-.button a {
   display: grid;
   align-items: center;
   grid-template-columns: 0fr 1fr;
@@ -19,11 +16,16 @@
     "avatar name";
 }
 
+.active .activeButton {
+  background-color: rgba(25, 71, 112, 0.5);
+}
+
 .avatar {
   grid-area: avatar;
   width: 70px;
   height: 70px;
   border-radius: 50px;
+  margin-left: 10px;
 }
 
 .name {
@@ -31,4 +33,8 @@
   font-size: 25px;
   font-weight: 600;
   color: #194770;
+}
+
+.link {
+  display: contents; /* Чтобы ссылка не ломала сетку */
 }
