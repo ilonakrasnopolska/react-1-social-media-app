@@ -11,8 +11,8 @@
 }
 
 .list {
-  display: grid;
-  grid-template-rows: max-content; /* Автоматический размер рядов */
+  display: flex;
+  flex-direction: column-reverse;
   padding: 0;
   gap: 40px;
   margin-bottom: 50px;

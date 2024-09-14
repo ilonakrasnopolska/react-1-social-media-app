@@ -9,7 +9,7 @@ const Profile = (props) => {
     <div>
       <Hero />
       <User />
-      <PostMaker />
+      <PostMaker addPost={props.addPost} />
       <MyPosts posts={props.profile.posts} />
     </div>
   );

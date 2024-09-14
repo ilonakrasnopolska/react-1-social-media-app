@@ -1,4 +1,5 @@
 import avatars from "./Avatars-src";
+import {renderEntireThree} from "../render";
 
 let state = {
   profilePage: {
@@ -48,6 +49,19 @@ let state = {
       {name: 'Elon', id: 3, avatar: `${avatars.elonPic}`},
     ]
   }
+}
+
+let postId = 5
+export let addPost = (postMessage) => {
+  postId += 1
+  let newPost = {
+    id: postId,
+    message: postMessage,
+    comments: '0',
+    likes: '0',
+  }
+  state.profilePage.posts.push(newPost)
+  renderEntireThree(state)
 }
 
 export default state

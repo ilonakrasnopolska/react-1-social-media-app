@@ -1,13 +1,17 @@
 import React from "react";
 import Classes from './PostMaker.module.css';
 
-const PostMaker = () => {
+const PostMaker = (props) => {
 
   let newPostElement = React.createRef();
 
-  let addPost = () => {
+  let addPost = (event) => {
+    event.preventDefault();
     let text = newPostElement.current.value;
-    alert(text)
+    if (text.trim() !== '') { // Проверка на пустое значение
+      props.addPost(text);
+      newPostElement.current.value = ''; // Очищаем поле после отправки
+    }
   }
 
   return (
