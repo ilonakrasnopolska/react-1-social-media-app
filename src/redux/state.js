@@ -1,5 +1,8 @@
 import avatars from "./Avatars-src";
-import {renderEntireThree} from "../render";
+
+let renderEntireThree = () => {
+  console.log('State changed')
+}
 
 let state = {
   profilePage: {
@@ -10,6 +13,7 @@ let state = {
       {id: 4, message:'Have you seen the Jujutsu Kaisen?', comments:'5', likes:'13'},
       {id: 5, message:'Hello everyone!', comments:'2', likes:'3'},
     ],
+    newPostText: '',
   },
   dialogsPage: {
     users: [
@@ -52,16 +56,26 @@ let state = {
 }
 
 let postId = 5
-export let addPost = (postMessage) => {
+export const addPost = () => {
   postId += 1
   let newPost = {
     id: postId,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     comments: '0',
     likes: '0',
   }
   state.profilePage.posts.push(newPost)
+  state.profilePage.newPostText = ''
   renderEntireThree(state)
+}
+
+export const updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText
+  renderEntireThree(state)
+}
+
+export const subscribe = (observer) => {
+  renderEntireThree = observer
 }
 
 export default state
