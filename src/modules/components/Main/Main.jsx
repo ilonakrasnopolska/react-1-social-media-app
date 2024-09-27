@@ -14,8 +14,7 @@ const Main = (props) => {
       <div className={Classes.content}>
         <Routes>
           <Route path="/profile"
-                 element={<Profile profile={props.state.profilePage} addPost={props.addPost}
-                                   updateNewPostText={props.updateNewPostText}/>}/>
+                 element={<Profile profile={props.state.profilePage} dispatch={props.dispatch}/>}/>
           <Route path="/messages" element={<Messages dialogs={props.state.dialogsPage} />} />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />

@@ -51,30 +51,33 @@ let store = {
       ]
     }
   },
-  getState() {
-    return this._state;
-  },
   _callSubscriber() {
     console.log('State changed')
   },
-  addPost() {
-    let newPost = {
-      id: this._state.profilePage.posts.length + 1,
-      message: this._state.profilePage.newPostText,
-      comments: '0',
-      likes: '0',
-    }
-    this._state.profilePage.posts.push(newPost)
-    this._state.profilePage.newPostText = ''
-    this._callSubscriber(this._state)
-  },
-  updateNewPostText(value) {
-    this._state.profilePage.newPostText = value
-    this._callSubscriber(this._state)
+  getState() {
+    return this._state;
   },
   subscribe(observer) {
     this._callSubscriber = observer;
   },
+  dispatch(action) {
+    if (action.type === 'ADD_POST') {
+      if (this._state.profilePage.newPostText.trim() !== '') {
+        let newPost = {
+          id: this._state.profilePage.posts.length + 1,
+          message: this._state.profilePage.newPostText,
+          comments: '0',
+          likes: '0',
+        }
+        this._state.profilePage.posts.push(newPost)
+        this._state.profilePage.newPostText = ''
+        this._callSubscriber(this._state)
+      }
+    } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+      this._state.profilePage.newPostText = action.value
+      this._callSubscriber(this._state)
+    }
+  }
 }
 
 export default store
