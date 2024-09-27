@@ -9,7 +9,8 @@ const Profile = (props) => {
     <div>
       <Hero />
       <User />
-      <PostMaker />
+      <PostMaker dispatch={props.dispatch}
+                 newPostText={props.profile.newPostText} />
       <MyPosts posts={props.profile.posts} />
     </div>
   );

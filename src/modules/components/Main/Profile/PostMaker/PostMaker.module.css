@@ -18,6 +18,7 @@
   min-height: 80px;
   border: none;
   border-radius: 5px;
+  outline: none;
 }
 
 .buttonBox {

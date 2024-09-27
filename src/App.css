@@ -53,10 +53,25 @@ button {
 }
 
 .users.section,
-.chats.section {
+.dialogs.section {
   margin: 0;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Скрытие скроллбара в WebKit-браузерах */
+.users.section::-webkit-scrollbar,
+.dialogs.section::-webkit-scrollbar{
+  display: none; /* Скрыть скроллбар */
 }
 
 .users.section {
   background-color: #bfd1ff;
+}
+
+.chat {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }

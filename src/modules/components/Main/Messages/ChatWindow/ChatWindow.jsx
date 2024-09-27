@@ -1,17 +1,14 @@
 import Classes from "./ChatWindow.module.css";
 import React from "react";
+import UsersList from "../UsersList/UsersList";
 import Chat from "./Chat/Chat";
 
-
 const ChatWindow = (props) => {
-  let messagesElements = props.messages.map(el =>
-    <Chat message={el.message} data={el.data} key={el.id} avatar={el.avatar} />)
   return (
-    <section className="chats section">
-        <ul className={Classes.list}>
-          {messagesElements}
-        </ul>
-    </section>
+    <div className={Classes.window}>
+      <UsersList users={props.state.dialogsPage.users}/>
+      <Chat bubbles={props.state.chatPage.bubbles} />
+    </div>
   )
 }
 
