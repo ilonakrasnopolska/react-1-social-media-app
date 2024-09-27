@@ -4,23 +4,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import state, {addPost, subscribe, updateNewPostText} from "./redux/state";
+import store from "./redux/state";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export let renderEntireThree = (state) => {
+export let rerenderEntireThree = (state) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={state} addPost={addPost} updateNewPostText={updateNewPostText} />
+        <App state={state} addPost={store.addPost.bind(store)}
+             updateNewPostText={store.updateNewPostText.bind(store)} />
       </BrowserRouter>
     </React.StrictMode>
   );
 }
 
-renderEntireThree(state)
+rerenderEntireThree(store.getState())
 
-subscribe(renderEntireThree)
+// Подписываем функцию рендеринга на изменения состояния
+store.subscribe(rerenderEntireThree);
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

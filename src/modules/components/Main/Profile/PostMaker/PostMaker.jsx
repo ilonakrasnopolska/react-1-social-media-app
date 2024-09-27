@@ -7,7 +7,7 @@ const PostMaker = (props) => {
   let addPost = (event) => {
     event.preventDefault();
     if (newPostText && newPostText.trim() !== '') {
-      props.addPost(newPostText); // Добавляем пост
+      props.addPost(); // Добавляем пост
       setNewPostText(''); // Очищаем состояние
     }
   };

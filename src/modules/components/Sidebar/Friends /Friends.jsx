@@ -3,7 +3,7 @@ import Classes from "./Friends.module.css";
 import Friend from "./Friend/Friend";
 
 const Friends = (props) => {
-  let friends = props.sidebar.friends.map(friend =>
+  let friends = props.friends.map(friend =>
     <Friend name={friend.name} src={friend.avatar} key={friend.id}/>
   )
   return (

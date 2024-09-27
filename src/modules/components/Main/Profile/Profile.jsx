@@ -9,7 +9,9 @@ const Profile = (props) => {
     <div>
       <Hero />
       <User />
-      <PostMaker addPost={props.addPost} updateNewPostText={props.updateNewPostText} />
+      <PostMaker addPost={props.addPost}
+                 updateNewPostText={props.updateNewPostText}
+                 newPostText={props.profile.newPostText} />
       <MyPosts posts={props.profile.posts} />
     </div>
   );
