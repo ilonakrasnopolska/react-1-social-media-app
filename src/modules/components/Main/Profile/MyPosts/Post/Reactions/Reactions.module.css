@@ -2,8 +2,8 @@
   grid-area: reactions;
   grid-template-areas: "comment like";
   display: grid;
-  gap: 5px;
   align-items: center;
+  gap: 10px;
 }
 
 .btn__comment,
@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-width: 60px;
+  min-width: 50px;
   height: 60px;
 }
 
@@ -40,9 +40,6 @@
 
 .btn__likeSvg {
   position: absolute;
-  width: 16px; /* Ширина кнопки */
-  height: 16px; /* Высота кнопки */
-  background-color: #194770; /* Цвет сердца */
   border: none;
   outline: none;
   cursor: pointer;
@@ -51,13 +48,18 @@
   right: 12px;
 }
 
+.btn__likeSvg , .btn__likeSvg::before,
+.btn__likeSvg::after {
+  width: 16px; /* Ширина кнопки */
+  height: 16px; /* Высота кнопки */
+  background-color: #194770; /* Цвет сердца */
+  transition: background-color 0.3s ease-in-out;
+}
+
 .btn__likeSvg::before,
 .btn__likeSvg::after {
   content: "";
   position: absolute;
-  width: 16px; /* Размер верхних полукругов */
-  height: 16px; /* Размер верхних полукругов */
-  background-color: #194770; /* Цвет сердца */
   border-radius: 50%; /* Создание полукруга */
 }
 
@@ -71,4 +73,8 @@
   top: 0;
 }
 
-
+.liked .btn__likeSvg::before,
+.liked .btn__likeSvg::after,
+.liked .btn__likeSvg {
+  background-color: #db0303;
+}

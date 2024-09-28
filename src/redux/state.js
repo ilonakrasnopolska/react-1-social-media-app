@@ -1,14 +1,18 @@
 import avatars from "./Avatars-src";
 
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const HANDLE_LIKE = "HANDLE-LIKE";
+
 let store = {
   _state: {
     profilePage: {
       posts: [
-        {id: 1, message:'Who is your favourite character in Naruto?', comments:'22', likes:'123'},
-        {id: 2, message:'Where are you from', comments:'22', likes:'14'},
-        {id: 3, message:'I wish i had more free time to watch anime!', comments:'2', likes:'36'},
-        {id: 4, message:'Have you seen the Jujutsu Kaisen?', comments:'5', likes:'13'},
-        {id: 5, message:'Hello everyone!', comments:'2', likes:'3'},
+        {id: 1, message:'Who is your favourite character in Naruto?', comments:'22', likes:'123', likedByUser: false},
+        {id: 2, message:'Where are you from', comments:'22', likes:'14', likedByUser: false},
+        {id: 3, message:'I wish i had more free time to watch anime!', comments:'2', likes:'36', likedByUser: false},
+        {id: 4, message:'Have you seen the Jujutsu Kaisen?', comments:'5', likes:'13', likedByUser: false},
+        {id: 5, message:'Hello everyone!', comments:'2', likes:'3', likedByUser: false},
       ],
       newPostText: '',
     },
@@ -61,7 +65,7 @@ let store = {
     this._callSubscriber = observer;
   },
   dispatch(action) {
-    if (action.type === 'ADD_POST') {
+    if (action.type === ADD_POST) {
       if (this._state.profilePage.newPostText.trim() !== '') {
         let newPost = {
           id: this._state.profilePage.posts.length + 1,
@@ -73,11 +77,38 @@ let store = {
         this._state.profilePage.newPostText = ''
         this._callSubscriber(this._state)
       }
-    } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+    } if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.value
       this._callSubscriber(this._state)
+    } if (action.type === HANDLE_LIKE) {
+      // Находим пост по id
+      let post = this._state.profilePage.posts.find(post => post.id === action.id);
+
+      // Проверяем, найден ли пост
+      if (!post) {
+        console.error(`Post with id ${action.id} not found.`);
+        return; // Если пост не найден, выходим из функции
+      }
+      // Если лайк уже поставлен, снимаем его
+      if (post.likedByUser) {
+        post.likes = parseInt(post.likes) - 1; // Уменьшаем количество лайков
+        post.likedByUser = false; // Сбрасываем состояние лайка
+      } else {
+        // Если лайк не был поставлен, ставим его
+        post.likes = parseInt(post.likes) + 1; // Увеличиваем количество лайков
+        post.likedByUser = true; // Устанавливаем состояние лайка
+      }
+      this._callSubscriber(this._state);
     }
   }
+}
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (newPostText) => {
+  return {type: UPDATE_NEW_POST_TEXT, value: newPostText}
+}
+export const handleLikeActionCreator = (id) => {
+  return {type: HANDLE_LIKE, id: id}
 }
 
 export default store

@@ -1,17 +1,18 @@
 import React from "react";
 import Classes from './PostMaker.module.css';
+import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../../../redux/state';
 
 const PostMaker = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = (event) => {
     event.preventDefault();
-      props.dispatch({type: "ADD_POST"});
+      props.dispatch(addPostActionCreator());
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.dispatch({type: "UPDATE_NEW_POST_TEXT", value: text});
+    props.dispatch(updateNewPostTextActionCreator(text));
   };
 
   return (

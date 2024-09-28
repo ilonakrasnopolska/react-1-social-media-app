@@ -11,7 +11,7 @@ const Profile = (props) => {
       <User />
       <PostMaker dispatch={props.dispatch}
                  newPostText={props.profile.newPostText} />
-      <MyPosts posts={props.profile.posts} />
+      <MyPosts dispatch={props.dispatch} posts={props.profile.posts} />
     </div>
   );
 }
