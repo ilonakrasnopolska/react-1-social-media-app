@@ -1,4 +1,8 @@
 .item {
+  width: 100%;
+}
+
+.post {
   display: grid;
   grid-template-areas: "pic post reactions delete";
   grid-template-columns: max-content 1fr max-content;
@@ -6,7 +10,6 @@
   grid-gap: 20px;
   background-color: #ffffff;
   padding: 20px;
-  border-radius: 10px;
 }
 
 .avatar {
@@ -15,7 +18,7 @@
   border-radius: 50%;
 }
 
-.post {
+.post_message {
   grid-area: post;
   font-size: 18px;
 }
@@ -27,4 +30,17 @@
   color: #194770;
   transform: rotate(90deg);
   background-color: transparent;
+}
+
+.comments {
+  width: 100%;
+  max-height: 0; /* Изначально скрыто */
+  overflow: hidden; /* Скрыть переполнение */
+  transition: max-height 0.8s ease-in-out, transform 0.8s ease-in-out; /* Плавный переход */
+  transform: translateY(-10px); /* Позиционирование по умолчанию */
+}
+
+.visible {
+  max-height: 500px; /* Убедитесь, что значение достаточно для всех комментариев */
+  transform: translateY(0); /* Вернуть на место */
 }

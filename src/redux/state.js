@@ -3,16 +3,40 @@ import avatars from "./Avatars-src";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const HANDLE_LIKE = "HANDLE-LIKE";
+const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
+
 
 let store = {
   _state: {
     profilePage: {
       posts: [
-        {id: 1, message:'Who is your favourite character in Naruto?', comments:'22', likes:'123', likedByUser: false},
-        {id: 2, message:'Where are you from', comments:'22', likes:'14', likedByUser: false},
-        {id: 3, message:'I wish i had more free time to watch anime!', comments:'2', likes:'36', likedByUser: false},
-        {id: 4, message:'Have you seen the Jujutsu Kaisen?', comments:'5', likes:'13', likedByUser: false},
-        {id: 5, message:'Hello everyone!', comments:'2', likes:'3', likedByUser: false},
+        {id: 1, message:'Who is your favourite character in Naruto?',
+          comments: 1, likes: 123, likedByUser: false, commentData: []},
+        {id: 2, message:'Where are you from',
+          comments: 1, likes: 14, likedByUser: false, commentData: []},
+        {id: 3, message:'I wish i had more free time to watch anime!',
+          comments: 1, likes: 36, likedByUser: false, commentData: []},
+        {id: 4, message:'Have you seen the JK?',
+          comments: 1, likes: 13, likedByUser: false, commentData: []},
+        {id: 5, message:'Hello everyone!',
+          comments: 1, likes: 3, likedByUser: false, commentData: []},
+      ],
+      comments: [
+        {id: 1, postId: 1, commentsVisibility: false, messages:
+            {message1: 'Wow!Amazing!', user: 'user1'},
+        },
+        {id: 2, postId: 2, commentsVisibility: false, messages:
+            {message1: 'Nice!', user: 'user2'}
+        },
+        {id: 3, postId: 3, commentsVisibility: false, messages:
+            {message1: 'Amazing!', user: 'user1'}
+        },
+        {id: 4, postId: 4, commentsVisibility: false, messages:
+            {message1: 'Great!', user: 'user3'}
+        },
+        {id: 5, postId: 5, commentsVisibility: false, messages:
+            {message1: 'Hi!', user: 'user2'}
+        },
       ],
       newPostText: '',
     },
@@ -72,8 +96,9 @@ let store = {
           message: this._state.profilePage.newPostText,
           comments: '0',
           likes: '0',
+          commentData: [],
         }
-        this._state.profilePage.posts.push(newPost)
+        this._state.profilePage.posts.push(newPost);
         this._state.profilePage.newPostText = ''
         this._callSubscriber(this._state)
       }
@@ -100,16 +125,39 @@ let store = {
       }
       this._callSubscriber(this._state);
     }
+    if (action.type === TOGGLE_COMMENTS) {
+      // Находим комментарий по id поста
+      const comment = this._state.profilePage.comments.find(c => c.postId === action.id);
+
+      // Проверяем, найден ли комментарий
+      if (comment) {
+        // Переключаем видимость комментариев
+        comment.commentsVisibility = !comment.commentsVisibility;
+        this._callSubscriber(this._state);
+      } else {
+        console.error(`Comments for post ID ${action.id} not found.`);
+      }
+    }
   }
 }
+
+// Привязка комментариев к постам
+store._state.profilePage.posts.forEach(post => {
+  post.commentData = store._state.profilePage.comments.filter(comment => comment.postId === post.id);
+});
 
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (newPostText) => {
   return {type: UPDATE_NEW_POST_TEXT, value: newPostText}
 }
-export const handleLikeActionCreator = (id) => {
-  return {type: HANDLE_LIKE, id: id}
-}
+export const handleLikeActionCreator = (id) => ({
+   type: HANDLE_LIKE,
+   id: id,
+})
+export const toggleCommentsActionCreator = (id) => ({
+  type: TOGGLE_COMMENTS,
+  id: id,
+});
 
 export default store
 window.store = store

@@ -1,23 +1,24 @@
 import React from "react";
 import {CommentIcon} from "../../../../../../../assets/SVG-icons";
 import Classes from "./Reactions.module.css"
-import {handleLikeActionCreator} from "../../../../../../../redux/state"
+import {handleLikeActionCreator, toggleCommentsActionCreator} from "../../../../../../../redux/state"
 
 const Reactions = (props) => {
   const likeButtonClass = props.isLiked ? `${Classes.btn__like} ${Classes.liked}` : Classes.btn__like;
 
-  let readComments = () => {
-    console.log('popka')
-  }
+  // Функция для переключения видимости комментариев
+  const toggleComments = () => {
+    props.dispatch(toggleCommentsActionCreator(props.id));
+  };
 
-  let handleLikeToPost = (id) => {
+  const handleLikeToPost = (id) => {
     props.dispatch(handleLikeActionCreator(id))
   }
 
   return (
     <div className={Classes.btn__box}>
       <div className={Classes.btn__comment}>
-        <button onClick={readComments} className={Classes.btn__commentSvg}>
+        <button onClick={toggleComments} className={Classes.btn__commentSvg}>
           <CommentIcon/>
         </button>
         <span className={Classes.btn__commentCount}>
@@ -32,6 +33,7 @@ const Reactions = (props) => {
           {props.likes}
         </span>
       </div>
+
     </div>
   );
 }

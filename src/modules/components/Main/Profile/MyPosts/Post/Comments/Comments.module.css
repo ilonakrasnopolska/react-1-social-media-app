@@ -1,0 +1,48 @@
+.list {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0;
+  gap: 40px;
+  margin-bottom: 50px;
+  transition: opacity .3s ease-in-out;
+}
+
+.item {
+  display: grid;
+  grid-template-areas: "pic post delete";
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  grid-gap: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.avatar {
+  grid-area: pic;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  grid-area: post;
+  font-size: 18px;
+}
+
+.delete {
+  grid-area: delete;
+  font-size: 35px;
+  font-weight: 600;
+  color: #194770;
+  transform: rotate(90deg);
+  background-color: transparent;
+}
+
+.response_btn {
+  font-size: 17px;
+  border-bottom: 1px solid #194770;
+  color: #194770;
+}
