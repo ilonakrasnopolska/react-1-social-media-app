@@ -1,10 +1,10 @@
 .list {
   display: flex;
-  flex-direction: column-reverse;
-  padding: 0;
+  flex-direction: column;
   gap: 40px;
-  margin-bottom: 50px;
   transition: opacity .3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
 }
 
 .item {
@@ -13,8 +13,6 @@
   grid-template-columns: max-content 1fr max-content;
   align-items: center;
   grid-gap: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 20px 40px;
   border-radius: 10px;
 }
 
@@ -45,4 +43,8 @@
   font-size: 17px;
   border-bottom: 1px solid #194770;
   color: #194770;
+}
+
+.no_comments {
+  font-size: 20px;
 }

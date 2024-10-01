@@ -23,7 +23,7 @@ const PostMaker = (props) => {
           <textarea ref={newPostElement} value={props.newPostText} onChange={onPostChange}
                     className={Classes.textarea} placeholder="Your news..." />
           <div className={Classes.buttonBox}>
-            <button onClick={addPost} className={Classes.button}>Send</button>
+            <button onClick={addPost} className={Classes.button}>Post</button>
           </div>
         </form>
       </div>

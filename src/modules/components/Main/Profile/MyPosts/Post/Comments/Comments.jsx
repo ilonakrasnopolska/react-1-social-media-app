@@ -1,5 +1,6 @@
 import React from "react";
 import Classes from "./Comments.module.css"
+import AddComment from "./AddComment/AddComment";
 
 const Comments = (props) => {
   return (
@@ -20,6 +21,7 @@ const Comments = (props) => {
           <button className={Classes.delete}>...</button>
         </li>
       ))}
+      <AddComment />
     </ul>
   );
 }

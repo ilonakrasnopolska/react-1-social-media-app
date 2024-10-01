@@ -1,0 +1,26 @@
+.add_comment {
+  width: 100%;
+}
+
+.comment_form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.comment_input {
+  border: none;
+  outline: none;
+  margin-right: 15px;
+  width: 90%;
+  height: 40px;
+  padding: 5px;
+}
+
+.submit_button {
+  padding: 5px 30px;
+  height: 40px;
+  background-color: #194770;
+  color: #ffffff;
+}

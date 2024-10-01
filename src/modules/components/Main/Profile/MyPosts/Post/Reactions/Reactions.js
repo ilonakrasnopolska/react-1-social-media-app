@@ -6,13 +6,12 @@ import {handleLikeActionCreator, toggleCommentsActionCreator} from "../../../../
 const Reactions = (props) => {
   const likeButtonClass = props.isLiked ? `${Classes.btn__like} ${Classes.liked}` : Classes.btn__like;
 
-  // Функция для переключения видимости комментариев
   const toggleComments = () => {
     props.dispatch(toggleCommentsActionCreator(props.id));
   };
 
   const handleLikeToPost = (id) => {
-    props.dispatch(handleLikeActionCreator(id))
+    props.dispatch(handleLikeActionCreator(id));
   }
 
   return (

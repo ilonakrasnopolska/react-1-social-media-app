@@ -34,13 +34,13 @@
 
 .comments {
   width: 100%;
-  max-height: 0; /* Изначально скрыто */
+  background-color: rgba(255, 255, 255, 0.5);
   overflow: hidden; /* Скрыть переполнение */
-  transition: max-height 0.8s ease-in-out, transform 0.8s ease-in-out; /* Плавный переход */
+  transition: max-height 0.9s ease-in-out, transform 0.9s ease-in-out; /* Плавный переход */
   transform: translateY(-10px); /* Позиционирование по умолчанию */
 }
 
 .visible {
-  max-height: 500px; /* Убедитесь, что значение достаточно для всех комментариев */
+  min-height: 150px; /* Убедитесь, что значение достаточно для всех комментариев */
   transform: translateY(0); /* Вернуть на место */
 }

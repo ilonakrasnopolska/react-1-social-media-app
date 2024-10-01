@@ -26,7 +26,7 @@ const Post = (props) => {
             <button onClick={deletePost} className={Classes.delete}>...</button>
             </div>
             <div className={`${Classes.comments} ${isCommentsVisible ? Classes.visible : ''}`}>
-              {isCommentsVisible && <Comments commentData={props.commentData}/>}
+              {isCommentsVisible && <Comments commentData={props.commentData}/> }
             </div>
           </li>
   );

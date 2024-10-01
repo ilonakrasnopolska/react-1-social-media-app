@@ -91,14 +91,25 @@ let store = {
   dispatch(action) {
     if (action.type === ADD_POST) {
       if (this._state.profilePage.newPostText.trim() !== '') {
+        let newPostId = this._state.profilePage.posts.length + 1;
         let newPost = {
-          id: this._state.profilePage.posts.length + 1,
+          id: newPostId,
           message: this._state.profilePage.newPostText,
-          comments: '0',
-          likes: '0',
+          comments: 0,
+          likes: 0,
+          likedByUser: false,
           commentData: [],
         }
+        let comments = {
+          id: this._state.profilePage.comments.length + 1,
+          postId: newPostId,
+          commentsVisibility: false,
+          messages: {},
+        }
+
         this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.comments.push(comments);
+
         this._state.profilePage.newPostText = ''
         this._callSubscriber(this._state)
       }
@@ -106,33 +117,26 @@ let store = {
       this._state.profilePage.newPostText = action.value
       this._callSubscriber(this._state)
     } if (action.type === HANDLE_LIKE) {
-      // Находим пост по id
       let post = this._state.profilePage.posts.find(post => post.id === action.id);
 
-      // Проверяем, найден ли пост
       if (!post) {
         console.error(`Post with id ${action.id} not found.`);
-        return; // Если пост не найден, выходим из функции
+        return;
       }
-      // Если лайк уже поставлен, снимаем его
       if (post.likedByUser) {
-        post.likes = parseInt(post.likes) - 1; // Уменьшаем количество лайков
-        post.likedByUser = false; // Сбрасываем состояние лайка
+        post.likes = parseInt(post.likes) - 1;
+        post.likedByUser = false;
       } else {
-        // Если лайк не был поставлен, ставим его
-        post.likes = parseInt(post.likes) + 1; // Увеличиваем количество лайков
-        post.likedByUser = true; // Устанавливаем состояние лайка
+        post.likes = parseInt(post.likes) + 1;
+        post.likedByUser = true;
       }
       this._callSubscriber(this._state);
     }
     if (action.type === TOGGLE_COMMENTS) {
-      // Находим комментарий по id поста
-      const comment = this._state.profilePage.comments.find(c => c.postId === action.id);
+      const comments = this._state.profilePage.comments.find(c => c.postId === action.id);
 
-      // Проверяем, найден ли комментарий
-      if (comment) {
-        // Переключаем видимость комментариев
-        comment.commentsVisibility = !comment.commentsVisibility;
+      if (comments) {
+        comments.commentsVisibility = !comments.commentsVisibility;
         this._callSubscriber(this._state);
       } else {
         console.error(`Comments for post ID ${action.id} not found.`);
