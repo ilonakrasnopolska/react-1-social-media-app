@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 import Comments from "./Comments/Comments";
+import AddComment from "./Comments/AddComment/AddComment";
 
 const Post = (props) => {
+  const [isOpenComments, setIsCommentsOpen] = useState(false); // Локальное состояние для видимости комментариев
+
   let deletePost = () => {
     window.confirm('Are you sure you want to delete this post?');
   }
   const commentData = props.commentData.find(comment => comment.postId === props.id);
-  const isCommentsVisible = commentData ? commentData.commentsVisibility : false
+  // Функция для переключения видимости комментариев
+  const toggleCommentsOpen = () => {
+    setIsCommentsOpen(prevState => !prevState);
+  };
 
   return (
           <li className={Classes.item}>
@@ -20,14 +26,22 @@ const Post = (props) => {
             <div className={Classes.post_message}>
               {props.message}
             </div>
-            <Reactions dispatch={props.dispatch} comments={props.comments}
-                       likes={props.likes} id={props.id}
-                       isLiked={props.isLiked} commentData={props.commentData}/>
+            <Reactions dispatch={props.dispatch}
+                       comments={props.comments}
+                       likes={props.likes}
+                       id={props.id}
+                       isLiked={props.isLiked}
+                       commentData={props.commentData}
+                       toggleCommentsOpen={toggleCommentsOpen}
+                       isOpenComments={isOpenComments}/>
             <button onClick={deletePost} className={Classes.delete}>...</button>
             </div>
-            <div className={`${Classes.comments} ${isCommentsVisible ? Classes.visible : ''}`}>
-              {isCommentsVisible && <Comments commentData={props.commentData}/> }
-            </div>
+            {isOpenComments && (
+              <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
+                <Comments commentData={commentData} /> {/* Передаем массив сообщений, даже если пустой */}
+                <AddComment />
+              </div>
+            )}
           </li>
   );
 }

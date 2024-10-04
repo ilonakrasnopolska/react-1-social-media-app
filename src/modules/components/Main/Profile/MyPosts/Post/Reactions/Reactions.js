@@ -8,6 +8,7 @@ const Reactions = (props) => {
 
   const toggleComments = () => {
     props.dispatch(toggleCommentsActionCreator(props.id));
+    props.toggleCommentsOpen()
   };
 
   const handleLikeToPost = (id) => {

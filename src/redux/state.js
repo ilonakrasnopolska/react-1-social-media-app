@@ -23,19 +23,19 @@ let store = {
       ],
       comments: [
         {id: 1, postId: 1, commentsVisibility: false, messages:
-            {message1: 'Wow!Amazing!', user: 'user1'},
+            [{message1: 'Wow!Amazing!', user: 'user1'}],
         },
         {id: 2, postId: 2, commentsVisibility: false, messages:
-            {message1: 'Nice!', user: 'user2'}
+            [{message1: 'Nice!', user: 'user2'}],
         },
         {id: 3, postId: 3, commentsVisibility: false, messages:
-            {message1: 'Amazing!', user: 'user1'}
+           [{message1: 'Amazing!', user: 'user1'}],
         },
         {id: 4, postId: 4, commentsVisibility: false, messages:
-            {message1: 'Great!', user: 'user3'}
+            [{message1: 'Great!', user: 'user3'}],
         },
         {id: 5, postId: 5, commentsVisibility: false, messages:
-            {message1: 'Hi!', user: 'user2'}
+            [{message1: 'Hi!', user: 'user2'}],
         },
       ],
       newPostText: '',
@@ -104,7 +104,7 @@ let store = {
           id: this._state.profilePage.comments.length + 1,
           postId: newPostId,
           commentsVisibility: false,
-          messages: {},
+          messages: [],
         }
 
         this._state.profilePage.posts.push(newPost);
@@ -134,7 +134,6 @@ let store = {
     }
     if (action.type === TOGGLE_COMMENTS) {
       const comments = this._state.profilePage.comments.find(c => c.postId === action.id);
-
       if (comments) {
         comments.commentsVisibility = !comments.commentsVisibility;
         this._callSubscriber(this._state);
