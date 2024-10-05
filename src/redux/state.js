@@ -50,18 +50,7 @@ let store = {
         {name: 'Sakura', id: 6, url: `/messages/6`, avatar: `${avatars.sakuraPic}`},
         {name: 'Ino', id: 7, url: `/messages/7`, avatar: `${avatars.inoPic}`},
       ],
-      messages: [
-        {message:'Hello there!', id: 1, data:'17:28', avatar: `${avatars.markPic}`},
-        {message:'How old are you?', id: 2, data:'16:00', avatar: `${avatars.vikkyPic}`},
-        {message:'Have you seen the last episode of Jujutsu K?', id: 3, data:'13:00', avatar: `${avatars.sunnyPic}`},
-        {message:'Bye!', id: 4, data:'Thu', avatar: `${avatars.phillipPic}`},
-        {message:'Look at at this..', id: 5, data:'Wed', avatar: `${avatars.elonPic}`},
-        {message:'Can I call u?', id: 6, data:'Mon', avatar: `${avatars.sakuraPic}`},
-        {message:'Where are u? Are u still here?', id: 7, data:'Mon', avatar: `${avatars.inoPic}`},
-      ],
-    },
-    chatPage: {
-      bubbles: [
+      chats: [
         {name:'Mark', message:'Hello there!', id: 1, data:'17:28', avatar: `${avatars.markPic}`},
         {name:'Ilona Sue', message:'Hi', id: 2, data:'17:50', avatar: `${avatars.ilonaSue}`},
         {name:'Mark', message:'Have you seen the last episode of Jujutsu K?', id: 3, data:'19:00', avatar: `${avatars.markPic}`},

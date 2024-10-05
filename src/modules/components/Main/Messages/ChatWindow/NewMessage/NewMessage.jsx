@@ -1,6 +1,6 @@
 import Classes from "./NewMessage.module.css";
 import React from "react";
-import {SendMessage} from "../../../../../../../assets/SVG-icons";
+import {SendMessage} from "../../../../../../assets/SVG-icons";
 
 const NewMessage = (props) => {
   return (
