@@ -10,7 +10,7 @@ const Post = (props) => {
   let deletePost = () => {
     window.confirm('Are you sure you want to delete this post?');
   }
-  const commentData = props.commentData.find(comment => comment.postId === props.id);
+  const commentData = props.commentData.find(comment => comment.id === props.id);
   // Функция для переключения видимости комментариев
   const toggleCommentsOpen = () => {
     setIsCommentsOpen(prevState => !prevState);

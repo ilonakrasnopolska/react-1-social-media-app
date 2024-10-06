@@ -11,7 +11,7 @@ const ChatBubble = (props) => {
         <span>{props.message}</span>
       </div>
       </div>
-      <span className={Classes.data}>{props.data}</span>
+      <span className={Classes.data}>{props.time}</span>
     </li>
   )
 }

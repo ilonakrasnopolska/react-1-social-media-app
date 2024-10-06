@@ -4,37 +4,44 @@ const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const HANDLE_LIKE = "HANDLE-LIKE";
 const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
+const OPEN_DIALOG = 'OPEN_DIALOG';
+
+let postIdCounter = 1;
+let commentIdCounter = 1;
+let userIdCounter = 1;
+let chatIdCounter = 1;
+let messageIdCounter = 1;
 
 
 let store = {
   _state: {
     profilePage: {
       posts: [
-        {id: 1, message:'Who is your favourite character in Naruto?',
+        {id: postIdCounter++, message:'Who is your favourite character in Naruto?',
           comments: 1, likes: 123, likedByUser: false, commentData: []},
-        {id: 2, message:'Where are you from',
+        {id: postIdCounter++, message:'Where are you from',
           comments: 1, likes: 14, likedByUser: false, commentData: []},
-        {id: 3, message:'I wish i had more free time to watch anime!',
+        {id: postIdCounter++, message:'I wish i had more free time to watch anime!',
           comments: 1, likes: 36, likedByUser: false, commentData: []},
-        {id: 4, message:'Have you seen the JK?',
+        {id: postIdCounter++, message:'Have you seen the JK?',
           comments: 1, likes: 13, likedByUser: false, commentData: []},
-        {id: 5, message:'Hello everyone!',
+        {id: postIdCounter++, message:'Hello everyone!',
           comments: 1, likes: 3, likedByUser: false, commentData: []},
       ],
       comments: [
-        {id: 1, postId: 1, commentsVisibility: false, messages:
+        {id: commentIdCounter++, commentsVisibility: false, messages:
             [{message1: 'Wow!Amazing!', user: 'user1'}],
         },
-        {id: 2, postId: 2, commentsVisibility: false, messages:
+        {id: commentIdCounter++, commentsVisibility: false, messages:
             [{message1: 'Nice!', user: 'user2'}],
         },
-        {id: 3, postId: 3, commentsVisibility: false, messages:
+        {id: commentIdCounter++, commentsVisibility: false, messages:
            [{message1: 'Amazing!', user: 'user1'}],
         },
-        {id: 4, postId: 4, commentsVisibility: false, messages:
+        {id: commentIdCounter++, commentsVisibility: false, messages:
             [{message1: 'Great!', user: 'user3'}],
         },
-        {id: 5, postId: 5, commentsVisibility: false, messages:
+        {id: commentIdCounter++, commentsVisibility: false, messages:
             [{message1: 'Hi!', user: 'user2'}],
         },
       ],
@@ -42,22 +49,28 @@ let store = {
     },
     dialogsPage: {
       users: [
-        {name: 'Mark', id: 1, url: `/messages/1`, avatar: `${avatars.markPic}`},
-        {name: 'Vikky', id: 2, url: `/messages/2`, avatar: `${avatars.vikkyPic}`},
-        {name: 'Sunny', id: 3, url: `/messages/3`, avatar: `${avatars.sunnyPic}`},
-        {name: 'Phillip', id: 4, url: `/messages/4`, avatar: `${avatars.phillipPic}`},
-        {name: 'Elon', id: 5, url: `/messages/5`, avatar: `${avatars.elonPic}`},
-        {name: 'Sakura', id: 6, url: `/messages/6`, avatar: `${avatars.sakuraPic}`},
-        {name: 'Ino', id: 7, url: `/messages/7`, avatar: `${avatars.inoPic}`},
+        {name: 'Mark', id: userIdCounter++, url: `/messages/1`, avatar: `${avatars.markPic}`},
+        {name: 'Vikky', id: userIdCounter++, url: `/messages/2`, avatar: `${avatars.vikkyPic}`},
+        {name: 'Sunny', id: userIdCounter++, url: `/messages/3`, avatar: `${avatars.sunnyPic}`},
+        {name: 'Phillip', id: userIdCounter++, url: `/messages/4`, avatar: `${avatars.phillipPic}`},
+        {name: 'Elon', id: userIdCounter++, url: `/messages/5`, avatar: `${avatars.elonPic}`},
+        {name: 'Sakura', id: userIdCounter++, url: `/messages/6`, avatar: `${avatars.sakuraPic}`},
+        {name: 'Ino', id: userIdCounter++, url: `/messages/7`, avatar: `${avatars.inoPic}`},
       ],
       chats: [
-        {name:'Mark', message:'Hello there!', id: 1, data:'17:28', avatar: `${avatars.markPic}`},
-        {name:'Ilona Sue', message:'Hi', id: 2, data:'17:50', avatar: `${avatars.ilonaSue}`},
-        {name:'Mark', message:'Have you seen the last episode of Jujutsu K?', id: 3, data:'19:00', avatar: `${avatars.markPic}`},
-        {name:'Ilona Sue', message:'Yeah', id: 4, data:'19:10', avatar: `${avatars.ilonaSue}`},
-        {name:'Mark', message:'How old are you?', id: 5, data:'20:00', avatar: `${avatars.markPic}`},
-        {name:'Mark', message:'Can I call u?', id: 6, data:'20:10', avatar: `${avatars.markPic}`},
-        {name:'Mark', message:'Where are u? Are u still here?', id: 7, data:'22:00', avatar: `${avatars.markPic}`},
+        {
+          id: chatIdCounter++,
+          participants: ['Mark', 'Ilona Sue'],
+          messages: [
+            { name: 'Mark', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.markPic },
+            { name: 'Ilona Sue', message: 'Hi', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue },
+            { name: 'Mark', message: 'Have you seen the last episode of Jujutsu K?', id: messageIdCounter++, time: '19:00', avatar: avatars.markPic },
+            { name: 'Ilona Sue', message: 'Yeah', id: messageIdCounter++, time: '19:10', avatar: avatars.ilonaSue },
+            { name: 'Mark', message: 'How old are you?', id: messageIdCounter++, time: '20:00', avatar: avatars.markPic },
+            { name: 'Mark', message: 'Can I call u?', id: messageIdCounter++, time: '20:10', avatar: avatars.markPic },
+            { name: 'Mark', message: 'Where are u? Are u still here?', id: messageIdCounter++, time: '22:00', avatar: avatars.markPic }
+          ]
+        },
       ]
     },
     sideBar: {
@@ -91,7 +104,6 @@ let store = {
         }
         let comments = {
           id: this._state.profilePage.comments.length + 1,
-          postId: newPostId,
           commentsVisibility: false,
           messages: [],
         }
@@ -102,10 +114,10 @@ let store = {
         this._state.profilePage.newPostText = ''
         this._callSubscriber(this._state)
       }
-    } if (action.type === UPDATE_NEW_POST_TEXT) {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.value
       this._callSubscriber(this._state)
-    } if (action.type === HANDLE_LIKE) {
+    } else if (action.type === HANDLE_LIKE) {
       let post = this._state.profilePage.posts.find(post => post.id === action.id);
 
       if (!post) {
@@ -121,8 +133,8 @@ let store = {
       }
       this._callSubscriber(this._state);
     }
-    if (action.type === TOGGLE_COMMENTS) {
-      const comments = this._state.profilePage.comments.find(c => c.postId === action.id);
+    else if (action.type === TOGGLE_COMMENTS) {
+      const comments = this._state.profilePage.comments.find(c => c.id === action.id);
       if (comments) {
         comments.commentsVisibility = !comments.commentsVisibility;
         this._callSubscriber(this._state);
@@ -135,7 +147,7 @@ let store = {
 
 // Привязка комментариев к постам
 store._state.profilePage.posts.forEach(post => {
-  post.commentData = store._state.profilePage.comments.filter(comment => comment.postId === post.id);
+  post.commentData = store._state.profilePage.comments.filter(comment => comment.id === post.id);
 });
 
 export const addPostActionCreator = () => ({type: ADD_POST})
@@ -148,6 +160,10 @@ export const handleLikeActionCreator = (id) => ({
 })
 export const toggleCommentsActionCreator = (id) => ({
   type: TOGGLE_COMMENTS,
+  id: id,
+});
+export const openDialogActionCreator = (id) => ({
+  type: OPEN_DIALOG,
   id: id,
 });
 
