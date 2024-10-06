@@ -7,7 +7,7 @@ const Messages = (props) => {
   return (
     <div className={Classes.window}>
       <UsersList users={props.dialogs.users} />
-      <ChatWindow dialogs={props.dialogs} />
+      <ChatWindow dialogs={props.dialogs} dispatch={props.dispatch}/>
     </div>
   )
 }

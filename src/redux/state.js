@@ -1,9 +1,12 @@
 import avatars from "./Avatars-src";
 
+const CURRENT_USER_NAME = "Ilona Sue"
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const HANDLE_LIKE = "HANDLE-LIKE";
 const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
+const SEND_MESSAGE = 'SEND_MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 const OPEN_DIALOG = 'OPEN_DIALOG';
 
 let postIdCounter = 1;
@@ -71,7 +74,8 @@ let store = {
             { name: 'Mark', message: 'Where are u? Are u still here?', id: messageIdCounter++, time: '22:00', avatar: avatars.markPic }
           ]
         },
-      ]
+      ],
+      newMessageText: '',
     },
     sideBar: {
       friends: [
@@ -142,6 +146,36 @@ let store = {
         console.error(`Comments for post ID ${action.id} not found.`);
       }
     }
+    else if (action.type === SEND_MESSAGE) {
+      const chat = this._state.dialogsPage.chats.find(chat => chat.id === action.chatId);
+      if (!chat) {
+        console.error(`Chat with id ${action.chatId} not found.`);
+        return;
+      }
+
+      if (this._state.dialogsPage.newMessageText.trim() !== '') {
+        const currentTime = new Date();
+        const hours = String(currentTime.getHours()).padStart(2, '0');
+        const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+        let newMessageId = messageIdCounter++;
+        let newMessage = {
+          name: CURRENT_USER_NAME,
+          id: newMessageId,
+          time: `${hours}:${minutes}`,
+          avatar: avatars.ilonaSue ,
+          message: this._state.dialogsPage.newMessageText,
+         }
+
+        chat.messages.push(newMessage);
+
+        this._state.dialogsPage.newMessageText = ''
+        this._callSubscriber(this._state)
+      }
+    }
+    else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._state.dialogsPage.newMessageText = action.value;
+      this._callSubscriber(this._state)
+    }
   }
 }
 
@@ -151,17 +185,29 @@ store._state.profilePage.posts.forEach(post => {
 });
 
 export const addPostActionCreator = () => ({type: ADD_POST})
+
 export const updateNewPostTextActionCreator = (newPostText) => {
   return {type: UPDATE_NEW_POST_TEXT, value: newPostText}
 }
+
 export const handleLikeActionCreator = (id) => ({
    type: HANDLE_LIKE,
    id: id,
 })
+
 export const toggleCommentsActionCreator = (id) => ({
   type: TOGGLE_COMMENTS,
   id: id,
 });
+
+export const sendMessageActionCreator = (chatId) => ({
+  type: SEND_MESSAGE,
+  chatId: chatId,
+});
+export const updateNewMessageTextActionCreator = (newMessageText) => {
+  return {type: UPDATE_NEW_MESSAGE_TEXT, value: newMessageText}
+};
+
 export const openDialogActionCreator = (id) => ({
   type: OPEN_DIALOG,
   id: id,

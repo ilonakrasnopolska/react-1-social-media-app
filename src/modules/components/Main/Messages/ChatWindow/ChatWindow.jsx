@@ -4,8 +4,6 @@ import ChatBubble from "./ChatBubble/ChatBubble";
 import NewMessage from "./NewMessage/NewMessage";
 
 const ChatWindow = (props) => {
-  console.log(props)
-
   const currentChat = props.dialogs.chats.find(chat => chat.id === 1);
 
   // Если текущий чат существует, отобразим сообщения, иначе сообщим, что чат пуст
@@ -24,7 +22,10 @@ const ChatWindow = (props) => {
       <ul className={Classes.list}>
         {chatBubbles}
       </ul>
-      <NewMessage />
+      <NewMessage newMessageText={props.dialogs.newMessageText}
+                  dispatch={props.dispatch}
+                  chatId={currentChat.id}
+      />
     </section>
   );
 }
