@@ -14,11 +14,11 @@ const Main = (props) => {
         <Routes>
           <Route path="/profile"
                  element={<Profile profile={props.state.profilePage} dispatch={props.dispatch}/>}/>
-          <Route path="/messages" element={<Messages dialogs={props.state.dialogsPage} dispatch={props.dispatch} />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/music" element={<Music />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/messages/1" element={<Messages dialogs={props.state.dialogsPage} />} />
+          <Route path="/messages" element={<Messages dialogs={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
+          <Route path="/news" element={<News/>}/>
+          <Route path="/music" element={<Music/>}/>
+          <Route path="/settings" element={<Settings/>}/>
+          <Route path="/messages/1" element={<Messages dialogs={props.state.dialogsPage}/>}/>
         </Routes>
       </div>
     </main>

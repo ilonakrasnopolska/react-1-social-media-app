@@ -1,10 +1,9 @@
 import Classes from "./NewMessage.module.css";
 import React from "react";
 import {SendMessageIcon} from "../../../../../../assets/SVG-icons";
-import {sendMessageActionCreator,updateNewMessageTextActionCreator} from "../../../../../../redux/state"
+import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../../../../../redux/state"
 
 const NewMessage = (props) => {
-  console.log(props)
   let newMessageElement = React.createRef();
 
   let sendMessage = (event) => {
@@ -23,9 +22,9 @@ const NewMessage = (props) => {
                   value={props.newMessageText}
                   onChange={onMessageChange}
                   className={Classes.textarea}
-                  placeholder="Type your message here..." />
+                  placeholder="Type your message here..."/>
         <button onClick={sendMessage} className={Classes.button}>
-          <SendMessageIcon />
+          <SendMessageIcon/>
         </button>
       </form>
     </div>

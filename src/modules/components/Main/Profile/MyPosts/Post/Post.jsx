@@ -17,32 +17,37 @@ const Post = (props) => {
   };
 
   return (
-          <li className={Classes.item}>
-            <div className={Classes.post}>
-            <img className={Classes.avatar}
-                 src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png"
-                 alt="User avatar"
-            />
-            <div className={Classes.post_message}>
-              {props.message}
-            </div>
-            <Reactions dispatch={props.dispatch}
-                       comments={props.comments}
-                       likes={props.likes}
-                       id={props.id}
-                       isLiked={props.isLiked}
-                       commentData={props.commentData}
-                       toggleCommentsOpen={toggleCommentsOpen}
-                       isOpenComments={isOpenComments}/>
-            <button onClick={deletePost} className={Classes.delete}>...</button>
-            </div>
-            {isOpenComments && (
-              <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
-                <Comments commentData={commentData} /> {/* Передаем массив сообщений, даже если пустой */}
-                <AddComment />
-              </div>
-            )}
-          </li>
+    <li className={Classes.item}>
+      <div className={Classes.post}>
+        <img className={Classes.avatar}
+             src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png"
+             alt="User avatar"
+        />
+        <div className={Classes.post_message}>
+          <span className={Classes.post_name}>
+            {props.name}
+          </span>
+          <span>
+            {props.message}
+          </span>
+        </div>
+        <Reactions dispatch={props.dispatch}
+                   comments={props.comments}
+                   likes={props.likes}
+                   id={props.id}
+                   isLiked={props.isLiked}
+                   commentData={props.commentData}
+                   toggleCommentsOpen={toggleCommentsOpen}
+                   isOpenComments={isOpenComments}/>
+        <button onClick={deletePost} className={Classes.delete}>...</button>
+      </div>
+      {isOpenComments && (
+        <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
+          <Comments commentData={commentData}/> {/* Передаем массив сообщений, даже если пустой */}
+          <AddComment/>
+        </div>
+      )}
+    </li>
   );
 }
 

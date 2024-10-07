@@ -33,7 +33,7 @@ export const Facebook = () => {
 export const Telegram = () => {
   return (
     <svg width="24px" height="24px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <path id="telegram-5" d="M12,0c-6.627,0 -12,5.373 -12,12c0,6.627 5.373,12 12,12c6.627,0
+      <path id="telegram-5" d="M12,0c-6.627,0 -12,5.373 -12,12c0,6.627 5.373,12 12,12c6.627,0
         12,-5.373 12,-12c0,-6.627 -5.373,-12 -12,-12Zm0,2c5.514,0 10,4.486 10,10c0,5.514 -4.486,10 -10,10c-5.514,0
         -10,-4.486 -10,-10c0,-5.514 4.486,-10 10,-10Zm2.692,14.889c0.161,0.115 0.368,0.143 0.553,0.073c0.185,-0.07
         0.322,-0.228 0.362,-0.42c0.435,-2.042 1.489,-7.211 1.884,-9.068c0.03,-0.14 -0.019,-0.285
@@ -50,7 +50,7 @@ export const Telegram = () => {
 export const CommentIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
     <path d="M21 3H3c-1.1 0-1.99.9-1.99 2L1 21l4-4h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 11H5v-2h14v2zm0-4H5V8h14v2z"
-    fill="#194770"/>
+          fill="#194770"/>
   </svg>
 );
 
@@ -58,6 +58,6 @@ export const SendMessageIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <path
       d="M24 0l-6 22-8.129-7.239 7.802-8.234-10.458 7.227-7.215-1.754 24-12zm-15 16.668v7.332l3.258-4.431-3.258-2.901z"
-    fill="#fff"/>
+      fill="#fff"/>
   </svg>
 )

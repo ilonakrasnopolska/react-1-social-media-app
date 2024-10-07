@@ -19,8 +19,15 @@
 }
 
 .post_message {
+  display: flex;
+  flex-direction: column;
   grid-area: post;
   font-size: 18px;
+}
+
+.post_name {
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .delete {

@@ -10,7 +10,7 @@ const Footer = () => {
           <li>
             <a className={Classes.icon} href="https://www.instagram.com/" target="_blank"
                rel="noopener noreferrer">
-              <Instagram />
+              <Instagram/>
             </a>
           </li>
           <li>

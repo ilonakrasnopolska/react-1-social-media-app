@@ -7,11 +7,11 @@ import Hero from "./Hero/Hero";
 const Profile = (props) => {
   return (
     <div>
-      <Hero />
-      <User />
+      <Hero/>
+      <User/>
       <PostMaker dispatch={props.dispatch}
-                 newPostText={props.profile.newPostText} />
-      <MyPosts dispatch={props.dispatch} posts={props.profile.posts} />
+                 newPostText={props.profile.newPostText}/>
+      <MyPosts dispatch={props.dispatch} profile={props.profile}/>
     </div>
   );
 }

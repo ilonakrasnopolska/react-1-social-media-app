@@ -1,6 +1,6 @@
 const avatars = {
-  markPic : 'https://img2.akspic.ru/previews/2/2/0/2/4/142022/142022' +
-  '-vymyslennyj_personaz-nindzya_mira-anime-illustracia-multfilm-x750.jpg',
+  markPic: 'https://img2.akspic.ru/previews/2/2/0/2/4/142022/142022' +
+    '-vymyslennyj_personaz-nindzya_mira-anime-illustracia-multfilm-x750.jpg',
   vikkyPic: 'https://img3.akspic.ru/previews/4/1/8/1/4/141814/141814-zhest-kozha-krasota-nindzya_mira-lob-x750.jpg',
   sunnyPic: 'https://img2.akspic.ru/previews/6/4/8/8/6/168846/168846-anime-anime_' +
     'devushka-azusa_nakano-aska_lengli_soryu-volosy-x750.jpg',
@@ -14,4 +14,4 @@ const avatars = {
   ilonaSue: 'https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png'
 
 }
- export default avatars
+export default avatars

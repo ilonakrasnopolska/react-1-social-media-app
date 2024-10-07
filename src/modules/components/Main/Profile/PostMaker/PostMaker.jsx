@@ -7,7 +7,7 @@ const PostMaker = (props) => {
 
   let addPost = (event) => {
     event.preventDefault();
-      props.dispatch(addPostActionCreator());
+    props.dispatch(addPostActionCreator());
   };
 
   let onPostChange = () => {
@@ -21,7 +21,7 @@ const PostMaker = (props) => {
         <span className={Classes.title}>My posts</span>
         <form className={Classes.form} action="" method="POST">
           <textarea ref={newPostElement} value={props.newPostText} onChange={onPostChange}
-                    className={Classes.textarea} placeholder="Your news..." />
+                    className={Classes.textarea} placeholder="Your news..."/>
           <div className={Classes.buttonBox}>
             <button onClick={addPost} className={Classes.button}>Post</button>
           </div>
