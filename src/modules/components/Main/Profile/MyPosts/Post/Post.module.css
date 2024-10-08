@@ -30,6 +30,15 @@
   margin-bottom: 5px;
 }
 
+.post_content {
+  display: flex;
+  gap: 10px;
+}
+
+.post_time {
+  opacity: 30%;
+}
+
 .delete {
   grid-area: delete;
   font-size: 35px;

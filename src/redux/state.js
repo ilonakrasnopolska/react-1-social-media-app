@@ -1,4 +1,5 @@
 import avatars from "./Avatars-src";
+import comments from "../modules/components/Main/Profile/MyPosts/Post/Comments/Comments";
 
 // Константы
 const CURRENT_USER_NAME = "Ilona Sue"
@@ -7,6 +8,7 @@ const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const HANDLE_LIKE = "HANDLE-LIKE";
 const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
 const UPDATE_NEW_COMMENT_TEXT = "UPDATE-NEW-COMMENT-TEXT";
+const ADD_COMMENT = "ADD-COMMENT";
 const SEND_MESSAGE = 'SEND_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 const OPEN_DIALOG = 'OPEN_DIALOG';
@@ -14,6 +16,7 @@ const baseMessageUrl = '/messages/';
 
 // Счетчики
 let postIdCounter = 1;
+let commentBlockIdCounter = 1;
 let commentIdCounter = 1;
 let userIdCounter = 1;
 let chatIdCounter = 1;
@@ -26,49 +29,49 @@ let store = {
       posts: [
         {
           name: CURRENT_USER_NAME, id: postIdCounter++, message: 'Who is your favourite character in Naruto?',
-          comments: 1, likes: 123, likedByUser: false, commentData: []
+          comments: 1, likes: 123, time: '10:00', likedByUser: false, commentData: []
         },
         {
           name: CURRENT_USER_NAME, id: postIdCounter++, message: 'Where are you from',
-          comments: 1, likes: 14, likedByUser: false, commentData: []
+          comments: 1, likes: 14, time: '09:00', likedByUser: false, commentData: []
         },
         {
           name: CURRENT_USER_NAME, id: postIdCounter++, message: 'I wish i had more free time to watch anime!',
-          comments: 1, likes: 36, likedByUser: false, commentData: []
+          comments: 1, likes: 36, time: '08:00', likedByUser: false, commentData: []
         },
         {
           name: CURRENT_USER_NAME, id: postIdCounter++, message: 'Have you seen the JK?',
-          comments: 1, likes: 13, likedByUser: false, commentData: []
+          comments: 1, likes: 13, time: '07:00', likedByUser: false, commentData: []
         },
         {
           name: CURRENT_USER_NAME, id: postIdCounter++, message: 'Hello everyone!',
-          comments: 1, likes: 3, likedByUser: false, commentData: []
+          comments: 1, likes: 3, time: '06:00', likedByUser: false, commentData: []
         },
       ],
       comments: [
         {
-          id: commentIdCounter++, commentsVisibility: false, messages:
-            [{message1: 'Wow!Amazing!', user: 'user1'}],
+          id: commentBlockIdCounter++, commentsVisibility: false, messages:
+            [{commentId: commentIdCounter++, message1: 'Wow!Amazing!', user: 'user1', time: '13:00'}],
           newCommentText: '',
         },
         {
-          id: commentIdCounter++, commentsVisibility: false, messages:
-            [{message1: 'Nice!', user: 'user2'}],
+          id: commentBlockIdCounter++, commentsVisibility: false, messages:
+            [{commentId: commentIdCounter++, message1: 'Nice!', user: 'user2', time: '13:30'}],
           newCommentText: '',
         },
         {
-          id: commentIdCounter++, commentsVisibility: false, messages:
-            [{message1: 'Amazing!', user: 'user1'}],
+          id: commentBlockIdCounter++, commentsVisibility: false, messages:
+            [{commentId: commentIdCounter++, message1: 'Amazing!', user: 'user1', time: '14:30'}],
           newCommentText: '',
         },
         {
-          id: commentIdCounter++, commentsVisibility: false, messages:
-            [{message1: 'Great!', user: 'user3'}],
+          id: commentBlockIdCounter++, commentsVisibility: false, messages:
+            [{commentId: commentIdCounter++, message1: 'Great!', user: 'user3', time: '16:30'}],
           newCommentText: '',
         },
         {
-          id: commentIdCounter++, commentsVisibility: false, messages:
-            [{message1: 'Hi!', user: 'user2'}],
+          id: commentBlockIdCounter++, commentsVisibility: false, messages:
+            [{commentId: commentIdCounter++, message1: 'Hi!', user: 'user2', time: '17:30'}],
           newCommentText: '',
         },
       ],
@@ -123,16 +126,23 @@ let store = {
   _findById(array, id) {
     return array.find(item => item.id === id);
   },
+  _getData() {
+    const currentTime = new Date();
+    const hours = String(currentTime.getHours()).padStart(2, '0');
+    const minutes = String(currentTime.getMinutes()).padStart(2, '0');
+    return `${hours}:${minutes}`
+  },
   _addPost() {
     if (this._state.profilePage.newPostText.trim() !== '') {
       let newPostId = postIdCounter++;
-      let newCommentId = commentIdCounter++;
+      let newCommentId = commentBlockIdCounter++;
       let newPost = {
         name: CURRENT_USER_NAME,
         id: newPostId,
         message: this._state.profilePage.newPostText,
         comments: 0,
         likes: 0,
+        time: this._getData(),
         likedByUser: false,
         commentData: [],
       }
@@ -149,6 +159,27 @@ let store = {
       this._callSubscriber(this._state)
     }
   },
+  _addComment(commentsId) {
+    const commentGroup = this._findById(this._state.profilePage.comments, commentsId);
+    if (!commentGroup) {
+      console.error(`Comments group with id ${commentsId} not found.`);
+      return;
+    }
+
+    const newCommentText = commentGroup.newCommentText;
+    if (newCommentText.trim() === '') return;
+
+    const newComment = {
+      commentId: commentIdCounter++,
+      message1: newCommentText,
+      user: CURRENT_USER_NAME,
+      time: this._getData(),
+    };
+
+    commentGroup.messages.push(newComment);
+    commentGroup.newCommentText = '';
+    this._callSubscriber(this._state);
+  },
   _handleLike(action) {
     const post = this._findById(this._state.profilePage.posts, action.id);
     if (!post) {
@@ -160,9 +191,9 @@ let store = {
     this._callSubscriber(this._state);
   },
   _updateText(state, property, action) {
-  state[property] = action.value;
-  this._callSubscriber(this._state);
- },
+    state[property] = action.value;
+    this._callSubscriber(this._state);
+  },
   _sendMessage(action) {
     const chat = this._findById(this._state.dialogsPage.chats, action.chatId);
     if (!chat) {
@@ -171,15 +202,11 @@ let store = {
     }
 
     if (this._state.dialogsPage.newMessageText.trim() !== '') {
-      const currentTime = new Date();
-      const hours = String(currentTime.getHours()).padStart(2, '0');
-      const minutes = String(currentTime.getMinutes()).padStart(2, '0');
       let newMessageId = messageIdCounter++;
-
       let newMessage = {
         name: CURRENT_USER_NAME,
         id: newMessageId,
-        time: `${hours}:${minutes}`,
+        time: this._getData(),
         avatar: avatars.ilonaSue,
         message: this._state.dialogsPage.newMessageText,
       };
@@ -190,7 +217,7 @@ let store = {
       this._callSubscriber(this._state);
     }
   },
-  _updatePropertyById(array, id, property, value){
+  _updatePropertyById(array, id, property, value) {
     const item = this._findById(array, id);
     if (item) {
       item[property] = value;
@@ -218,11 +245,13 @@ let store = {
         'commentsVisibility', !this._state.profilePage.comments.find(c => c.id === action.id).commentsVisibility,);
     } else if (action.type === UPDATE_NEW_COMMENT_TEXT) {
       this._updatePropertyById(this._state.profilePage.comments,
-        action.commentId, 'newCommentText', action.value);
+        action.commentsId, 'newCommentText', action.value);
+    } else if (action.type === ADD_COMMENT) {
+      this._addComment(action.commentsId);
     } else if (action.type === SEND_MESSAGE) {
       this._sendMessage(action);
     } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._updateText(this._state.dialogsPage,'newMessageText', action)
+      this._updateText(this._state.dialogsPage, 'newMessageText', action)
     }
   }
 }
@@ -237,11 +266,12 @@ export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostTextActionCreator = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, value: newPostText});
 export const handleLikeActionCreator = (id) => ({type: HANDLE_LIKE, id: id});
 export const toggleCommentsActionCreator = (id) => ({type: TOGGLE_COMMENTS, id: id});
-export const updateNewCommentTextActionCreator = (commentId, newCommentText) => ({
+export const updateNewCommentTextActionCreator = (commentsId, newCommentText) => ({
   type: UPDATE_NEW_COMMENT_TEXT,
-  commentId: commentId,
+  commentsId: commentsId,
   value: newCommentText
 });
+export const addCommentActionCreator = (commentsId) => ({type: ADD_COMMENT, commentsId: commentsId,});
 export const sendMessageActionCreator = (chatId) => ({type: SEND_MESSAGE, chatId: chatId});
 export const updateNewMessageTextActionCreator = (newMessageText) => ({
   type: UPDATE_NEW_MESSAGE_TEXT,

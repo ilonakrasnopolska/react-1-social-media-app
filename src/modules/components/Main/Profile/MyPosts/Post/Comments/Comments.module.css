@@ -27,6 +27,21 @@
   font-size: 18px;
 }
 
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.content {
+  display: flex;
+  gap: 7px;
+}
+
+.time {
+  opacity: 30%;
+}
+
 .delete {
   grid-area: delete;
   font-size: 35px;
@@ -41,6 +56,7 @@
   border-bottom: 1px solid #194770;
   background-color: transparent;
   color: #194770;
+  opacity: 40%;
 }
 
 .no_comments {

@@ -6,7 +6,7 @@ import Post from "./Post/Post"
 const MyPosts = (props) => {
   let postsElements = props.profile.posts.map(el =>
     <Post dispatch={props.dispatch} name={el.name} message={el.message}
-          comments={el.comments} likes={el.likes}
+          comments={el.comments} likes={el.likes} time={el.time}
           key={el.id} id={el.id} isLiked={el.likedByUser} commentData={el.commentData}/>)
   return (
     <section className="myPosts section">

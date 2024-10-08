@@ -14,11 +14,14 @@ const Comments = (props) => {
               alt="User avatar"
             />
             <div className={Classes.post}>
-              <div>
+              <div className={Classes.comment}>
                 <strong>{comment.user} </strong>
-                {comment.message1}
+                <div className={Classes.content}>
+                  <span>{comment.message1}</span>
+                  <span className={Classes.time}>{comment.time}</span>
+                  <button className={Classes.response_btn}>Response</button>
+                </div>
               </div>
-              <button className={Classes.response_btn}>Response</button>
             </div>
             <button className={Classes.delete}>...</button>
           </li>

@@ -27,9 +27,14 @@ const Post = (props) => {
           <span className={Classes.post_name}>
             {props.name}
           </span>
-          <span>
-            {props.message}
-          </span>
+          <div className={Classes.post_content}>
+            <span>
+              {props.message}
+            </span>
+            <span className={Classes.post_time}>
+              {props.time}
+            </span>
+          </div>
         </div>
         <Reactions dispatch={props.dispatch}
                    comments={props.comments}
@@ -44,7 +49,9 @@ const Post = (props) => {
       {isOpenComments && (
         <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
           <Comments commentData={commentData}/> {/* Передаем массив сообщений, даже если пустой */}
-          <AddComment/>
+          <AddComment commentsId={props.id}
+                      newCommentText={commentData?.newCommentText || ""}
+                      dispatch={props.dispatch}/>
         </div>
       )}
     </li>
