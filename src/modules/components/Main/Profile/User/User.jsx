@@ -6,7 +6,8 @@ const User = () => {
     <section className='user section'>
       <article className={Classes.content}>
         <div>
-          <img className={Classes.avatar} src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png" alt="Avatar" />
+          <img className={Classes.avatar} src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png"
+               alt="Avatar"/>
         </div>
         <div className={Classes.about}>
           <h1>Ilona Sue</h1>

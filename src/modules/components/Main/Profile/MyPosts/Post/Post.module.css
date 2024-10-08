@@ -1,12 +1,15 @@
 .item {
+  width: 100%;
+}
+
+.post {
   display: grid;
-  grid-template-areas: "pic post reactions";
+  grid-template-areas: "pic post reactions delete";
   grid-template-columns: max-content 1fr max-content;
   align-items: center;
-  grid-gap: 30px;
+  grid-gap: 20px;
   background-color: #ffffff;
-  padding: 20px 25px 20px 20px;
-  border-radius: 10px;
+  padding: 20px;
 }
 
 .avatar {
@@ -15,7 +18,49 @@
   border-radius: 50%;
 }
 
-.post {
+.post_message {
+  display: flex;
+  flex-direction: column;
   grid-area: post;
   font-size: 18px;
+}
+
+.post_name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.post_content {
+  display: flex;
+  gap: 10px;
+}
+
+.post_time {
+  opacity: 30%;
+}
+
+.delete {
+  grid-area: delete;
+  font-size: 35px;
+  font-weight: 600;
+  color: #194770;
+  transform: rotate(90deg);
+  background-color: transparent;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Меньше отступов для лучшего эффекта */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  overflow: hidden; /* Скрыть переполнение */
+  opacity: 0; /* Изначально невидимо */
+  transition: opacity 0.6s ease, transform 0.6s ease; /* Плавный переход */
+  transform: translateY(-20px); /* Сдвиг вверх для эффекта появления */
+}
+
+.visible {
+  opacity: 1; /* Сделать видимым */
+  transform: translateY(0); /* Вернуть на место */
 }

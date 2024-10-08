@@ -6,8 +6,8 @@ import Friends from "./Friends /Friends";
 const Sidebar = (props) => {
   return (
     <nav className={Classes.nav}>
-      <Nav />
-      <Friends friends={props.sidebar.friends} />
+      <Nav/>
+      <Friends friends={props.sidebar.friends}/>
     </nav>
   );
 }

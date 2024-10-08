@@ -31,14 +31,14 @@ const Nav = () => {
     },
   ]
   let navItems = items.map(el =>
-    <li className={Classes.item} key={el.id} >
+    <li className={Classes.item} key={el.id}>
       <NavLink className={({isActive}) => `${Classes.link} ${isActive ? Classes.active : ""}`}
                to={el.url}>{el.name}</NavLink>
     </li>)
   return (
-      <ul className={Classes.list}>
-        {navItems}
-      </ul>
+    <ul className={Classes.list}>
+      {navItems}
+    </ul>
   );
 }
 

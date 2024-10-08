@@ -8,12 +8,12 @@ import Main from "./modules/components/Main/Main";
 const App = (props) => {
   return (
     <div className="app-container">
-      <Header />
-      <Sidebar sidebar={props.state.sideBar} />
+      <Header/>
+      <Sidebar sidebar={props.state.sideBar}/>
       <Main state={props.state} dispatch={props.dispatch}/>
-      <Footer />
+      <Footer/>
     </div>
-   );
+  );
 }
 
 export default App;

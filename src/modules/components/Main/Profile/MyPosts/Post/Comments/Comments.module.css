@@ -1,0 +1,64 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.item {
+  display: grid;
+  grid-template-areas: "pic post delete";
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  grid-gap: 20px;
+  border-radius: 10px;
+}
+
+.avatar {
+  grid-area: pic;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  grid-area: post;
+  font-size: 18px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.content {
+  display: flex;
+  gap: 7px;
+}
+
+.time {
+  opacity: 30%;
+}
+
+.delete {
+  grid-area: delete;
+  font-size: 35px;
+  font-weight: 600;
+  color: #194770;
+  transform: rotate(90deg);
+  background-color: transparent;
+}
+
+.response_btn {
+  font-size: 17px;
+  border-bottom: 1px solid #194770;
+  background-color: transparent;
+  color: #194770;
+  opacity: 40%;
+}
+
+.no_comments {
+  font-size: 20px;
+}
