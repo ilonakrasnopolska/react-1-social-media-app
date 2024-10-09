@@ -11,6 +11,7 @@ const Post = (props) => {
     window.confirm('Are you sure you want to delete this post?');
   }
   const commentData = props.commentData.find(comment => comment.id === props.id);
+
   // Функция для переключения видимости комментариев
   const toggleCommentsOpen = () => {
     setIsCommentsOpen(prevState => !prevState);
@@ -48,7 +49,7 @@ const Post = (props) => {
       </div>
       {isOpenComments && (
         <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
-          <Comments commentData={commentData}/> {/* Передаем массив сообщений, даже если пустой */}
+          <Comments commentData={commentData} dispatch={props.dispatch}/> {/* Передаем массив сообщений, даже если пустой */}
           <AddComment commentsId={props.id}
                       newCommentText={commentData?.newCommentText || ""}
                       dispatch={props.dispatch}/>

@@ -3,7 +3,6 @@ import Classes from "./AddComment.module.css"
 import {addCommentActionCreator, updateNewCommentTextActionCreator} from "../../../../../../../../redux/state"
 
 const AddComment = (props) => {
-  console.log(props)
   let newCommentElement = React.createRef();
 
   let addComment = (event) => {
