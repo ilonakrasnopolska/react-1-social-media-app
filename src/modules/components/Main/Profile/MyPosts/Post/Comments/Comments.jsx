@@ -1,23 +1,24 @@
 import React from "react";
 import Classes from "./Comments.module.css"
-import {replyToCommentTextActionCreator} from "../../../../../../../redux/state";
+import {
+  replyToCommentTextActionCreator,
+  deleteCommentActionCreator
+} from "../../../../../../../redux/state";
 
 const Comments = (props) => {
   const Messages = props.commentData && props.commentData.messages ? props.commentData.messages : [];
 
-  let onReplyToComment = (commentId) => {
+  const onReplyToComment = (commentId) => {
     const comment = Messages.find(comment => comment.commentId === commentId);
     if (comment) {
       const userName = comment.user;
-    props.dispatch(replyToCommentTextActionCreator(commentId,`${userName},`));
-    } else {
-      console.error(`Comment with id ${commentId} not found.`);
+      props.dispatch(replyToCommentTextActionCreator(commentId, `${userName},`));
     }
   }
-  let onDeleteComment = (commentId) => {
+  const onDeleteComment = (commentId) => {
     const confirmDelete = window.confirm("Delete comment?");
     if (confirmDelete) {
-      console.log(commentId)
+      props.dispatch(deleteCommentActionCreator(commentId));
     }
   }
   return (
@@ -36,7 +37,9 @@ const Comments = (props) => {
                 <div className={Classes.content}>
                   <span>{comment.message}</span>
                   <span className={Classes.time}>{comment.time}</span>
-                  <button onClick={() => onReplyToComment(comment.commentId)} className={Classes.response_btn}>Response</button>
+                  <button onClick={() => onReplyToComment(comment.commentId)}
+                          className={Classes.response_btn}>Response
+                  </button>
                 </div>
               </div>
             </div>

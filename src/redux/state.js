@@ -3,12 +3,14 @@ import avatars from "./Avatars-src";
 // Константы
 const CURRENT_USER_NAME = "Ilona Sue"
 const ADD_POST = "ADD-POST";
+const DELETE_POST = "DELETE-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const HANDLE_LIKE = "HANDLE-LIKE";
 const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
 const UPDATE_NEW_COMMENT_TEXT = "UPDATE-NEW-COMMENT-TEXT";
 const REPLY_ON_COMMENT_TEXT = "REPLY-ON-COMMENT-TEXT";
 const ADD_COMMENT = "ADD-COMMENT";
+const DELETE_COMMENT = "DELETE-COMMENT";
 const SEND_MESSAGE = 'SEND_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 const OPEN_DIALOG = 'OPEN_DIALOG';
@@ -156,11 +158,35 @@ let store = {
   _findById(array, id) {
     return array.find(item => item.id === id);
   },
+  _updatePropertyById(array, id, property, value) {
+    const item = this._findById(array, id);
+    if (item) {
+      item[property] = value;
+      this._callSubscriber(this._state);
+    } else {
+      console.error(`Item with id ${id} not found.`);
+    }
+  },
+  _findPostCommentsByCommentId(action) {
+    const postCommentsList = this._state.profilePage.comments;
+    const postComments = postCommentsList.find(block =>
+      block.messages.some(msg => msg.commentId === action.commentId)
+    );
+    if (!postComments) {
+      console.error(`Блок комментариев с комментариями, содержащими id ${action.commentId}, не найден.`);
+      return null;
+    }
+    return postComments
+  },
   _getData() {
     const currentTime = new Date();
     const hours = String(currentTime.getHours()).padStart(2, '0');
     const minutes = String(currentTime.getMinutes()).padStart(2, '0');
     return `${hours}:${minutes}`
+  },
+  _updateText(state, property, action) {
+    state[property] = action.value;
+    this._callSubscriber(this._state);
   },
   _addPost() {
     if (this._state.profilePage.newPostText.trim() !== '') {
@@ -191,6 +217,16 @@ let store = {
       this._callSubscriber(this._state)
     }
   },
+  _deletePost(id) {
+    const posts = this._state.profilePage.posts;
+    const postIndex = posts.findIndex(post => post.id === id);
+    if (postIndex !== -1) {
+      posts.splice(postIndex, 1);
+      this._callSubscriber(this._state);
+    } else {
+      console.error(`Пост с id ${id} не найден.`);
+    }
+  },
   _addComment(commentsId) {
     const commentGroup = this._findById(this._state.profilePage.comments, commentsId);
     if (!commentGroup) {
@@ -213,17 +249,19 @@ let store = {
     commentGroup.newCommentText = '';
     this._callSubscriber(this._state);
   },
-  _replyOnComment(action) {
-    const allComments = this._state.profilePage.comments;
-    // Находим блок комментариев, в котором находится нужный комментарий
-    const commentBlock = allComments.find(block =>
-      block.messages.some(msg => msg.commentId === action.commentId)
-    );
-    if (!commentBlock) {
-      console.error(`Блок комментариев с комментариями, содержащими id ${action.commentId}, не найден.`);
-      return;
+  _deleteComment(action) {
+    const postComments = this._findPostCommentsByCommentId(action)
+    const commentIndex = postComments.messages.findIndex(msg => msg.commentId === action.commentId);
+    if (commentIndex !== -1) {
+      postComments.messages.splice(commentIndex, 1);
+      this._callSubscriber(this._state);
+    } else {
+      console.error(`Комментарий с id ${action.commentId} не найден.`);
     }
-    commentBlock.newCommentText = action.value;
+  },
+  _replyOnComment(action) {
+    const postComments = this._findPostCommentsByCommentId(action)
+    postComments.newCommentText = action.value;
     this._callSubscriber(this._state);
   },
   _handleLike(action) {
@@ -234,10 +272,6 @@ let store = {
     }
     post.likedByUser ? post.likes-- : post.likes++;
     post.likedByUser = !post.likedByUser;
-    this._callSubscriber(this._state);
-  },
-  _updateText(state, property, action) {
-    state[property] = action.value;
     this._callSubscriber(this._state);
   },
   _sendMessage(action) {
@@ -263,15 +297,6 @@ let store = {
       this._callSubscriber(this._state);
     }
   },
-  _updatePropertyById(array, id, property, value) {
-    const item = this._findById(array, id);
-    if (item) {
-      item[property] = value;
-      this._callSubscriber(this._state);
-    } else {
-      console.error(`Item with id ${id} not found.`);
-    }
-  },
   getState() {
     return this._state;
   },
@@ -281,6 +306,8 @@ let store = {
   dispatch(action) {
     if (action.type === ADD_POST) {
       this._addPost()
+    } else if (action.type === DELETE_POST) {
+      this._deletePost(action.id);
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._updateText(this._state.profilePage, 'newPostText', action)
     } else if (action.type === HANDLE_LIKE) {
@@ -296,6 +323,8 @@ let store = {
      this._replyOnComment(action)
     } else if (action.type === ADD_COMMENT) {
       this._addComment(action.commentsId);
+    } else if (action.type === DELETE_COMMENT) {
+      this._deleteComment(action);
     } else if (action.type === SEND_MESSAGE) {
       this._sendMessage(action);
     } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
@@ -311,6 +340,7 @@ store._state.profilePage.posts.forEach(post => {
 
 //Экспортируемые функции
 export const addPostActionCreator = () => ({type: ADD_POST});
+export const deletePostActionCreator = (id) => ({type: DELETE_POST, id: id});
 export const updateNewPostTextActionCreator = (newPostText) => ({type: UPDATE_NEW_POST_TEXT, value: newPostText});
 export const handleLikeActionCreator = (id) => ({type: HANDLE_LIKE, id: id});
 export const toggleCommentsActionCreator = (id) => ({type: TOGGLE_COMMENTS, id: id});
@@ -325,6 +355,7 @@ export const replyToCommentTextActionCreator = (commentId, newCommentText) => ({
   value: newCommentText
 });
 export const addCommentActionCreator = (commentsId) => ({type: ADD_COMMENT, commentsId: commentsId,});
+export const deleteCommentActionCreator = (commentId) => ({type: DELETE_COMMENT, commentId: commentId,});
 export const sendMessageActionCreator = (chatId) => ({type: SEND_MESSAGE, chatId: chatId});
 export const updateNewMessageTextActionCreator = (newMessageText) => ({
   type: UPDATE_NEW_MESSAGE_TEXT,

@@ -3,15 +3,13 @@ import Classes from './PostMaker.module.css';
 import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../../../redux/state';
 
 const PostMaker = (props) => {
-  let newPostElement = React.createRef();
-
-  let addPost = (event) => {
+  const addPost = (event) => {
     event.preventDefault();
     props.dispatch(addPostActionCreator());
   };
 
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
+  const onPostChange = (e) => {
+    const text = e.target.value;
     props.dispatch(updateNewPostTextActionCreator(text));
   };
 
@@ -20,7 +18,7 @@ const PostMaker = (props) => {
       <div className={Classes.content}>
         <span className={Classes.title}>My posts</span>
         <form className={Classes.form} action="" method="POST">
-          <textarea ref={newPostElement} value={props.newPostText} onChange={onPostChange}
+          <textarea value={props.newPostText} onChange={onPostChange}
                     className={Classes.textarea} placeholder="Your news..."/>
           <div className={Classes.buttonBox}>
             <button onClick={addPost} className={Classes.button}>Post</button>

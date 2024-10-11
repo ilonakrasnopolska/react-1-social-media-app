@@ -4,7 +4,7 @@ import DialogUser from "./DialogUser/DialogUser";
 
 
 const UsersList = (props) => {
-  let usersElements = props.users.map(el =>
+  const usersElements = props.users.map(el =>
     <DialogUser url={el.url} name={el.name} src={el.avatar} key={el.id}/>)
   return (
     <section className="users section">
