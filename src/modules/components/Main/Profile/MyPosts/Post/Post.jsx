@@ -3,14 +3,19 @@ import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 import Comments from "./Comments/Comments";
 import AddComment from "./Comments/AddComment/AddComment";
+import {deletePostActionCreator} from "../../../../../../redux/state";
 
 const Post = (props) => {
   const [isOpenComments, setIsCommentsOpen] = useState(false); // Локальное состояние для видимости комментариев
 
-  let deletePost = () => {
-    window.confirm('Are you sure you want to delete this post?');
+  const onDeletePost = (postId) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this post?');
+    if (confirmDelete) {
+      props.dispatch(deletePostActionCreator(postId));
+    }
   }
   const commentData = props.commentData.find(comment => comment.id === props.id);
+
   // Функция для переключения видимости комментариев
   const toggleCommentsOpen = () => {
     setIsCommentsOpen(prevState => !prevState);
@@ -44,11 +49,11 @@ const Post = (props) => {
                    commentData={props.commentData}
                    toggleCommentsOpen={toggleCommentsOpen}
                    isOpenComments={isOpenComments}/>
-        <button onClick={deletePost} className={Classes.delete}>...</button>
+        <button onClick={() => onDeletePost(props.id)} className={Classes.delete}>...</button>
       </div>
       {isOpenComments && (
         <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
-          <Comments commentData={commentData}/> {/* Передаем массив сообщений, даже если пустой */}
+          <Comments commentData={commentData} dispatch={props.dispatch}/> {/* Передаем массив сообщений, даже если пустой */}
           <AddComment commentsId={props.id}
                       newCommentText={commentData?.newCommentText || ""}
                       dispatch={props.dispatch}/>
