@@ -3,7 +3,7 @@ import Classes from "./Comments.module.css"
 import {
   replyToCommentTextActionCreator,
   deleteCommentActionCreator
-} from "../../../../../../../redux/state";
+} from "../../../../../../../redux/profile-reducer";
 
 const Comments = (props) => {
   const Messages = props.commentData && props.commentData.messages ? props.commentData.messages : [];

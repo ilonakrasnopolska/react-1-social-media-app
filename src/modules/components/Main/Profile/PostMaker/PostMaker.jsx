@@ -1,6 +1,6 @@
 import React from "react";
 import Classes from './PostMaker.module.css';
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../../../redux/state';
+import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../../../redux/profile-reducer';
 
 const PostMaker = (props) => {
   const addPost = (event) => {

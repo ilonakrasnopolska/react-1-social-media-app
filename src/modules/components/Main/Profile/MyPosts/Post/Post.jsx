@@ -3,7 +3,7 @@ import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 import Comments from "./Comments/Comments";
 import AddComment from "./Comments/AddComment/AddComment";
-import {deletePostActionCreator} from "../../../../../../redux/state";
+import {deletePostActionCreator} from "../../../../../../redux/profile-reducer";
 
 const Post = (props) => {
   const [isOpenComments, setIsCommentsOpen] = useState(false); // Локальное состояние для видимости комментариев
