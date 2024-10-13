@@ -6,8 +6,6 @@ const SEND_MESSAGE = 'SEND_MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 const OPEN_DIALOG = 'OPEN_DIALOG';
 
-// Счетчики
-let messageIdCounter = 1;
 
 const dialogsReducer = (state, action) => {
   switch (action.type) {
@@ -18,7 +16,11 @@ const dialogsReducer = (state, action) => {
     case UPDATE_NEW_MESSAGE_TEXT :
       updateText(state, 'newMessageText', action);
       return state;
+
+    default:
+      return state;
   }
+
 }
 
 export default dialogsReducer;
@@ -38,14 +40,14 @@ const findById = (state, id) => {
   return state.find(item => item.id === id);
 }
 const sendMessage = (state, action) => {
-  const chat = findById(state.chats, action.chatId);
+  const chat = findById(state.chats, action.id);
   if (!chat) {
-    console.error(`Chat with id ${action.chatId} not found.`);
+    console.error(`Chat with id ${action.id} not found.`);
     return;
   }
 
   if (state.newMessageText.trim() !== '') {
-    let newMessageId = messageIdCounter++;
+    let newMessageId = chat.length + 1;
     let newMessage = {
       name: CURRENT_USER_NAME,
       id: newMessageId,

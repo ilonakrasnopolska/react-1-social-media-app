@@ -12,10 +12,6 @@ const REPLY_ON_COMMENT_TEXT = "REPLY-ON-COMMENT-TEXT";
 const ADD_COMMENT = "ADD-COMMENT";
 const DELETE_COMMENT = "DELETE-COMMENT";
 
-// Счетчики
-let postIdCounter = 1;
-let commentBlockIdCounter = 1;
-let commentIdCounter = 1;
 
 const profileReducer = (state, action) => {
   switch (action.type) {
@@ -24,7 +20,7 @@ const profileReducer = (state, action) => {
       return state;
 
     case DELETE_POST:
-      deletePost(state, action);
+      deletePost(state.posts, action.postId);
       return state;
 
     case UPDATE_NEW_POST_TEXT:
@@ -32,11 +28,11 @@ const profileReducer = (state, action) => {
       return state;
 
     case HANDLE_LIKE:
-      handleLike(state, action);
+      handleLike(state.posts, action.postId);
       return state;
 
     case TOGGLE_COMMENTS:
-      updatePropertyById(
+      toggleComments(
         state.comments,
         action.id,
         'commentsVisibility',
@@ -45,9 +41,9 @@ const profileReducer = (state, action) => {
       return state;
 
     case UPDATE_NEW_COMMENT_TEXT:
-      updatePropertyById(
+      updateNewCommentText(
         state.comments,
-        action.commentsId,
+        action.postId,
         'newCommentText',
         action.value
       );
@@ -58,7 +54,7 @@ const profileReducer = (state, action) => {
       return state;
 
     case ADD_COMMENT:
-      addComment(state, action);
+      addComment(state.comments, action.commentsId);
       return state;
 
     case DELETE_COMMENT:
@@ -79,39 +75,36 @@ const getData = () => {
   const minutes = String(currentTime.getMinutes()).padStart(2, '0');
   return `${hours}:${minutes}`
 }
-const findById = (state, id) => {
-  return state.find(item => item.id === id);
-}
 const findPostCommentsByCommentId = (state, action) => {
-  const postCommentsList = state.comments;
-  const postComments = postCommentsList.find(block =>
-    block.messages.some(msg => msg.commentId === action.commentId)
+  const postComments = state.comments.find(block =>
+    block.messages.find(msg => msg.commentId === action.commentId)
   );
   if (!postComments) {
-    console.error(`Блок комментариев с комментариями, содержащими id ${action.commentId}, не найден.`);
+    console.error(`Блок комментариев с id ${action.commentId} не найден.`);
     return null;
   }
-  return postComments
-}
+  return postComments;
+};
 const updateText = (state, property, action) => {
   state[property] = action.value;
 }
-const updatePropertyById = (state, action, property, value) => {
-  const item = findById(state, action);
+const toggleComments = (comments, id, property, value) => {
+  const item = comments.find(item => item.id === id);
   if (item) {
     item[property] = value;
-    return state
+    return comments
   } else {
-    console.error(`Item with id ${action} not found.`);
+    console.error(`Item with id ${id} not found.`);
   }
 }
 const addPost = (state) => {
   if (state.newPostText.trim() !== '') {
-    let newPostId = postIdCounter++;
-    let newCommentId = commentBlockIdCounter++;
+    let newPostId = state.posts.length + 1;
+    let newCommentId = state.comments.length +1;
+    console.log(newCommentId)
     let newPost = {
       name: CURRENT_USER_NAME,
-      id: newPostId,
+      postId: newPostId++,
       message: state.newPostText,
       comments: 0,
       likes: 0,
@@ -125,6 +118,8 @@ const addPost = (state) => {
       messages: [],
       newCommentText: '',
     }
+    console.log(newPost)
+    console.log(newPostId)
 
     state.comments.push(comments);
     newPost.commentData.push(comments)
@@ -134,28 +129,28 @@ const addPost = (state) => {
     return state
   }
 }
-const deletePost = (state, action) => {
-  const posts = state.posts;
-  const postIndex = posts.findIndex(post => post.id === action.id);
+const deletePost = (posts, postId) => {
+  const postIndex = posts.findIndex(post => post.postId === postId);
   if (postIndex !== -1) {
     posts.splice(postIndex, 1);
   } else {
-    console.error(`Пост с id ${action.id} не найден.`);
+    console.error(`Пост с id ${postId} не найден.`);
   }
-  return state
+  return posts;
 }
-const addComment = (state, action) => {
-  const commentGroup = findById(state.comments, action.commentsId);
+const addComment = (comments, commentsId) => {
+  const commentGroup = comments.find(item => item.id === commentsId);
   if (!commentGroup) {
-    console.error(`Comments group with id ${action.commentsId} not found.`);
+    console.error(`Comments group with id ${commentsId} not found.`);
     return;
   }
 
   const newCommentText = commentGroup.newCommentText;
   if (newCommentText.trim() === '') return;
 
+  let newCommentId = commentGroup.messages.length +1;
   const newComment = {
-    commentId: commentIdCounter++,
+    commentId: newCommentId,
     message: newCommentText,
     user: CURRENT_USER_NAME,
     time: getData(),
@@ -164,16 +159,23 @@ const addComment = (state, action) => {
 
   commentGroup.messages.push(newComment);
   commentGroup.newCommentText = '';
-  return state;
+  return comments;
 }
 const deleteComment = (state, action) => {
-  const postComments = findPostCommentsByCommentId(state, action)
-  const commentIndex = postComments.messages.findIndex(msg => msg.commentId === action.commentId);
-  if (commentIndex !== -1) {
-    postComments.messages.splice(commentIndex, 1);
-    return postComments
+  const postComments = findPostCommentsByCommentId(state, action);
+  if (!postComments) return;
+
+  // Вместо использования splice, можно попробовать более оптимальные методы
+  postComments.messages = postComments.messages.filter(msg => msg.commentId !== action.commentId);
+  return postComments;
+}
+const updateNewCommentText = (comments, postId, property, value) => {
+  const commentGroup = comments.find(item => item.id === postId);
+  if (commentGroup) {
+    commentGroup[property] = value;
+    return comments;
   } else {
-    console.error(`Комментарий с id ${action.commentId} не найден.`);
+    console.error(`Comment group with id ${postId} not found.`);
   }
 }
 const replyOnComment = (state, action) => {
@@ -181,30 +183,30 @@ const replyOnComment = (state, action) => {
   postComments.newCommentText = action.value;
   return state;
 }
-const handleLike = (state, action) => {
-  const post = findById(state.posts, action.id);
+const handleLike = (posts, postId) => {
+  const post = posts.find(item => item.postId === postId);
   if (!post) {
-    console.error(`Post with id ${action.id} not found.`);
+    console.error(`Post with id ${postId} not found.`);
     return;
   }
   post.likedByUser ? post.likes-- : post.likes++;
   post.likedByUser = !post.likedByUser;
-  return state;
+  return post;
 }
 
 //Экспортируемые функции
 export const addPostActionCreator = () => ({type: ADD_POST});
-export const deletePostActionCreator = (id) => ({type: DELETE_POST, id: id});
+export const deletePostActionCreator = (postId) => ({type: DELETE_POST, postId: postId});
 export const updateNewPostTextActionCreator = (newPostText) =>
   ({
     type: UPDATE_NEW_POST_TEXT,
     value: newPostText
   });
-export const handleLikeActionCreator = (id) => ({type: HANDLE_LIKE, id: id});
+export const handleLikeActionCreator = (postId) => ({type: HANDLE_LIKE, postId: postId});
 export const toggleCommentsActionCreator = (id) => ({type: TOGGLE_COMMENTS, id: id});
-export const updateNewCommentTextActionCreator = (commentsId, newCommentText) => ({
+export const updateNewCommentTextActionCreator = (postId, newCommentText) => ({
   type: UPDATE_NEW_COMMENT_TEXT,
-  commentsId: commentsId,
+  postId: postId,
   value: newCommentText
 });
 export const replyToCommentTextActionCreator = (commentId, newCommentText) => ({

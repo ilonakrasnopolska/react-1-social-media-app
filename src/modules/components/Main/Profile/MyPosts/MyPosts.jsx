@@ -7,7 +7,7 @@ const MyPosts = (props) => {
   const postsElements = props.profile.posts.map(el =>
     <Post dispatch={props.dispatch} name={el.name} message={el.message}
           comments={el.comments} likes={el.likes} time={el.time}
-          key={el.id} id={el.id} isLiked={el.likedByUser} commentData={el.commentData}/>)
+          key={el.postId} postId={el.postId} isLiked={el.likedByUser} commentData={el.commentData}/>)
   return (
     <section className="myPosts section">
       <div className={Classes.content}>

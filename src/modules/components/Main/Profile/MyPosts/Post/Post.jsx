@@ -14,7 +14,7 @@ const Post = (props) => {
       props.dispatch(deletePostActionCreator(postId));
     }
   }
-  const commentData = props.commentData.find(comment => comment.id === props.id);
+  const commentData = props.commentData.find(comment => comment.id === props.postId);
 
   // Функция для переключения видимости комментариев
   const toggleCommentsOpen = () => {
@@ -44,17 +44,17 @@ const Post = (props) => {
         <Reactions dispatch={props.dispatch}
                    comments={props.comments}
                    likes={props.likes}
-                   id={props.id}
+                   postId={props.postId}
                    isLiked={props.isLiked}
                    commentData={props.commentData}
                    toggleCommentsOpen={toggleCommentsOpen}
                    isOpenComments={isOpenComments}/>
-        <button onClick={() => onDeletePost(props.id)} className={Classes.delete}>...</button>
+        <button onClick={() => onDeletePost(props.postId)} className={Classes.delete}>...</button>
       </div>
       {isOpenComments && (
         <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
           <Comments commentData={commentData} dispatch={props.dispatch}/> {/* Передаем массив сообщений, даже если пустой */}
-          <AddComment commentsId={props.id}
+          <AddComment postId={props.postId}
                       newCommentText={commentData?.newCommentText || ""}
                       dispatch={props.dispatch}/>
         </div>

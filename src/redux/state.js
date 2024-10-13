@@ -20,23 +20,23 @@ let store = {
     profilePage: {
       posts: [
         {
-          name: CURRENT_USER_NAME, id: postIdCounter++, message: 'Who is your favourite character in Naruto?',
+          name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Who is your favourite character in Naruto?',
           comments: 1, likes: 123, time: '10:00', likedByUser: false, commentData: []
         },
         {
-          name: CURRENT_USER_NAME, id: postIdCounter++, message: 'Where are you from',
+          name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Where are you from',
           comments: 1, likes: 14, time: '09:00', likedByUser: false, commentData: []
         },
         {
-          name: CURRENT_USER_NAME, id: postIdCounter++, message: 'I wish i had more free time to watch anime!',
+          name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'I wish i had more free time to watch anime!',
           comments: 1, likes: 36, time: '08:00', likedByUser: false, commentData: []
         },
         {
-          name: CURRENT_USER_NAME, id: postIdCounter++, message: 'Have you seen the JK?',
+          name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Have you seen the JK?',
           comments: 1, likes: 13, time: '07:00', likedByUser: false, commentData: []
         },
         {
-          name: CURRENT_USER_NAME, id: postIdCounter++, message: 'Hello everyone!',
+          name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Hello everyone!',
           comments: 1, likes: 3, time: '06:00', likedByUser: false, commentData: []
         },
       ],
@@ -101,17 +101,17 @@ let store = {
     },
     dialogsPage: {
       users: [
-        {name: 'Mark', id: userIdCounter++, url: `${baseMessageUrl}1`, avatar: `${avatars.markPic}`},
-        {name: 'Vikky', id: userIdCounter++, url: `${baseMessageUrl}2`, avatar: `${avatars.vikkyPic}`},
-        {name: 'Sunny', id: userIdCounter++, url: `${baseMessageUrl}3`, avatar: `${avatars.sunnyPic}`},
-        {name: 'Phillip', id: userIdCounter++, url: `${baseMessageUrl}/4`, avatar: `${avatars.phillipPic}`},
-        {name: 'Elon', id: userIdCounter++, url: `${baseMessageUrl}5`, avatar: `${avatars.elonPic}`},
-        {name: 'Sakura', id: userIdCounter++, url: `${baseMessageUrl}6`, avatar: `${avatars.sakuraPic}`},
-        {name: 'Ino', id: userIdCounter++, url: `${baseMessageUrl}7`, avatar: `${avatars.inoPic}`},
+        {name: 'Mark', userId: userIdCounter++, url: `${baseMessageUrl}1`, avatar: `${avatars.markPic}`},
+        {name: 'Vikky', userId: userIdCounter++, url: `${baseMessageUrl}2`, avatar: `${avatars.vikkyPic}`},
+        {name: 'Sunny', userId: userIdCounter++, url: `${baseMessageUrl}3`, avatar: `${avatars.sunnyPic}`},
+        {name: 'Phillip', userId: userIdCounter++, url: `${baseMessageUrl}/4`, avatar: `${avatars.phillipPic}`},
+        {name: 'Elon', userId: userIdCounter++, url: `${baseMessageUrl}5`, avatar: `${avatars.elonPic}`},
+        {name: 'Sakura', userId: userIdCounter++, url: `${baseMessageUrl}6`, avatar: `${avatars.sakuraPic}`},
+        {name: 'Ino', userId: userIdCounter++, url: `${baseMessageUrl}7`, avatar: `${avatars.inoPic}`},
       ],
       chats: [
         {
-          id: chatIdCounter++,
+          chatId: chatIdCounter++,
           participants: ['Mark', 'Ilona Sue'],
           messages: [
             {name: 'Mark', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.markPic},
@@ -136,9 +136,9 @@ let store = {
     },
     sideBar: {
       friends: [
-        {name: 'Sunny', id: 1, avatar: `${avatars.sunnyPic}`},
-        {name: 'Phillip', id: 2, avatar: `${avatars.phillipPic}`},
-        {name: 'Elon', id: 3, avatar: `${avatars.elonPic}`},
+        {name: 'Sunny', friendId: 1, avatar: `${avatars.sunnyPic}`},
+        {name: 'Phillip', friendId: 2, avatar: `${avatars.phillipPic}`},
+        {name: 'Elon', friendId: 3, avatar: `${avatars.elonPic}`},
       ]
     }
   },
@@ -160,7 +160,7 @@ let store = {
 
 //Привязка комментариев к постам
 store._state.profilePage.posts.forEach(post => {
-  post.commentData = store._state.profilePage.comments.filter(comment => comment.id === post.id);
+  post.commentData = store._state.profilePage.comments.filter(comment => comment.id === post.postId);
 });
 
 export default store

@@ -4,7 +4,7 @@ import ChatBubble from "./ChatBubble/ChatBubble";
 import NewMessage from "./NewMessage/NewMessage";
 
 const ChatWindow = (props) => {
-  const currentChat = props.dialogs.chats.find(chat => chat.id === 1);
+  const currentChat = props.dialogs.chats.find(chat => chat.chatId === 1);
 
   // Если текущий чат существует, отобразим сообщения, иначе сообщим, что чат пуст
   let chatBubbles = currentChat ? currentChat.messages.map((message, index) => (
@@ -24,7 +24,7 @@ const ChatWindow = (props) => {
       </ul>
       <NewMessage newMessageText={props.dialogs.newMessageText}
                   dispatch={props.dispatch}
-                  chatId={currentChat.id}
+                  chatId={currentChat.chatId}
       />
     </section>
   );
