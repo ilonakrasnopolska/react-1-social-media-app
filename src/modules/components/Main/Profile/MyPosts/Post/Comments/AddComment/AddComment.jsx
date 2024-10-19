@@ -1,6 +1,6 @@
 import React from "react";
 import Classes from "./AddComment.module.css"
-import {addCommentActionCreator, updateNewCommentTextActionCreator} from "../../../../../../../../redux/profile-reducer"
+import {addCommentActionCreator, updateNewCommentTextActionCreator} from "../../../../../../../../redux/ProfileReducer/profile-reducer"
 
 const AddComment = (props) => {
   const addComment = (event) => {

@@ -1,6 +1,6 @@
 import avatars from "./Avatars-src";
-import profileReducer from "./profile-reducer";
-import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./ProfileReducer/profile-reducer";
+import dialogsReducer from "./DialogsReducer/dialogs-reducer";
 
 // Константы
 const CURRENT_USER_NAME = "Ilona Sue"
@@ -8,7 +8,6 @@ const baseMessageUrl = '/messages/';
 
 // Счетчики
 let postIdCounter = 1;
-let commentBlockIdCounter = 1;
 let commentIdCounter = 1;
 let userIdCounter = 1;
 let chatIdCounter = 1;
@@ -21,80 +20,69 @@ let store = {
       posts: [
         {
           name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Who is your favourite character in Naruto?',
-          comments: 1, likes: 123, time: '10:00', likedByUser: false, commentData: []
+          comments: 1, likes: 123, time: '10:00', likedByUser: false, commentData: {
+            commentsVisibility: false, messages:
+              [{
+                commentId: commentIdCounter++,
+                message: 'Wow!Amazing!',
+                user: 'Mark',
+                time: '13:00',
+                avatar: `${avatars.markPic}`
+              }],
+          }, newCommentText: '',
+
         },
         {
           name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Where are you from',
-          comments: 1, likes: 14, time: '09:00', likedByUser: false, commentData: []
+          comments: 1, likes: 14, time: '09:00', likedByUser: false, commentData: {
+            commentsVisibility: false, messages:
+              [{
+                commentId: commentIdCounter++,
+                message: 'Nice!',
+                user: 'Vikky',
+                time: '13:30',
+                avatar: `${avatars.vikkyPic}`
+              }],
+          }, newCommentText: '',
         },
         {
           name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'I wish i had more free time to watch anime!',
-          comments: 1, likes: 36, time: '08:00', likedByUser: false, commentData: []
+          comments: 1, likes: 36, time: '08:00', likedByUser: false, commentData:  {
+            commentsVisibility: false, messages:
+              [{
+                commentId: commentIdCounter++,
+                message: 'Amazing!',
+                user: 'Sunny',
+                time: '14:30',
+                avatar: `${avatars.sunnyPic}`
+              }],
+          }, newCommentText: '',
         },
         {
           name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Have you seen the JK?',
-          comments: 1, likes: 13, time: '07:00', likedByUser: false, commentData: []
+          comments: 1, likes: 13, time: '07:00', likedByUser: false, commentData: {
+            commentsVisibility: false, messages:
+              [{
+                commentId: commentIdCounter++,
+                message: 'Great!',
+                user: 'Ino',
+                time: '16:30',
+                avatar: `${avatars.inoPic}`
+              }],
+          }, newCommentText: '',
         },
         {
           name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Hello everyone!',
-          comments: 1, likes: 3, time: '06:00', likedByUser: false, commentData: []
-        },
-      ],
-      comments: [
-        {
-          id: commentBlockIdCounter++, commentsVisibility: false, messages:
-            [{
-              commentId: commentIdCounter++,
-              message: 'Wow!Amazing!',
-              user: 'Mark',
-              time: '13:00',
-              avatar: `${avatars.markPic}`
-            }],
-          newCommentText: '',
-        },
-        {
-          id: commentBlockIdCounter++, commentsVisibility: false, messages:
-            [{
-              commentId: commentIdCounter++,
-              message: 'Nice!',
-              user: 'Vikky',
-              time: '13:30',
-              avatar: `${avatars.vikkyPic}`
-            }],
-          newCommentText: '',
-        },
-        {
-          id: commentBlockIdCounter++, commentsVisibility: false, messages:
-            [{
-              commentId: commentIdCounter++,
-              message: 'Amazing!',
-              user: 'Sunny',
-              time: '14:30',
-              avatar: `${avatars.sunnyPic}`
-            }],
-          newCommentText: '',
-        },
-        {
-          id: commentBlockIdCounter++, commentsVisibility: false, messages:
-            [{
-              commentId: commentIdCounter++,
-              message: 'Great!',
-              user: 'Ino',
-              time: '16:30',
-              avatar: `${avatars.inoPic}`
-            }],
-          newCommentText: '',
-        },
-        {
-          id: commentBlockIdCounter++, commentsVisibility: false, messages:
-            [{
-              commentId: commentIdCounter++,
-              message: 'Hi!',
-              user: 'Sakura',
-              time: '17:30',
-              avatar: `${avatars.sakuraPic}`
-            }],
-          newCommentText: '',
+          comments: 1, likes: 3, time: '06:00', likedByUser: false, commentData:  {
+            commentsVisibility: false, messages:
+              [{
+                commentId: commentIdCounter++,
+                message: 'Hi!',
+                user: 'Sakura',
+                time: '17:30',
+                avatar: `${avatars.sakuraPic}`
+              }],
+          }, newCommentText: '',
         },
       ],
       newPostText: '',
@@ -158,10 +146,6 @@ let store = {
   }
 }
 
-//Привязка комментариев к постам
-store._state.profilePage.posts.forEach(post => {
-  post.commentData = store._state.profilePage.comments.filter(comment => comment.id === post.postId);
-});
 
 export default store
 window.store = store
