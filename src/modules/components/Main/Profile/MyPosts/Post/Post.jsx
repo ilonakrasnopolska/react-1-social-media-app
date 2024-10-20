@@ -3,9 +3,10 @@ import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 import Comments from "./Comments/Comments";
 import AddComment from "./Comments/AddComment/AddComment";
-import {deletePostActionCreator} from "../../../../../../redux/state";
+import {deletePostActionCreator} from "../../../../../../redux/ProfileReducer/profile-reducer";
 
 const Post = (props) => {
+  const {name, message, comments, likes, time, postId, newCommentText, isLiked, commentData, dispatch} = props;
   const [isOpenComments, setIsCommentsOpen] = useState(false); // Локальное состояние для видимости комментариев
 
   const onDeletePost = (postId) => {
@@ -14,7 +15,6 @@ const Post = (props) => {
       props.dispatch(deletePostActionCreator(postId));
     }
   }
-  const commentData = props.commentData.find(comment => comment.id === props.id);
 
   // Функция для переключения видимости комментариев
   const toggleCommentsOpen = () => {
@@ -30,33 +30,33 @@ const Post = (props) => {
         />
         <div className={Classes.post_message}>
           <span className={Classes.post_name}>
-            {props.name}
+            {name}
           </span>
           <div className={Classes.post_content}>
             <span>
-              {props.message}
+              {message}
             </span>
             <span className={Classes.post_time}>
-              {props.time}
+              {time}
             </span>
           </div>
         </div>
-        <Reactions dispatch={props.dispatch}
-                   comments={props.comments}
-                   likes={props.likes}
-                   id={props.id}
-                   isLiked={props.isLiked}
-                   commentData={props.commentData}
+        <Reactions dispatch={dispatch}
+                   comments={comments}
+                   likes={likes}
+                   postId={postId}
+                   isLiked={isLiked}
+                   commentData={commentData}
                    toggleCommentsOpen={toggleCommentsOpen}
                    isOpenComments={isOpenComments}/>
-        <button onClick={() => onDeletePost(props.id)} className={Classes.delete}>...</button>
+        <button onClick={() => onDeletePost(postId)} className={Classes.delete}>...</button>
       </div>
       {isOpenComments && (
         <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
-          <Comments commentData={commentData} dispatch={props.dispatch}/> {/* Передаем массив сообщений, даже если пустой */}
-          <AddComment commentsId={props.id}
-                      newCommentText={commentData?.newCommentText || ""}
-                      dispatch={props.dispatch}/>
+          <Comments commentData={commentData} postId={postId} dispatch={dispatch}/>
+          <AddComment postId={postId}
+                      newCommentText={newCommentText}
+                      dispatch={dispatch}/>
         </div>
       )}
     </li>

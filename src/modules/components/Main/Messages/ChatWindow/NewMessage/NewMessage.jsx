@@ -1,7 +1,7 @@
 import Classes from "./NewMessage.module.css";
 import React from "react";
 import {SendMessageIcon} from "../../../../../../assets/SVG-icons";
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../../../../../redux/state"
+import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../../../../../redux/DialogsReducer/dialogs-reducer"
 
 const NewMessage = (props) => {
   const sendMessage = (event) => {

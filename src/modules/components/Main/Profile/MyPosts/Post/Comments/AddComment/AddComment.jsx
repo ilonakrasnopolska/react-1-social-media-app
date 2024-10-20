@@ -1,18 +1,17 @@
 import React from "react";
 import Classes from "./AddComment.module.css"
-import {addCommentActionCreator, updateNewCommentTextActionCreator} from "../../../../../../../../redux/state"
+import {addCommentActionCreator, updateNewCommentTextActionCreator}
+  from "../../../../../../../../redux/ProfileReducer/profile-reducer"
 
 const AddComment = (props) => {
   const addComment = (event) => {
     event.preventDefault();
-    const commentsId = props.commentsId;
-    props.dispatch(addCommentActionCreator(commentsId));
+    props.dispatch(addCommentActionCreator(props.postId));
   };
 
   const onCommentChange = (e) => {
     const text = e.target.value;
-    const commentsId = props.commentsId;
-    props.dispatch(updateNewCommentTextActionCreator(commentsId, text));
+    props.dispatch(updateNewCommentTextActionCreator(props.postId, text));
   }
 
   return (

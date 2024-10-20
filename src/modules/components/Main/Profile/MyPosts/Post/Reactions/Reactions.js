@@ -1,18 +1,19 @@
 import React from "react";
 import {CommentIcon} from "../../../../../../../assets/SVG-icons";
 import Classes from "./Reactions.module.css"
-import {handleLikeActionCreator, toggleCommentsActionCreator} from "../../../../../../../redux/state"
+import {handleLikeActionCreator, toggleCommentsActionCreator}
+  from "../../../../../../../redux/ProfileReducer/profile-reducer"
 
 const Reactions = (props) => {
   const likeButtonClass = props.isLiked ? `${Classes.btn__like} ${Classes.liked}` : Classes.btn__like;
 
   const toggleComments = () => {
-    props.dispatch(toggleCommentsActionCreator(props.id));
+    props.dispatch(toggleCommentsActionCreator(props.postId));
     props.toggleCommentsOpen()
   };
 
-  const handleLikeToPost = (id) => {
-    props.dispatch(handleLikeActionCreator(id));
+  const handleLikeToPost = (postId) => {
+    props.dispatch(handleLikeActionCreator(postId));
   }
 
   return (
@@ -26,7 +27,7 @@ const Reactions = (props) => {
         </span>
       </div>
       <div className={Classes.btn__likeBox}>
-        <button onClick={() => handleLikeToPost(props.id)} className={likeButtonClass}>
+        <button onClick={() => handleLikeToPost(props.postId)} className={likeButtonClass}>
           <span className={Classes.btn__likeSvg}></span>
         </button>
         <span className={Classes.btn__likeCount}>

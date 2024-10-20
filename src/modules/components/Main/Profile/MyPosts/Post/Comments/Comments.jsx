@@ -3,24 +3,27 @@ import Classes from "./Comments.module.css"
 import {
   replyToCommentTextActionCreator,
   deleteCommentActionCreator
-} from "../../../../../../../redux/state";
+} from "../../../../../../../redux/ProfileReducer/profile-reducer";
 
 const Comments = (props) => {
-  const Messages = props.commentData && props.commentData.messages ? props.commentData.messages : [];
+  const {commentData, dispatch} = props; // Деструктуризация props
+  const Messages = commentData && commentData.messages ? commentData.messages : [];
 
   const onReplyToComment = (commentId) => {
     const comment = Messages.find(comment => comment.commentId === commentId);
     if (comment) {
       const userName = comment.user;
-      props.dispatch(replyToCommentTextActionCreator(commentId, `${userName},`));
+      dispatch(replyToCommentTextActionCreator(commentId, `${userName},`, props.postId)); // Делаем reply на комментарий
     }
   }
+
   const onDeleteComment = (commentId) => {
     const confirmDelete = window.confirm("Delete comment?");
     if (confirmDelete) {
-      props.dispatch(deleteCommentActionCreator(commentId));
+      dispatch(deleteCommentActionCreator(commentId, props.postId)); // Удаляем комментарий
     }
   }
+
   return (
     <ul className={Classes.list}>
       {Messages.length > 0 ? ( // Проверяем, есть ли комментарии
