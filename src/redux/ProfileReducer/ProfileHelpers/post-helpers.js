@@ -39,7 +39,7 @@ export const addPost = (state) => {
   return state; // Возвращаем неизменённый стейт, если текст поста пустой
 };
 export const deletePost = (state, action) => {
-  const newPosts = state.posts.filter(post => post.postId !== action.postId);
+   const newPosts = state.posts.filter(post => post.postId !== action.postId);
   if (newPosts.length === state.posts.length) {
     console.error(`Пост с id ${action.postId} не найден.`);
     return state; // Возвращаем неизменённый стейт, если пост не найден

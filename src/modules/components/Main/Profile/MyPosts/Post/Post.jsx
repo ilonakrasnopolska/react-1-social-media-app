@@ -6,7 +6,7 @@ import AddComment from "./Comments/AddComment/AddComment";
 import {deletePostActionCreator} from "../../../../../../redux/ProfileReducer/profile-reducer";
 
 const Post = (props) => {
-  const { name, message, comments, likes, time, postId, newCommentText, isLiked, commentData, dispatch } = props;
+  const {name, message, comments, likes, time, postId, newCommentText, isLiked, commentData, dispatch} = props;
   const [isOpenComments, setIsCommentsOpen] = useState(false); // Локальное состояние для видимости комментариев
 
   const onDeletePost = (postId) => {

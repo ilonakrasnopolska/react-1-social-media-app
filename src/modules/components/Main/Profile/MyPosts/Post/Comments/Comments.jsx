@@ -6,7 +6,7 @@ import {
 } from "../../../../../../../redux/ProfileReducer/profile-reducer";
 
 const Comments = (props) => {
-  const { commentData, dispatch } = props; // Деструктуризация props
+  const {commentData, dispatch} = props; // Деструктуризация props
   const Messages = commentData && commentData.messages ? commentData.messages : [];
 
   const onReplyToComment = (commentId) => {

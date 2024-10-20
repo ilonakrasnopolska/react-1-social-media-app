@@ -1,7 +1,8 @@
 import React from "react";
 import {CommentIcon} from "../../../../../../../assets/SVG-icons";
 import Classes from "./Reactions.module.css"
-import {handleLikeActionCreator, toggleCommentsActionCreator} from "../../../../../../../redux/ProfileReducer/profile-reducer"
+import {handleLikeActionCreator, toggleCommentsActionCreator}
+  from "../../../../../../../redux/ProfileReducer/profile-reducer"
 
 const Reactions = (props) => {
   const likeButtonClass = props.isLiked ? `${Classes.btn__like} ${Classes.liked}` : Classes.btn__like;

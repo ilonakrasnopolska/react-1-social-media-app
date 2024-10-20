@@ -39,12 +39,10 @@ const profileReducer = (state, action) => {
       return replyOnComment(state, action);
 
     case ADD_COMMENT:
-      addComment(state, action);
-      return state;
+      return addComment(state, action);
 
     case DELETE_COMMENT:
-      deleteComment(state, action);
-      return state;
+      return deleteComment(state, action);
 
     default:
       return state;

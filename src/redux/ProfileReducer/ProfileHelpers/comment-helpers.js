@@ -30,13 +30,14 @@ export const deleteComment = (state, action) => {
   const updatedPosts = state.posts.map(post => {
     // Находим пост по postId
     if (post.postId === action.postId) {
+      let updatedComments = post.commentData.messages.filter(comment => comment.commentId !== action.commentId)
       // Если пост найден, обновляем его commentData
       return {
         ...post,
         commentData: {
           ...post.commentData,
           // Фильтруем сообщения, исключая комментарий с нужным commentId
-          messages: post.commentData.messages.filter(comment => comment.commentId !== action.commentId)
+          messages: updatedComments
         }
       };
     }
@@ -82,3 +83,4 @@ export const updateNewCommentText = (state, action) => {
     posts: updatedPosts,
   };
 }
+
