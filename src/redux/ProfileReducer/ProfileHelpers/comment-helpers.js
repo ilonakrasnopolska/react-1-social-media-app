@@ -7,7 +7,7 @@ const getData = () => {
   const minutes = String(currentTime.getMinutes()).padStart(2, '0');
   return `${hours}:${minutes}`
 }
-export const addComment = (state, action) => {
+export const addCommentHelper = (state, action) => {
   const postGroup = state.posts.find(item => item.postId === action.postId);
 
   const newCommentText = postGroup.newCommentText;
@@ -25,7 +25,7 @@ export const addComment = (state, action) => {
   postGroup.newCommentText = '';
   return state;
 }
-export const deleteComment = (state, action) => {
+export const deleteCommentHelper = (state, action) => {
   // Обновляем массив постов
   const updatedPosts = state.posts.map(post => {
     // Находим пост по postId
@@ -51,7 +51,7 @@ export const deleteComment = (state, action) => {
     posts: updatedPosts,
   };
 };
-export const replyOnComment = (state, action) => {
+export const replyOnCommentHelper = (state, action) => {
   const updatedPosts = state.posts.map(post => {
     if (post.postId === action.postId) {
       return {
@@ -67,7 +67,7 @@ export const replyOnComment = (state, action) => {
     posts: updatedPosts,
   };
 };
-export const updateNewCommentText = (state, action) => {
+export const updateNewCommentTextHelper = (state, action) => {
   const updatedPosts = state.posts.map(post => {
     if (post.postId === action.postId) {
       return {

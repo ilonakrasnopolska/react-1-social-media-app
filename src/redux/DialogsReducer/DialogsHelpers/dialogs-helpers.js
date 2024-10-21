@@ -10,11 +10,11 @@ const getData = () => {
 const findById = (state, id) => {
   return state.find(item => item.id === id);
 }
-export const updateNewMessageText = (state, property, action) => {
+export const updateNewMessageTextHelper = (state, property, action) => {
   state[property] = action.value;
   return state;
 }
-export const sendMessage = (state, action) => {
+export const sendMessageHelper = (state, action) => {
   const chat = findById(state.chats, action.id);
   if (!chat) {
     console.error(`Chat with id ${action.id} not found.`);

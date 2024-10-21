@@ -1,10 +1,13 @@
 import Classes from "./ChatWindow.module.css";
 import React from "react";
+import {useSelector} from "react-redux";
 import ChatBubble from "./ChatBubble/ChatBubble";
 import NewMessage from "./NewMessage/NewMessage";
 
-const ChatWindow = (props) => {
-  const currentChat = props.dialogs.chats.find(chat => chat.chatId === 1);
+const ChatWindow = () => {
+  const chats = useSelector(state => state.dialogs.chats);
+  const newMessageText = useSelector(state => state.dialogs.newMessageText);
+  const currentChat = chats.find(chat => chat.chatId === 1);
 
   // Если текущий чат существует, отобразим сообщения, иначе сообщим, что чат пуст
   let chatBubbles = currentChat ? currentChat.messages.map((message, index) => (
@@ -22,9 +25,7 @@ const ChatWindow = (props) => {
       <ul className={Classes.list}>
         {chatBubbles}
       </ul>
-      <NewMessage newMessageText={props.dialogs.newMessageText}
-                  dispatch={props.dispatch}
-                  chatId={currentChat.chatId}
+      <NewMessage chatId={currentChat ? currentChat.chatId : null}
       />
     </section>
   );

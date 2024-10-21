@@ -1,37 +1,39 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 import {CommentIcon} from "../../../../../../../assets/SVG-icons";
 import Classes from "./Reactions.module.css"
-import {handleLikeActionCreator, toggleCommentsActionCreator}
-  from "../../../../../../../redux/ProfileReducer/profile-reducer"
+import {handleLike, toggleComments} from "../../../../../../../redux/ProfileReducer/profile-reducer";
 
-const Reactions = (props) => {
-  const likeButtonClass = props.isLiked ? `${Classes.btn__like} ${Classes.liked}` : Classes.btn__like;
 
-  const toggleComments = () => {
-    props.dispatch(toggleCommentsActionCreator(props.postId));
-    props.toggleCommentsOpen()
+const Reactions = ({comments, likes, postId, isLiked, toggleCommentsOpen}) => {
+  const dispatch = useDispatch();
+  const likeButtonClass = isLiked ? `${Classes.btn__like} ${Classes.liked}` : Classes.btn__like;
+
+  const handleToggleComments = () => {
+    dispatch(toggleComments(postId));
+    toggleCommentsOpen()
   };
 
   const handleLikeToPost = (postId) => {
-    props.dispatch(handleLikeActionCreator(postId));
+    dispatch(handleLike(postId));
   }
 
   return (
     <div className={Classes.btn__box}>
       <div className={Classes.btn__comment}>
-        <button onClick={toggleComments} className={Classes.btn__commentSvg}>
+        <button onClick={handleToggleComments} className={Classes.btn__commentSvg}>
           <CommentIcon/>
         </button>
         <span className={Classes.btn__commentCount}>
-          {props.comments}
+          {comments}
         </span>
       </div>
       <div className={Classes.btn__likeBox}>
-        <button onClick={() => handleLikeToPost(props.postId)} className={likeButtonClass}>
+        <button onClick={() => handleLikeToPost(postId)} className={likeButtonClass}>
           <span className={Classes.btn__likeSvg}></span>
         </button>
         <span className={Classes.btn__likeCount}>
-          {props.likes}
+          {likes}
         </span>
       </div>
 

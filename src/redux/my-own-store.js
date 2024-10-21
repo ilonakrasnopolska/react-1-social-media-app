@@ -1,6 +1,7 @@
 import avatars from "./Avatars-src";
 import profileReducer from "./ProfileReducer/profile-reducer";
 import dialogsReducer from "./DialogsReducer/dialogs-reducer";
+import sidebarReducer from "./SidebarReducer/sidebar-reducer";
 
 // Константы
 const CURRENT_USER_NAME = "Ilona Sue"
@@ -14,7 +15,7 @@ let chatIdCounter = 1;
 let messageIdCounter = 1;
 
 // Начальное состояние
-let store = {
+let myOwnStore = {
   _state: {
     profilePage: {
       posts: [
@@ -142,10 +143,11 @@ let store = {
   dispatch(action) {
     this._state.profilePage = profileReducer(this._state.profilePage, action)
     this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+    this._state.sideBar = sidebarReducer(this._state.sideBar, action)
     this._callSubscriber(this._state)
   }
 }
 
 
-export default store
-window.store = store
+export default myOwnStore
+window.store = myOwnStore

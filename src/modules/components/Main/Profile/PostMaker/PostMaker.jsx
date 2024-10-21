@@ -1,17 +1,19 @@
 import React from "react";
+import {useDispatch, useSelector} from "react-redux";
 import Classes from './PostMaker.module.css';
-import {addPostActionCreator, updateNewPostTextActionCreator}
-  from '../../../../../redux/ProfileReducer/profile-reducer';
+import {addPost, updateNewPostText} from "../../../../../redux/ProfileReducer/profile-reducer";
 
-const PostMaker = (props) => {
-  const addPost = (event) => {
+const PostMaker = () => {
+  const dispatch = useDispatch();
+  const newPostText = useSelector(state => state.profile.newPostText);
+  const handleAddPost = (event) => {
     event.preventDefault();
-    props.dispatch(addPostActionCreator());
+    dispatch(addPost())
   };
 
   const onPostChange = (e) => {
     const text = e.target.value;
-    props.dispatch(updateNewPostTextActionCreator(text));
+    dispatch(updateNewPostText(text))
   };
 
   return (
@@ -19,10 +21,10 @@ const PostMaker = (props) => {
       <div className={Classes.content}>
         <span className={Classes.title}>My posts</span>
         <form className={Classes.form} action="" method="POST">
-          <textarea value={props.newPostText} onChange={onPostChange}
+          <textarea value={newPostText} onChange={onPostChange}
                     className={Classes.textarea} placeholder="Your news..."/>
           <div className={Classes.buttonBox}>
-            <button onClick={addPost} className={Classes.button}>Post</button>
+            <button onClick={handleAddPost} className={Classes.button}>Post</button>
           </div>
         </form>
       </div>

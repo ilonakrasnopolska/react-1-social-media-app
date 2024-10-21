@@ -5,13 +5,13 @@ const getData = () => {
   const minutes = String(currentTime.getMinutes()).padStart(2, '0');
   return `${hours}:${minutes}`
 }
-export const updateNewPostText = (state, action) => {
+export const updateNewPostTextHelper = (state, action) => {
   return {
     ...state,
     newPostText: action.value,
   };
 }
-export const addPost = (state) => {
+export const addPostHelper = (state) => {
   if (state.newPostText.trim() !== '') {
     let newPostId = state.posts.length + 1;
     let newPost = {
@@ -38,7 +38,7 @@ export const addPost = (state) => {
 
   return state; // Возвращаем неизменённый стейт, если текст поста пустой
 };
-export const deletePost = (state, action) => {
+export const deletePostHelper = (state, action) => {
    const newPosts = state.posts.filter(post => post.postId !== action.postId);
   if (newPosts.length === state.posts.length) {
     console.error(`Пост с id ${action.postId} не найден.`);
@@ -50,7 +50,7 @@ export const deletePost = (state, action) => {
     posts: newPosts,
   };
 };
-export const toggleComments = (state, action) => {
+export const toggleCommentsHelper = (state, action) => {
   return {
     ...state,
     posts: state.posts.map(post =>
@@ -66,7 +66,7 @@ export const toggleComments = (state, action) => {
     ),
   };
 }
-export const handleLike = (state, action) => {
+export const handleLikeHelper = (state, action) => {
   const updatedPosts = state.posts.map(post => {
     if (post.postId === action.postId) {
       return {

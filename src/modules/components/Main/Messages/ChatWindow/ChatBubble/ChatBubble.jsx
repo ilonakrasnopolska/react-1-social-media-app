@@ -1,17 +1,17 @@
 import Classes from "./ChatBubble.module.css";
 import React from "react";
 
-const ChatBubble = (props) => {
+const ChatBubble = ({avatar, name, message, time}) => {
   return (
     <li className={Classes.item}>
       <div className={Classes.content}>
-        <img className={Classes.avatar} src={props.avatar} alt="avatar"/>
+        <img className={Classes.avatar} src={avatar} alt="avatar"/>
         <div className={Classes.message}>
-          <span>{props.name}</span>
-          <span>{props.message}</span>
+          <span>{name}</span>
+          <span>{message}</span>
         </div>
       </div>
-      <span className={Classes.data}>{props.time}</span>
+      <span className={Classes.data}>{time}</span>
     </li>
   )
 }

@@ -1,18 +1,19 @@
 import React, {useState} from "react";
+import {useDispatch} from "react-redux";
 import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 import Comments from "./Comments/Comments";
 import AddComment from "./Comments/AddComment/AddComment";
-import {deletePostActionCreator} from "../../../../../../redux/ProfileReducer/profile-reducer";
+import {deletePost} from "../../../../../../redux/ProfileReducer/profile-reducer";
 
-const Post = (props) => {
-  const {name, message, comments, likes, time, postId, newCommentText, isLiked, commentData, dispatch} = props;
+const Post = ({name, message, comments, likes, time, postId , isLiked, commentData, newCommentText}) => {
   const [isOpenComments, setIsCommentsOpen] = useState(false); // Локальное состояние для видимости комментариев
+  const dispatch = useDispatch();
 
   const onDeletePost = (postId) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this post?');
     if (confirmDelete) {
-      props.dispatch(deletePostActionCreator(postId));
+      dispatch(deletePost(postId));
     }
   }
 
@@ -41,8 +42,7 @@ const Post = (props) => {
             </span>
           </div>
         </div>
-        <Reactions dispatch={dispatch}
-                   comments={comments}
+        <Reactions comments={comments}
                    likes={likes}
                    postId={postId}
                    isLiked={isLiked}
@@ -53,10 +53,9 @@ const Post = (props) => {
       </div>
       {isOpenComments && (
         <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
-          <Comments commentData={commentData} postId={postId} dispatch={dispatch}/>
+          <Comments commentData={commentData} postId={postId}/>
           <AddComment postId={postId}
-                      newCommentText={newCommentText}
-                      dispatch={dispatch}/>
+                      newCommentText={newCommentText}/>
         </div>
       )}
     </li>

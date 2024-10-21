@@ -1,10 +1,12 @@
 import Classes from "./UsersList.module.css";
 import React from "react";
 import DialogUser from "./DialogUser/DialogUser";
+import { useSelector } from 'react-redux';
 
 
-const UsersList = (props) => {
-  const usersElements = props.users.map(el =>
+const UsersList = () => {
+  const users = useSelector(state => state.dialogs.users);
+  const usersElements = users.map(el =>
     <DialogUser url={el.url} name={el.name} src={el.avatar} key={el.userId}/>)
   return (
     <section className="users section">

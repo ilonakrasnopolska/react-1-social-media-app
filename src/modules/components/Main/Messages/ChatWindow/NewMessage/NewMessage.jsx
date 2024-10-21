@@ -1,27 +1,32 @@
 import Classes from "./NewMessage.module.css";
 import React from "react";
 import {SendMessageIcon} from "../../../../../../assets/SVG-icons";
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../../../../../redux/DialogsReducer/dialogs-reducer"
+import {useDispatch, useSelector} from "react-redux";
+import { sendMessage, updateNewMessageText } from '../../../../../../redux/DialogsReducer/dialogs-reducer'; // Убедись, что путь правильный
 
-const NewMessage = (props) => {
-  const sendMessage = (event) => {
+
+const NewMessage = (chatId) => {
+  const dispatch = useDispatch();
+  const newMessageText = useSelector(state => state.dialogs.newMessageText);
+
+  const handleSendMessage = (event) => {
     event.preventDefault();
-    props.dispatch(sendMessageActionCreator(props.chatId));
+    dispatch(sendMessage(chatId));
   };
 
   const onMessageChange = (e) => {
     const text = e.target.value;
-    props.dispatch(updateNewMessageTextActionCreator(text));
+    dispatch(updateNewMessageText(text));
   };
   return (
     <div className={Classes.container}>
       <form className={Classes.form} action="" method="POST">
         <textarea
-          value={props.newMessageText}
+          value={newMessageText}
           onChange={onMessageChange}
           className={Classes.textarea}
           placeholder="Type your message here..."/>
-        <button onClick={sendMessage} className={Classes.button}>
+        <button onClick={handleSendMessage} className={Classes.button}>
           <SendMessageIcon/>
         </button>
       </form>

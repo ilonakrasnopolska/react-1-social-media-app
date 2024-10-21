@@ -4,14 +4,13 @@ import PostMaker from "./PostMaker/PostMaker";
 import MyPosts from "./MyPosts/MyPosts";
 import Hero from "./Hero/Hero";
 
-const Profile = (props) => {
+const Profile = () => {
   return (
     <div>
       <Hero/>
       <User/>
-      <PostMaker dispatch={props.dispatch}
-                 newPostText={props.profile.newPostText}/>
-      <MyPosts dispatch={props.dispatch} profile={props.profile}/>
+      <PostMaker/>
+      <MyPosts/>
     </div>
   );
 }
