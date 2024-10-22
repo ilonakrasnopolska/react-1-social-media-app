@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {useSelector} from "react-redux";
 import Classes from "./Friends.module.css";
 import Friend from "./Friend/Friend";
 
 const Friends = () => {
-  const friends = useSelector(state => state.sidebar?.friends || []);
+  const friends = useSelector(state => state.sidebar?.friends) || [];
+  // Мемоизация JSX-компонентов для предотвращения повторного создания массива
+  const friendComponents = useMemo(() => {
+    return friends.map(friend => (
+      <Friend key={friend.friendId} friendId={friend.friendId} />
+    ));
+  }, [friends]);
 
-  // Проверка, если friends нет
+  // Проверка, если друзей нет
   if (!friends || friends.length === 0) {
-    return <div>No friends available</div>; // Возвращаем, если друзей нет
+    return <div>No friends available</div>;
   }
-
-  const friendComponents = friends.map(friend =>
-    <Friend name={friend.name} src={friend.avatar} key={friend.friendId}/>
-  );
 
   return (
     <div className={Classes.content}>
@@ -23,7 +25,7 @@ const Friends = () => {
       </ul>
     </div>
   );
-}
+};
 
 
 export default Friends;

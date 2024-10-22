@@ -1,11 +1,12 @@
 import React from "react";
 import Classes from "./Comments.module.css"
-import {useDispatch} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import {replyOnComment, deleteComment} from "../../../../../../../redux/ProfileReducer/profile-reducer";
 
-const Comments = ({commentData, postId}) => {
+const Comments = ({postId}) => {
   const dispatch = useDispatch();
-  const Messages = commentData && commentData.messages ? commentData.messages : [];
+  const post = useSelector(state => state.profile.posts.find(post => post.postId === postId));
+  const Messages = post?.commentData.messages  || [];
 
   const onReplyToComment = (commentId) => {
     const comment = Messages.find(comment => comment.commentId === commentId);

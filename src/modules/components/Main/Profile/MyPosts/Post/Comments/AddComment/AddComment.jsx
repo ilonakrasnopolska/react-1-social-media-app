@@ -1,11 +1,12 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import Classes from "./AddComment.module.css"
 import {addComment, updateNewCommentText}
   from "../../../../../../../../redux/ProfileReducer/profile-reducer"
 
-const AddComment = ({postId, newCommentText}) => {
+const AddComment = ({postId}) => {
   const dispatch = useDispatch();
+  const newCommentText = useSelector(state => state.profile.newCommentText);
   const handleAddComment = (event) => {
     event.preventDefault();
     dispatch(addComment(postId));

@@ -6,6 +6,7 @@ import {addPost, updateNewPostText} from "../../../../../redux/ProfileReducer/pr
 const PostMaker = () => {
   const dispatch = useDispatch();
   const newPostText = useSelector(state => state.profile.newPostText);
+  console.log('newPostText from state:', newPostText);
   const handleAddPost = (event) => {
     event.preventDefault();
     dispatch(addPost())
@@ -13,6 +14,7 @@ const PostMaker = () => {
 
   const onPostChange = (e) => {
     const text = e.target.value;
+    console.log('Text from input:', text);
     dispatch(updateNewPostText(text))
   };
 

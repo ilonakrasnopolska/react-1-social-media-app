@@ -15,9 +15,16 @@ const sidebarSlice = createSlice({
   name: "sidebar",
   initialState,
   reducers: {
+    showFriends: (state) => {
+      console.log(state)
+    },
   }
 })
 
-export default sidebarSlice;
+export const {
+  showFriends
+} = sidebarSlice.actions;
+
+export default sidebarSlice.reducer;
 
 

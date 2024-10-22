@@ -9,13 +9,14 @@ import {
   addCommentHelper, deleteCommentHelper
 } from "./ProfileHelpers/comment-helpers";
 
+const CURRENT_USER_NAME = "Ilona Sue"
 let postIdCounter = 1;
 let commentIdCounter = 1;
 
 const initialState = {
   posts: [
     {
-      name: "Ilona Sue", postId: postIdCounter++, message: 'Who is your favourite character in Naruto?',
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Who is your favourite character in Naruto?',
       comments: 1, likes: 123, time: '10:00', likedByUser: false, commentData: {
         commentsVisibility: false, messages:
           [{
@@ -28,7 +29,58 @@ const initialState = {
       }, newCommentText: '',
 
     },
-    // Остальные посты
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Where are you from',
+      comments: 1, likes: 14, time: '09:00', likedByUser: false, commentData: {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Nice!',
+            user: 'Vikky',
+            time: '13:30',
+            avatar: `${avatars.vikkyPic}`
+          }],
+      }, newCommentText: '',
+    },
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'I wish i had more free time to watch anime!',
+      comments: 1, likes: 36, time: '08:00', likedByUser: false, commentData:  {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Amazing!',
+            user: 'Sunny',
+            time: '14:30',
+            avatar: `${avatars.sunnyPic}`
+          }],
+      }, newCommentText: '',
+    },
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Have you seen the JK?',
+      comments: 1, likes: 13, time: '07:00', likedByUser: false, commentData: {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Great!',
+            user: 'Ino',
+            time: '16:30',
+            avatar: `${avatars.inoPic}`
+          }],
+      }, newCommentText: '',
+    },
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Hello everyone!',
+      comments: 1, likes: 3, time: '06:00', likedByUser: false, commentData:  {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Hi!',
+            user: 'Sakura',
+            time: '17:30',
+            avatar: `${avatars.sakuraPic}`
+          }],
+      }, newCommentText: '',
+    },
   ],
   newPostText: '',
 };

@@ -8,11 +8,27 @@ const getData = () => {
   return `${hours}:${minutes}`
 }
 export const addCommentHelper = (state, action) => {
+  // Находим конкретный пост по postId
   const postGroup = state.posts.find(item => item.postId === action.postId);
 
+  // Проверка на существование поста
+  if (!postGroup) {
+    console.log(state.posts)
+    console.error(`Post with ID ${action.postId} not found`);
+    return state;
+  }
+
+  // Получаем текст комментария, который нужно добавить
   const newCommentText = postGroup.newCommentText;
-  if (newCommentText.trim() === '') return;
-  let newCommentId = postGroup.commentData.messages.length +1;
+
+  // Если комментарий пустой, ничего не делаем
+  if (!newCommentText || newCommentText.trim() === '') {
+    console.error('New comment text is empty');
+    return state;
+  }
+
+  // Создаем новый комментарий
+  let newCommentId = postGroup.commentData.messages.length + 1;
   const newComment = {
     commentId: newCommentId,
     message: newCommentText,
@@ -21,9 +37,26 @@ export const addCommentHelper = (state, action) => {
     avatar: `${avatars.ilonaSue}`
   };
 
-  postGroup.commentData.messages.push(newComment);
-  postGroup.newCommentText = '';
-  return state;
+  // Обновляем только найденный пост
+  const updatedPosts = state.posts.map(post => {
+    if (post.postId === action.postId) {
+      return {
+        ...post,
+        commentData: {
+          ...post.commentData,
+          messages: [...post.commentData.messages, newComment], // Добавляем новый комментарий
+        },
+        newCommentText: '' // Очищаем поле для нового комментария
+      };
+    }
+    return post; // Возвращаем пост без изменений, если это не тот пост
+  });
+
+  // Возвращаем обновленное состояние
+  return {
+    ...state,
+    posts: updatedPosts,
+  };
 }
 export const deleteCommentHelper = (state, action) => {
   // Обновляем массив постов

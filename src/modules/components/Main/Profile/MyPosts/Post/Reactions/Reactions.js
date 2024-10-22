@@ -1,13 +1,19 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import {CommentIcon} from "../../../../../../../assets/SVG-icons";
 import Classes from "./Reactions.module.css"
 import {handleLike, toggleComments} from "../../../../../../../redux/ProfileReducer/profile-reducer";
 
 
-const Reactions = ({comments, likes, postId, isLiked, toggleCommentsOpen}) => {
+const Reactions = ({toggleCommentsOpen, postId}) => {
   const dispatch = useDispatch();
-  const likeButtonClass = isLiked ? `${Classes.btn__like} ${Classes.liked}` : Classes.btn__like;
+  const post = useSelector(state => state.profile.posts.find(post => post.postId === postId));
+
+  const comments = post?.comments || 0;
+  const likes = post?.likes || 0;
+  const likedByUser = post?.likedByUser || false;
+
+  const likeButtonClass = likedByUser ? `${Classes.btn__like} ${Classes.liked}` : Classes.btn__like;
 
   const handleToggleComments = () => {
     dispatch(toggleComments(postId));
@@ -15,6 +21,7 @@ const Reactions = ({comments, likes, postId, isLiked, toggleCommentsOpen}) => {
   };
 
   const handleLikeToPost = (postId) => {
+    console.log(post.likedByUser)
     dispatch(handleLike(postId));
   }
 
