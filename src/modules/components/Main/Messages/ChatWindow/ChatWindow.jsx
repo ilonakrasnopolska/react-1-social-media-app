@@ -6,17 +6,14 @@ import NewMessage from "./NewMessage/NewMessage";
 
 const ChatWindow = () => {
   const chats = useSelector(state => state.dialogs.chats);
-  const newMessageText = useSelector(state => state.dialogs.newMessageText);
   const currentChat = chats.find(chat => chat.chatId === 1);
 
   // Если текущий чат существует, отобразим сообщения, иначе сообщим, что чат пуст
   let chatBubbles = currentChat ? currentChat.messages.map((message, index) => (
     <ChatBubble
-      name={message.name}
-      message={message.message}
-      time={message.time}
+      chatId={currentChat.chatId}
+      messageId={message.id}
       key={index}
-      avatar={message.avatar}
     />
   )) : <li>Select dialog</li>;
 

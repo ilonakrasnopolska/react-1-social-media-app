@@ -8,7 +8,6 @@ import {deletePost} from "../../../../../../redux/ProfileReducer/profile-reducer
 
 const Post = ({postId}) => {
   const post = useSelector(state => state.profile.posts.find(post => post.postId === postId));
-
   const [isOpenComments, setIsCommentsOpen] = useState(false);
   const dispatch = useDispatch();
 

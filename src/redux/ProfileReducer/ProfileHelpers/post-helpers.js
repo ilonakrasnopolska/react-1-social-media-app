@@ -6,11 +6,7 @@ const getData = () => {
   return `${hours}:${minutes}`
 }
 export const updateNewPostTextHelper = (state, action) => {
-  console.log(action.payload);  // Выводим payload для проверки
-  return {
-    ...state,
-    newPostText: action.payload,
-  };
+  state.newPostText = action.payload;
 }
 export const addPostHelper = (state) => {
   if (state.newPostText.trim() !== '') {
@@ -29,66 +25,28 @@ export const addPostHelper = (state) => {
       },
     }
 
-    // Возвращаем новый стейт
-    return {
-      ...state,
-      posts: [...state.posts, newPost],
-      newPostText: '', // Очищаем поле для нового поста
-    };
+    state.posts.push(newPost);
+    state.newPostText = '';
   }
-
-  return state; // Возвращаем неизменённый стейт, если текст поста пустой
 };
 export const deletePostHelper = (state, action) => {
-  console.log("Received postId:", action.postId); // Логируем postId, который передается в экшен
-
-  // Фильтруем посты, оставляем только те, у которых postId не совпадает с тем, который передан в экшене
-  const newPosts = state.posts.filter(post => post.postId !== action.postId);
-
-  // Если длина массива не изменилась, значит пост с таким id не был найден
+  const newPosts = state.posts.filter(post => post.postId !== action.payload);
   if (newPosts.length === state.posts.length) {
-    console.error(`Пост с id ${action.postId} не найден.`);
-    return state; // Возвращаем неизменённый стейт, если пост не найден
+    console.error(`Пост с id ${action.payload} не найден.`);
+    return;
   }
-
-  console.log("Post successfully deleted");
-
-  // Возвращаем новое состояние с обновленным массивом постов
-  return {
-    ...state,
-    posts: newPosts,
-  };
-};
+  state.posts = newPosts;
+}
 export const toggleCommentsHelper = (state, action) => {
-  return {
-    ...state,
-    posts: state.posts.map(post =>
-      post.postId === action.postId
-        ? {
-          ...post,
-          commentData: {
-            ...post.commentData,
-            commentsVisibility: !post.commentData.commentsVisibility, // Переключаем видимость комментариев
-          },
-        }
-        : post
-    ),
-  };
+  const post = state.posts.find(post => post.postId === action.payload);
+  if (post) {
+    post.commentData.commentsVisibility = !post.commentData.commentsVisibility;
+  }
 }
 export const handleLikeHelper = (state, action) => {
-  const updatedPosts = state.posts.map(post => {
-    if (post.postId === action.postId) {
-      return {
-        ...post,
-        likedByUser: !post.likedByUser,
-        likes: post.likedByUser ? post.likes - 1 : post.likes + 1,
-      };
-    }
-    return post;
-  });
-
-  return {
-    ...state,
-    posts: updatedPosts,
-  };
+  const post = state.posts.find(post => post.postId === action.payload);
+  if (post) {
+    post.likedByUser = !post.likedByUser;
+    post.likes += post.likedByUser ? 1 : -1;
+  }
 }

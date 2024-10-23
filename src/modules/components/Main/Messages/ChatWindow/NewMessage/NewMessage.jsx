@@ -8,7 +8,6 @@ import { sendMessage, updateNewMessageText } from '../../../../../../redux/Dialo
 const NewMessage = (chatId) => {
   const dispatch = useDispatch();
   const newMessageText = useSelector(state => state.dialogs.newMessageText);
-
   const handleSendMessage = (event) => {
     event.preventDefault();
     dispatch(sendMessage(chatId));

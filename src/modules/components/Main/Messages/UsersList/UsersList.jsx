@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 const UsersList = () => {
   const users = useSelector(state => state.dialogs.users);
   const usersElements = users.map(el =>
-    <DialogUser url={el.url} name={el.name} src={el.avatar} key={el.userId}/>)
+    <DialogUser userId={el.userId} key={el.userId}/>)
   return (
     <section className="users section">
       <ul className={Classes.list}>

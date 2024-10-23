@@ -11,15 +11,15 @@ const Comments = ({postId}) => {
   const onReplyToComment = (commentId) => {
     const comment = Messages.find(comment => comment.commentId === commentId);
     if (comment) {
-      const userName = comment.user;
-      dispatch(replyOnComment(commentId, `${userName},`, postId)); // Делаем reply на комментарий
+      const value = comment.user;
+      dispatch(replyOnComment({value, postId})) // Делаем reply на комментарий
     }
   }
 
   const onDeleteComment = (commentId) => {
     const confirmDelete = window.confirm("Delete comment?");
     if (confirmDelete) {
-      dispatch(deleteComment(commentId, postId)); // Удаляем комментарий
+      dispatch(deleteComment({commentId, postId})); // Удаляем комментарий
     }
   }
 

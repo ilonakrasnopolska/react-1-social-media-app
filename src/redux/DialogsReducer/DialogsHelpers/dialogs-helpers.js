@@ -10,19 +10,19 @@ const getData = () => {
 const findById = (state, id) => {
   return state.find(item => item.id === id);
 }
-export const updateNewMessageTextHelper = (state, property, action) => {
-  state[property] = action.value;
-  return state;
+export const updateNewMessageTextHelper = (state, action) => {
+  state.newMessageText = action.payload;
+  return state
 }
 export const sendMessageHelper = (state, action) => {
-  const chat = findById(state.chats, action.id);
+  const chat = findById(state.chats, action.chatId);
   if (!chat) {
     console.error(`Chat with id ${action.id} not found.`);
     return;
   }
 
   if (state.newMessageText.trim() !== '') {
-    let newMessageId = chat.length + 1;
+    let newMessageId = chat.messages.length + 1;
     let newMessage = {
       name: CURRENT_USER_NAME,
       id: newMessageId,
@@ -34,5 +34,6 @@ export const sendMessageHelper = (state, action) => {
     chat.messages.push(newMessage);
 
     state.newMessageText = '';
+    return state;
   }
 }

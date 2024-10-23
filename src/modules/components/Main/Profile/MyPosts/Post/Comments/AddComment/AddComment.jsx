@@ -13,8 +13,8 @@ const AddComment = ({postId}) => {
   };
 
   const onCommentChange = (e) => {
-    const text = e.target.value;
-    dispatch(updateNewCommentText(postId, text));
+    const value = e.target.value;
+    dispatch(updateNewCommentText({postId, value}));
   }
 
   return (

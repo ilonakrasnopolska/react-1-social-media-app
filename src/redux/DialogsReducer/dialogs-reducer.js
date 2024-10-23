@@ -55,7 +55,7 @@ const dialogsSlice = createSlice({
       sendMessageHelper(state, action);
     },
     updateNewMessageText: (state, action) => {
-      updateNewMessageTextHelper(state, 'newMessageText', action);
+      updateNewMessageTextHelper(state, action);
     },
   }
 })
