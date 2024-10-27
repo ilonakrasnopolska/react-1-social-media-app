@@ -2,15 +2,16 @@ import Classes from "./NewMessage.module.css";
 import React from "react";
 import {SendMessageIcon} from "../../../../../../assets/SVG-icons";
 import {useDispatch, useSelector} from "react-redux";
-import { sendMessage, updateNewMessageText } from '../../../../../../redux/DialogsReducer/dialogs-reducer'; // Убедись, что путь правильный
+import { sendMessage, updateNewMessageText } from '../../../../../../redux/DialogsReducer/dialogs-reducer';
 
 
-const NewMessage = (chatId) => {
+const NewMessage = ({chatId}) => {
   const dispatch = useDispatch();
   const newMessageText = useSelector(state => state.dialogs.newMessageText);
+
   const handleSendMessage = (event) => {
     event.preventDefault();
-    dispatch(sendMessage(chatId));
+    dispatch(sendMessage({chatId}));
   };
 
   const onMessageChange = (e) => {

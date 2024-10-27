@@ -9,7 +9,7 @@ const DialogUser = ({ userId }) => {
   return (
     <li className={Classes.info}>
       <NavLink
-        to={currentUser.url}
+        to={`/messages/${currentUser.userId}`}
         className={({isActive}) =>
           `${Classes.link} ${isActive ? Classes.active : ""}`
         }

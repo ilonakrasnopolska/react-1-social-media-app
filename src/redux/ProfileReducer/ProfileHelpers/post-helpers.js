@@ -6,7 +6,7 @@ const getData = () => {
   return `${hours}:${minutes}`
 }
 export const updateNewPostTextHelper = (state, action) => {
-  state.newPostText = action.payload;
+  return state.newPostText = action.payload;
 }
 export const addPostHelper = (state) => {
   if (state.newPostText.trim() !== '') {
@@ -27,6 +27,7 @@ export const addPostHelper = (state) => {
 
     state.posts.push(newPost);
     state.newPostText = '';
+    return state
   }
 };
 export const deletePostHelper = (state, action) => {
@@ -35,13 +36,14 @@ export const deletePostHelper = (state, action) => {
     console.error(`Пост с id ${action.payload} не найден.`);
     return;
   }
-  state.posts = newPosts;
+  return state.posts = newPosts;
 }
 export const toggleCommentsHelper = (state, action) => {
   const post = state.posts.find(post => post.postId === action.payload);
   if (post) {
     post.commentData.commentsVisibility = !post.commentData.commentsVisibility;
   }
+  return state;
 }
 export const handleLikeHelper = (state, action) => {
   const post = state.posts.find(post => post.postId === action.payload);
@@ -49,4 +51,5 @@ export const handleLikeHelper = (state, action) => {
     post.likedByUser = !post.likedByUser;
     post.likes += post.likedByUser ? 1 : -1;
   }
+  return state;
 }

@@ -8,22 +8,23 @@ const getData = () => {
   return `${hours}:${minutes}`
 }
 const findById = (state, id) => {
-  return state.find(item => item.id === id);
+  return state.find(item => item.chatId === id);
 }
 export const updateNewMessageTextHelper = (state, action) => {
   state.newMessageText = action.payload;
   return state
 }
 export const sendMessageHelper = (state, action) => {
-  const chat = findById(state.chats, action.chatId);
+  const chat = findById(state.chats, action.payload.chatId);
   if (!chat) {
-    console.error(`Chat with id ${action.id} not found.`);
+    console.error(`Chat with id ${action.payload.chatId} not found.`);
     return;
   }
 
   if (state.newMessageText.trim() !== '') {
-    let newMessageId = chat.messages.length + 1;
-    let newMessage = {
+    // Генерируем уникальный ID для нового сообщения
+    const newMessageId = chat.messages.length+1
+    const newMessage = {
       name: CURRENT_USER_NAME,
       id: newMessageId,
       time: getData(),
@@ -31,9 +32,13 @@ export const sendMessageHelper = (state, action) => {
       message: state.newMessageText,
     };
 
-    chat.messages.push(newMessage);
+    chat.messages.push(newMessage); // Добавляем новое сообщение в текущий чат
 
-    state.newMessageText = '';
-    return state;
+    state.newMessageText = ''; // Очищаем текстовое поле после отправки
+    return state; // Возвращаем обновлённое состояние
   }
+}
+export const updateSearchUserTextHelper = (state, action) => {
+  state.searchUserText = action.payload;
+  return state;
 }

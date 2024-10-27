@@ -11,7 +11,7 @@ const Comments = ({postId}) => {
   const onReplyToComment = (commentId) => {
     const comment = Messages.find(comment => comment.commentId === commentId);
     if (comment) {
-      const value = comment.user;
+      const value = `${comment.user},`;
       dispatch(replyOnComment({value, postId})) // Делаем reply на комментарий
     }
   }

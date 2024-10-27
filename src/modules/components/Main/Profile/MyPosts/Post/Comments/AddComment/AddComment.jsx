@@ -6,10 +6,13 @@ import {addComment, updateNewCommentText}
 
 const AddComment = ({postId}) => {
   const dispatch = useDispatch();
-  const newCommentText = useSelector(state => state.profile.newCommentText);
+  const newCommentText = useSelector(state => {
+    const post = state.profile.posts.find(p => p.postId === postId);
+    return post ? post.newCommentText : '';
+  });
   const handleAddComment = (event) => {
     event.preventDefault();
-    dispatch(addComment(postId));
+    dispatch(addComment({postId}));
   };
 
   const onCommentChange = (e) => {

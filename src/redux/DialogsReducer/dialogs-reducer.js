@@ -1,4 +1,8 @@
-import {updateNewMessageTextHelper, sendMessageHelper} from "./DialogsHelpers/dialogs-helpers";
+import {
+  updateNewMessageTextHelper,
+  sendMessageHelper,
+  updateSearchUserTextHelper
+} from "./DialogsHelpers/dialogs-helpers";
 import {createSlice} from '@reduxjs/toolkit';
 import avatars from "../Avatars-src";
 
@@ -43,8 +47,78 @@ const initialState = {
         }
       ]
     },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Vikky', 'Ilona Sue'],
+      messages: [
+        {name: 'Vikky', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.vikkyPic},
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Sunny', 'Ilona Sue'],
+      messages: [
+        {name: 'Sunny', message: 'Hi!', id: messageIdCounter++, time: '17:28', avatar: avatars.sunnyPic},
+        {name: 'Ilona Sue', message: 'Hi', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+        {
+          name: 'Sunny',
+          message: 'Have you seen Naruto?',
+          id: messageIdCounter++,
+          time: '19:00',
+          avatar: avatars.sunnyPic
+        },
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Phillip', 'Ilona Sue'],
+      messages: [
+        {name: 'Phillip', message: 'Where are u?!', id: messageIdCounter++, time: '17:28', avatar: avatars.phillipPic},
+        {name: 'Ilona Sue', message: 'Here', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+        {
+          name: 'Phillip',
+          message: 'How old are you?',
+          id: messageIdCounter++,
+          time: '19:00',
+          avatar: avatars.phillipPic
+        },
+        {name: 'Ilona Sue', message: '25', id: messageIdCounter++, time: '19:10', avatar: avatars.ilonaSue},
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Elon', 'Ilona Sue'],
+      messages: [
+        {name: 'Elon', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.elonPic},
+        {name: 'Ilona Sue', message: 'Hi', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+        {
+          name: 'Elon',
+          message: 'Have you seen One Piece?',
+          id: messageIdCounter++,
+          time: '19:00',
+          avatar: avatars.elonPic
+        },
+        {name: 'Ilona Sue', message: 'Yeah', id: messageIdCounter++, time: '19:10', avatar: avatars.ilonaSue},
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Sakura', 'Ilona Sue'],
+      messages: [
+        {name: 'Sakura', message: 'Are you ready?!', id: messageIdCounter++, time: '17:28', avatar: avatars.sakuraPic},
+        {name: 'Ilona Sue', message: 'Nope', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Ino', 'Ilona Sue'],
+      messages: [
+        {name: 'Ino', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.inoPic},
+      ]
+    },
   ],
   newMessageText: '',
+  searchUserText: '',
 }
 
 const dialogsSlice = createSlice({
@@ -57,8 +131,13 @@ const dialogsSlice = createSlice({
     updateNewMessageText: (state, action) => {
       updateNewMessageTextHelper(state, action);
     },
+    updateSearchUserText: (state, action) => {
+      updateSearchUserTextHelper(state, action);
+    }
   }
 })
 
-export const {sendMessage, updateNewMessageText} = dialogsSlice.actions;
+export const {sendMessage,
+  updateNewMessageText,
+  updateSearchUserText} = dialogsSlice.actions;
 export default dialogsSlice.reducer;

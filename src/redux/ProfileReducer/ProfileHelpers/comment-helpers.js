@@ -8,7 +8,7 @@ const getData = () => {
   return `${hours}:${minutes}`
 }
 export const addCommentHelper = (state, action) => {
-  const post = state.posts.find(item => item.postId === action.payload);
+  const post = state.posts.find(item => item.postId === action.payload.postId);
 
   if (!post) {
     console.error(`Post with ID ${action.payload.postId} not found`);
@@ -18,7 +18,6 @@ export const addCommentHelper = (state, action) => {
   const newCommentText = post.newCommentText;
 
   if (!newCommentText || newCommentText.trim() === '') {
-    console.error('New comment text is empty');
     return;
   }
 
@@ -31,10 +30,9 @@ export const addCommentHelper = (state, action) => {
     avatar: avatars.ilonaSue,
   };
 
-  // Обновляем только найденный пост
-  post.commentData.messages.push(newComment); // Добавляем новый комментарий
-  post.newCommentText = ''; // Очищаем поле для нового комментария
-
+  post.commentData.messages.push(newComment);
+  post.newCommentText = '';
+  return state;
 }
 export const deleteCommentHelper = (state, action) => {
   const post = state.posts.find(item => item.postId === action.payload.postId);
@@ -45,6 +43,7 @@ export const deleteCommentHelper = (state, action) => {
   }
 
   post.commentData.messages = post.commentData.messages.filter(comment => comment.commentId !== action.payload.commentId);
+  return state;
 }
 export const replyOnCommentHelper = (state, action) => {
   updateNewCommentTextHelper(state, action);
@@ -52,8 +51,8 @@ export const replyOnCommentHelper = (state, action) => {
 export const updateNewCommentTextHelper = (state, action) => {
   const post = state.posts.find(item => item.postId === action.payload.postId);
   if (post) {
-    console.log(action)
     post.newCommentText = action.payload.value;
   }
+  return state;
 }
 

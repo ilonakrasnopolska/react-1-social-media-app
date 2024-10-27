@@ -21,7 +21,6 @@ const Reactions = ({toggleCommentsOpen, postId}) => {
   };
 
   const handleLikeToPost = (postId) => {
-    console.log(post.likedByUser)
     dispatch(handleLike(postId));
   }
 

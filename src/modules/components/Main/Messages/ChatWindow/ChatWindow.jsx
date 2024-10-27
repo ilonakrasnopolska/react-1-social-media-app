@@ -1,12 +1,15 @@
 import Classes from "./ChatWindow.module.css";
 import React from "react";
 import {useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
 import ChatBubble from "./ChatBubble/ChatBubble";
 import NewMessage from "./NewMessage/NewMessage";
+import CreateNewChat from "./CreateNewChat/CreateNewChat";
 
 const ChatWindow = () => {
+  const {userId} = useParams();
   const chats = useSelector(state => state.dialogs.chats);
-  const currentChat = chats.find(chat => chat.chatId === 1);
+  const currentChat = chats.find(chat => chat.chatId === Number(userId));
 
   // Если текущий чат существует, отобразим сообщения, иначе сообщим, что чат пуст
   let chatBubbles = currentChat ? currentChat.messages.map((message, index) => (
@@ -15,15 +18,15 @@ const ChatWindow = () => {
       messageId={message.id}
       key={index}
     />
-  )) : <li>Select dialog</li>;
+  )) : <li className={Classes.initialList}>Create a new chat:</li>
 
   return (
     <section className="chat section">
-      <ul className={Classes.list}>
+      <ul className={currentChat ? Classes.list : Classes.emptyList}>
         {chatBubbles}
+        {!currentChat && <CreateNewChat />}
       </ul>
-      <NewMessage chatId={currentChat ? currentChat.chatId : null}
-      />
+      {currentChat && <NewMessage chatId={currentChat.chatId}/>}
     </section>
   );
 }

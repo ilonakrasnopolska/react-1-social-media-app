@@ -1,6 +1,5 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
-import { useSelector } from 'react-redux';
 import Profile from "./Profile/Profile";
 import Classes from "./Main.module.css"
 import Messages from "./Messages/Messages";
@@ -15,11 +14,11 @@ const Main = () => {
         <Routes>
           <Route path="/profile"
                  element={<Profile/>}/>
-          <Route path="/messages" element={<Messages/>}/>
+          <Route path="/messages" element={<Messages replace />} />
+          <Route path="/messages/:userId" element={<Messages/>}/>
           <Route path="/news" element={<News/>}/>
           <Route path="/music" element={<Music/>}/>
           <Route path="/settings" element={<Settings/>}/>
-          <Route path="/messages/1" element={<Messages/>}/>
         </Routes>
       </div>
     </main>
