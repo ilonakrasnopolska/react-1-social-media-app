@@ -1,86 +1,129 @@
-// Константы
-import {updateNewPostText, addPost, deletePost, toggleComments, handleLike}
-  from "./ProfileHelpers/post-helpers";
-import {addComment, deleteComment, replyOnComment, updateNewCommentText}
-  from "./ProfileHelpers/comment-helpers"
+import {createSlice} from '@reduxjs/toolkit';
+import avatars from "../Avatars-src";
+import {
+  addPostHelper, deletePostHelper,
+  updateNewPostTextHelper, handleLikeHelper, toggleCommentsHelper
+} from "./ProfileHelpers/post-helpers";
+import {
+  updateNewCommentTextHelper, replyOnCommentHelper,
+  addCommentHelper, deleteCommentHelper
+} from "./ProfileHelpers/comment-helpers";
 
-const ADD_POST = "ADD-POST";
-const DELETE_POST = "DELETE-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const HANDLE_LIKE = "HANDLE-LIKE";
-const TOGGLE_COMMENTS = 'TOGGLE-COMMENTS';
-const UPDATE_NEW_COMMENT_TEXT = "UPDATE-NEW-COMMENT-TEXT";
-const REPLY_ON_COMMENT_TEXT = "REPLY-ON-COMMENT-TEXT";
-const ADD_COMMENT = "ADD-COMMENT";
-const DELETE_COMMENT = "DELETE-COMMENT";
+const CURRENT_USER_NAME = "Ilona Sue"
+let postIdCounter = 1;
+let commentIdCounter = 1;
 
+const initialState = {
+  posts: [
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Who is your favourite character in Naruto?',
+      comments: 1, likes: 123, time: '10:00', likedByUser: false, commentData: {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Wow!Amazing!',
+            user: 'Mark',
+            time: '13:00',
+            avatar: `${avatars.markPic}`
+          }],
+      }, newCommentText: '',
 
-const profileReducer = (state, action) => {
-  switch (action.type) {
-    case ADD_POST:
-      return addPost(state);
-
-    case DELETE_POST:
-      return deletePost(state, action);
-
-    case UPDATE_NEW_POST_TEXT:
-      return updateNewPostText(state, action);
-
-    case HANDLE_LIKE:
-      return handleLike(state, action);
-
-    case TOGGLE_COMMENTS:
-      return toggleComments(state, action);
-
-    case UPDATE_NEW_COMMENT_TEXT:
-      return updateNewCommentText(state, action);
-
-    case REPLY_ON_COMMENT_TEXT:
-      return replyOnComment(state, action);
-
-    case ADD_COMMENT:
-      return addComment(state, action);
-
-    case DELETE_COMMENT:
-      return deleteComment(state, action);
-
-    default:
-      return state;
-  }
+    },
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Where are you from',
+      comments: 1, likes: 14, time: '09:00', likedByUser: false, commentData: {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Nice!',
+            user: 'Vikky',
+            time: '13:30',
+            avatar: `${avatars.vikkyPic}`
+          }],
+      }, newCommentText: '',
+    },
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'I wish i had more free time to watch anime!',
+      comments: 1, likes: 36, time: '08:00', likedByUser: false, commentData:  {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Amazing!',
+            user: 'Sunny',
+            time: '14:30',
+            avatar: `${avatars.sunnyPic}`
+          }],
+      }, newCommentText: '',
+    },
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Have you seen the JK?',
+      comments: 1, likes: 13, time: '07:00', likedByUser: false, commentData: {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Great!',
+            user: 'Ino',
+            time: '16:30',
+            avatar: `${avatars.inoPic}`
+          }],
+      }, newCommentText: '',
+    },
+    {
+      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Hello everyone!',
+      comments: 1, likes: 3, time: '06:00', likedByUser: false, commentData:  {
+        commentsVisibility: false, messages:
+          [{
+            commentId: commentIdCounter++,
+            message: 'Hi!',
+            user: 'Sakura',
+            time: '17:30',
+            avatar: `${avatars.sakuraPic}`
+          }],
+      }, newCommentText: '',
+    },
+  ],
+  newPostText: '',
 };
 
-export default profileReducer;
-
-
-//Экспортируемые функции
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const deletePostActionCreator = (postId) => ({type: DELETE_POST, postId});
-export const updateNewPostTextActionCreator = (newPostText) =>
-  ({
-    type: UPDATE_NEW_POST_TEXT,
-    value: newPostText
-  });
-export const handleLikeActionCreator = (postId) => ({type: HANDLE_LIKE, postId});
-export const toggleCommentsActionCreator = (postId) => ({type: TOGGLE_COMMENTS, postId});
-export const updateNewCommentTextActionCreator = (postId, newCommentText) => ({
-  type: UPDATE_NEW_COMMENT_TEXT,
-  postId,
-  value: newCommentText
+const profileSlice = createSlice({
+  name: 'profile',
+  initialState,
+  reducers: {
+    addPost: (state) => {
+      addPostHelper(state)
+    },
+    deletePost: (state, action) => {
+      deletePostHelper(state, action);
+    },
+    updateNewPostText: (state, action) => {
+      updateNewPostTextHelper(state, action);
+    },
+    handleLike: (state, action) => {
+      handleLikeHelper(state, action)
+    },
+    toggleComments: (state, action) => {
+      toggleCommentsHelper(state, action);
+    },
+    updateNewCommentText: (state, action) => {
+      updateNewCommentTextHelper(state, action);
+    },
+    replyOnComment: (state, action) => {
+      replyOnCommentHelper(state, action);
+    },
+    addComment: (state, action) => {
+      addCommentHelper(state, action);
+    },
+    deleteComment: (state, action) => {
+      deleteCommentHelper(state, action);
+    },
+  },
 });
-export const replyToCommentTextActionCreator = (commentId, newCommentText, postId) => ({
-  type: REPLY_ON_COMMENT_TEXT,
-  commentId,
-  value: newCommentText,
-  postId
-});
-export const addCommentActionCreator = (postId) =>
-  ({
-    type: ADD_COMMENT,
-    postId,
-  });
-export const deleteCommentActionCreator = (commentId, postId) =>
-  ({
-    type: DELETE_COMMENT,
-    commentId,
-    postId
-  });
+
+export const {
+  addPost, deletePost,
+  updateNewPostText, handleLike, toggleComments,
+  updateNewCommentText, replyOnComment,
+  addComment, deleteComment
+} = profileSlice.actions;
+
+export default profileSlice.reducer;

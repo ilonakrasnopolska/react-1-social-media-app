@@ -1,26 +1,25 @@
 import React from "react";
 import Classes from "./Comments.module.css"
-import {
-  replyToCommentTextActionCreator,
-  deleteCommentActionCreator
-} from "../../../../../../../redux/ProfileReducer/profile-reducer";
+import {useSelector, useDispatch} from "react-redux";
+import {replyOnComment, deleteComment} from "../../../../../../../redux/ProfileReducer/profile-reducer";
 
-const Comments = (props) => {
-  const {commentData, dispatch} = props; // Деструктуризация props
-  const Messages = commentData && commentData.messages ? commentData.messages : [];
+const Comments = ({postId}) => {
+  const dispatch = useDispatch();
+  const post = useSelector(state => state.profile.posts.find(post => post.postId === postId));
+  const Messages = post?.commentData.messages  || [];
 
   const onReplyToComment = (commentId) => {
     const comment = Messages.find(comment => comment.commentId === commentId);
     if (comment) {
-      const userName = comment.user;
-      dispatch(replyToCommentTextActionCreator(commentId, `${userName},`, props.postId)); // Делаем reply на комментарий
+      const value = `${comment.user},`;
+      dispatch(replyOnComment({value, postId})) // Делаем reply на комментарий
     }
   }
 
   const onDeleteComment = (commentId) => {
     const confirmDelete = window.confirm("Delete comment?");
     if (confirmDelete) {
-      dispatch(deleteCommentActionCreator(commentId, props.postId)); // Удаляем комментарий
+      dispatch(deleteComment({commentId, postId})); // Удаляем комментарий
     }
   }
 

@@ -1,18 +1,20 @@
 import React, {useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 import Comments from "./Comments/Comments";
 import AddComment from "./Comments/AddComment/AddComment";
-import {deletePostActionCreator} from "../../../../../../redux/ProfileReducer/profile-reducer";
+import {deletePost} from "../../../../../../redux/ProfileReducer/profile-reducer";
 
-const Post = (props) => {
-  const {name, message, comments, likes, time, postId, newCommentText, isLiked, commentData, dispatch} = props;
-  const [isOpenComments, setIsCommentsOpen] = useState(false); // Локальное состояние для видимости комментариев
+const Post = ({postId}) => {
+  const post = useSelector(state => state.profile.posts.find(post => post.postId === postId));
+  const [isOpenComments, setIsCommentsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const onDeletePost = (postId) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this post?');
     if (confirmDelete) {
-      props.dispatch(deletePostActionCreator(postId));
+      dispatch(deletePost(postId));
     }
   }
 
@@ -20,6 +22,11 @@ const Post = (props) => {
   const toggleCommentsOpen = () => {
     setIsCommentsOpen(prevState => !prevState);
   };
+
+
+  if (!post) {
+    return null; // Обработка случая, если пост не найден
+  }
 
   return (
     <li className={Classes.item}>
@@ -30,33 +37,24 @@ const Post = (props) => {
         />
         <div className={Classes.post_message}>
           <span className={Classes.post_name}>
-            {name}
+            {post.name}
           </span>
           <div className={Classes.post_content}>
             <span>
-              {message}
+              {post.message}
             </span>
             <span className={Classes.post_time}>
-              {time}
+              {post.time}
             </span>
           </div>
         </div>
-        <Reactions dispatch={dispatch}
-                   comments={comments}
-                   likes={likes}
-                   postId={postId}
-                   isLiked={isLiked}
-                   commentData={commentData}
-                   toggleCommentsOpen={toggleCommentsOpen}
-                   isOpenComments={isOpenComments}/>
+        <Reactions toggleCommentsOpen={toggleCommentsOpen} postId={postId} />
         <button onClick={() => onDeletePost(postId)} className={Classes.delete}>...</button>
       </div>
       {isOpenComments && (
         <div className={`${Classes.comments} ${isOpenComments ? Classes.visible : ""}`}>
-          <Comments commentData={commentData} postId={postId} dispatch={dispatch}/>
-          <AddComment postId={postId}
-                      newCommentText={newCommentText}
-                      dispatch={dispatch}/>
+          <Comments postId={postId} />
+          <AddComment postId={postId} />
         </div>
       )}
     </li>

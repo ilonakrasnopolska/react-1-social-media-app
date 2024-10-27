@@ -3,11 +3,11 @@ import Classes from "./Sidebar.module.css";
 import Nav from "./Nav/Nav";
 import Friends from "./Friends /Friends";
 
-const Sidebar = (props) => {
+const Sidebar = () => {
   return (
     <nav className={Classes.nav}>
       <Nav/>
-      <Friends friends={props.sidebar.friends}/>
+      <Friends/>
     </nav>
   );
 }

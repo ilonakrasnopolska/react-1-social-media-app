@@ -1,0 +1,19 @@
+.box {
+  display: flex;
+}
+
+.form {
+  display: flex;
+}
+
+.input {
+  width: 200px;
+  outline: none;
+  border: none;
+  background-color: #bfd1ff;
+  color: #194770;
+}
+
+.button {
+  background-color: transparent;
+}

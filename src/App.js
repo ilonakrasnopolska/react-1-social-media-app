@@ -5,12 +5,12 @@ import Sidebar from "./modules/components/Sidebar/Sidebar";
 import Footer from "./modules/components/Footer/Footer";
 import Main from "./modules/components/Main/Main";
 
-const App = (props) => {
+const App = () => {
   return (
     <div className="app-container">
       <Header/>
-      <Sidebar sidebar={props.state.sideBar}/>
-      <Main state={props.state} dispatch={props.dispatch}/>
+      <Sidebar />
+      <Main/>
       <Footer/>
     </div>
   );

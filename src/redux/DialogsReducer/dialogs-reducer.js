@@ -1,34 +1,143 @@
-import {updateNewMessageText, sendMessage} from "./DialogsHelpers/dialogs-helpers";
+import {
+  updateNewMessageTextHelper,
+  sendMessageHelper,
+  updateSearchUserTextHelper
+} from "./DialogsHelpers/dialogs-helpers";
+import {createSlice} from '@reduxjs/toolkit';
+import avatars from "../Avatars-src";
 
-const SEND_MESSAGE = 'SEND_MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
-// const OPEN_DIALOG = 'OPEN_DIALOG';
+// Константы
+const baseMessageUrl = '/messages/';
 
+// Счетчики
+let userIdCounter = 1;
+let chatIdCounter = 1;
+let messageIdCounter = 1;
 
-const dialogsReducer = (state, action) => {
-  switch (action.type) {
-    case SEND_MESSAGE :
-      sendMessage(state, action);
-      return state;
-
-    case UPDATE_NEW_MESSAGE_TEXT :
-      updateNewMessageText(state, 'newMessageText', action);
-      return state;
-
-    default:
-      return state;
-  }
-
+//Базовый state
+const initialState = {
+  users: [
+    {name: 'Mark', userId: userIdCounter++, url: `${baseMessageUrl}1`, avatar: `${avatars.markPic}`},
+    {name: 'Vikky', userId: userIdCounter++, url: `${baseMessageUrl}2`, avatar: `${avatars.vikkyPic}`},
+    {name: 'Sunny', userId: userIdCounter++, url: `${baseMessageUrl}3`, avatar: `${avatars.sunnyPic}`},
+    {name: 'Phillip', userId: userIdCounter++, url: `${baseMessageUrl}/4`, avatar: `${avatars.phillipPic}`},
+    {name: 'Elon', userId: userIdCounter++, url: `${baseMessageUrl}5`, avatar: `${avatars.elonPic}`},
+    {name: 'Sakura', userId: userIdCounter++, url: `${baseMessageUrl}6`, avatar: `${avatars.sakuraPic}`},
+    {name: 'Ino', userId: userIdCounter++, url: `${baseMessageUrl}7`, avatar: `${avatars.inoPic}`},
+  ],
+  chats: [
+    {
+      chatId: chatIdCounter++,
+      participants: ['Mark', 'Ilona Sue'],
+      messages: [
+        {name: 'Mark', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.markPic},
+        {name: 'Ilona Sue', message: 'Hi', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+        {
+          name: 'Mark',
+          message: 'Have you seen Jujutsu K?',
+          id: messageIdCounter++,
+          time: '19:00',
+          avatar: avatars.markPic
+        },
+        {name: 'Ilona Sue', message: 'Yeah', id: messageIdCounter++, time: '19:10', avatar: avatars.ilonaSue},
+        {name: 'Mark', message: 'How old are you?', id: messageIdCounter++, time: '20:00', avatar: avatars.markPic},
+        {name: 'Mark', message: 'Can I call u?', id: messageIdCounter++, time: '20:10', avatar: avatars.markPic},
+        {
+          name: 'Mark', message: 'Where are u?', id: messageIdCounter++, time: '22:00', avatar: avatars.markPic
+        }
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Vikky', 'Ilona Sue'],
+      messages: [
+        {name: 'Vikky', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.vikkyPic},
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Sunny', 'Ilona Sue'],
+      messages: [
+        {name: 'Sunny', message: 'Hi!', id: messageIdCounter++, time: '17:28', avatar: avatars.sunnyPic},
+        {name: 'Ilona Sue', message: 'Hi', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+        {
+          name: 'Sunny',
+          message: 'Have you seen Naruto?',
+          id: messageIdCounter++,
+          time: '19:00',
+          avatar: avatars.sunnyPic
+        },
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Phillip', 'Ilona Sue'],
+      messages: [
+        {name: 'Phillip', message: 'Where are u?!', id: messageIdCounter++, time: '17:28', avatar: avatars.phillipPic},
+        {name: 'Ilona Sue', message: 'Here', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+        {
+          name: 'Phillip',
+          message: 'How old are you?',
+          id: messageIdCounter++,
+          time: '19:00',
+          avatar: avatars.phillipPic
+        },
+        {name: 'Ilona Sue', message: '25', id: messageIdCounter++, time: '19:10', avatar: avatars.ilonaSue},
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Elon', 'Ilona Sue'],
+      messages: [
+        {name: 'Elon', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.elonPic},
+        {name: 'Ilona Sue', message: 'Hi', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+        {
+          name: 'Elon',
+          message: 'Have you seen One Piece?',
+          id: messageIdCounter++,
+          time: '19:00',
+          avatar: avatars.elonPic
+        },
+        {name: 'Ilona Sue', message: 'Yeah', id: messageIdCounter++, time: '19:10', avatar: avatars.ilonaSue},
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Sakura', 'Ilona Sue'],
+      messages: [
+        {name: 'Sakura', message: 'Are you ready?!', id: messageIdCounter++, time: '17:28', avatar: avatars.sakuraPic},
+        {name: 'Ilona Sue', message: 'Nope', id: messageIdCounter++, time: '17:50', avatar: avatars.ilonaSue},
+      ]
+    },
+    {
+      chatId: chatIdCounter++,
+      participants: ['Ino', 'Ilona Sue'],
+      messages: [
+        {name: 'Ino', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.inoPic},
+      ]
+    },
+  ],
+  newMessageText: '',
+  searchUserText: '',
 }
 
-export default dialogsReducer;
+const dialogsSlice = createSlice({
+  name: 'dialogs',
+  initialState,
+  reducers: {
+    sendMessage: (state, action) => {
+      sendMessageHelper(state, action);
+    },
+    updateNewMessageText: (state, action) => {
+      updateNewMessageTextHelper(state, action);
+    },
+    updateSearchUserText: (state, action) => {
+      updateSearchUserTextHelper(state, action);
+    }
+  }
+})
 
-
-
-//Экспортируемые функции
-export const sendMessageActionCreator = (chatId) => ({type: SEND_MESSAGE, chatId: chatId});
-export const updateNewMessageTextActionCreator = (newMessageText) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  value: newMessageText
-});
-// export const openDialogActionCreator = (id) => ({type: OPEN_DIALOG, id: id});
+export const {sendMessage,
+  updateNewMessageText,
+  updateSearchUserText} = dialogsSlice.actions;
+export default dialogsSlice.reducer;

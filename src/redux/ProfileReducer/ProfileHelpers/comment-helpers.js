@@ -7,80 +7,52 @@ const getData = () => {
   const minutes = String(currentTime.getMinutes()).padStart(2, '0');
   return `${hours}:${minutes}`
 }
-export const addComment = (state, action) => {
-  const postGroup = state.posts.find(item => item.postId === action.postId);
+export const addCommentHelper = (state, action) => {
+  const post = state.posts.find(item => item.postId === action.payload.postId);
 
-  const newCommentText = postGroup.newCommentText;
-  if (newCommentText.trim() === '') return;
-  let newCommentId = postGroup.commentData.messages.length +1;
+  if (!post) {
+    console.error(`Post with ID ${action.payload.postId} not found`);
+    return;
+  }
+
+  const newCommentText = post.newCommentText;
+
+  if (!newCommentText || newCommentText.trim() === '') {
+    return;
+  }
+
+  const newCommentId = post.commentData.messages.length + 1;
   const newComment = {
     commentId: newCommentId,
     message: newCommentText,
     user: CURRENT_USER_NAME,
     time: getData(),
-    avatar: `${avatars.ilonaSue}`
+    avatar: avatars.ilonaSue,
   };
 
-  postGroup.commentData.messages.push(newComment);
-  postGroup.newCommentText = '';
+  post.commentData.messages.push(newComment);
+  post.newCommentText = '';
   return state;
 }
-export const deleteComment = (state, action) => {
-  // Обновляем массив постов
-  const updatedPosts = state.posts.map(post => {
-    // Находим пост по postId
-    if (post.postId === action.postId) {
-      let updatedComments = post.commentData.messages.filter(comment => comment.commentId !== action.commentId)
-      // Если пост найден, обновляем его commentData
-      return {
-        ...post,
-        commentData: {
-          ...post.commentData,
-          // Фильтруем сообщения, исключая комментарий с нужным commentId
-          messages: updatedComments
-        }
-      };
-    }
-    // Возвращаем пост без изменений, если postId не совпадает
-    return post;
-  });
+export const deleteCommentHelper = (state, action) => {
+  const post = state.posts.find(item => item.postId === action.payload.postId);
 
-  // Возвращаем новое состояние с обновленными постами
-  return {
-    ...state,
-    posts: updatedPosts,
-  };
-};
-export const replyOnComment = (state, action) => {
-  const updatedPosts = state.posts.map(post => {
-    if (post.postId === action.postId) {
-      return {
-        ...post,
-        newCommentText: action.value
-      };
-    }
-    return post;
-  });
+  if (!post) {
+    console.error(`Post with ID ${action.payload.postId} not found`);
+    return;
+  }
 
-  return {
-    ...state,
-    posts: updatedPosts,
-  };
-};
-export const updateNewCommentText = (state, action) => {
-  const updatedPosts = state.posts.map(post => {
-    if (post.postId === action.postId) {
-      return {
-        ...post,
-        newCommentText: action.value
-      };
-    }
-    return post;
-  });
-
-  return {
-    ...state,
-    posts: updatedPosts,
-  };
+  post.commentData.messages = post.commentData.messages.filter(comment => comment.commentId !== action.payload.commentId);
+  return state;
+}
+export const replyOnCommentHelper = (state, action) => {
+  updateNewCommentTextHelper(state, action);
+}
+export const updateNewCommentTextHelper = (state, action) => {
+  const post = state.posts.find(item => item.postId === action.payload.postId);
+  if (post) {
+    post.newCommentText = action.payload.value;
+  }
+  return state;
 }
 

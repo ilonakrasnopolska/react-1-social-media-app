@@ -5,8 +5,8 @@
 }
 
 .list {
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   gap: 30px;
   flex: 1; /* Занимает всё доступное пространство */
@@ -18,3 +18,16 @@
   display: none; /* Скрыть скроллбар */
 }
 
+.emptyList {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.initialList {
+  font-size: 28px;
+  color: #194770;
+  margin-bottom: 15px;
+}
