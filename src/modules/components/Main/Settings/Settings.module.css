@@ -1,0 +1,9 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  color: #194770;
+  font-size: 22px;
+}
