@@ -1,0 +1,29 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search h1 {
+  margin-bottom: 10px;
+  color: #194770;
+  font-size: 28px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.form input {
+  height: 100%;
+}
+
+.button {
+  background-color: #194770;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px;
+}
