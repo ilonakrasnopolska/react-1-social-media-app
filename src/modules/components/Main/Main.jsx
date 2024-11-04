@@ -3,9 +3,9 @@ import {Route, Routes} from "react-router-dom";
 import Profile from "./Profile/Profile";
 import Classes from "./Main.module.css"
 import Messages from "./Messages/Messages";
-import News from "./News/News";
-import Music from "./Music/Music";
+import Anime from "./Anime/Anime";
 import Settings from "./Settings/Settings";
+import Feeds from "./Feeds/Feeds";
 
 const Main = () => {
   return (
@@ -16,8 +16,8 @@ const Main = () => {
                  element={<Profile/>}/>
           <Route path="/messages" element={<Messages replace />} />
           <Route path="/messages/:userId" element={<Messages/>}/>
-          <Route path="/news" element={<News/>}/>
-          <Route path="/music" element={<Music/>}/>
+          <Route path="/feeds" element={<Feeds/>}/>
+          <Route path="/anime" element={<Anime/>}/>
           <Route path="/settings" element={<Settings/>}/>
         </Routes>
       </div>

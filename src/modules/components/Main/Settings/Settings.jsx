@@ -1,5 +1,6 @@
 import React from "react";
 import Classes from './Settings.module.css'
+import {NavLink} from "react-router-dom";
 
 const Settings = () => {
     const settingsOptions = [
@@ -18,7 +19,7 @@ const Settings = () => {
       <ul className={Classes.list}>
         {settingsOptions.map((option, index) => (
           <li key={index} className={Classes.item}>
-            <a>{option}</a>
+            <NavLink to='#'>{option}</NavLink>
           </li>
         ))}
       </ul>

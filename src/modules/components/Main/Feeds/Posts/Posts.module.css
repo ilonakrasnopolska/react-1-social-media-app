@@ -1,0 +1,10 @@
+.feeds {
+  width: 68%;
+  overflow-y: auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

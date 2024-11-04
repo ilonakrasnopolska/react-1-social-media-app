@@ -4,6 +4,33 @@ import {createSlice} from "@reduxjs/toolkit";
 
 //Базовый state
 const initialState = {
+  nav: [
+    {
+      name: "Profile",
+      url: "/profile",
+      id: 1,
+    },
+    {
+      name: "Messages",
+      url: "/messages",
+      id: 2,
+    },
+    {
+      name: "Feeds",
+      url: "/feeds",
+      id: 3,
+    },
+    {
+      name: "Anime",
+      url: "/anime",
+      id: 4,
+    },
+    {
+      name: "Settings",
+      url: "/settings",
+      id: 5,
+    },
+  ],
   friends: [
     {name: 'Sunny', friendId: 1, avatar: `${avatars.sunnyPic}`},
     {name: 'Phillip', friendId: 2, avatar: `${avatars.phillipPic}`},

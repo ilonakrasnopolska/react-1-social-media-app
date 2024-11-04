@@ -1,9 +1,16 @@
 .list {
   display: flex;
   flex-direction: column;
+  padding: 0 100px;
+  gap: 20px;
 }
 
 .item {
-  color: #194770;
   font-size: 22px;
+  background-color: #194770;
+  padding: 20px;
+}
+
+.item a {
+  color: #ffffff;
 }
