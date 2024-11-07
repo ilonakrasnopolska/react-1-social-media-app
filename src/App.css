@@ -81,3 +81,10 @@ button {
   flex-direction: column;
   height: 100vh;
 }
+
+
+@media (max-width: 650px) {
+  .users {
+    width: 84px;
+  }
+}

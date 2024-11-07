@@ -12,7 +12,6 @@
 .textarea {
   width: calc(100% - 60px); /* Учитываем ширину кнопки */
   height: 20px;
-  padding: 10px;
   border: none;
   outline: none;
   border-radius: 5px;

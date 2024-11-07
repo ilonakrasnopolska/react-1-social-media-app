@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import covers from "./AnimeHelpers/anime-cover";
+import {updateSearchAnimeTextHelper} from "./AnimeHelpers/anime-helpers";
 // Счетчики
 let animeIdCounter = 1;
 
@@ -41,20 +42,21 @@ const initialState = {
         `Natsu, Gray, and Erza, who are part of the (in)famous wizard guild, Fairy Tail.`,
     },
   ],
+  newSearchAnimeText: '',
 }
 
 const animeSlice = createSlice({
   name: 'anime',
   initialState,
   reducers: {
-    openAnime: (state) => {
-      console.log(state)
-    }
+    setSearchQuery: (state, action) => {
+      updateSearchAnimeTextHelper(state, action);
+    },
   }
 })
 
 export const {
-  openAnime
+  setSearchQuery
 } = animeSlice.actions;
 
 

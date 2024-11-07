@@ -18,6 +18,15 @@
 .item button {
   background-color: transparent;
   padding: 10px;
-  font-size: 25px;
+  font-size: 21px;
   color: #194770;
+}
+
+@media (max-width: 890px) {
+  .categories {
+    padding: 7px;
+  }
+  .item button {
+    font-size: 14px;
+  }
 }

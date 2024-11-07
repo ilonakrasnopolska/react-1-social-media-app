@@ -17,13 +17,13 @@ let messageIdCounter = 1;
 //Базовый state
 const initialState = {
   users: [
-    {name: 'Mark', userId: userIdCounter++, url: `${baseMessageUrl}1`, avatar: `${avatars.markPic}`},
-    {name: 'Vikky', userId: userIdCounter++, url: `${baseMessageUrl}2`, avatar: `${avatars.vikkyPic}`},
-    {name: 'Sunny', userId: userIdCounter++, url: `${baseMessageUrl}3`, avatar: `${avatars.sunnyPic}`},
-    {name: 'Phillip', userId: userIdCounter++, url: `${baseMessageUrl}/4`, avatar: `${avatars.phillipPic}`},
-    {name: 'Elon', userId: userIdCounter++, url: `${baseMessageUrl}5`, avatar: `${avatars.elonPic}`},
-    {name: 'Sakura', userId: userIdCounter++, url: `${baseMessageUrl}6`, avatar: `${avatars.sakuraPic}`},
-    {name: 'Ino', userId: userIdCounter++, url: `${baseMessageUrl}7`, avatar: `${avatars.inoPic}`},
+    {name: 'Mark', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.markPic}`},
+    {name: 'Vikky', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.vikkyPic}`},
+    {name: 'Sunny', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.sunnyPic}`},
+    {name: 'Phillip', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.phillipPic}`},
+    {name: 'Elon', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.elonPic}`},
+    {name: 'Sakura', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.sakuraPic}`},
+    {name: 'Ino', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.inoPic}`},
   ],
   chats: [
     {
@@ -116,6 +116,11 @@ const initialState = {
         {name: 'Ino', message: 'Hello there!', id: messageIdCounter++, time: '17:28', avatar: avatars.inoPic},
       ]
     },
+  ],
+  contacts: [
+    {name: 'Violet', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.violetPic}`},
+    {name: 'Anna', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.annaPic}`},
+    {name: 'Artur', userId: userIdCounter++, url: `${baseMessageUrl}${userIdCounter}`, avatar: `${avatars.arturPic}`},
   ],
   newMessageText: '',
   searchUserText: '',

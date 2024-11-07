@@ -5,6 +5,7 @@ import SearchAnime from "./SearchAnime/SearchAnime";
 
 
 const Anime = () => {
+
   return (
     <section className="anime section">
       <div className={Classes.container}>

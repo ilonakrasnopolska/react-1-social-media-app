@@ -38,10 +38,16 @@
 }
 
 .content {
-  width: 70%;
   padding: 0 20px 0 100px;
+  overflow-y: auto;
 }
 
 .content span {
   font-size: 20px;
+}
+
+@media (max-width: 900px) {
+  .content {
+    height: 120px;
+  }
 }

@@ -8,6 +8,12 @@
   width: 100%;
 }
 
+.noResults {
+  font-size: 20px;
+  color: #194770;
+  padding-top: 100px;
+}
+
 @media (max-width: 1260px) {
   .list {
     justify-content: center;

@@ -15,15 +15,14 @@
 .form {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.form input {
+.input {
+  border: 1px solid #194770;
+  outline: none;
+  font-size: 15px;
   height: 100%;
+  padding: 10px 5px;
 }
 
-.button {
-  background-color: #194770;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px;
-}
