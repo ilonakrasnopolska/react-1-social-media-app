@@ -1,4 +1,5 @@
 import avatars from "../../Avatars-src";
+import {current} from "@reduxjs/toolkit";
 
 const CURRENT_USER_NAME = "Ilona Sue"
 const getData = () => {
@@ -41,4 +42,18 @@ export const sendMessageHelper = (state, action) => {
 export const updateSearchUserTextHelper = (state, action) => {
   state.searchUserText = action.payload;
   return state;
+}
+export const startConversationHelper = (state, action) => {
+  const newUser = action.payload;
+  const name = action.payload.name;
+  const newChatId = state.chats.length+1
+  const newChat = {
+    chatId: newChatId,
+    participants: [name, 'Ilona Sue'],
+    messages: []
+  }
+  state.users.push(newUser);
+  state.chats.push(newChat);
+  console.log(current(state))
+  return state
 }

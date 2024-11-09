@@ -1,0 +1,28 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search h1 {
+  margin-bottom: 10px;
+  color: #194770;
+  font-size: 28px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input {
+  border: 1px solid #194770;
+  outline: none;
+  font-size: 15px;
+  height: 100%;
+  padding: 10px 5px;
+}
+

@@ -31,6 +31,7 @@ export const addCommentHelper = (state, action) => {
   };
 
   post.commentData.messages.push(newComment);
+  post.comments += 1;
   post.newCommentText = '';
   return state;
 }
@@ -43,6 +44,7 @@ export const deleteCommentHelper = (state, action) => {
   }
 
   post.commentData.messages = post.commentData.messages.filter(comment => comment.commentId !== action.payload.commentId);
+  post.comments -= 1;
   return state;
 }
 export const replyOnCommentHelper = (state, action) => {

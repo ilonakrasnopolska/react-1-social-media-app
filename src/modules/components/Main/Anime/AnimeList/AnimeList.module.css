@@ -1,0 +1,21 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  overflow-y: auto;
+  height: 100vh;
+  width: 100%;
+}
+
+.noResults {
+  font-size: 20px;
+  color: #194770;
+  padding-top: 100px;
+}
+
+@media (max-width: 1260px) {
+  .list {
+    justify-content: center;
+  }
+}

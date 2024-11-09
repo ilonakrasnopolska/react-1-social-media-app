@@ -10,7 +10,7 @@ export const updateNewPostTextHelper = (state, action) => {
 }
 export const addPostHelper = (state) => {
   if (state.newPostText.trim() !== '') {
-    let newPostId = state.posts.length + 1;
+    let newPostId = Date.now();
     let newPost = {
       name: CURRENT_USER_NAME,
       postId: newPostId,

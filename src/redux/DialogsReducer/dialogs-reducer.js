@@ -1,7 +1,7 @@
 import {
   updateNewMessageTextHelper,
   sendMessageHelper,
-  updateSearchUserTextHelper
+  updateSearchUserTextHelper, startConversationHelper
 } from "./DialogsHelpers/dialogs-helpers";
 import {createSlice} from '@reduxjs/toolkit';
 import avatars from "../Avatars-src";
@@ -17,13 +17,18 @@ let messageIdCounter = 1;
 //Базовый state
 const initialState = {
   users: [
-    {name: 'Mark', userId: userIdCounter++, url: `${baseMessageUrl}1`, avatar: `${avatars.markPic}`},
-    {name: 'Vikky', userId: userIdCounter++, url: `${baseMessageUrl}2`, avatar: `${avatars.vikkyPic}`},
-    {name: 'Sunny', userId: userIdCounter++, url: `${baseMessageUrl}3`, avatar: `${avatars.sunnyPic}`},
-    {name: 'Phillip', userId: userIdCounter++, url: `${baseMessageUrl}/4`, avatar: `${avatars.phillipPic}`},
-    {name: 'Elon', userId: userIdCounter++, url: `${baseMessageUrl}5`, avatar: `${avatars.elonPic}`},
-    {name: 'Sakura', userId: userIdCounter++, url: `${baseMessageUrl}6`, avatar: `${avatars.sakuraPic}`},
-    {name: 'Ino', userId: userIdCounter++, url: `${baseMessageUrl}7`, avatar: `${avatars.inoPic}`},
+    {name: 'Mark', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.markPic}`},
+    {name: 'Vikky', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.vikkyPic}`},
+    {name: 'Sunny', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.sunnyPic}`},
+    {
+      name: 'Phillip',
+      userId: userIdCounter,
+      url: `${baseMessageUrl}${userIdCounter++}`,
+      avatar: `${avatars.phillipPic}`
+    },
+    {name: 'Elon', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.elonPic}`},
+    {name: 'Sakura', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.sakuraPic}`},
+    {name: 'Ino', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.inoPic}`},
   ],
   chats: [
     {
@@ -117,8 +122,14 @@ const initialState = {
       ]
     },
   ],
+  contacts: [
+    {name: 'Violet', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.violetPic}`},
+    {name: 'Anna', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.annaPic}`},
+    {name: 'Artur', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.arturPic}`},
+  ],
   newMessageText: '',
   searchUserText: '',
+  activeUserId: null,
 }
 
 const dialogsSlice = createSlice({
@@ -133,11 +144,25 @@ const dialogsSlice = createSlice({
     },
     updateSearchUserText: (state, action) => {
       updateSearchUserTextHelper(state, action);
-    }
+    },
+    startConversation: (state, action) => {
+      startConversationHelper(state, action);
+    },
+    selectUser: (state, action) => {
+      state.activeUserId = action.payload.userId;
+    },
+    deselectUser: (state) => {
+      state.activeUserId = null;
+    },
   }
 })
 
-export const {sendMessage,
+export const {
+  sendMessage,
   updateNewMessageText,
-  updateSearchUserText} = dialogsSlice.actions;
+  updateSearchUserText,
+  startConversation,
+  selectUser,
+  deselectUser
+} = dialogsSlice.actions;
 export default dialogsSlice.reducer;

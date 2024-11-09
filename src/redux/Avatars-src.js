@@ -11,7 +11,11 @@ const avatars = {
     'devushka_pozy-anime-anime_art-doch-art-x750.jpg',
   inoPic: 'https://img2.akspic.ru/previews/7/6/4/5/7/175467/175467-anime-izuku_midoriya-vse_' +
     'vozmozhno-moj_geroj_akademii-anime_art-x750.jpg',
-  ilonaSue: 'https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png'
-
+  violetPic: 'https://i.pinimg.com/736x/6e/e1/a6/6ee1a67e1c3e6b7601e4f63c67d89d80.jpg',
+  annaPic: `https://rukminim2.flixcart.com/image/850/1000/kxkqavk0/poster/b/3/p/`+
+    `medium-anime-girls-original-characters-women-brunette-long-hair-original-imagayftfuagxsmy.jpeg?q=20&crop=false`,
+  arturPic: `https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22154714/` +
+    `jbareham_201207_ecl1053_bestof2020_anime.jpg?quality=90&strip=all&crop=21.875,0,56.25,100`,
+  ilonaSue: 'https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png',
 }
 export default avatars

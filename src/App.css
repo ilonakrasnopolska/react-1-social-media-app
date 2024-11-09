@@ -8,6 +8,12 @@ body {
   margin: 0;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 h1 {
   margin: 0;
 }
@@ -74,4 +80,11 @@ button {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+
+@media (max-width: 650px) {
+  .users {
+    width: 84px;
+  }
 }

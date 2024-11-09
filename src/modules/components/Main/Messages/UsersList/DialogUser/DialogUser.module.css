@@ -38,3 +38,9 @@
 .link {
   display: contents; /* Чтобы ссылка не ломала сетку */
 }
+
+@media (max-width: 650px) {
+  .name {
+    display: none;
+  }
+}

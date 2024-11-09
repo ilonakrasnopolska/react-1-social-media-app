@@ -8,23 +8,23 @@ import CreateNewChat from "./CreateNewChat/CreateNewChat";
 
 const ChatWindow = () => {
   const {userId} = useParams();
+  const activeUserId = useSelector(state => state.dialogs.activeUserId);
   const chats = useSelector(state => state.dialogs.chats);
   const currentChat = chats.find(chat => chat.chatId === Number(userId));
 
-  // Если текущий чат существует, отобразим сообщения, иначе сообщим, что чат пуст
+  // Определим, отображать ли кнопку для нового чата
+  const showCreateNewChat = !activeUserId && !currentChat;
+
   let chatBubbles = currentChat ? currentChat.messages.map((message, index) => (
-    <ChatBubble
-      chatId={currentChat.chatId}
-      messageId={message.id}
-      key={index}
-    />
-  )) : <li className={Classes.initialList}>Create a new chat:</li>
+    <ChatBubble chatId={currentChat.chatId} messageId={message.id} key={index} />
+  )) : null
+
 
   return (
     <section className="chat section">
       <ul className={currentChat ? Classes.list : Classes.emptyList}>
         {chatBubbles}
-        {!currentChat && <CreateNewChat />}
+        {showCreateNewChat && <CreateNewChat />}
       </ul>
       {currentChat && <NewMessage chatId={currentChat.chatId}/>}
     </section>
