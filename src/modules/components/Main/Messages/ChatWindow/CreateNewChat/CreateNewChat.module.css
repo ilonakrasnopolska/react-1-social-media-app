@@ -4,6 +4,12 @@
   position: relative;
 }
 
+.title {
+  font-size: 22px;
+  color: #194770;
+  margin-bottom: 15px;
+}
+
 .form {
   display: flex;
 }
@@ -25,5 +31,9 @@
 @media (max-width: 650px) {
   .input {
     width: 90px;
+  }
+
+  .title {
+    font-size: 14px;
   }
 }

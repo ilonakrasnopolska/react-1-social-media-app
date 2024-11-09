@@ -24,6 +24,7 @@ const CreateNewChat = () => {
 
   return (
     <div className={Classes.box}>
+      <h3 className={Classes.title}>Create a new chat:</h3>
       <form className={Classes.form}>
         <input className={Classes.input}
                value={searchUserText}
