@@ -1,4 +1,4 @@
-import avatars from "../../Avatars-src";
+import avatars from "../../Assets/Avatars-src";
 import {current} from "@reduxjs/toolkit";
 
 const CURRENT_USER_NAME = "Ilona Sue"
@@ -46,7 +46,7 @@ export const updateSearchUserTextHelper = (state, action) => {
 export const startConversationHelper = (state, action) => {
   const newUser = action.payload;
   const name = action.payload.name;
-  const newChatId = state.chats.length+1
+  const newChatId = action.payload.userId;
   const newChat = {
     chatId: newChatId,
     participants: [name, 'Ilona Sue'],

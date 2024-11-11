@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import avatars from "../Avatars-src";
+import avatars from "../Assets/Avatars-src";
 import {
   addPostHelper, deletePostHelper,
   updateNewPostTextHelper, handleLikeHelper, toggleCommentsHelper

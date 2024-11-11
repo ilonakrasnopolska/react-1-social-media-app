@@ -1,11 +1,7 @@
 import React from "react";
 import Classes from './Post.module.css'
-import {useSelector} from "react-redux";
 
-
-const Post = ({feedId}) => {
-  const post = useSelector(state => state.feeds.feeds.find(post => post.feedId === feedId));
-
+const Post = ({post}) => {
   return (
     <li className={Classes.item}>
       <div className={Classes.container}>
@@ -17,9 +13,10 @@ const Post = ({feedId}) => {
           <div className={Classes.info}>
             <div>
               <h3>{post.name}</h3>
+              {post.name === 'AniHub' && <span role="img" aria-label="verified">✔️</span>}
             </div>
             <div>
-              <span>{post.time}</span>
+            <span>{post.time}</span>
             </div>
           </div>
         </div>
@@ -27,6 +24,7 @@ const Post = ({feedId}) => {
           <span>
            {post.content}
           </span>
+          {post.poster && <img src={post.poster} alt="Poster" className={Classes.poster} />}
         </div>
       </div>
     </li>

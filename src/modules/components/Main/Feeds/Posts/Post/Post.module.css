@@ -18,6 +18,7 @@
   height: 70px;
   border-radius: 50px;
   margin-right: 15px;
+  background-color: #194770;
 }
 
 .info {
@@ -26,6 +27,12 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+.info div {
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
 .info h3 {
@@ -38,12 +45,20 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   padding: 0 20px 0 100px;
   overflow-y: auto;
 }
 
 .content span {
   font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.poster {
+  width: 200px;
+  height: 300px;
 }
 
 @media (max-width: 900px) {

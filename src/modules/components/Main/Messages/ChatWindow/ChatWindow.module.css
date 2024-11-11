@@ -27,9 +27,15 @@
 }
 
 .initialList {
-  font-size: 28px;
+  font-size: 27px;
   color: #194770;
-  margin-bottom: 15px;
+}
+
+.list .initialList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
 @media (max-width: 650px) {

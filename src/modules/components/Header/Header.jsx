@@ -1,10 +1,13 @@
 import React from "react";
 import Classes from './Header.module.css'
+import {LogoIcon} from "../../../assets/SVG-icons";
 
 const Header = () => {
   return (
     <header className={Classes.header}>
-      <img src='https://img.icons8.com/?size=100&id=ZKwXGJWubg3g&format=png&color=ffffff' alt='Logo'/>
+      <div className={Classes.logo}>
+        <LogoIcon/>
+      </div>
     </header>
   );
 }
