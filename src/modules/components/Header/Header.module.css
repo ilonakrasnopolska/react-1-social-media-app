@@ -2,3 +2,7 @@
   grid-area: header;
   background-color: #194770;
 }
+
+.logo {
+  padding: 5px 0 5px 15px;
+}

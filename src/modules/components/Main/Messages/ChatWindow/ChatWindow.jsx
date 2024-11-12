@@ -15,9 +15,14 @@ const ChatWindow = () => {
   // Определим, отображать ли кнопку для нового чата
   const showCreateNewChat = !activeUserId && !currentChat;
 
-  let chatBubbles = currentChat ? currentChat.messages.map((message, index) => (
-    <ChatBubble chatId={currentChat.chatId} messageId={message.id} key={index} />
-  )) : null
+
+  let chatBubbles = currentChat
+    ? currentChat.messages.length > 0
+      ? currentChat.messages.map((message, index) => (
+        <ChatBubble chatId={currentChat.chatId} messageId={message.id} key={index} />
+      ))
+      : <li className={Classes.initialList}>Start conversation..</li>
+    : null;
 
 
   return (

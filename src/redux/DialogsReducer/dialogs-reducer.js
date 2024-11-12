@@ -4,7 +4,7 @@ import {
   updateSearchUserTextHelper, startConversationHelper
 } from "./DialogsHelpers/dialogs-helpers";
 import {createSlice} from '@reduxjs/toolkit';
-import avatars from "../Avatars-src";
+import avatars from "../Assets/Avatars-src";
 
 // Константы
 const baseMessageUrl = '/messages/';

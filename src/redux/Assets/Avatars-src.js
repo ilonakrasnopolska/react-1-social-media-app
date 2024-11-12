@@ -17,5 +17,7 @@ const avatars = {
   arturPic: `https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22154714/` +
     `jbareham_201207_ecl1053_bestof2020_anime.jpg?quality=90&strip=all&crop=21.875,0,56.25,100`,
   ilonaSue: 'https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png',
+  aniHub: `https://w7.pngwing.com/pngs/706/299/png-transparent-pokemon-pokeball-illustration-pikachu-ash-ketchum-po`+
+    `kemon-coloring-book-pokeball-rim-pokemon-johto-thumbnail.png`,
 }
 export default avatars

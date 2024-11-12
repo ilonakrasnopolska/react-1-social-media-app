@@ -1,5 +1,5 @@
 // Константы
-import avatars from "../Avatars-src";
+import avatars from "../Assets/Avatars-src";
 import {createSlice} from "@reduxjs/toolkit";
 
 //Базовый state
