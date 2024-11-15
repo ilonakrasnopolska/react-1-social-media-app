@@ -32,9 +32,6 @@ const initialState = {
       title: 'Help', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
     {
-      title: 'About', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
-    },
-    {
       title: 'Log out', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
   ],

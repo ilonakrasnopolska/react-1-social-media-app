@@ -12,9 +12,7 @@ const ChatWindow = () => {
   const chats = useSelector(state => state.dialogs.chats);
   const currentChat = chats.find(chat => chat.chatId === Number(userId));
 
-  // Определим, отображать ли кнопку для нового чата
   const showCreateNewChat = !activeUserId && !currentChat;
-
 
   let chatBubbles = currentChat
     ? currentChat.messages.length > 0
@@ -29,7 +27,7 @@ const ChatWindow = () => {
     <section className="chat section">
       <ul className={currentChat ? Classes.list : Classes.emptyList}>
         {chatBubbles}
-        {showCreateNewChat && <CreateNewChat />}
+        {showCreateNewChat && <CreateNewChat/>}
       </ul>
       {currentChat && <NewMessage chatId={currentChat.chatId}/>}
     </section>
