@@ -26,7 +26,8 @@
   flex-direction: column;
 }
 
-.initialList {
+.initialList,
+.noChat {
   font-size: 27px;
   color: #194770;
 }
@@ -39,7 +40,8 @@
 }
 
 @media (max-width: 650px) {
-  .initialList {
+  .initialList,
+  .noChat {
     font-size: 14px;
   }
 }

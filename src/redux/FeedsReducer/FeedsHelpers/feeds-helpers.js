@@ -3,3 +3,7 @@ export const filterFeedsHelpers = (state, action) => {
 
   return state.filteredFeeds = filteredFeeds;
 }
+
+export const setActiveCategoryHelpers = (state, action) => {
+  return state.activeCategory = action.payload;
+}

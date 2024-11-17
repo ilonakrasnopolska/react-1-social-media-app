@@ -6,7 +6,6 @@ import { sendMessage, updateNewMessageText } from '../../../../../../redux/Dialo
 
 
 const NewMessage = ({chatId}) => {
-  console.log(chatId)
   const dispatch = useDispatch();
   const newMessageText = useSelector(state => state.dialogs.newMessageText);
 
@@ -19,12 +18,21 @@ const NewMessage = ({chatId}) => {
     const text = e.target.value;
     dispatch(updateNewMessageText(text));
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage(e);
+    }
+  };
+
   return (
     <div className={Classes.container}>
-      <form className={Classes.form} action="" method="POST">
+      <form className={Classes.form} action="" method="POST" onSubmit={handleSendMessage}>
         <textarea
           value={newMessageText}
           onChange={onMessageChange}
+          onKeyDown={handleKeyDown}
           className={Classes.textarea}
           placeholder="Type your message here..."/>
         <button onClick={handleSendMessage} className={Classes.button}>

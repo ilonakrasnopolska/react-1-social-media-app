@@ -3,11 +3,15 @@
   flex-direction: column;
   position: absolute;
   top: 70px;
-  right: 0;
   width: 200px;
   background-color: #dcdcff;
   overflow-y: auto;
   max-height: 200px;
+  scrollbar-width: none;
+}
+
+.dropdown::-webkit-scrollbar {
+  display: none;
 }
 
 .contact {

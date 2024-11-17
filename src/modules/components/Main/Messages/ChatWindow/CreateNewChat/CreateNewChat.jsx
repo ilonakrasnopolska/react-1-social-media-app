@@ -19,7 +19,6 @@ const CreateNewChat = () => {
     contact.name.toLowerCase().includes(searchUserText.toLowerCase())
   );
 
-  // Отображать список только если есть текст в поле поиска
   const shouldDisplayUserList = searchUserText.length > 0;
 
   return (

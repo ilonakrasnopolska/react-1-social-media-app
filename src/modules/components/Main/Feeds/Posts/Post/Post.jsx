@@ -16,7 +16,7 @@ const Post = ({post}) => {
               {post.name === 'AniHub' && <span role="img" aria-label="verified">✔️</span>}
             </div>
             <div>
-            <span>{post.time}</span>
+              <span>{post.time}</span>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@ const Post = ({post}) => {
           <span>
            {post.content}
           </span>
-          {post.poster && <img src={post.poster} alt="Poster" className={Classes.poster} />}
+          {post.poster && <img src={post.poster} alt="Poster" className={Classes.poster}/>}
         </div>
       </div>
     </li>

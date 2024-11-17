@@ -4,32 +4,30 @@ import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import ChatBubble from "./ChatBubble/ChatBubble";
 import NewMessage from "./NewMessage/NewMessage";
-import CreateNewChat from "./CreateNewChat/CreateNewChat";
 
 const ChatWindow = () => {
   const {userId} = useParams();
-  const activeUserId = useSelector(state => state.dialogs.activeUserId);
   const chats = useSelector(state => state.dialogs.chats);
   const currentChat = chats.find(chat => chat.chatId === Number(userId));
 
-  // Определим, отображать ли кнопку для нового чата
-  const showCreateNewChat = !activeUserId && !currentChat;
 
-
-  let chatBubbles = currentChat
+  const chatContent = currentChat
     ? currentChat.messages.length > 0
-      ? currentChat.messages.map((message, index) => (
-        <ChatBubble chatId={currentChat.chatId} messageId={message.id} key={index} />
+      ? currentChat.messages.map((message) => (
+        <ChatBubble
+          chatId={currentChat.chatId}
+          messageId={message.id}
+          key={message.id}
+        />
       ))
       : <li className={Classes.initialList}>Start conversation..</li>
-    : null;
+    : <li className={Classes.noChat}>Please select a chat..</li>;
 
 
   return (
     <section className="chat section">
       <ul className={currentChat ? Classes.list : Classes.emptyList}>
-        {chatBubbles}
-        {showCreateNewChat && <CreateNewChat />}
+        {chatContent}
       </ul>
       {currentChat && <NewMessage chatId={currentChat.chatId}/>}
     </section>

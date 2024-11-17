@@ -15,18 +15,25 @@
   flex-direction: column;
 }
 
-.item button {
+.button {
+  display: flex;
+  width: 100%;
   background-color: transparent;
   padding: 10px;
   font-size: 21px;
   color: #194770;
 }
 
+.activeButton {
+  background-color: #194770;
+  color: #fff;
+}
+
 @media (max-width: 890px) {
   .categories {
     padding: 7px;
   }
-  .item button {
+  .button {
     font-size: 14px;
   }
 }

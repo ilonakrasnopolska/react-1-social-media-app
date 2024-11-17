@@ -4,12 +4,7 @@ import AnimeItem from "./AnimeItem/AnimeItem";
 import {useSelector} from "react-redux";
 
 const AnimeList = () => {
-  const animeList = useSelector(state => state.anime.anime);
-  const searchQuery = useSelector(state => state.anime.newSearchAnimeText);
-
-  const filteredAnime = animeList.filter(anime =>
-    anime.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredAnime = useSelector(state => state.anime.filteredAnime);
 
   if (filteredAnime.length === 0) {
     return <div className={Classes.noResults}>Nothing found</div>;

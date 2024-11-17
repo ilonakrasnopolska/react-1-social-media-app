@@ -73,6 +73,7 @@ button {
 
 .users.section {
   background-color: #bfd1ff;
+  display: grid;
 }
 
 .chat {

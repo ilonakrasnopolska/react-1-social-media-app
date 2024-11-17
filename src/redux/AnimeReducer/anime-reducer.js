@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import covers from "./AnimeHelpers/anime-cover";
-import {updateSearchAnimeTextHelper} from "./AnimeHelpers/anime-helpers";
+import {updateSearchAnimeTextHelper, filterAnimeListHelper} from "./AnimeHelpers/anime-helpers";
 // Счетчики
 let animeIdCounter = 1;
 
@@ -43,7 +43,10 @@ const initialState = {
     },
   ],
   newSearchAnimeText: '',
+  filteredAnime: [],
 }
+initialState.filteredAnime = initialState.anime;
+
 
 const animeSlice = createSlice({
   name: 'anime',
@@ -51,6 +54,7 @@ const animeSlice = createSlice({
   reducers: {
     setSearchQuery: (state, action) => {
       updateSearchAnimeTextHelper(state, action);
+      filterAnimeListHelper(state);
     },
   }
 })
