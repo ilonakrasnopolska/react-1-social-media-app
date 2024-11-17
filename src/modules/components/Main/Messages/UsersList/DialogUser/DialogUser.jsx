@@ -10,16 +10,16 @@ const DialogUser = ({ userId }) => {
     <li className={Classes.info}>
       <NavLink
         to={`/messages/${currentUser.userId}`}
-        className={({isActive}) =>
+        className={({ isActive }) =>
           `${Classes.link} ${isActive ? Classes.active : ""}`
         }
       >
-        {({isActive}) => (
-          <button className={`${Classes.button} ${isActive ? Classes.activeButton : ""}`}>
-            <img className={Classes.avatar} src={currentUser.avatar} alt="Avatar"/>
-            <span className={Classes.name}>{currentUser.name}</span>
-          </button>
-        )}
+        <button
+          className={`${Classes.button} ${currentUser.userId === userId ? Classes.activeButton : ""}`}
+        >
+          <img className={Classes.avatar} src={currentUser.avatar} alt="Avatar" />
+          <span className={Classes.name}>{currentUser.name}</span>
+        </button>
       </NavLink>
     </li>
   )

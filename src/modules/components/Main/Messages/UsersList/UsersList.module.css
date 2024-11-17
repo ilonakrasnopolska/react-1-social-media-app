@@ -1,4 +1,12 @@
 .list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  height: 660px;
+  overflow-y: auto;
+  scrollbar-width: none;
   padding: 15px 0;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }

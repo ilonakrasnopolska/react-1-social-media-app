@@ -1,6 +1,11 @@
 .feeds {
   width: 68%;
   overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.feeds::-webkit-scrollbar {
+  display: none;
 }
 
 .list {

@@ -49,16 +49,75 @@
   flex-direction: column;
   padding: 0 20px 0 100px;
   overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.text {
+  display: flex;
+  gap: 15px;
 }
 
 .content span {
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 10px;
 }
 
 .poster {
   width: 200px;
   height: 300px;
+}
+
+.btn__like {
+  display: flex;
+  position: relative;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+}
+
+.btn__likeSvg {
+  position: absolute;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transform: rotate(-45deg); /* Поворот для создания формы сердца */
+  top: 10px;
+  right: 12px;
+}
+
+.btn__likeSvg , .btn__likeSvg::before,
+.btn__likeSvg::after {
+  width: 15px; /* Ширина кнопки */
+  height: 15px; /* Высота кнопки */
+  background-color: #194770; /* Цвет сердца */
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn__likeSvg::before,
+.btn__likeSvg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%; /* Создание полукруга */
+}
+
+.btn__likeSvg::before {
+  top: -10px; /* Расположение верхнего полукруга */
+  left: 0;
+}
+
+.btn__likeSvg::after {
+  left: 10px; /* Расположение правого полукруга */
+  top: 0;
+}
+
+.liked .btn__likeSvg::before,
+.liked .btn__likeSvg::after,
+.liked .btn__likeSvg {
+  background-color: #db0303;
 }
 
 @media (max-width: 900px) {

@@ -1,7 +1,7 @@
 import {
   updateNewMessageTextHelper,
   sendMessageHelper,
-  updateSearchUserTextHelper, startConversationHelper
+  updateSearchUserTextHelper, startConversationHelper, deleteMessageHelper
 } from "./DialogsHelpers/dialogs-helpers";
 import {createSlice} from '@reduxjs/toolkit';
 import avatars from "../Assets/Avatars-src";
@@ -132,12 +132,24 @@ const initialState = {
   activeUserId: null,
 }
 
+initialState.contacts = initialState.users
+  .map(user => ({
+    name: user.name,
+    userId: user.userId,
+    url: user.url,
+    avatar: user.avatar,
+  }))
+  .concat(initialState.contacts);
+
 const dialogsSlice = createSlice({
   name: 'dialogs',
   initialState,
   reducers: {
     sendMessage: (state, action) => {
       sendMessageHelper(state, action);
+    },
+    deleteMessage: (state, action) => {
+      deleteMessageHelper(state, action)
     },
     updateNewMessageText: (state, action) => {
       updateNewMessageTextHelper(state, action);
@@ -151,18 +163,15 @@ const dialogsSlice = createSlice({
     selectUser: (state, action) => {
       state.activeUserId = action.payload.userId;
     },
-    deselectUser: (state) => {
-      state.activeUserId = null;
-    },
   }
 })
 
 export const {
   sendMessage,
+  deleteMessage,
   updateNewMessageText,
   updateSearchUserText,
   startConversation,
-  selectUser,
-  deselectUser
+  selectUser
 } = dialogsSlice.actions;
 export default dialogsSlice.reducer;

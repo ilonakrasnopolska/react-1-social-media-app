@@ -1,6 +1,6 @@
 import avatars from "../Assets/Avatars-src";
 import {createSlice, current} from "@reduxjs/toolkit";
-import {filterFeedsHelpers} from "./FeedsHelpers/feeds-helpers";
+import {filterFeedsHelpers, setActiveCategoryHelpers} from "./FeedsHelpers/feeds-helpers";
 import posters from "../Assets/Posters-src";
 
 // Счетчики
@@ -55,6 +55,7 @@ const initialState = {
     },
   ],
   filteredFeeds: [],
+  activeCategory: 'View all',
 }
 
 const feedsSlice = createSlice({
@@ -63,12 +64,15 @@ const feedsSlice = createSlice({
   reducers: {
     filterFeeds: (state, action) => {
       filterFeedsHelpers(state, action)
-    }
+    },
+    setActiveCategory: (state, action) => {
+      setActiveCategoryHelpers(state, action)
+    },
   }
 })
 
 export const {
-  filterFeeds
+  filterFeeds, setActiveCategory
 } = feedsSlice.actions;
 
 

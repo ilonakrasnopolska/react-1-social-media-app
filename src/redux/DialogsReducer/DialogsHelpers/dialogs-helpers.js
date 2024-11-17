@@ -1,5 +1,4 @@
 import avatars from "../../Assets/Avatars-src";
-import {current} from "@reduxjs/toolkit";
 
 const CURRENT_USER_NAME = "Ilona Sue"
 const getData = () => {
@@ -39,6 +38,19 @@ export const sendMessageHelper = (state, action) => {
     return state; // Возвращаем обновлённое состояние
   }
 }
+export const deleteMessageHelper = (state, action) => {
+  const { chatId, messageId } = action.payload;
+
+  const chat = state.chats.find(chat => chat.chatId === chatId);
+  if (!chat) {
+    console.error(`Chat with id ${chatId} not found.`);
+    return state;
+  }
+
+  chat.messages = chat.messages.filter(message => message.id !== messageId);
+
+  return state;
+}
 export const updateSearchUserTextHelper = (state, action) => {
   state.searchUserText = action.payload;
   return state;
@@ -46,14 +58,25 @@ export const updateSearchUserTextHelper = (state, action) => {
 export const startConversationHelper = (state, action) => {
   const newUser = action.payload;
   const name = action.payload.name;
-  const newChatId = action.payload.userId;
-  const newChat = {
-    chatId: newChatId,
-    participants: [name, 'Ilona Sue'],
-    messages: []
+
+  // Проверяем, существует ли уже чат с этим пользователем
+  const existingChat = state.chats.find(chat =>
+    chat.participants.includes(name) && chat.participants.includes('Ilona Sue') // Участники должны совпадать
+  );
+
+  if (existingChat) {
+    state.activeUserId = existingChat.chatId;
+  } else {
+    const newChatId = action.payload.userId;
+    const newChat = {
+      chatId: newChatId,
+      participants: [name, 'Ilona Sue'],
+      messages: []
+    }
+    state.users.push(newUser);
+    state.chats.push(newChat);
   }
-  state.users.push(newUser);
-  state.chats.push(newChat);
-  console.log(current(state))
+
+  state.searchUserText = '';
   return state
 }

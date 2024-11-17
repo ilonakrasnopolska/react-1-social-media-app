@@ -20,12 +20,20 @@ const AddComment = ({postId}) => {
     dispatch(updateNewCommentText({postId, value}));
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleAddComment(e);
+    }
+  };
+
   return (
     <div className={Classes.add_comment}>
-      <form className={Classes.comment_form}>
+      <form className={Classes.comment_form} action="" method="POST" onSubmit={handleAddComment}>
         <textarea
           value={newCommentText}
           onChange={onCommentChange}
+          onKeyDown={handleKeyDown}
           className={Classes.comment_input}
           placeholder="Add a comment..."/>
         <button onClick={handleAddComment} className={Classes.submit_button}>Add</button>
