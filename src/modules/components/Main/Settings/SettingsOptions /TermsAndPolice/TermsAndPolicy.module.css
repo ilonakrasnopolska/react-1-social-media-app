@@ -1,0 +1,29 @@
+.content,
+.wrapper,
+.terms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.terms {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.content {
+  padding: 0 120px;
+}
+
+.wrapper {
+  padding: 30px;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.title {
+  color: #194770;
+  padding: 5px;
+  font-size: 25px;
+  margin-bottom: 10px;
+}

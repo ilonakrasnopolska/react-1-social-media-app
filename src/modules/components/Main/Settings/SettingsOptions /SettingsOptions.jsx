@@ -42,9 +42,7 @@ const SettingsOptions = () => {
   }
 
   return (
-    <div>
-      {SettingComponent}
-    </div>
+      SettingComponent
   );
 };
 

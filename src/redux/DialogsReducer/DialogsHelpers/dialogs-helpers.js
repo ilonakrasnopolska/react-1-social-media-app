@@ -59,7 +59,6 @@ export const startConversationHelper = (state, action) => {
   const newUser = action.payload;
   const name = action.payload.name;
 
-  // Проверяем, существует ли уже чат с этим пользователем
   const existingChat = state.chats.find(chat =>
     chat.participants.includes(name) && chat.participants.includes('Ilona Sue') // Участники должны совпадать
   );
@@ -79,4 +78,7 @@ export const startConversationHelper = (state, action) => {
 
   state.searchUserText = '';
   return state
+}
+export const selectUserHelper = (state, action) => {
+  return state.activeUserId = action.payload.userId;
 }

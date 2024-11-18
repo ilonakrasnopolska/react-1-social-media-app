@@ -5,6 +5,7 @@ const baseSettingsUrl = '/settings/';
 
 // Счетчики
 let settingsIdCounter = 1;
+let optionsIdCounter = 1;
 let urlIdCounter = 1;
 
 //Базовый state
@@ -34,6 +35,12 @@ const initialState = {
     {
       title: 'Log out', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
+  ],
+  languages: [
+    {name: 'English', code: 'en', id: optionsIdCounter++},
+    {name: 'Spanish', code: 'es', id: optionsIdCounter++},
+    {name: 'Russian', code: 'ru', id: optionsIdCounter++},
+    {name: 'German', code: 'de', id: optionsIdCounter++},
   ],
 }
 

@@ -2,7 +2,7 @@ import Classes from "./UsersList.module.css";
 import React from "react";
 import DialogUser from "./DialogUser/DialogUser";
 import { useSelector } from 'react-redux';
-import CreateNewChat from "../ChatWindow/CreateNewChat/CreateNewChat";
+import CreateNewChat from "./CreateNewChat/CreateNewChat";
 
 
 const UsersList = () => {
