@@ -1,0 +1,41 @@
+.terms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.termItem {
+  width: 100%;
+}
+
+.accordionButton {
+  width: 100%;
+  padding: 15px;
+  background-color: #194770;
+  color: #dcdcff;
+  font-size: 20px;
+  font-weight: bold;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out;
+}
+
+.active {
+  background-color: #e2eaff;
+  color: #194770;
+}
+
+.accordionContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #194770;
+  color: #e2eaff;
+  padding: 30px;
+}
+
+.description {
+  font-size: 18px;
+}
