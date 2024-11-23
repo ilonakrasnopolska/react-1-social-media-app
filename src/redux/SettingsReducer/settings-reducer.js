@@ -1,6 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {toggleTermHelper,
-  updateContactMessageTextHelper
+import {
+  toggleTermHelper,
+  updateRequestMessageTextHelper,
+  sendSupportMessageHelper,
+  updateRequestUserNameTextHelper,
+  validateFormHelper,
 } from "./SettingsHelpers/settings-helpers";
 
 // Константы
@@ -23,9 +27,6 @@ const initialState = {
     },
     {
       title: 'Notifications', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
-    },
-    {
-      title: 'Insights', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
     {
       title: 'Language', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
@@ -107,7 +108,7 @@ const initialState = {
             `trademarks, or other rights.`,
         },
         {
-          text: `Respect the intellectual property of the platform and do not copy, modify,`+
+          text: `Respect the intellectual property of the platform and do not copy, modify,` +
             `or distribute any part of it.`,
         }
       ],
@@ -164,7 +165,15 @@ const initialState = {
       ],
     },
   ],
-  contactMessageText: '',
+  helpCenter: {
+    userQueries: [],
+    requestUserNameText: '',
+    requestMessageText: '',
+    errors: {
+      userNameError: '',
+      messageError: ''
+    }
+  },
 }
 
 const settingsSlice = createSlice({
@@ -174,13 +183,28 @@ const settingsSlice = createSlice({
     toggleTerm: (state, action) => {
       toggleTermHelper(state, action)
     },
-    updateContactMessageText: (state, action) => {
-      updateContactMessageTextHelper(state, action)
+    updateRequestUserNameText: (state, action) => {
+      updateRequestUserNameTextHelper(state, action)
+        state.helpCenter.errors.userNameError = '';
+    },
+    updateRequestMessageText: (state, action) => {
+      updateRequestMessageTextHelper(state, action)
+        state.helpCenter.errors.messageError = '';
+    },
+    sendSupportMessage: (state) => {
+      sendSupportMessageHelper(state)
+    },
+    validateForm: (state) => {
+      validateFormHelper(state)
     }
   }
 })
 
 export const {
   toggleTerm,
+  updateRequestUserNameText,
+  updateRequestMessageText,
+  sendSupportMessage,
+  validateForm
 } = settingsSlice.actions;
 export default settingsSlice.reducer;
