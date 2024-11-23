@@ -3,7 +3,6 @@ import {useParams} from "react-router-dom";
 import PersonalAccount from "./PersonalAccount/PersonalAccount";
 import Confidentiality from "./Confidentiality/Confidentiality";
 import Notifications from "./Notifications/Notifications";
-import Insights from "./Insights/Insights";
 import Language from "./Language/Language";
 import TermsAndPolicy from "./TermsAndPolice/TermsAndPolicy";
 import Help from "./Help/Help";
@@ -23,18 +22,15 @@ const SettingsOptions = () => {
       SettingComponent = <Notifications/>;
       break;
     case '4':
-      SettingComponent = <Insights/>;
-      break;
-    case '5':
       SettingComponent = <Language/>;
       break;
-    case '6':
+    case '5':
       SettingComponent = <TermsAndPolicy/>;
       break;
-    case '7':
+    case '6':
       SettingComponent = <Help/>;
       break;
-    case '8':
+    case '7':
       SettingComponent = <LogOut/>;
       break;
     default:
@@ -42,9 +38,7 @@ const SettingsOptions = () => {
   }
 
   return (
-    <div>
-      {SettingComponent}
-    </div>
+      SettingComponent
   );
 };
 

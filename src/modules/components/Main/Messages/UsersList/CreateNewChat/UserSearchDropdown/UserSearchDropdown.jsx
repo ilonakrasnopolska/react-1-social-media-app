@@ -7,6 +7,7 @@ import {startConversation, selectUser} from "../../../../../../../redux/DialogsR
 
 const UserSearchDropdown = ({filteredContacts}) => {
   const dispatch = useDispatch();
+
   const onStartChat = (contact) => {
     dispatch(selectUser({ userId: contact.userId }));
     dispatch(startConversation(contact))
