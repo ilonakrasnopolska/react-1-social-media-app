@@ -11,6 +11,8 @@
 .post_translation {
   width: 100%;
   margin-bottom: 50px;
+  background-color: #194770;
+  padding: 20px;
 }
 
 .content {
@@ -24,7 +26,7 @@
 }
 
 .title {
-  color: #194770;
+  color: #ffffff;
   padding: 5px;
   font-size: 25px;
   margin-bottom: 10px;
@@ -34,6 +36,9 @@
   display: flex;
   gap: 10px;
   font-size: 23px;
+  background-color: #ffffff;
+  padding: 10px;
+  color: #194770;
 }
 
 .content select {

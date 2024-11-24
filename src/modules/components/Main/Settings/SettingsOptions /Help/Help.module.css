@@ -19,12 +19,20 @@
 
 .title {
   color: #194770;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+}
+
+.text {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #194770;
 }
 
 .contact_form {
   display: flex;
   flex-direction: column;
+  background-color: #194770;
+  padding: 20px;
 }
 
 .contact_form div {
@@ -47,10 +55,10 @@
 
 .button {
   width: 150px;
-  background-color: #194770;
-  color: #e2eaff;
+  background-color: #e2eaff;
+  color: #194770;
   padding: 10px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .error {

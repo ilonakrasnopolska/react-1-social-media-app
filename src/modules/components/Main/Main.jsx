@@ -6,6 +6,7 @@ import Messages from "./Messages/Messages";
 import Anime from "./Anime/Anime";
 import Settings from "./Settings/Settings";
 import Feeds from "./Feeds/Feeds";
+import LogIn from "./Settings/SettingsOptions /LogOut/LogIn/LogIn";
 
 const Main = () => {
   return (
@@ -18,6 +19,7 @@ const Main = () => {
           <Route path="/anime" element={<Anime/>}/>
           <Route path="/settings" element={<Settings replace/>}/>
           <Route path="/settings/:id?" element={<Settings />} />
+          <Route path="/logIn" element={<LogIn />} />
         </Routes>
       </div>
     </main>

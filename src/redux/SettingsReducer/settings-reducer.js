@@ -5,6 +5,7 @@ import {
   sendSupportMessageHelper,
   updateRequestUserNameTextHelper,
   validateFormHelper,
+  updateConfidentialitySettingHelper, saveConfidentialSettingsHelper,
 } from "./SettingsHelpers/settings-helpers";
 
 // Константы
@@ -15,6 +16,8 @@ let settingsIdCounter = 1;
 let optionsIdCounter = 1;
 let urlIdCounter = 1;
 let termIdCounter = 1;
+let confOptionIdCounter = 1;
+let confSettingIdCounter = 1;
 
 //Базовый state
 const initialState = {
@@ -24,9 +27,6 @@ const initialState = {
     },
     {
       title: 'Confidentiality', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
-    },
-    {
-      title: 'Notifications', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
     {
       title: 'Language', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
@@ -41,6 +41,46 @@ const initialState = {
       title: 'Log out', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
   ],
+  confidentiality: {
+    confidentialitySettings: [
+      {
+        id: confOptionIdCounter++,
+        title: "Profile Visibility",
+        description: "Choose who can see your profile and activity.",
+        checked: "Public",
+        settings: [
+          { id: confSettingIdCounter++, name: "Public", value: "Public" },
+          { id: confSettingIdCounter++, name: "Friends Only", value: "Friends" },
+          { id: confSettingIdCounter++, name: "Private", value: "Private" },
+        ],
+      },
+      {
+        id: confOptionIdCounter++,
+        title: "Data Sharing",
+        description: "Control how your data is shared with third-party services.",
+        checked: "Allow data sharing",
+        settings: [
+          { id: confSettingIdCounter++, name: "Allow data sharing", value: "Allow data sharing" },
+          { id: confSettingIdCounter++, name: "Disable data sharing", value: "Disable data sharing" },
+        ],
+      },
+      {
+        id: confOptionIdCounter++,
+        title: "Ad Preferences",
+        description: "Manage ad personalization based on your activity.",
+        checked: "Enable personalized ads",
+        settings: [
+          { id: confSettingIdCounter++, name: "Enable personalized ads", value: "Enable personalized ads" },
+          { id: confSettingIdCounter++, name: "Disable personalized ads", value: "Disable personalized ads" },
+        ],
+      },
+    ],
+    selectedConfidentialitySettings: {
+      profileVisibility: "Public",
+      dataSharing: true,
+      adPreferences: true,
+    },
+  },
   languages: [
     {name: 'English', code: 'en', id: optionsIdCounter++},
     {name: 'Spanish', code: 'es', id: optionsIdCounter++},
@@ -174,6 +214,18 @@ const initialState = {
       messageError: ''
     }
   },
+  logOut: {
+    goBack: {
+      name: "Settings",
+      url: "/settings",
+      id: 5,
+    },
+    goOut: {
+      name: "LogIn",
+      url: "/logIn",
+      id: 6,
+    },
+  },
 }
 
 const settingsSlice = createSlice({
@@ -185,17 +237,23 @@ const settingsSlice = createSlice({
     },
     updateRequestUserNameText: (state, action) => {
       updateRequestUserNameTextHelper(state, action)
-        state.helpCenter.errors.userNameError = '';
+      state.helpCenter.errors.userNameError = '';
     },
     updateRequestMessageText: (state, action) => {
       updateRequestMessageTextHelper(state, action)
-        state.helpCenter.errors.messageError = '';
+      state.helpCenter.errors.messageError = '';
     },
     sendSupportMessage: (state) => {
       sendSupportMessageHelper(state)
     },
     validateForm: (state) => {
       validateFormHelper(state)
+    },
+    saveConfidentialSettings: (state) => {
+      saveConfidentialSettingsHelper(state)
+    },
+    updateConfidentialitySetting: (state, action) => {
+      updateConfidentialitySettingHelper(state, action)
     }
   }
 })
@@ -205,6 +263,8 @@ export const {
   updateRequestUserNameText,
   updateRequestMessageText,
   sendSupportMessage,
-  validateForm
+  validateForm,
+  saveConfidentialSettings,
+  updateConfidentialitySetting
 } = settingsSlice.actions;
 export default settingsSlice.reducer;

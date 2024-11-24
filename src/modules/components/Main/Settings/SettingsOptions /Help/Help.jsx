@@ -43,6 +43,7 @@ const Help = () => {
       <div className={Classes.content}>
         <div className={Classes.wrapper}>
           <h2 className={Classes.title}>Contact Support</h2>
+          <p className={Classes.text}>Need help? Contact us below!</p>
           <form className={Classes.contact_form} action="" method="POST" onSubmit={submitSupportMessage}>
             <div>
               <input className={`${Classes.input_name} ${errors.userNameError ? Classes.error : ''}`}

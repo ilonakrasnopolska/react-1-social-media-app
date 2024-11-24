@@ -71,3 +71,43 @@ export const validateFormHelper = (state) => {
 
   return isValid; // Возвращаем true, если форма валидна
 }
+export const updateConfidentialitySettingHelper = (state, action) => {
+  const { settingValue, settingTitle } = action.payload;
+  const confidentialitySetting = state.confidentiality.confidentialitySettings.find(
+    (setting) => setting.title === settingTitle
+  );
+
+  if (confidentialitySetting) {
+    confidentialitySetting.checked = settingValue;
+  }
+
+}
+export const saveConfidentialSettingsHelper = (state) => {
+  const confirmSave = window.confirm('Are you sure you want to save the changes?');
+  if (confirmSave) {
+    const selectedConfidentialitySettings = {};
+
+    state.confidentiality.confidentialitySettings.forEach((setting) => {
+      // Преобразуем title в удобный формат ключа для объекта
+      const settingKey = setting.title
+        .toLowerCase()
+        .replace(/ (.)/g, (match, letter) => letter.toUpperCase());
+
+      // Условие для обработки значений
+      let value;
+      if (setting.title === "Profile Visibility") {
+        value = setting.checked;
+      } else if (setting.title === "Data Sharing" || setting.title === "Ad Preferences") {
+        value = setting.checked === "Allow data sharing" || setting.checked === "Enable personalized ads";
+      } else {
+        value = false;
+      }
+
+      // Добавляем значение в объект
+      selectedConfidentialitySettings[settingKey] = value;
+    });
+
+    // Обновляем состояние с новыми значениями
+    state.confidentiality.selectedConfidentialitySettings = selectedConfidentialitySettings;
+  }
+}
