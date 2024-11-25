@@ -1,3 +1,9 @@
+export const editPersonalInfoTextHelper = (state, action) => {
+  const { key, value } = action.payload;
+  if (state.personalAccount.userData[key] !== undefined) {
+    state.personalAccount.userData[key] = value;
+  }
+}
 export const toggleTermHelper = (state, action) => {
   const term = state.termsAndConditions.find((t) => t.id === action.payload);
   if (term) {

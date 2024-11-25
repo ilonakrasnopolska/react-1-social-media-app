@@ -53,3 +53,6 @@ export const handleLikeHelper = (state, action) => {
   }
   return state;
 }
+export const updateProfileInfoHelper = (state, action) => {
+  return state.personalAccount.userData = action.payload;
+}

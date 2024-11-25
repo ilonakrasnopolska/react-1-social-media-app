@@ -1,11 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit';
+import avatars from "../Assets/Avatars-src";
 import {
+  editPersonalInfoTextHelper,
+  editPersonalAccountHelper,
   toggleTermHelper,
   updateRequestMessageTextHelper,
   sendSupportMessageHelper,
   updateRequestUserNameTextHelper,
   validateFormHelper,
-  updateConfidentialitySettingHelper, saveConfidentialSettingsHelper,
+  updateConfidentialitySettingHelper,
+  saveConfidentialSettingsHelper
 } from "./SettingsHelpers/settings-helpers";
 
 // Константы
@@ -40,7 +44,21 @@ const initialState = {
     {
       title: 'Log out', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
+
   ],
+  personalAccount: {
+    userData: {
+      avatar: avatars.ilonaSue,
+      name: 'Ilona Sue',
+      dayOfBirth: '9 July',
+      city: 'Haifa',
+      gender: 'Female',
+      favAnime: 'Naruto'
+    },
+    editPage: {
+      title: "Edit Profile", id: settingsIdCounter++,  url: `${baseSettingsUrl}${urlIdCounter++}`
+    },
+  },
   confidentiality: {
     confidentialitySettings: [
       {
@@ -49,9 +67,9 @@ const initialState = {
         description: "Choose who can see your profile and activity.",
         checked: "Public",
         settings: [
-          { id: confSettingIdCounter++, name: "Public", value: "Public" },
-          { id: confSettingIdCounter++, name: "Friends Only", value: "Friends" },
-          { id: confSettingIdCounter++, name: "Private", value: "Private" },
+          {id: confSettingIdCounter++, name: "Public", value: "Public"},
+          {id: confSettingIdCounter++, name: "Friends Only", value: "Friends"},
+          {id: confSettingIdCounter++, name: "Private", value: "Private"},
         ],
       },
       {
@@ -60,8 +78,8 @@ const initialState = {
         description: "Control how your data is shared with third-party services.",
         checked: "Allow data sharing",
         settings: [
-          { id: confSettingIdCounter++, name: "Allow data sharing", value: "Allow data sharing" },
-          { id: confSettingIdCounter++, name: "Disable data sharing", value: "Disable data sharing" },
+          {id: confSettingIdCounter++, name: "Allow data sharing", value: "Allow data sharing"},
+          {id: confSettingIdCounter++, name: "Disable data sharing", value: "Disable data sharing"},
         ],
       },
       {
@@ -70,8 +88,8 @@ const initialState = {
         description: "Manage ad personalization based on your activity.",
         checked: "Enable personalized ads",
         settings: [
-          { id: confSettingIdCounter++, name: "Enable personalized ads", value: "Enable personalized ads" },
-          { id: confSettingIdCounter++, name: "Disable personalized ads", value: "Disable personalized ads" },
+          {id: confSettingIdCounter++, name: "Enable personalized ads", value: "Enable personalized ads"},
+          {id: confSettingIdCounter++, name: "Disable personalized ads", value: "Disable personalized ads"},
         ],
       },
     ],
@@ -232,6 +250,15 @@ const settingsSlice = createSlice({
   name: 'settings',
   initialState,
   reducers: {
+    editPersonalInfoText: (state, action) => {
+      editPersonalInfoTextHelper(state, action)
+    },
+    saveConfidentialSettings: (state) => {
+      saveConfidentialSettingsHelper(state)
+    },
+    updateConfidentialitySetting: (state, action) => {
+      updateConfidentialitySettingHelper(state, action)
+    },
     toggleTerm: (state, action) => {
       toggleTermHelper(state, action)
     },
@@ -249,22 +276,17 @@ const settingsSlice = createSlice({
     validateForm: (state) => {
       validateFormHelper(state)
     },
-    saveConfidentialSettings: (state) => {
-      saveConfidentialSettingsHelper(state)
-    },
-    updateConfidentialitySetting: (state, action) => {
-      updateConfidentialitySettingHelper(state, action)
-    }
   }
 })
 
 export const {
+  editPersonalInfoText,
+  saveConfidentialSettings,
+  updateConfidentialitySetting,
   toggleTerm,
   updateRequestUserNameText,
   updateRequestMessageText,
   sendSupportMessage,
-  validateForm,
-  saveConfidentialSettings,
-  updateConfidentialitySetting
+  validateForm
 } = settingsSlice.actions;
 export default settingsSlice.reducer;

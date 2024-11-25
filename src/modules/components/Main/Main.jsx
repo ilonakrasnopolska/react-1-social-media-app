@@ -17,7 +17,6 @@ const Main = () => {
           <Route path="/messages/:userId?" element={<Messages/>}/>
           <Route path="/feeds" element={<Feeds/>}/>
           <Route path="/anime" element={<Anime/>}/>
-          <Route path="/settings" element={<Settings replace/>}/>
           <Route path="/settings/:id?" element={<Settings />} />
           <Route path="/logIn" element={<LogIn />} />
         </Routes>

@@ -6,9 +6,11 @@ import Language from "./Language/Language";
 import TermsAndPolicy from "./TermsAndPolice/TermsAndPolicy";
 import Help from "./Help/Help";
 import LogOut from "./LogOut/LogOut";
+import EditProfile from "./PersonalAccount/EditProfile/EditProfile";
 
 const SettingsOptions = () => {
   const {id} = useParams();
+
   let SettingComponent;
   switch (id) {
     case '1':
@@ -29,12 +31,16 @@ const SettingsOptions = () => {
     case '6':
       SettingComponent = <LogOut/>;
       break;
+    case '7':
+      console.log(id)
+      SettingComponent = <EditProfile/>;
+      break;
     default:
       SettingComponent = <div>NOT FOUND</div>;
   }
 
   return (
-      SettingComponent
+    SettingComponent
   );
 };
 

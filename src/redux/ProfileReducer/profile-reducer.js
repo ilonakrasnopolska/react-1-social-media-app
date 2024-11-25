@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 import avatars from "../Assets/Avatars-src";
 import {
   addPostHelper, deletePostHelper,
-  updateNewPostTextHelper, handleLikeHelper, toggleCommentsHelper
+  updateNewPostTextHelper, handleLikeHelper, toggleCommentsHelper, updateProfileInfoHelper
 } from "./ProfileHelpers/post-helpers";
 import {
   updateNewCommentTextHelper, replyOnCommentHelper,
@@ -82,6 +82,16 @@ const initialState = {
       }, newCommentText: '',
     },
   ],
+  personalAccount: {
+    userData: {
+      avatar: avatars.ilonaSue,
+      name: 'Ilona Sue',
+      dayOfBirth: '9 July',
+      city: 'Haifa',
+      gender: 'Female',
+      favAnime: 'Naruto'
+    }
+  },
   newPostText: '',
 };
 
@@ -116,6 +126,9 @@ const profileSlice = createSlice({
     deleteComment: (state, action) => {
       deleteCommentHelper(state, action);
     },
+    updateProfileInfo: (state, action) => {
+      updateProfileInfoHelper(state, action);
+    }
   },
 });
 
@@ -123,7 +136,8 @@ export const {
   addPost, deletePost,
   updateNewPostText, handleLike, toggleComments,
   updateNewCommentText, replyOnComment,
-  addComment, deleteComment
+  addComment, deleteComment,
+  updateProfileInfo
 } = profileSlice.actions;
 
 export default profileSlice.reducer;
