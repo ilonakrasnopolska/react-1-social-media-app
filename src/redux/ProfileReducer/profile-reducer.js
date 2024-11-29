@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import avatars from "../Assets/Avatars-src";
+
 import {
   addPostHelper, deletePostHelper,
   updateNewPostTextHelper, handleLikeHelper, toggleCommentsHelper, updateProfileInfoHelper
@@ -86,7 +87,7 @@ const initialState = {
     userData: {
       avatar: avatars.ilonaSue,
       name: 'Ilona Sue',
-      dayOfBirth: '9 July',
+      dateOfBirth: '1999-07-09',
       city: 'Haifa',
       gender: 'Female',
       favAnime: 'Naruto'

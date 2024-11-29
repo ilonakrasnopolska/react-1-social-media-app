@@ -34,6 +34,7 @@
 
 .content label {
   display: flex;
+  align-items: center;
   gap: 10px;
   font-size: 23px;
   background-color: #ffffff;
@@ -41,23 +42,34 @@
   color: #194770;
 }
 
-.content select {
+
+.reactSelect {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 90px;
   font-size: 20px;
   outline: none;
-  background-color: #f0f0f0;
-  border: 2px solid #194770;
+  background-color: #e2eaff;
   padding: 2px;
   cursor: pointer;
 }
 
+.reactSelect__control {
+  outline: none;
+  padding: 5px;
+  background-color: #e2eaff;
+}
+
+.reactSelect__menu {
+  background-color: #e2eaff;
+}
+
 .content input {
   width: 40px;
+  height: 20px;
   border: 2px solid #194770;
 }
+
 
 .button {
   padding: 15px;

@@ -1,5 +1,5 @@
 import avatars from "../Assets/Avatars-src";
-import {createSlice, current} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import {filterFeedsHelpers, setActiveCategoryHelpers} from "./FeedsHelpers/feeds-helpers";
 import posters from "../Assets/Posters-src";
 
@@ -30,11 +30,11 @@ const initialState = {
     },
     {
       avatar: `${avatars.sunnyPic}`, name: 'Sunny', category: 'Manga', time: '10:04', feedId: feedIdCounter++,
-      content: `I recommended for reading a new manga called Jujutsu K!` , poster: `${posters.JujutsuManga}`,
+      content: `I recommended for reading a new manga called Jujutsu K!` , poster: `${posters.JujutsuKaisen}`,
     },
     {
       avatar: `${avatars.markPic}`, name: 'Mark', category: 'Manga', time: '09:04', feedId: feedIdCounter++,
-      content: `A new chapter of Jujutsu K manga is coming out tomorrow!`, poster: `${posters.JujutsuManga}`,
+      content: `A new chapter of Jujutsu K manga is coming out tomorrow!`, poster: `${posters.JujutsuKaisen}`,
     },
   ],
   categories: [

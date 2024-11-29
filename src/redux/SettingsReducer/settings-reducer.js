@@ -2,14 +2,13 @@ import {createSlice} from '@reduxjs/toolkit';
 import avatars from "../Assets/Avatars-src";
 import {
   editPersonalInfoTextHelper,
-  editPersonalAccountHelper,
   toggleTermHelper,
   updateRequestMessageTextHelper,
   sendSupportMessageHelper,
   updateRequestUserNameTextHelper,
   validateFormHelper,
   updateConfidentialitySettingHelper,
-  saveConfidentialSettingsHelper
+  saveConfidentialSettingsHelper, updateSelectedLanguageHelper
 } from "./SettingsHelpers/settings-helpers";
 
 // Константы
@@ -17,7 +16,6 @@ const baseSettingsUrl = '/settings/';
 
 // Счетчики
 let settingsIdCounter = 1;
-let optionsIdCounter = 1;
 let urlIdCounter = 1;
 let termIdCounter = 1;
 let confOptionIdCounter = 1;
@@ -50,7 +48,7 @@ const initialState = {
     userData: {
       avatar: avatars.ilonaSue,
       name: 'Ilona Sue',
-      dayOfBirth: '9 July',
+      dateOfBirth: '1999-07-09',
       city: 'Haifa',
       gender: 'Female',
       favAnime: 'Naruto'
@@ -58,6 +56,11 @@ const initialState = {
     editPage: {
       title: "Edit Profile", id: settingsIdCounter++,  url: `${baseSettingsUrl}${urlIdCounter++}`
     },
+    errors: {
+      nameError: '',
+      cityError: '',
+      favAnimeError: ''
+    }
   },
   confidentiality: {
     confidentialitySettings: [
@@ -99,12 +102,13 @@ const initialState = {
       adPreferences: true,
     },
   },
-  languages: [
-    {name: 'English', code: 'en', id: optionsIdCounter++},
-    {name: 'Spanish', code: 'es', id: optionsIdCounter++},
-    {name: 'Russian', code: 'ru', id: optionsIdCounter++},
-    {name: 'German', code: 'de', id: optionsIdCounter++},
-  ],
+  languageSettings: {
+    languages: {
+      en: { name: 'English', code: 'en' },
+      ru: { name: 'Russian', code: 'ru' },
+    },
+    selectedLanguage: 'en',
+  },
   termsAndConditions: [
     {
       term: 'Account Responsibility', id: termIdCounter++,
@@ -252,12 +256,18 @@ const settingsSlice = createSlice({
   reducers: {
     editPersonalInfoText: (state, action) => {
       editPersonalInfoTextHelper(state, action)
+        state.personalAccount.errors.nameError = '';
+        state.personalAccount.errors.cityError = '';
+        state.personalAccount.errors.favAnimeError = '';
     },
     saveConfidentialSettings: (state) => {
       saveConfidentialSettingsHelper(state)
     },
     updateConfidentialitySetting: (state, action) => {
       updateConfidentialitySettingHelper(state, action)
+    },
+    updateSelectedLanguage: (state, action) => {
+      updateSelectedLanguageHelper(state, action)
     },
     toggleTerm: (state, action) => {
       toggleTermHelper(state, action)
@@ -283,6 +293,7 @@ export const {
   editPersonalInfoText,
   saveConfidentialSettings,
   updateConfidentialitySetting,
+  updateSelectedLanguage,
   toggleTerm,
   updateRequestUserNameText,
   updateRequestMessageText,

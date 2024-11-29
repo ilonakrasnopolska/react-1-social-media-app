@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import EditForm from "./EditForm/EditForm";
 import {updateProfileInfo} from "../../../../../../../redux/ProfileReducer/profile-reducer";
+import {validateForm} from "../../../../../../../redux/SettingsReducer/settings-reducer";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const EditProfile = () => {
 
   const onSaveChange = (e) => {
     e.preventDefault();
+    const isValid = dispatch(validateForm());
+    if (!isValid) return;
     dispatch(updateProfileInfo(userData))
   }
 

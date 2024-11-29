@@ -1,9 +1,24 @@
 import React from "react";
 import Classes from './Language.module.css'
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import Select from "react-select";
+import {updateSelectedLanguage} from "../../../../../../redux/SettingsReducer/settings-reducer";
 
 const Language = () => {
-  const languages = useSelector(state => state.settings.languages);
+  const dispatch = useDispatch();
+  const { languages, selectedLanguage } = useSelector((state) => state.settings.languageSettings);
+
+  // Преобразуем объект языков в массив для react-select
+  const options = Object.values(languages).map((lang) => ({
+    value: lang.code,
+    label: lang.name,
+  }));
+  // Найти выбранный язык в массиве опций
+  const currentOption = options.find((option) => option.value === selectedLanguage);
+
+  const handleChange = (selectedOption) => {
+    dispatch(updateSelectedLanguage(selectedOption.value));
+  };
 
   return (
     <section className='language section'>
@@ -13,13 +28,13 @@ const Language = () => {
             <h2 className={Classes.title}>Language Settings</h2>
             <label>
               Interface Language:
-              <select>
-                {languages.map((lang) => (
-                  <option key={lang.id} value={lang.code}>
-                    {lang.name}
-                  </option>
-                ))}
-              </select>
+              <Select
+                options={options}
+                value={currentOption} // Текущее значение
+                onChange={handleChange} // Обработчик выбора
+                className={Classes.reactSelect} // Класс для стилизации
+                placeholder="Select a language"
+              />
             </label>
           </div>
           <div className={Classes.post_translation}>

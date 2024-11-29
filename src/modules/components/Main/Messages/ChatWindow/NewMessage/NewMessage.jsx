@@ -1,6 +1,6 @@
 import Classes from "./NewMessage.module.css";
 import React from "react";
-import {SendMessageIcon} from "../../../../../../assets/SVG-icons";
+import {SendMessageIcon} from "../../../../../../redux/Assets/SVG-icons";
 import {useDispatch, useSelector} from "react-redux";
 import { sendMessage, updateNewMessageText } from '../../../../../../redux/DialogsReducer/dialogs-reducer';
 

@@ -1,8 +1,22 @@
 export const editPersonalInfoTextHelper = (state, action) => {
   const { key, value } = action.payload;
   if (state.personalAccount.userData[key] !== undefined) {
+    // Если редактируется дата рождения
+    if (key === 'dateOfBirth') {
+      // Преобразуем значение в объект Date
+      const date = new Date(value);
+      const day = date.getDate();
+      const month = date.toLocaleString('default', { month: 'long' });
+
+      // Обновляем отформатированное значение
+      state.personalAccount.userData.dateOfBirth = `${day} ${month}`;
+    }
+    // Обновляем остальную информацию
     state.personalAccount.userData[key] = value;
   }
+}
+export const updateSelectedLanguageHelper = (state, action) => {
+  state.languageSettings.selectedLanguage = action.payload;
 }
 export const toggleTermHelper = (state, action) => {
   const term = state.termsAndConditions.find((t) => t.id === action.payload);
@@ -46,34 +60,72 @@ export const sendSupportMessageHelper = (state) => {
 }
 export const validateFormHelper = (state) => {
   let isValid = true;
-  const newErrors = { userNameError: '', messageError: '' };
+  const requestErrors = { userNameError: '', messageError: '' };
+  const profileErrors = { cityError: '', nameError: '', favAnimeError: '' };
 
   // Проверка на пустое имя
   if (state.helpCenter.requestUserNameText.trim() === '') {
-    newErrors.userNameError = 'Name cannot be empty';
+    requestErrors.userNameError = 'Name cannot be empty';
     isValid = false;
   }
 
   // Проверка на цифры в имени
   if (/\d/.test(state.helpCenter.requestUserNameText)) {
-    newErrors.userNameError = 'Name cannot contain numbers';
+    requestErrors.userNameError = 'Name cannot contain numbers';
     isValid = false;
   }
 
   // Проверка на пустое сообщение
   if (state.helpCenter.requestMessageText.trim() === '') {
-    newErrors.messageError = 'Message cannot be empty';
+    requestErrors.messageError = 'Message cannot be empty';
     isValid = false;
   }
 
   // Проверка длины сообщения
   if (state.helpCenter.requestMessageText.trim().length > 200) {
-    newErrors.messageError = 'Message cannot be longer than 200 characters';
+    requestErrors.messageError = 'Message cannot be longer than 200 characters';
+    isValid = false;
+  }
+
+  // Проверка на пустое имя в профиле
+  if (state.personalAccount.userData.name.trim() === '') {
+    profileErrors.nameError = 'Name cannot be empty';
+    isValid = false;
+  }
+
+  // Проверка на цифры в имени в профиле
+  if (/\d/.test(state.personalAccount.userData.name)) {
+    profileErrors.nameError = 'Name cannot contain numbers';
+    isValid = false;
+  }
+
+  // Проверка на пустой город в профиле
+  if (state.personalAccount.userData.city.trim() === '') {
+    profileErrors.cityError = 'City cannot be empty';
+    isValid = false;
+  }
+
+  // Проверка на цифры в городе
+  if (/\d/.test(state.personalAccount.userData.city)) {
+    profileErrors.cityError = 'City cannot contain numbers';
+    isValid = false;
+  }
+
+  // Проверка на пустое название аниме
+  if (state.personalAccount.userData.favAnime.trim() === '') {
+    profileErrors.favAnimeError = 'The field cannot be empty';
+    isValid = false;
+  }
+
+  // Проверка на цифры в аниме
+  if (/\d/.test(state.personalAccount.userData.favAnime)) {
+    profileErrors.favAnimeError = 'The field cannot contain numbers';
     isValid = false;
   }
 
   // Обновляем ошибки в state
-  state.helpCenter.errors = newErrors;
+  state.helpCenter.errors = requestErrors;
+  state.personalAccount.errors = profileErrors;
 
   return isValid; // Возвращаем true, если форма валидна
 }
