@@ -55,13 +55,13 @@ export const sendSupportMessageHelper = (state) => {
 
     state.helpCenter.requestMessageText = '';
     state.helpCenter.requestUserNameText = '';
+    alert('Message sent!');
     return state;
   }
 }
-export const validateFormHelper = (state) => {
+export const validateRequestForHelpFormHelper = (state) => {
   let isValid = true;
   const requestErrors = { userNameError: '', messageError: '' };
-  const profileErrors = { cityError: '', nameError: '', favAnimeError: '' };
 
   // Проверка на пустое имя
   if (state.helpCenter.requestUserNameText.trim() === '') {
@@ -81,21 +81,31 @@ export const validateFormHelper = (state) => {
     isValid = false;
   }
 
+  // Проверка на цифры в сообщение
+  if (/\d/.test(state.helpCenter.requestMessageText)) {
+    requestErrors.messageError = 'Message cannot contain numbers';
+    isValid = false;
+  }
+
+
   // Проверка длины сообщения
   if (state.helpCenter.requestMessageText.trim().length > 200) {
     requestErrors.messageError = 'Message cannot be longer than 200 characters';
     isValid = false;
   }
 
+  // Обновляем ошибки в state
+  state.helpCenter.errors = requestErrors;
+
+  return isValid; // Возвращаем true, если форма валидна
+}
+export const validateEditAccountFormHelper = (state) => {
+  let isValid = true;
+  const profileErrors = { cityError: '', nameError: '', favAnimeError: '' };
+
   // Проверка на пустое имя в профиле
   if (state.personalAccount.userData.name.trim() === '') {
     profileErrors.nameError = 'Name cannot be empty';
-    isValid = false;
-  }
-
-  // Проверка на цифры в имени в профиле
-  if (/\d/.test(state.personalAccount.userData.name)) {
-    profileErrors.nameError = 'Name cannot contain numbers';
     isValid = false;
   }
 
@@ -105,29 +115,17 @@ export const validateFormHelper = (state) => {
     isValid = false;
   }
 
-  // Проверка на цифры в городе
-  if (/\d/.test(state.personalAccount.userData.city)) {
-    profileErrors.cityError = 'City cannot contain numbers';
-    isValid = false;
-  }
-
   // Проверка на пустое название аниме
   if (state.personalAccount.userData.favAnime.trim() === '') {
     profileErrors.favAnimeError = 'The field cannot be empty';
     isValid = false;
   }
 
-  // Проверка на цифры в аниме
-  if (/\d/.test(state.personalAccount.userData.favAnime)) {
-    profileErrors.favAnimeError = 'The field cannot contain numbers';
-    isValid = false;
-  }
 
-  // Обновляем ошибки в state
-  state.helpCenter.errors = requestErrors;
   state.personalAccount.errors = profileErrors;
 
-  return isValid; // Возвращаем true, если форма валидна
+  state.personalAccount.isFormValid = isValid;
+  return isValid;
 }
 export const updateConfidentialitySettingHelper = (state, action) => {
   const { settingValue, settingTitle } = action.payload;

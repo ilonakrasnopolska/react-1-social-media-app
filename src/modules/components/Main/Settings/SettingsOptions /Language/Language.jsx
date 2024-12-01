@@ -48,7 +48,7 @@ const Language = () => {
               Enable automatic translation for posts
             </label>
           </div>
-          <button className={Classes.button} onClick={() => alert('Settings saved!')}>Save Changes</button>
+          <button className={Classes.button} onClick={() => alert('Still on work')}>Save Changes</button>
         </div>
       </div>
     </section>

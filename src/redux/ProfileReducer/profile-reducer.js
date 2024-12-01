@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import avatars from "../Assets/Avatars-src";
+import {pictures} from "../Assets/Pictures-src";
 
 import {
   addPostHelper, deletePostHelper,
@@ -93,6 +94,7 @@ const initialState = {
       favAnime: 'Naruto'
     }
   },
+  profileCover: `${pictures.Cover}`,
   newPostText: '',
 };
 

@@ -1,62 +1,85 @@
 import Classes from "./EditForm.module.css";
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import Select from "react-select";
-import {editPersonalInfoText} from "../../../../../../../../redux/SettingsReducer/settings-reducer";
+import {editPersonalInfoText,
+  validateEditAccountForm} from "../../../../../../../../redux/SettingsReducer/settings-reducer";
 
-const EditForm = () => {
+const EditForm = ({userData, errors}) => {
   const dispatch = useDispatch();
-  const userData = useSelector(state => state.settings.personalAccount.userData);
-  const errors = useSelector(state => state.settings.personalAccount.errors);
-
-
   const genderOptions = [
-    { value: "Female", label: "Female" },
-    { value: "Male", label: "Male" }
+    {value: "Female", label: "Female"},
+    {value: "Male", label: "Male"}
   ];
 
   const onValueChange = (key, value) => {
-    dispatch(editPersonalInfoText({ key, value }))
+    dispatch(editPersonalInfoText({key, value}))
+    dispatch(validateEditAccountForm());
+  };
+
+  const onKeyDownTest = (e) => {
+    if (/\d/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
+  const onPasteTest = (e) => {
+    const pasteData = e.clipboardData.getData("text");
+    if (/\d/.test(pasteData)) {
+      e.preventDefault();
+    }
   };
 
   return (
     <form className={Classes.form} action="" method="POST">
       {Object.entries(userData).map(([key, value]) => (
-        key !== "avatar" && ( // Пропускаем поле `avatar`
+        key !== "avatar" && (
           <div key={key} className={Classes.formGroup}>
-            <label htmlFor={key} className={Classes.label}>
+            <label htmlFor={`input-${key}`} className={Classes.label}>
               {key.charAt(0).toUpperCase() + key.slice(1)}:
             </label>
             {key === "dateOfBirth" ? (
+              <div className={Classes.input_box}>
               <input
-                id={key}
+                id={`input-${key}`} // Обновляем id с уникальным префиксом
                 name={key}
-                type="date" // Тип input для выбора даты
-                value={value}
+                type="date"
+                value={String(value)}
                 onChange={(e) => onValueChange(key, e.target.value)}
                 className={Classes.input}
+                autoComplete="bday"
               />
+              </div>
             ) : key === "gender" ? (
+              <div className={Classes.input_box}>
               <Select
-                id={key}
+                inputId={`input-${key}`} // Используем inputId для Select
                 name={key}
-                value={genderOptions.find(option => option.value === value)} // находим значение, которое соответствует value
-                onChange={(selectedOption) => onValueChange(key, selectedOption.value)} // изменяем на значение, выбранное пользователем
+                value={genderOptions.find((option) => option.value === value)}
+                onChange={(selectedOption) =>
+                  onValueChange(key, selectedOption?.value || "")
+                }
                 options={genderOptions}
-                className={Classes.select} // Кастомный класс для стилизации
-                classNamePrefix="custom-select" // Префикс для дочерних классов
+                className={Classes.select}
+                classNamePrefix="custom-select"
+                autoComplete="gender"
               />
+              </div>
             ) : (
+              <div className={Classes.input_box}>
               <input
-                id={key}
+                id={`input-${key}`} // Обновляем id с уникальным префиксом
                 name={key}
-                value={value}
+                value={String(value)}
                 onChange={(e) => onValueChange(key, e.target.value)}
+                onKeyDown={onKeyDownTest}
+                onPaste={onPasteTest}
                 className={Classes.input}
+                autoComplete={key === "name" ? "name" : "off"}
               />
+                {errors[`${key}Error`] && <span className={Classes.errorText}>{errors[`${key}Error`]}</span>}
+              </div>
             )}
-            {/* Display error if it exists for the field */}
-            {errors[key] && <p className={Classes.error}>{errors[key]}</p>}
           </div>
         )
       ))}

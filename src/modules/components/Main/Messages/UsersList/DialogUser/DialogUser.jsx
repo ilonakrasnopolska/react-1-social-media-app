@@ -15,7 +15,7 @@ const DialogUser = ({ userId }) => {
         }
       >
         <button
-          className={`${Classes.button} ${currentUser.userId === userId ? Classes.activeButton : ""}`}
+          className={`${Classes.button} ${Classes.activeButton}`}
         >
           <img className={Classes.avatar} src={currentUser.avatar} alt="Avatar" />
           <span className={Classes.name}>{currentUser.name}</span>

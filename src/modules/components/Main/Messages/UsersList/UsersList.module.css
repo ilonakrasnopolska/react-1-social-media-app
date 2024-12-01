@@ -1,10 +1,12 @@
 .list {
   display: flex;
   flex-direction: column;
-  height: 660px;
+  height: 610px;
   overflow-y: auto;
   scrollbar-width: none;
   padding: 15px 0;
+  background-color: #194770;
+  opacity: 80%;
 }
 
 .list::-webkit-scrollbar {

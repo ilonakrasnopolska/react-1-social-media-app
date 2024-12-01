@@ -1,0 +1,8 @@
+.content {
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+}

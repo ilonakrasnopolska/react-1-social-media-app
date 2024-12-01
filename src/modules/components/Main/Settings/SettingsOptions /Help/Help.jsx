@@ -5,7 +5,7 @@ import {
   updateRequestUserNameText,
   updateRequestMessageText,
   sendSupportMessage,
-  validateForm
+  validateRequestForHelpForm
 } from "../../../../../../redux/SettingsReducer/settings-reducer";
 
 const Help = () => {
@@ -16,7 +16,7 @@ const Help = () => {
 
   const submitSupportMessage = (event) => {
     event.preventDefault();
-    const isValid = dispatch(validateForm());
+    const isValid = dispatch(validateRequestForHelpForm());
     if (!isValid) return;
     dispatch(sendSupportMessage());
   };

@@ -4,7 +4,7 @@ import Classes from './LogIn.module.css'
 const LogIn = () => {
   return (
     <section className='enter section'>
-      <div>
+      <div className={Classes.content}>
         Still on process:
       </div>
     </section>

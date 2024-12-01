@@ -32,7 +32,6 @@ const SettingsOptions = () => {
       SettingComponent = <LogOut/>;
       break;
     case '7':
-      console.log(id)
       SettingComponent = <EditProfile/>;
       break;
     default:

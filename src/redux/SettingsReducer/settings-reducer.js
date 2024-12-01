@@ -6,9 +6,11 @@ import {
   updateRequestMessageTextHelper,
   sendSupportMessageHelper,
   updateRequestUserNameTextHelper,
-  validateFormHelper,
   updateConfidentialitySettingHelper,
-  saveConfidentialSettingsHelper, updateSelectedLanguageHelper
+  saveConfidentialSettingsHelper,
+  updateSelectedLanguageHelper,
+  validateEditAccountFormHelper,
+  validateRequestForHelpFormHelper,
 } from "./SettingsHelpers/settings-helpers";
 
 // Константы
@@ -60,7 +62,8 @@ const initialState = {
       nameError: '',
       cityError: '',
       favAnimeError: ''
-    }
+    },
+    isFormValid: true,
   },
   confidentiality: {
     confidentialitySettings: [
@@ -283,9 +286,12 @@ const settingsSlice = createSlice({
     sendSupportMessage: (state) => {
       sendSupportMessageHelper(state)
     },
-    validateForm: (state) => {
-      validateFormHelper(state)
+    validateRequestForHelpForm: (state) => {
+      validateRequestForHelpFormHelper(state)
     },
+    validateEditAccountForm: (state) => {
+      validateEditAccountFormHelper(state)
+    }
   }
 })
 
@@ -298,6 +304,7 @@ export const {
   updateRequestUserNameText,
   updateRequestMessageText,
   sendSupportMessage,
-  validateForm
+  validateRequestForHelpForm,
+  validateEditAccountForm,
 } = settingsSlice.actions;
 export default settingsSlice.reducer;
