@@ -29,8 +29,10 @@ const AddComment = ({postId}) => {
 
   return (
     <div className={Classes.add_comment}>
-      <form className={Classes.comment_form} action="" method="POST" onSubmit={handleAddComment}>
+      <form className={Classes.comment_form} method="POST" onSubmit={handleAddComment}>
         <textarea
+          id={`comment-${postId}`}
+          name="comment"
           value={newCommentText}
           onChange={onCommentChange}
           onKeyDown={handleKeyDown}

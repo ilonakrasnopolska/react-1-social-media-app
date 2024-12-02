@@ -1,4 +1,5 @@
 import React from "react";
+import CommonClasses from '../../Settings.module.css'
 import Classes from './Confidentiality.module.css'
 import {useDispatch} from "react-redux";
 import ConfidentialityList from "./ConfidentialityList/ConfidentialityList";
@@ -13,15 +14,13 @@ const Confidentiality = () => {
 
   return (
     <section className='confidentiality section'>
-      <div className={Classes.content}>
-        <div className={Classes.wrapper}>
-          <h2 className={Classes.title}>Confidentiality</h2>
-          <p className={Classes.text}>
+      <div className={CommonClasses.content}>
+        <div className={CommonClasses.wrapper}>
+          <h2 className={CommonClasses.title}>Confidentiality</h2>
+          <p className={CommonClasses.text}>
             Manage your privacy and data settings.
           </p>
           <form className={Classes.form}
-                action=""
-                method="POST"
                 onSubmit={onChangePrivacySettings}>
             <ConfidentialityList/>
             <button className={Classes.button}

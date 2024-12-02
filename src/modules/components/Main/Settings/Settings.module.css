@@ -1,3 +1,55 @@
+.content,
+.wrapper,
+.terms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.content {
+  padding: 0 120px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  padding: 30px;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.title {
+  color: #194770;
+  margin-bottom: 15px;
+}
+
+.text {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #194770;
+}
+
+.avatar {
+  width: 300px;
+  border: 2px solid #e2eaff;
+  margin-right: 50px;
+}
+
+.user_data_edit {
+  display: flex;
+  width: 100%;
+  background-color: #194770;
+  padding: 30px;
+}
+
+.about_user_edit {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #e2eaff;
+}
+
 .list {
   display: flex;
   flex-direction: column;
@@ -13,4 +65,19 @@
 
 .item a {
   color: #ffffff;
+}
+
+@media (max-width: 990px) {
+  .avatar {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .user_data_edit {
+    flex-direction: column;
+  }
+
+  .about_user_edit {
+    width: 100%;
+  }
 }

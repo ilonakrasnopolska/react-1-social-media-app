@@ -28,8 +28,9 @@ const NewMessage = ({chatId}) => {
 
   return (
     <div className={Classes.container}>
-      <form className={Classes.form} action="" method="POST" onSubmit={handleSendMessage}>
+      <form className={Classes.form} onSubmit={handleSendMessage}>
         <textarea
+          name="message"
           value={newMessageText}
           onChange={onMessageChange}
           onKeyDown={handleKeyDown}

@@ -29,11 +29,13 @@ const PostMaker = () => {
       <div className={Classes.content}>
         <span className={Classes.title}>My posts</span>
         <form className={Classes.form} action="" method="POST" onSubmit={handleAddPost}>
-          <textarea value={newPostText}
-                    onChange={onPostChange}
-                    onKeyDown={handleKeyDown}
-                    className={Classes.textarea}
-                    placeholder="Your news..."/>
+          <textarea
+            name="newPost"
+            value={newPostText}
+            onChange={onPostChange}
+            onKeyDown={handleKeyDown}
+            className={Classes.textarea}
+            placeholder="Your news..."/>
           <div className={Classes.buttonBox}>
             <button onClick={handleAddPost} className={Classes.button}>Post</button>
           </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import CommonClasses from '../../Settings.module.css'
 import Classes from './Language.module.css'
 import {useSelector, useDispatch} from "react-redux";
 import Select from "react-select";
@@ -22,8 +23,8 @@ const Language = () => {
 
   return (
     <section className='language section'>
-      <div className={Classes.content}>
-        <div className={Classes.wrapper}>
+      <div className={CommonClasses.content}>
+        <div className={CommonClasses.wrapper}>
           <div className={Classes.app_language}>
             <h2 className={Classes.title}>Language Settings</h2>
             <label>
@@ -41,6 +42,7 @@ const Language = () => {
             <h2 className={Classes.title}>Post Translations</h2>
             <label>
               <input
+                name='translate-app'
                 type="checkbox"
                 // checked={autoTranslation}
                 // onChange={toggleAutoTranslation}

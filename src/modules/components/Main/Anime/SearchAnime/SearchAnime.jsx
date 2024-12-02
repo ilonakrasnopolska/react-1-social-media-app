@@ -16,15 +16,14 @@ const SearchAnime = () => {
   return (
     <div className={Classes.search}>
       <h1>Choose your anime:</h1>
-      <form className={Classes.form}>
         <input
+          id='anime-search-input'
           value={newSearchAnimeText}
           className={Classes.input}
           type="text"
           onChange={handleSearchChange}
           placeholder="Search for anime"
         />
-      </form>
     </div>
   )
 }

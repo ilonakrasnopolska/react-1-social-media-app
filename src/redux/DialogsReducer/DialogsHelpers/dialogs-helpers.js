@@ -79,6 +79,6 @@ export const startConversationHelper = (state, action) => {
   state.searchUserText = '';
   return state
 }
-export const selectUserHelper = (state, action) => {
-  return state.activeUserId = action.payload.userId;
+export const setActiveUserHelper = (state, action) => {
+   state.activeUserId = action.payload;
 }

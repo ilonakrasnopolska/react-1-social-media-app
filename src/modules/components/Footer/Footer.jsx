@@ -1,30 +1,20 @@
 import React from "react";
-import {Instagram, Facebook, Telegram} from "../../../redux/Assets/SVG-icons";
+import socialLinks from "./SocialLinks";
 import Classes from './Footer.module.css';
 
 const Footer = () => {
+
   return (
     <footer className={Classes.footer}>
       <div className={Classes.wrapper}>
         <ul className={Classes.list}>
-          <li>
-            <a className={Classes.icon} href="https://www.instagram.com/" target="_blank"
-               rel="noopener noreferrer">
-              <Instagram/>
-            </a>
-          </li>
-          <li>
-            <a className={Classes.icon} href="https://www.facebook.com/" target="_blank"
-               rel="noopener noreferrer">
-              <Facebook/>
-            </a>
-          </li>
-          <li>
-            <a className={Classes.icon} href="https://web.telegram.org/a/" target="_blank"
-               rel="noopener noreferrer">
-              <Telegram/>
-            </a>
-          </li>
+          {socialLinks.map(({href, icon}, index) => (
+            <li key={index}>
+              <a className={Classes.icon} href={href} target="_blank" rel="noopener noreferrer">
+                {icon}
+              </a>
+            </li>
+          ))}
         </ul>
         <div className={Classes.copyright}>
           Copyright @ 2024 Chakra

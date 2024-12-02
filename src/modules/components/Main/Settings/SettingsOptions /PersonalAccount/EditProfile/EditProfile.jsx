@@ -1,4 +1,5 @@
 import React from "react";
+import CommonClasses from '../../../Settings.module.css'
 import Classes from "./EditProfile.module.css";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -26,14 +27,14 @@ const EditProfile = () => {
 
   return (
     <section className='edit section'>
-      <div className={Classes.content}>
-        <div className={Classes.wrapper}>
-          <h2 className={Classes.title}>Personal Settings</h2>
-          <p className={Classes.text}>Edit your personal profile:</p>
-          <div className={Classes.user_data_edit}>
-            <img className={Classes.avatar} src={userData.avatar}
+      <div className={CommonClasses.content}>
+        <div className={CommonClasses.wrapper}>
+          <h2 className={CommonClasses.title}>Personal Settings</h2>
+          <p className={CommonClasses.text}>Edit your personal profile:</p>
+          <div className={CommonClasses.user_data_edit}>
+            <img className={CommonClasses.avatar} src={userData.avatar}
                  alt="Avatar"/>
-            <div className={Classes.about}>
+            <div className={CommonClasses.about_user_edit}>
               <EditForm userData={userData}
                         errors={errors}
               />

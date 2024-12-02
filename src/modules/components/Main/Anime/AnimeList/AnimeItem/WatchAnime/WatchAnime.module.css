@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  padding: 20px 50px;
+}
+
+.cover {
+  width: 300px;
+}
+
+.text {
+  font-size: 30px;
+  font-weight: bold;
+}

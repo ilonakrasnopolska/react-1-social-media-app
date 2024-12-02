@@ -2,14 +2,14 @@ import Classes from "./UserSearchDropdown.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {startConversation, selectUser} from "../../../../../../../redux/DialogsReducer/dialogs-reducer";
+import {startConversation, setActiveUser} from "../../../../../../../redux/DialogsReducer/dialogs-reducer";
 
 
 const UserSearchDropdown = ({filteredContacts}) => {
   const dispatch = useDispatch();
 
   const onStartChat = (contact) => {
-    dispatch(selectUser({ userId: contact.userId }));
+    dispatch(setActiveUser( contact.userId ));
     dispatch(startConversation(contact))
   }
 

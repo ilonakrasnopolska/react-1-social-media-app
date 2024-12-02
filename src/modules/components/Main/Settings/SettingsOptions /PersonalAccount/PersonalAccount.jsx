@@ -1,4 +1,5 @@
 import React from "react";
+import CommonClasses from '../../Settings.module.css'
 import Classes from './PersonalAccount.module.css'
 import {useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
@@ -9,14 +10,14 @@ const PersonalAccount = () => {
 
   return (
     <section className='personal section'>
-      <div className={Classes.content}>
-        <div className={Classes.wrapper}>
-          <h2 className={Classes.title}>Personal Settings</h2>
-          <p className={Classes.text}>Edit your personal profile:</p>
-          <div className={Classes.user_data_box}>
-              <img className={Classes.avatar} src={userData.avatar}
+      <div className={CommonClasses.content}>
+        <div className={CommonClasses.wrapper}>
+          <h2 className={CommonClasses.title}>Personal Settings</h2>
+          <p className={CommonClasses.text}>Edit your personal profile:</p>
+          <div className={CommonClasses.user_data_edit}>
+              <img className={CommonClasses.avatar} src={userData.avatar}
                    alt="Avatar"/>
-            <div className={Classes.about}>
+            <div className={CommonClasses.about_user_edit}>
               <h1>{userData.name}</h1>
               <ul className={Classes.list}>
                 <li className={Classes.item}>{`Date of Birth: ${userData.dateOfBirth}`}</li>

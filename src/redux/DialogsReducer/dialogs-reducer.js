@@ -4,7 +4,7 @@ import {
   updateSearchUserTextHelper,
   startConversationHelper,
   deleteMessageHelper,
-  selectUserHelper,
+  setActiveUserHelper,
 } from "./DialogsHelpers/dialogs-helpers";
 import {createSlice} from '@reduxjs/toolkit';
 import avatars from "../Assets/Avatars-src";
@@ -163,8 +163,8 @@ const dialogsSlice = createSlice({
     startConversation: (state, action) => {
       startConversationHelper(state, action);
     },
-    selectUser: (state, action) => {
-      selectUserHelper(state, action)
+    setActiveUser: (state, action) => {
+      setActiveUserHelper(state, action);
     },
   }
 })
@@ -175,6 +175,6 @@ export const {
   updateNewMessageText,
   updateSearchUserText,
   startConversation,
-  selectUser,
+  setActiveUser,
 } = dialogsSlice.actions;
 export default dialogsSlice.reducer;

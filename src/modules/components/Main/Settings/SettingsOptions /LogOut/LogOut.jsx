@@ -1,4 +1,5 @@
 import React from "react";
+import CommonClasses from '../../Settings.module.css'
 import Classes from './LogOut.module.css'
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
@@ -9,9 +10,9 @@ const LogOut = () => {
 
   return (
     <section className='log section'>
-      <div className={Classes.content}>
-        <div className={Classes.wrapper}>
-          <h2 className={Classes.title}>Are you sure you want to log out?</h2>
+      <div className={CommonClasses.content}>
+        <div className={CommonClasses.wrapper}>
+          <h2 className={CommonClasses.title}>Are you sure you want to log out?</h2>
           <div className={Classes.btn_wrapper}>
             <button className={Classes.button}>
               <NavLink className={Classes.link}
