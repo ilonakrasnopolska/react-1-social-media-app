@@ -1,0 +1,30 @@
+.button {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #e2eaff;
+  color: #194770;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #194770;
+  color: #e2eaff;
+  border: 1px solid #e2eaff;
+}
+
+.button:disabled {
+  background-color: #000000;
+  color: #e2eaff;
+  border: none;
+  opacity: 0.5;
+}
+
+.link {
+  color: #194770;
+  padding: 15px 95px;
+}
+
+.link:hover {
+  color: #e2eaff;
+}

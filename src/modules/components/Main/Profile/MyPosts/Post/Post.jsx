@@ -8,6 +8,7 @@ import {deletePost} from "../../../../../../redux/ProfileReducer/profile-reducer
 
 const Post = ({postId}) => {
   const post = useSelector(state => state.profile.posts.find(post => post.postId === postId));
+  const avatar = useSelector(state => state.profile.personalAccount.userData.avatar);
   const [isOpenComments, setIsCommentsOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -32,7 +33,7 @@ const Post = ({postId}) => {
     <li className={Classes.item}>
       <div className={Classes.post}>
         <img className={Classes.avatar}
-             src="https://avatarfiles.alphacoders.com/375/thumb-1920-375546.png"
+             src={avatar}
              alt="User avatar"
         />
         <div className={Classes.post_message}>

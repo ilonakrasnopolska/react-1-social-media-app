@@ -1,10 +1,9 @@
 .list {
   display: flex;
-  flex-direction: column;
-  height: 660px;
+  flex-direction: column-reverse;
+  height: 635px;
   overflow-y: auto;
   scrollbar-width: none;
-  padding: 15px 0;
 }
 
 .list::-webkit-scrollbar {

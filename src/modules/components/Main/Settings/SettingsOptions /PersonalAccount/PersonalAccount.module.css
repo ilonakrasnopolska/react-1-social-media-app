@@ -1,0 +1,37 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+.item {
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: #e2eaff;
+  text-decoration-line: underline;
+}
+
+.button {
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #e2eaff;
+  color: #194770;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #194770;
+  color: #e2eaff;
+  border: 1px solid #e2eaff;
+}
+
+.link {
+  color: #194770;
+  padding: 15px 95px;
+}
+
+.link:hover {
+  color: #e2eaff;
+}

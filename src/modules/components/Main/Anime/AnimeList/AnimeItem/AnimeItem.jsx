@@ -1,6 +1,7 @@
 import React from "react";
 import Classes from './AnimeItem.module.css'
 import {useSelector} from "react-redux";
+import {NavLink} from "react-router-dom";
 
 
 const AnimeItem = ({animeId}) => {
@@ -16,7 +17,11 @@ const AnimeItem = ({animeId}) => {
         <h3>{anime.name}</h3>
         <span>{anime.description}</span>
         </div>
-        <button className={Classes.button}>Watch now</button>
+        <button className={Classes.button}>
+          <NavLink to={anime.toWatchUrl}>
+            Watch now
+          </NavLink>
+        </button>
       </div>
     </li>
   )

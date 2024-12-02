@@ -1,0 +1,37 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.formGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.input,
+.select {
+  width: 100%;
+  color: #000000;
+  font-size: 17px;
+}
+
+.input_box {
+  width: 50%;
+  gap: 2px;
+  min-height: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.errorText {
+  font-size: 19px;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import Classes from './Header.module.css'
-import {LogoIcon} from "../../../assets/SVG-icons";
+import {LogoIcon} from "../../../redux/Assets/SVG-icons";
 
 const Header = () => {
   return (

@@ -1,0 +1,14 @@
+.form {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width: 150px;
+  background-color: #194770;
+  color: #e2eaff;
+  padding: 10px;
+  font-size: 15px;
+}

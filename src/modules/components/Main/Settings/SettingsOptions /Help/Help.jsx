@@ -1,11 +1,12 @@
 import React from "react";
+import CommonClasses from '../../Settings.module.css'
 import Classes from './Help.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {
   updateRequestUserNameText,
   updateRequestMessageText,
   sendSupportMessage,
-  validateForm
+  validateRequestForHelpForm
 } from "../../../../../../redux/SettingsReducer/settings-reducer";
 
 const Help = () => {
@@ -16,7 +17,7 @@ const Help = () => {
 
   const submitSupportMessage = (event) => {
     event.preventDefault();
-    const isValid = dispatch(validateForm());
+    const isValid = dispatch(validateRequestForHelpForm());
     if (!isValid) return;
     dispatch(sendSupportMessage());
   };
@@ -40,10 +41,11 @@ const Help = () => {
 
   return (
     <section className='help section'>
-      <div className={Classes.content}>
-        <div className={Classes.wrapper}>
-          <h2 className={Classes.title}>Contact Support</h2>
-          <form className={Classes.contact_form} action="" method="POST" onSubmit={submitSupportMessage}>
+      <div className={CommonClasses.content}>
+        <div className={CommonClasses.wrapper}>
+          <h2 className={CommonClasses.title}>Contact Support</h2>
+          <p className={CommonClasses.text}>Need help? Contact us below!</p>
+          <form className={Classes.contact_form} onSubmit={submitSupportMessage}>
             <div>
               <input className={`${Classes.input_name} ${errors.userNameError ? Classes.error : ''}`}
                      onChange={onUserNameChange}

@@ -8,22 +8,29 @@ import SettingsOptions from "./SettingsOptions /SettingsOptions";
 const Settings = () => {
   const { id } = useParams();
   const settingsOptions = useSelector(state => state.settings.settings)
+  const editProfileOption = useSelector(state => state.settings.personalAccount.editPage);
+
+  // Объединяем основное меню с editProfileOption только при необходимости
+  const enhancedSettingsOptions = id === String(editProfileOption.id)
+    ? [...settingsOptions, editProfileOption]  // Добавляем Edit Profile, если это тот же id
+    : settingsOptions;
+
   if (id) {
-    const selectedOption = settingsOptions.find((option) => option.id === Number(id));
+    const selectedOption = enhancedSettingsOptions.find(option => option.id === Number(id));
     return selectedOption ? (
       <SettingsOptions option={selectedOption} />
     ) : (
       <div>NOT FOUND</div>
     );
   }
+
   return (
     <section className='settings section'>
       <ul className={Classes.list}>
-        {settingsOptions.map((option) => (
+        {enhancedSettingsOptions.map(option => (
           <li key={option.id} className={Classes.item}>
             <NavLink to={option.url}>{option.title}</NavLink>
-          </li>
-        ))}
+          </li>))}
       </ul>
     </section>
   )

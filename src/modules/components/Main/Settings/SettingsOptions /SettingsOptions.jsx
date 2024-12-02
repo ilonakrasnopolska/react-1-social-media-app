@@ -2,14 +2,15 @@ import React from "react";
 import {useParams} from "react-router-dom";
 import PersonalAccount from "./PersonalAccount/PersonalAccount";
 import Confidentiality from "./Confidentiality/Confidentiality";
-import Notifications from "./Notifications/Notifications";
 import Language from "./Language/Language";
 import TermsAndPolicy from "./TermsAndPolice/TermsAndPolicy";
 import Help from "./Help/Help";
 import LogOut from "./LogOut/LogOut";
+import EditProfile from "./PersonalAccount/EditProfile/EditProfile";
 
 const SettingsOptions = () => {
   const {id} = useParams();
+
   let SettingComponent;
   switch (id) {
     case '1':
@@ -19,26 +20,26 @@ const SettingsOptions = () => {
       SettingComponent = <Confidentiality/>;
       break;
     case '3':
-      SettingComponent = <Notifications/>;
-      break;
-    case '4':
       SettingComponent = <Language/>;
       break;
-    case '5':
+    case '4':
       SettingComponent = <TermsAndPolicy/>;
       break;
-    case '6':
+    case '5':
       SettingComponent = <Help/>;
       break;
-    case '7':
+    case '6':
       SettingComponent = <LogOut/>;
+      break;
+    case '7':
+      SettingComponent = <EditProfile/>;
       break;
     default:
       SettingComponent = <div>NOT FOUND</div>;
   }
 
   return (
-      SettingComponent
+    SettingComponent
   );
 };
 

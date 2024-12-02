@@ -1,0 +1,29 @@
+.btn_wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.button {
+  width: 20%;
+  background-color: #e2eaff;
+  color: #e2eaff;
+  padding: 10px;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s;
+}
+
+.button:hover {
+  border: 1px solid #194770;
+}
+
+.link {
+  width: 100%;
+  color: #194770;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 70px;
+}
+

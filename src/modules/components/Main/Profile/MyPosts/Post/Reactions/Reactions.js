@@ -1,6 +1,6 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {CommentIcon} from "../../../../../../../assets/SVG-icons";
+import {CommentIcon} from "../../../../../../../redux/Assets/SVG-icons";
 import Classes from "./Reactions.module.css"
 import {handleLike, toggleComments} from "../../../../../../../redux/ProfileReducer/profile-reducer";
 

@@ -1,7 +1,11 @@
 const posters = {
-  JujutsuManga: `https://rukminim2.flixcart.com/image/850/1000/xif0q/book/4/4/r/jujutsu-kaisen-vol-4-origin`+
-    `al-imahy5kghugbjkmt.jpeg?q=90&crop=false`,
-  MyHeroAcademia: `https://m.media-amazon.com/images/I/81SOYxpzU3L._AC_UF1000,1000_QL80_.jpg`,
+  Naruto: require('./anime-posters/naruto.avif'),
+  OnePiece: require('./anime-posters/one-piece.jpg'),
+  MyHeroAcademia: require('./anime-posters/my-hero-academia2.jpg'),
+  JujutsuKaisen: require('./anime-posters/jujutsu-kaisen2.jpg'),
+  TheSevenDeadlySins: require('./anime-posters/seven-dead.jpg'),
+  BlackClover: require('./anime-posters/black-clever.avif'),
+  FairyTail: require('./anime-posters/fairy-tail.jpg')
 }
 
 export default posters

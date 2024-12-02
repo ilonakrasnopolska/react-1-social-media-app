@@ -12,12 +12,6 @@
   font-size: 28px;
 }
 
-.form {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .input {
   border: 1px solid #194770;
   outline: none;
