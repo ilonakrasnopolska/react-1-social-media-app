@@ -58,6 +58,7 @@ const initialState = {
   activeCategory: 'View all',
 }
 
+
 const feedsSlice = createSlice({
   name: 'feeds',
   initialState,

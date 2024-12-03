@@ -1,20 +1,21 @@
 import Classes from "./UsersList.module.css";
 import React from "react";
 import DialogUser from "./DialogUser/DialogUser";
-import { useSelector } from 'react-redux';
 import CreateNewChat from "./CreateNewChat/CreateNewChat";
 
 
-const UsersList = () => {
-  const users = useSelector(state => state.dialogs.users);
-  const usersElements = users.map(el =>
-    <DialogUser userId={el.userId} key={el.userId}/>)
+const UsersList = ({users, activeUserId, searchUserText}) => {
   return (
     <section className="users section">
       <ul className={Classes.list}>
-        {usersElements}
+        {users.map(el =>
+          <DialogUser userId={el.userId}
+                      key={el.userId}
+                      users={users}
+                      activeUserId={activeUserId}/>)
+        }
       </ul>
-      <CreateNewChat/>
+      <CreateNewChat searchUserText={searchUserText}/>
     </section>
   )
 }

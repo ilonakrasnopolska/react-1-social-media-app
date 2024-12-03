@@ -1,3 +1,5 @@
+import avatars from "../../Assets/Avatars-src";
+
 const CURRENT_USER_NAME = "Ilona Sue"
 const getData = () => {
   const currentTime = new Date();
@@ -15,6 +17,7 @@ export const addPostHelper = (state) => {
       name: CURRENT_USER_NAME,
       postId: newPostId,
       message: state.newPostText,
+      avatar: avatars.ilonaSue,
       comments: 0,
       likes: 0,
       time: getData(),

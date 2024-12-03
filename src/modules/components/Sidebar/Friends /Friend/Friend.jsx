@@ -1,9 +1,7 @@
 import React from "react";
 import Classes from "./Friend.module.css";
-import {useSelector} from "react-redux";
 
-const Friend = ({friendId}) => {
-  const friend = useSelector(state => state.sidebar.friends.find(friend => friend.friendId === friendId));
+const Friend = ({friend}) => {
   return (
         <li className={Classes.item}>
           <img className={Classes.avatar} src={friend.avatar} alt="avatar"/>

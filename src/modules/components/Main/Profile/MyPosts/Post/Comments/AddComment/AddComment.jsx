@@ -1,40 +1,22 @@
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
 import Classes from "./AddComment.module.css"
-import {addComment, updateNewCommentText}
-  from "../../../../../../../../redux/ProfileReducer/profile-reducer"
+import {useCommentHandler} from "../../../../../../../hooks/useCommentHandler";
 
 const AddComment = ({postId}) => {
-  const dispatch = useDispatch();
-  const newCommentText = useSelector(state => {
-    const post = state.profile.posts.find(p => p.postId === postId);
-    return post ? post.newCommentText : '';
-  });
-  const handleAddComment = (event) => {
-    event.preventDefault();
-    dispatch(addComment({postId}));
-  };
-
-  const onCommentChange = (e) => {
-    const value = e.target.value;
-    dispatch(updateNewCommentText({postId, value}));
-  }
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleAddComment(e);
-    }
-  };
+  const newCommentText = useSelector(state =>
+    state.profile.posts.find(post => post.postId === postId)?.newCommentText || '');
+  const { handleCommentChange, handleAddComment, handleKeyDown } = useCommentHandler(postId, newCommentText);
 
   return (
     <div className={Classes.add_comment}>
-      <form className={Classes.comment_form} method="POST" onSubmit={handleAddComment}>
+      <form className={Classes.comment_form}
+            onSubmit={handleAddComment}>
         <textarea
           id={`comment-${postId}`}
           name="comment"
-          value={newCommentText}
-          onChange={onCommentChange}
+          value={String(newCommentText)}
+          onChange={handleCommentChange}
           onKeyDown={handleKeyDown}
           className={Classes.comment_input}
           placeholder="Add a comment..."/>

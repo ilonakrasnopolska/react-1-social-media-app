@@ -1,31 +1,13 @@
 import React from "react";
 import Classes from "./Comments.module.css"
-import {useSelector, useDispatch} from "react-redux";
-import {replyOnComment, deleteComment} from "../../../../../../../redux/ProfileReducer/profile-reducer";
+import {useCommentHandler} from "../../../../../../hooks/useCommentHandler";
 
 const Comments = ({postId}) => {
-  const dispatch = useDispatch();
-  const post = useSelector(state => state.profile.posts.find(post => post.postId === postId));
-  const Messages = post?.commentData.messages  || [];
-
-  const onReplyToComment = (commentId) => {
-    const comment = Messages.find(comment => comment.commentId === commentId);
-    if (comment) {
-      const value = `${comment.user},`;
-      dispatch(replyOnComment({value, postId})) // Делаем reply на комментарий
-    }
-  }
-
-  const onDeleteComment = (commentId) => {
-    const confirmDelete = window.confirm("Delete comment?");
-    if (confirmDelete) {
-      dispatch(deleteComment({commentId, postId})); // Удаляем комментарий
-    }
-  }
+  const { Messages, onReplyToComment, onDeleteComment } = useCommentHandler(postId);
 
   return (
     <ul className={Classes.list}>
-      {Messages.length > 0 ? ( // Проверяем, есть ли комментарии
+      {Messages.length > 0 ? (
         Messages.map((comment, index) => (
           <li key={index} className={Classes.item}>
             <img

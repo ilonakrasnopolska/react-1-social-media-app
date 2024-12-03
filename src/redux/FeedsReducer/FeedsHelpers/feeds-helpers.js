@@ -1,7 +1,10 @@
 export const filterFeedsHelpers = (state, action) => {
-  const filteredFeeds = state.feeds.filter(feed => feed.category === action.payload);
-
-  return state.filteredFeeds = filteredFeeds;
+  const category = action.payload;
+  if (category === 'View all') {
+    state.filteredFeeds = state.feeds;
+  } else {
+    state.filteredFeeds = state.feeds.filter(feed => feed.category === category);
+  }
 }
 
 export const setActiveCategoryHelpers = (state, action) => {

@@ -1,12 +1,12 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
-import Profile from "./Profile/Profile";
 import Classes from "./Main.module.css"
+import Profile from "./Profile/Profile";
 import Messages from "./Messages/Messages";
+import Feeds from "./Feeds/Feeds";
 import Anime from "./Anime/Anime";
 import WatchAnime from "./Anime/AnimeList/AnimeItem/WatchAnime/WatchAnime";
 import Settings from "./Settings/Settings";
-import Feeds from "./Feeds/Feeds";
 import LogIn from "./Settings/SettingsOptions /LogOut/LogIn/LogIn";
 
 const Main = () => {

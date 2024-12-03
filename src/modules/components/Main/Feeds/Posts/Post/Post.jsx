@@ -2,29 +2,30 @@ import React from "react";
 import Classes from './Post.module.css'
 
 const Post = ({post}) => {
+  const {avatar, name, time, content, poster} = post
   return (
     <li className={Classes.item}>
       <div className={Classes.container}>
         <div className={Classes.creator}>
           <img className={Classes.avatar}
-               src={post.avatar}
+               src={avatar}
                alt="Post avatar"
           />
           <div className={Classes.info}>
             <div>
-              <h3>{post.name}</h3>
-              {post.name === 'AniHub' && <span role="img" aria-label="verified">✔️</span>}
+              <h3>{name}</h3>
+              {name === 'AniHub' && <span role="img" aria-label="verified">✔️</span>}
             </div>
             <div>
-              <span>{post.time}</span>
+              <span>{time}</span>
             </div>
           </div>
         </div>
         <div className={Classes.content}>
           <span>
-           {post.content}
+           {content}
           </span>
-          {post.poster && <img src={post.poster} alt="Poster" className={Classes.poster}/>}
+          {poster && <img src={poster} alt="Poster" className={Classes.poster}/>}
         </div>
       </div>
     </li>

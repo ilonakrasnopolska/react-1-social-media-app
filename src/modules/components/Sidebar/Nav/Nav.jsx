@@ -6,19 +6,19 @@ import clsx from "clsx";
 
 const Nav = () => {
   const {nav} = useSelector(state => state.sidebar);
-  const renderNavItems = () => {
-    return nav.map(el => (
-      <li className={Classes.item} key={el.id}>
-        <NavLink
-          className={({isActive}) => clsx(Classes.link, {[Classes.active]: isActive})}
-          to={el.url}>
-          {el.name}
-        </NavLink>
-      </li>
-    ));
-  };
-
-  return <ul className={Classes.list}>{renderNavItems()}</ul>;
+  return (
+    <ul className={Classes.list}>
+      {nav.map(el => (
+        <li className={Classes.item} key={el.id}>
+          <NavLink
+            className={({isActive}) => clsx(Classes.link, {[Classes.active]: isActive})}
+            to={el.url}>
+            {el.name}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default Nav;
