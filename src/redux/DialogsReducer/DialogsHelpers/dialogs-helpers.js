@@ -81,4 +81,5 @@ export const startConversationHelper = (state, action) => {
 }
 export const setActiveUserHelper = (state, action) => {
    state.activeUserId = action.payload;
+  console.log(action)
 }
