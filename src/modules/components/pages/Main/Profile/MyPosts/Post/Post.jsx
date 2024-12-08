@@ -2,11 +2,11 @@ import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 import Comments from "./Comments/Comments";
 import AddComment from "./Comments/AddComment/AddComment";
-import {usePostHandler} from "../../../../../../hooks/usePostHandler";
+import {usePostActions} from "../../../../../../hooks/usePostActions";
 import Avatar from "../../../../../common/Avatar";
 
 const Post = ({ post }) => {
-  const { onDeletePost } = usePostHandler(post.postId);
+  const { onDeletePost } = usePostActions();
   const isCommentsOpen = post.commentData.commentsVisibility;
 
   if (!post) return null;

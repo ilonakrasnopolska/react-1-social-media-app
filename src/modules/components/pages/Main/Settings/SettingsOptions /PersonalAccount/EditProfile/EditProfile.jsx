@@ -4,11 +4,11 @@ import Classes from "./EditProfile.module.css";
 import EditForm from "./EditForm/EditForm";
 import Avatar from "../../../../../../common/Avatar";
 import Title from "../../../../../../common/Title";
-import {useEditAccountHandler} from "../../../../../../../hooks/useEditAccountHandler";
+import {useEditAccountForm} from "../../../../../../../hooks/useEditAccountForm";
 
 
 const EditProfile = ({personalAccount}) => {
-  const {userData, errors, isFormValid, onSaveChange} = useEditAccountHandler(personalAccount);
+  const {userData, errors, isFormValid, handleSaveChanges} = useEditAccountForm(personalAccount);
 
   return (
     <section className='edit section'>
@@ -24,7 +24,7 @@ const EditProfile = ({personalAccount}) => {
                         errors={errors}
               />
               <button
-                onClick={onSaveChange}
+                onClick={handleSaveChanges}
                 className={Classes.button}
                 disabled={!isFormValid}
               >

@@ -6,11 +6,11 @@ import {
   deleteComment
 } from "../../redux/ProfileReducer/profile-reducer";
 
-export const useCommentHandler = (postId, newCommentText) => {
+export const useCommentActions = (postId, newCommentText) => {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.profile.posts.find((post) =>
     post.postId === postId));
-  const Messages = post?.commentData.messages || [];
+  const Messages = post && post.commentData ? post.commentData.messages : [];
 
   const handleCommentChange = (e) => {
     dispatch(updateNewCommentText({postId, value: e.target.value}));
@@ -20,13 +20,6 @@ export const useCommentHandler = (postId, newCommentText) => {
     e.preventDefault();
     if (newCommentText.trim()) {
       dispatch(addComment({postId}));
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleAddComment(e);
     }
   };
 
@@ -47,7 +40,7 @@ export const useCommentHandler = (postId, newCommentText) => {
 
 
   return {
-    handleCommentChange, handleAddComment, handleKeyDown,
+    handleCommentChange, handleAddComment,
     Messages, onReplyToComment, onDeleteComment
   };
 };

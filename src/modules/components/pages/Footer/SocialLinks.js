@@ -1,4 +1,4 @@
-import {Facebook, Instagram, Telegram} from "../../../../redux/Assets/SVG-icons";
+import {Facebook, Instagram, Telegram} from "../../../../redux/assets/SVG-icons";
 import React from "react";
 
 const socialLinks = [

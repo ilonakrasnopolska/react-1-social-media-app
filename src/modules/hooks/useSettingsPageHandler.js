@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-export const useSettingsHandler = () => {
+export const useSettingsPageHandler = () => {
   const { id } = useParams();
   const settingsOptions = useSelector((state) => state.settings.settings);
   const editProfileOption = useSelector((state) => state.settings.personalAccount.editPage);
@@ -18,6 +18,6 @@ export const useSettingsHandler = () => {
     id,
     enhancedSettingsOptions,
     selectedOption,
-    isNotFound: id && !selectedOption, // Можно добавить флаг для упрощения условия
+    isNotFound: id && !selectedOption,
   };
 };

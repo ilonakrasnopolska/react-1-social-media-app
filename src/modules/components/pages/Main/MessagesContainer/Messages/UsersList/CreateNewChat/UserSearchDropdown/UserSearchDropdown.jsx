@@ -2,7 +2,7 @@ import Classes from "./UserSearchDropdown.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {startConversation, setActiveUser} from "../../../../../../../../redux/DialogsReducer/dialogs-reducer";
+import {startConversation, setActiveUser} from "../../../../../../../../../redux/DialogsReducer/dialogs-reducer";
 
 
 const UserSearchDropdown = ({filteredContacts}) => {

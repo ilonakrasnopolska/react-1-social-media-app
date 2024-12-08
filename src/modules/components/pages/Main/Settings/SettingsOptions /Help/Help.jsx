@@ -1,20 +1,16 @@
 import React from "react";
 import CommonClasses from '../../Settings.module.css'
 import Classes from './Help.module.css'
-import {useHelpFormHandler} from "../../../../../../hooks/useHelpFormHandler";
+import {useRequestHelpForm} from "../../../../../../hooks/useRequestHelpForm";
 import {InputField, TextAreaField} from "../../../../../common/HelpForm/HelpForm";
 import Title from "../../../../../common/Title";
 import Button from "../../../../../common/Button";
+import {useInputHandlers} from "../../../../../../hooks/useInputHandlers";
 
 const Help = ({helpCenter}) => {
-  const {
-    requestUserNameText,
-    requestMessageText,
-    errors,
-    handleInputChange,
-    handleKeyDown,
-    handleSubmit,
-  } = useHelpFormHandler(helpCenter);
+  const {requestUserNameText, requestMessageText, errors, handleInputChange, handleFormSubmit}
+    = useRequestHelpForm(helpCenter);
+  const {handleKeyDown} = useInputHandlers('', handleFormSubmit);
 
   return (
     <section className='help section'>
@@ -22,14 +18,16 @@ const Help = ({helpCenter}) => {
         <div className={CommonClasses.wrapper}>
           <Title CommonClasses={CommonClasses} text='Contact Support'/>
           <p className={CommonClasses.text}>Need help? Contact us below!</p>
-          <form className={Classes.contact_form} onSubmit={handleSubmit}>
+          <form className={Classes.contact_form} onSubmit={handleFormSubmit}>
             <InputField value={requestUserNameText} onChange={handleInputChange("userName")}
-                        onKeyDown={handleKeyDown} placeholder="Your name..." errors={errors.userNameError}
+                        onKeyDown={handleKeyDown} placeholder="Your name..."
+                        errors={errors.userNameError}
                         className={Classes.input_name} Classes={Classes}/>
             <TextAreaField value={requestMessageText} onChange={handleInputChange("message")}
-                           onKeyDown={handleKeyDown} placeholder="Your message..." errors={errors.messageError}
+                           onKeyDown={handleKeyDown} placeholder="Your message..."
+                           errors={errors.messageError}
                            className={Classes.textarea} Classes={Classes}/>
-            <Button className={Classes.button} onClick={handleSubmit} label='Send Message'/>
+            <Button className={Classes.button} onClick={handleFormSubmit} label='Send Message'/>
           </form>
         </div>
       </div>

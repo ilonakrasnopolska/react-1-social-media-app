@@ -4,10 +4,10 @@ import Classes from './Confidentiality.module.css'
 import ConfidentialityList from "./ConfidentialityList/ConfidentialityList";
 import Button from "../../../../../common/Button";
 import Title from "../../../../../common/Title";
-import {useConfidentialityHandler} from "../../../../../../hooks/useConfidentialityHandler";
+import {useConfidentialityActions} from "../../../../../../hooks/useConfidentialityActions";
 
 const Confidentiality = ({confidentiality}) => {
-  const {onChangePrivacySettings} = useConfidentialityHandler();
+  const {savePrivacySettings} = useConfidentialityActions();
 
   return (
     <section className='confidentiality section'>
@@ -18,10 +18,10 @@ const Confidentiality = ({confidentiality}) => {
             Manage your privacy and data settings.
           </p>
           <form className={Classes.form}
-                onSubmit={onChangePrivacySettings}>
+                onSubmit={savePrivacySettings}>
             <ConfidentialityList confidentiality={confidentiality}/>
             <Button className={Classes.button}
-                    onClick={onChangePrivacySettings}
+                    onClick={savePrivacySettings}
                     label="Send Message"/>
           </form>
         </div>

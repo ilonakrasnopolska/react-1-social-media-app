@@ -2,12 +2,12 @@ import React from "react";
 import CommonClasses from '../../Settings.module.css'
 import Classes from './Language.module.css'
 import Select from "react-select";
-import {useLanguageSettings} from "../../../../../../hooks/useLanguageSettingsHandler";
+import {useLanguageSettings} from "../../../../../../hooks/useLanguageSettings";
 import Title from "../../../../../common/Title";
 import Button from "../../../../../common/Button";
 
 const Language = () => {
-  const {options, currentOption, handleChange} = useLanguageSettings();
+  const {options, selectedOption, handleChange} = useLanguageSettings();
 
   return (
     <section className='language section'>
@@ -19,7 +19,7 @@ const Language = () => {
               Interface Language:
               <Select
                 options={options}
-                value={currentOption}
+                value={selectedOption}
                 onChange={handleChange}
                 className={Classes.reactSelect}
                 placeholder="Select a language"

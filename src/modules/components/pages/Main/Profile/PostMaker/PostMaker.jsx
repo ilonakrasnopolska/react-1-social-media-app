@@ -1,11 +1,14 @@
 import React from "react";
 import Classes from './PostMaker.module.css';
-import {usePostHandler} from "../../../../../hooks/usePostHandler";
+import {usePostActions} from "../../../../../hooks/usePostActions";
 import Button from "../../../../common/Button";
+import {useInputHandlers} from "../../../../../hooks/useInputHandlers";
+import {updateNewPostText} from "../../../../../../redux/ProfileReducer/profile-reducer";
 
 const PostMaker = () => {
-  const {newPostText, handleAddPost, handlePostChange, handleKeyDown} = usePostHandler();
-
+  const {newPostText, handleAddPost} = usePostActions();
+  const {handleKeyDown} = useInputHandlers('',handleAddPost);
+  const {useTextChangeHandlers} = useInputHandlers(updateNewPostText);
   return (
     <section className="newPost section">
       <div className={Classes.content}>
@@ -15,7 +18,7 @@ const PostMaker = () => {
           <textarea
             name="newPost"
             value={newPostText}
-            onChange={handlePostChange}
+            onChange={useTextChangeHandlers}
             onKeyDown={handleKeyDown}
             className={Classes.textarea}
             placeholder="Your news..."/>

@@ -1,10 +1,10 @@
 import React from "react";
 import Classes from "./Comments.module.css"
-import {useCommentHandler} from "../../../../../../../hooks/useCommentHandler";
+import {useCommentActions} from "../../../../../../../hooks/useCommentActions";
 import Avatar from "../../../../../../common/Avatar";
 
 const Comments = ({postId}) => {
-  const { Messages, onReplyToComment, onDeleteComment } = useCommentHandler(postId);
+  const { Messages, onReplyToComment, onDeleteComment } = useCommentActions(postId);
   return (
     <ul className={Classes.list}>
       {Messages.length > 0 ? (

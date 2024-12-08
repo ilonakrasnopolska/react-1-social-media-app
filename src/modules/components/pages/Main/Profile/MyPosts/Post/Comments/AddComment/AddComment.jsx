@@ -1,12 +1,14 @@
 import React from "react";
 import {useSelector} from "react-redux";
 import Classes from "./AddComment.module.css"
-import {useCommentHandler} from "../../../../../../../../hooks/useCommentHandler";
+import {useCommentActions} from "../../../../../../../../hooks/useCommentActions";
+import {useInputHandlers} from "../../../../../../../../hooks/useInputHandlers";
 
 const AddComment = ({postId}) => {
   const newCommentText = useSelector(state =>
     state.profile.posts.find(post => post.postId === postId)?.newCommentText || '');
-  const { handleCommentChange, handleAddComment, handleKeyDown } = useCommentHandler(postId, newCommentText);
+  const { handleCommentChange, handleAddComment } = useCommentActions(postId, newCommentText);
+  const {handleKeyDown} = useInputHandlers('', handleAddComment);
 
   return (
     <div className={Classes.add_comment}>

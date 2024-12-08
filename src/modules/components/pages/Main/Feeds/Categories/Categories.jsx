@@ -1,9 +1,9 @@
 import React from "react";
 import Classes from './Categories.module.css'
-import {useFeedsHandler} from "../../../../../hooks/useFeedsHandler";
+import {useFeedsFilter} from "../../../../../hooks/useFeedsFilter";
 
 const Categories = ({categories, activeCategory}) => {
-  const { onFilter } = useFeedsHandler();
+  const { handleCategoryFilter } = useFeedsFilter();
 
   return (
     <article className={Classes.categories}>
@@ -12,7 +12,7 @@ const Categories = ({categories, activeCategory}) => {
       {categories.map((el) => (
         <li key={el.id}>
           <button
-            onClick={() => onFilter(el.title)}
+            onClick={() => handleCategoryFilter(el.title)}
             className={`${Classes.button} ${el.title === activeCategory ? Classes.activeButton : ''}`}
           >
             {el.title}

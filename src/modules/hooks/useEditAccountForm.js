@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {updateProfileInfo} from "../../redux/ProfileReducer/profile-reducer";
 import {editPersonalInfoText, validateEditAccountForm} from "../../redux/SettingsReducer/settings-reducer";
 
-export const useEditAccountHandler = (personalAccount) => {
+export const useEditAccountForm = (personalAccount) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,39 +14,44 @@ export const useEditAccountHandler = (personalAccount) => {
 
   const { userData, isFormValid, errors } = personalAccount;
 
-  // Сохраняем изменения
-  const onSaveChange = (e) => {
+  const handleSaveChanges = (e) => {
     e.preventDefault();
     if (!isFormValid) return;
     dispatch(updateProfileInfo(userData));
     navigate(personalAccountPage.url);
   };
 
-  const onValueChange = (key, value) => {
+  const handleValueChanges = (key, value) => {
     dispatch(editPersonalInfoText({key, value}))
     dispatch(validateEditAccountForm());
   };
 
-  const onKeyDownTest = (e) => {
-    if (/\d/.test(e.key)) {
+  const preventNumericInput = (e) => {
+    let inputData;
+
+    // Для события нажатия клавиши (keyDown)
+    if (e.type === "keydown") {
+      inputData = e.key;
+    }
+
+    // Для события вставки (paste)
+    if (e.type === "paste") {
+      inputData = e.clipboardData.getData("text");
+    }
+
+    // Проверка на наличие чисел в введенных данных
+    if (/\d/.test(inputData)) {
       e.preventDefault();
     }
   };
 
-  const onPasteTest = (e) => {
-    const pasteData = e.clipboardData.getData("text");
-    if (/\d/.test(pasteData)) {
-      e.preventDefault();
-    }
-  };
 
   return {
     userData,
     isFormValid,
     errors,
-    onSaveChange,
-    onValueChange,
-    onKeyDownTest,
-    onPasteTest
+    handleSaveChanges,
+    handleValueChanges,
+    preventNumericInput
   };
 };

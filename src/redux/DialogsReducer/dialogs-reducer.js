@@ -4,10 +4,10 @@ import {
   updateSearchUserTextHelper,
   startConversationHelper,
   deleteMessageHelper,
-  setActiveUserHelper,
+  setActiveUserHelper, resetActiveUserHelper,
 } from "./DialogsHelpers/dialogs-helpers";
 import {createSlice} from '@reduxjs/toolkit';
-import avatars from "../Assets/Avatars-src";
+import avatars from "../assets/Avatars-src";
 
 // Константы
 const baseMessageUrl = '/messages/';
@@ -166,6 +166,9 @@ const dialogsSlice = createSlice({
     setActiveUser: (state, action) => {
       setActiveUserHelper(state, action);
     },
+    resetActiveUser: (state) => {
+      resetActiveUserHelper(state)
+    },
   }
 })
 
@@ -176,5 +179,6 @@ export const {
   updateSearchUserText,
   startConversation,
   setActiveUser,
+  resetActiveUser
 } = dialogsSlice.actions;
 export default dialogsSlice.reducer;

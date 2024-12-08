@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import posters from "../Assets/Posters-src";
+import posters from "../assets/Posters-src";
 import {updateSearchAnimeTextHelper, filterAnimeListHelper} from "./AnimeHelpers/anime-helpers";
 // Счетчики
 let animeIdCounter = 1;

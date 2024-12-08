@@ -1,10 +1,11 @@
 import React from "react";
 import Classes from './SearchAnime.module.css'
-import {useAnimeSearchHandler} from "../../../../../hooks/useAnimeSearchHandler";
+import {useInputHandlers} from "../../../../../hooks/useInputHandlers";
+import {setSearchQuery} from "../../../../../../redux/AnimeReducer/anime-reducer";
 
 
 const SearchAnime = ({newSearchAnimeText}) => {
-  const {handleSearchChange} = useAnimeSearchHandler();
+  const {useTextChangeHandlers} = useInputHandlers(setSearchQuery);
   return (
     <div className={Classes.search}>
       <h1>Choose your anime:</h1>
@@ -13,7 +14,7 @@ const SearchAnime = ({newSearchAnimeText}) => {
           value={newSearchAnimeText}
           className={Classes.input}
           type="text"
-          onChange={handleSearchChange}
+          onChange={useTextChangeHandlers}
           placeholder="Search for anime"
         />
     </div>

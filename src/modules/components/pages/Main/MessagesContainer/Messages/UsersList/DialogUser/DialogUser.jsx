@@ -1,12 +1,13 @@
 import Classes from "./DialogUser.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {useDialogsHandler} from "../../../../../../hooks/useDialogsHandler";
+import {useDialogsActions} from "../../../../../../../hooks/useDialogsActions";
+import Avatar from "../../../../../../common/Avatar";
 
 const DialogUser = ({ userId, users, activeUserId }) => {
   const currentUser = users.find(user => user.userId === userId);
   const { userId: id, avatar, name } = currentUser || {};
-  const {handleClick} = useDialogsHandler(userId);
+  const {setActiveUserHandler} = useDialogsActions(userId);
 
   return (
     <li className={Classes.info}>
@@ -15,14 +16,14 @@ const DialogUser = ({ userId, users, activeUserId }) => {
         className={({ isActive }) =>
           `${Classes.link} ${isActive ? Classes.active : ""}`
         }
-        onClick={handleClick}
+        onClick={setActiveUserHandler}
       >
         <button
           className={`${Classes.button} ${
             activeUserId === id ? Classes.activeButton : ""
           }`}
         >
-          <img className={Classes.avatar} src={avatar} alt="Avatar" />
+          <Avatar src={avatar} alt="Avatar" className={Classes.avatar}/>
           <span className={Classes.name}>{name}</span>
         </button>
       </NavLink>

@@ -1,4 +1,4 @@
-import avatars from "../../Assets/Avatars-src";
+import avatars from "../../assets/Avatars-src";
 
 const CURRENT_USER_NAME = "Ilona Sue"
 const getData = () => {
@@ -81,5 +81,7 @@ export const startConversationHelper = (state, action) => {
 }
 export const setActiveUserHelper = (state, action) => {
    state.activeUserId = action.payload;
-  console.log(action)
+}
+export const resetActiveUserHelper = (state) => {
+  state.activeUserId = null;
 }

@@ -1,7 +1,7 @@
 import Classes from "./ChatBubble.module.css";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteMessage} from "../../../../../../../redux/DialogsReducer/dialogs-reducer";
+import {deleteMessage} from "../../../../../../../../../redux/DialogsReducer/dialogs-reducer";
 
 const ChatBubble = ({chatId, messageId}) => {
   const dispatch = useDispatch();

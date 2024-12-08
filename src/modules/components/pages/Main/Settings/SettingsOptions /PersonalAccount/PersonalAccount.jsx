@@ -5,7 +5,7 @@ import Avatar from "../../../../../common/Avatar";
 import NavButton from "../../../../../common/NavButton";
 import UserInfo from "../../../../../common/UserInfo/UserInfo";
 import Title from "../../../../../common/Title";
-import {usePersonalAccountData} from "../../../../../../hooks/usePersonalAccountHandler";
+import {usePersonalAccountData} from "../../../../../../hooks/useGetPersonalAccountData";
 
 const PersonalAccount = () => {
   const {userData, editPage} = usePersonalAccountData();

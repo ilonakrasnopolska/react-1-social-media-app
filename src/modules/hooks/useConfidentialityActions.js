@@ -1,17 +1,17 @@
 import {useDispatch} from "react-redux";
 import {saveConfidentialSettings, updateConfidentialitySetting} from "../../redux/SettingsReducer/settings-reducer";
 
-export const useConfidentialityHandler = () => {
+export const useConfidentialityActions = () => {
   const dispatch = useDispatch();
 
   const handleChange = (settingValue, settingTitle) => {
     dispatch(updateConfidentialitySetting({ settingValue, settingTitle }));
   };
 
-  const onChangePrivacySettings = (event) => {
+  const savePrivacySettings = (event) => {
     event.preventDefault();
     dispatch(saveConfidentialSettings());
   };
 
-  return {handleChange, onChangePrivacySettings}
+  return {handleChange, savePrivacySettings}
 }

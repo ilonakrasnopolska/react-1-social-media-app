@@ -1,9 +1,9 @@
 import React from "react";
 import Classes from './ConfidentialityList.module.css'
-import {useConfidentialityHandler} from "../../../../../../../hooks/useConfidentialityHandler";
+import {useConfidentialityActions} from "../../../../../../../hooks/useConfidentialityActions";
 
 const ConfidentialityList = ({confidentiality}) => {
-  const {handleChange} = useConfidentialityHandler()
+  const {handleChange} = useConfidentialityActions()
 
   return (
     <ul className={Classes.list}>
