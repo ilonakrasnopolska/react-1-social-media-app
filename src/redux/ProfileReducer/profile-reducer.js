@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-import avatars from "../Assets/Avatars-src";
-import {pictures} from "../Assets/Pictures-src";
+import avatars from "../assets/Avatars-src";
+import {pictures} from "../assets/Pictures-src";
 
 import {
   addPostHelper, deletePostHelper,
@@ -19,7 +19,8 @@ const initialState = {
   posts: [
     {
       name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Who is your favourite character in Naruto?',
-      comments: 1, likes: 123, time: '10:00', likedByUser: false, commentData: {
+      comments: 1, likes: 123, time: '10:00', likedByUser: false, avatar: avatars.ilonaSue,
+      commentData: {
         commentsVisibility: false, messages:
           [{
             commentId: commentIdCounter++,
@@ -29,11 +30,11 @@ const initialState = {
             avatar: `${avatars.markPic}`
           }],
       }, newCommentText: '',
-
     },
     {
       name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Where are you from',
-      comments: 1, likes: 14, time: '09:00', likedByUser: false, commentData: {
+      comments: 1, likes: 14, time: '09:00', likedByUser: false, avatar: avatars.ilonaSue,
+      commentData: {
         commentsVisibility: false, messages:
           [{
             commentId: commentIdCounter++,
@@ -46,7 +47,8 @@ const initialState = {
     },
     {
       name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'I wish i had more free time to watch anime!',
-      comments: 1, likes: 36, time: '08:00', likedByUser: false, commentData:  {
+      comments: 1, likes: 36, time: '08:00', likedByUser: false, avatar: avatars.ilonaSue,
+      commentData:  {
         commentsVisibility: false, messages:
           [{
             commentId: commentIdCounter++,
@@ -59,7 +61,8 @@ const initialState = {
     },
     {
       name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Have you seen the JK?',
-      comments: 1, likes: 13, time: '07:00', likedByUser: false, commentData: {
+      comments: 1, likes: 13, time: '07:00', likedByUser: false, avatar: avatars.ilonaSue,
+      commentData: {
         commentsVisibility: false, messages:
           [{
             commentId: commentIdCounter++,
@@ -72,7 +75,8 @@ const initialState = {
     },
     {
       name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Hello everyone!',
-      comments: 1, likes: 3, time: '06:00', likedByUser: false, commentData:  {
+      comments: 1, likes: 3, time: '06:00', likedByUser: false, avatar: avatars.ilonaSue,
+      commentData:  {
         commentsVisibility: false, messages:
           [{
             commentId: commentIdCounter++,

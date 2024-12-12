@@ -1,7 +1,7 @@
-import avatars from "../Assets/Avatars-src";
+import avatars from "../assets/Avatars-src";
 import {createSlice} from "@reduxjs/toolkit";
 import {filterFeedsHelpers, setActiveCategoryHelpers} from "./FeedsHelpers/feeds-helpers";
-import posters from "../Assets/Posters-src";
+import posters from "../assets/Posters-src";
 
 // Счетчики
 let feedIdCounter = 1;
@@ -57,6 +57,7 @@ const initialState = {
   filteredFeeds: [],
   activeCategory: 'View all',
 }
+
 
 const feedsSlice = createSlice({
   name: 'feeds',

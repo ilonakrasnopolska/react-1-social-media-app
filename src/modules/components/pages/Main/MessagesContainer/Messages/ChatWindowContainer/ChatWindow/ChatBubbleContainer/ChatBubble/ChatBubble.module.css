@@ -1,0 +1,57 @@
+.chatItem {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 0fr;
+  align-items: center;
+  gap: 10px;
+  background-color: #194770;
+  border-radius: 30px;
+  padding: 30px 20px;
+}
+
+.messageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.messageContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.messageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #dcdcff;
+  font-size: 20px;
+}
+
+.textContent {
+  display: flex;
+  gap: 10px;
+}
+
+.delete_btn button{
+  font-size: 20px;
+  background-color: transparent;
+  color: #dcdcff;
+  padding: 0;
+  border-bottom: 1px solid #dcdcff;
+  margin-right: 10px;
+}
+
+.data {
+  color: #dcdcff;
+  opacity: 50%;
+  font-size: 20px;
+}

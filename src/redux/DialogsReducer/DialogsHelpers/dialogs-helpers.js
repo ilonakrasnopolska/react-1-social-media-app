@@ -1,4 +1,4 @@
-import avatars from "../../Assets/Avatars-src";
+import avatars from "../../assets/Avatars-src";
 
 const CURRENT_USER_NAME = "Ilona Sue"
 const getData = () => {
@@ -23,7 +23,7 @@ export const sendMessageHelper = (state, action) => {
 
   if (state.newMessageText.trim() !== '') {
     // Генерируем уникальный ID для нового сообщения
-    const newMessageId = chat.messages.length+1
+    const newMessageId = chat.messages.length + 1
     const newMessage = {
       name: CURRENT_USER_NAME,
       id: newMessageId,
@@ -39,7 +39,7 @@ export const sendMessageHelper = (state, action) => {
   }
 }
 export const deleteMessageHelper = (state, action) => {
-  const { chatId, messageId } = action.payload;
+  const {chatId, messageId} = action.payload;
 
   const chat = state.chats.find(chat => chat.chatId === chatId);
   if (!chat) {
@@ -51,16 +51,21 @@ export const deleteMessageHelper = (state, action) => {
 
   return state;
 }
+export const filterContactsHelper = (state) => {
+  state.filteredContacts = state.contacts.filter(contact =>
+    contact.name.toLowerCase().includes(state.searchUserText)
+  );
+};
 export const updateSearchUserTextHelper = (state, action) => {
-  state.searchUserText = action.payload;
-  return state;
+  state.searchUserText = action.payload.toLowerCase();
+  filterContactsHelper(state, action)
 }
 export const startConversationHelper = (state, action) => {
   const newUser = action.payload;
   const name = action.payload.name;
 
   const existingChat = state.chats.find(chat =>
-    chat.participants.includes(name) && chat.participants.includes('Ilona Sue') // Участники должны совпадать
+    chat.participants.includes(name) && chat.participants.includes('Ilona Sue')
   );
 
   if (existingChat) {
@@ -80,5 +85,8 @@ export const startConversationHelper = (state, action) => {
   return state
 }
 export const setActiveUserHelper = (state, action) => {
-   state.activeUserId = action.payload;
+  state.activeUserId = action.payload;
+}
+export const resetActiveUserHelper = (state) => {
+  state.activeUserId = null;
 }

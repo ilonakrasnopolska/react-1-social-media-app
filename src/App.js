@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Header from "./modules/components/Header/Header";
-import Sidebar from "./modules/components/Sidebar/Sidebar";
-import Footer from "./modules/components/Footer/Footer";
-import Main from "./modules/components/Main/Main";
+import Header from "./modules/components/pages/Header/Header";
+import Sidebar from "./modules/components/pages/Sidebar/Sidebar";
+import Footer from "./modules/components/pages/Footer/Footer";
+import Main from "./modules/components/pages/Main/Main";
 
 const App = () => {
   return (
