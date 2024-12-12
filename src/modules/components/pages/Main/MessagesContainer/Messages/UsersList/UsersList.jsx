@@ -3,18 +3,21 @@ import React from "react";
 import DialogUser from "./DialogUser/DialogUser";
 import CreateNewChat from "./CreateNewChat/CreateNewChat";
 
-const UsersList = ({users, contacts, activeUserId, searchUserText}) => {
+const UsersList = ({users, searchUserText, filteredContacts, urlId}) => {
   return (
     <section className="users section">
       <ul className={Classes.list}>
         {users.map(el =>
           <DialogUser userId={el.userId}
+                      urlId={urlId}
                       key={el.userId}
                       users={users}
-                      activeUserId={activeUserId}/>)
+          />)
         }
       </ul>
-      <CreateNewChat contacts={contacts} searchUserText={searchUserText}/>
+      <CreateNewChat
+        searchUserText={searchUserText}
+        filteredContacts={filteredContacts}/>
     </section>
   )
 }

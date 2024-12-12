@@ -7,7 +7,6 @@ export const useResetActiveUserOnRouteChange = () => {
 
   useEffect(() => {
     return () => {
-      // Сбрасываем activeUserId при размонтировании компонента Messages
       dispatch(resetActiveUser());
     };
   }, [dispatch]);

@@ -1,17 +1,11 @@
 import Classes from "./UserSearchDropdown.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {startConversation, setActiveUser} from "../../../../../../../../../redux/DialogsReducer/dialogs-reducer";
+import {useDialogsActions} from "../../../../../../../../hooks/useDialogsActions";
 
 
 const UserSearchDropdown = ({filteredContacts}) => {
-  const dispatch = useDispatch();
-
-  const onStartChat = (contact) => {
-    dispatch(setActiveUser( contact.userId ));
-    dispatch(startConversation(contact))
-  }
+  const {handleStartChat} = useDialogsActions();
 
   return (
     <ul className={Classes.dropdown}>
@@ -21,7 +15,7 @@ const UserSearchDropdown = ({filteredContacts}) => {
           filteredContacts.map(contact => (
             <li key={contact.userId} className={Classes.contact}>
                 <NavLink to={`/messages/${contact.userId}`}>
-                  <button onClick={() => onStartChat(contact)} className={Classes.button}>
+                  <button onClick={() => handleStartChat(contact)} className={Classes.button}>
                     <img className={Classes.avatar} src={contact.avatar} alt="Avatar"/>
                     <span className={Classes.name}>{contact.name}</span>
                   </button>

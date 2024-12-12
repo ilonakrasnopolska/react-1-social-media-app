@@ -133,6 +133,7 @@ const initialState = {
   newMessageText: '',
   searchUserText: '',
   activeUserId: null,
+  filteredContacts: [],
 }
 
 initialState.contacts = initialState.users
@@ -167,8 +168,8 @@ const dialogsSlice = createSlice({
       setActiveUserHelper(state, action);
     },
     resetActiveUser: (state) => {
-      resetActiveUserHelper(state)
-    },
+      resetActiveUserHelper(state);
+    }
   }
 })
 
@@ -179,6 +180,6 @@ export const {
   updateSearchUserText,
   startConversation,
   setActiveUser,
-  resetActiveUser
+  resetActiveUser,
 } = dialogsSlice.actions;
 export default dialogsSlice.reducer;

@@ -1,33 +1,16 @@
 import React from "react";
 import ChatWindow from "./ChatWindow/ChatWindow";
-import ChatBubble from "./ChatWindow/ChatBubble/ChatBubble";
+import ChatBubbleContainer from "./ChatWindow/ChatBubbleContainer/ChatBubbleContainer";
 
-const ChatWindowContainer = ({chats, activeUserId}) => {
-  const currentChat = chats.find(chat => chat.chatId === Number(activeUserId));
 
-  const chatContent = (() => {
-    if (!currentChat) {
-      return <li>Please select a chat...</li>;
-    }
-
-    if (currentChat.messages.length === 0) {
-      return <li>Start conversation...</li>;
-    }
-
-    return currentChat.messages.map(message => (
-      <ChatBubble
-        chatId={currentChat.chatId}
-        messageId={message.id}
-        key={message.id}
-      />
-    ));
-  })();
-
+const ChatWindowContainer = ({chats, newMessageText, urlId}) => {
+  const currentChat = chats.find(chat => chat.chatId === Number(urlId));
   return (
     <ChatWindow
-      chatContent={chatContent}
+      chatContent={<ChatBubbleContainer currentChat={currentChat} chats={chats} />}
       showNewMessage={!!currentChat}
       chatId={currentChat?.chatId}
+      newMessageText={newMessageText}
     />
   );
 };

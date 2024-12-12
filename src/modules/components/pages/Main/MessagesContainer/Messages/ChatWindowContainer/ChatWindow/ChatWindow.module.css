@@ -6,42 +6,22 @@
 
 .list {
   display: flex;
+  align-items: center;
   flex-direction: column;
   padding: 20px;
   gap: 30px;
-  flex: 1; /* Занимает всё доступное пространство */
+  flex: 1;
   overflow-y: auto;
 }
 
-/* Скрытие скроллбара в WebKit-браузерах */
 .list::-webkit-scrollbar {
-  display: none; /* Скрыть скроллбар */
+  display: none;
 }
 
 .emptyList {
   display: flex;
-  flex: 1;
+  flex: 1 1;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-.initialList,
-.noChat {
-  font-size: 27px;
-  color: #194770;
-}
-
-.list .initialList {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-}
-
-@media (max-width: 650px) {
-  .initialList,
-  .noChat {
-    font-size: 14px;
-  }
 }

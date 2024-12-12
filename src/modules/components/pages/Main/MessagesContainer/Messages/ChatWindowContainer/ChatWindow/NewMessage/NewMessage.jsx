@@ -1,42 +1,28 @@
 import Classes from "./NewMessage.module.css";
 import React from "react";
 import {SendMessageIcon} from "../../../../../../../../../redux/assets/SVG-icons";
-import {useDispatch, useSelector} from "react-redux";
-import { sendMessage, updateNewMessageText } from '../../../../../../../../../redux/DialogsReducer/dialogs-reducer';
+import {updateNewMessageText} from '../../../../../../../../../redux/DialogsReducer/dialogs-reducer';
+import {useInputHandlers} from "../../../../../../../../hooks/useInputHandlers";
+import {useDialogsActions} from "../../../../../../../../hooks/useDialogsActions";
 
 
-const NewMessage = ({chatId}) => {
-  const dispatch = useDispatch();
-  const newMessageText = useSelector(state => state.dialogs.newMessageText);
-
-  const handleSendMessage = (event) => {
-    event.preventDefault();
-    dispatch(sendMessage({chatId}));
-  };
-
-  const onMessageChange = (e) => {
-    const text = e.target.value;
-    dispatch(updateNewMessageText(text));
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSendMessage(e);
-    }
-  };
+const NewMessage = ({chatId, newMessageText}) => {
+  const {handleSendMessage} = useDialogsActions();
+  const {useTextChangeHandlers, handleKeyDown} =
+    useInputHandlers(updateNewMessageText, (e) => handleSendMessage(e, chatId));
 
   return (
     <div className={Classes.container}>
-      <form className={Classes.form} onSubmit={handleSendMessage}>
+      <form className={Classes.form}
+            onSubmit={(e) => handleSendMessage(e, chatId)}>
         <textarea
           name="message"
           value={newMessageText}
-          onChange={onMessageChange}
+          onChange={useTextChangeHandlers}
           onKeyDown={handleKeyDown}
           className={Classes.textarea}
           placeholder="Type your message here..."/>
-        <button onClick={handleSendMessage} className={Classes.button}>
+        <button className={Classes.button}>
           <SendMessageIcon/>
         </button>
       </form>

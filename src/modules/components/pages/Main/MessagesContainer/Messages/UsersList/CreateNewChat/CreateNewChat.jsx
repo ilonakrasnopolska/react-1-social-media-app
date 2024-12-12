@@ -5,14 +5,8 @@ import {useInputHandlers} from "../../../../../../../hooks/useInputHandlers";
 import {updateSearchUserText} from "../../../../../../../../redux/DialogsReducer/dialogs-reducer";
 
 
-const CreateNewChat = ({contacts, searchUserText}) => {
+const CreateNewChat = ({searchUserText, filteredContacts}) => {
   const {useTextChangeHandlers} = useInputHandlers(updateSearchUserText);
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(searchUserText.toLowerCase())
-  );
-
-  const shouldDisplayUserList = searchUserText.length > 0;
-
   return (
     <div className={Classes.box}>
       <h3 className={Classes.title}>Create a new chat:</h3>
@@ -23,9 +17,8 @@ const CreateNewChat = ({contacts, searchUserText}) => {
         onChange={useTextChangeHandlers}
         type="text"
         placeholder="Find user..."/>
-      {shouldDisplayUserList && (
-        <UserSearchDropdown inShowUserList={shouldDisplayUserList}
-                            filteredContacts={filteredContacts}/>
+      {searchUserText.length > 0 && (
+        <UserSearchDropdown inShowUserList={true} filteredContacts={filteredContacts} />
       )}
     </div>
   );

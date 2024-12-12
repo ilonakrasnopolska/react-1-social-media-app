@@ -15,7 +15,7 @@ const Main = () => {
       <div className={Classes.content}>
         <Routes>
           <Route path="/profile" element={<Profile/>}/>
-          <Route path="/messages/:userId?" element={<MessagesContainer/>}/>
+          <Route path="/messages/:chatId?" element={<MessagesContainer/>}/>
           <Route path="/feeds" element={<Feeds/>}/>
           <Route path="/anime" element={<Anime/>}/>
           <Route path="/anime/:animeId" element={<WatchAnime />} />

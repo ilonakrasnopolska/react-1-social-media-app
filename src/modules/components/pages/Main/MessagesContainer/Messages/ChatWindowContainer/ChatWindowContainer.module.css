@@ -1,0 +1,21 @@
+.initialList,
+.noChat {
+  display: flex;
+  flex: 1 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 27px;
+  color: #194770;
+}
+
+.initialList {
+  padding-top: 60px;
+}
+
+@media (max-width: 650px) {
+  .initialList,
+  .noChat {
+    font-size: 14px;
+  }
+}
