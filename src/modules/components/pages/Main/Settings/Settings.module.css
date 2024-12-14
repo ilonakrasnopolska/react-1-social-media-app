@@ -59,12 +59,12 @@
 
 .item {
   font-size: 22px;
-  background-color: #194770;
+  background-color: var(--primary-background);
   padding: 20px;
 }
 
 .item a {
-  color: #ffffff;
+  color: var(--primary-text-color);
 }
 
 @media (max-width: 990px) {

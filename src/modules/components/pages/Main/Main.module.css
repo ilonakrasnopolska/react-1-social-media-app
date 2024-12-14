@@ -1,5 +1,5 @@
 .content {
-  background-color: #e2eaff;
+  background-color: var(--content-background-3);
   min-height: 325px;
 }
 

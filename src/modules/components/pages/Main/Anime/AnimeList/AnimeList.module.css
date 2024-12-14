@@ -15,7 +15,7 @@
 
 .noResults {
   font-size: 20px;
-  color: #194770;
+  color: var(--basic-text-color);
   padding-top: 100px;
 }
 

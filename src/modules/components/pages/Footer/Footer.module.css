@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-area: footer;
-  background-color: #194770;
+  background-color: var(--primary-background);
 }
 
 .wrapper {
@@ -34,5 +34,5 @@
   grid-area: text;
   text-align: center;
   grid-column: 2; /* Center the text */
-  color: #dcdcff;
+  color: var(--primary-text-color);
 }

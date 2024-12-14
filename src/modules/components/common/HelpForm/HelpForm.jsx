@@ -4,11 +4,14 @@ export const InputField = ({ value, onChange, onKeyDown, placeholder, errors, cl
   return (
   <div>
     <input
+      id="userName"
+      name="userName"
       className={`${className} ${errors ? Classes.error : ""}`}
       value={value}
       onChange={onChange}
       onKeyDown={onKeyDown}
       placeholder={placeholder}
+      autoComplete="name"
     />
     {errors && <div className={Classes.error_message}>{errors}</div>}
   </div>
@@ -18,6 +21,8 @@ export const TextAreaField = ({ value, onChange, onKeyDown, placeholder, errors,
   return (
   <div>
     <textarea
+      id="message"
+      name="message"
       className={`${className} ${errors ? Classes.error : ""}`}
       value={value}
       onChange={onChange}

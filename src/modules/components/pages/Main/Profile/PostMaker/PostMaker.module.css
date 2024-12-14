@@ -30,6 +30,6 @@
   width: 130px;
   padding: 10px 20px;
   font-size: 15px;
-  background-color: #194770;
-  color: #ffffff;
+  background-color: var(--button-background);
+  color: var(--button-txt-color);
 }

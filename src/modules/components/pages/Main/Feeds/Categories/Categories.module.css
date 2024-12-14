@@ -1,6 +1,6 @@
 .categories {
   padding: 10px 20px;
-  background-color: #ffffff;
+  background-color: var(--basic-background);
   width: 20%;
   height: 300px;
 }
@@ -21,12 +21,12 @@
   background-color: transparent;
   padding: 10px;
   font-size: 21px;
-  color: #194770;
+  color: var(--content-text-color-2);
 }
 
 .activeButton {
-  background-color: #194770;
-  color: #fff;
+  background-color: var(--button-background-1);
+  color: var(--content-text-color-3);
 }
 
 @media (max-width: 890px) {

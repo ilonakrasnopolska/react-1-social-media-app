@@ -8,7 +8,7 @@
   grid-template-columns: max-content 1fr max-content;
   align-items: center;
   grid-gap: 20px;
-  background-color: #ffffff;
+  background-color: var(--content-background-2);
   padding: 20px;
 }
 
@@ -53,7 +53,7 @@
   flex-direction: column;
   gap: 20px; /* Меньше отступов для лучшего эффекта */
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--comment-background);
   overflow: hidden; /* Скрыть переполнение */
   opacity: 0; /* Изначально невидимо */
   transition: opacity 0.6s ease, transform 0.6s ease; /* Плавный переход */

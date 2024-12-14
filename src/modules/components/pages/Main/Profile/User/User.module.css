@@ -27,6 +27,6 @@
 
 .item {
   font-size: 20px;
-  color: #194770;
+  color: var(--content-text-color-2);
   text-decoration-line: underline;
 }

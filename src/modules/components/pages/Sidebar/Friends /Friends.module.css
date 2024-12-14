@@ -5,9 +5,9 @@
 }
 
 .title {
-  font-size: 40px;
-  font-weight: 500;
-  color: #dcdcff;
+  font-size: 35px;
+  font-weight: 600;
+  color: var(--primary-text-color);
 }
 
 .list {
