@@ -1,61 +1,62 @@
 /* Определяем переменные по умолчанию для светлой темы */
 :root {
-  --button-background: #194770;   /* Цвет фона кнопки */
-  --button-txt-color: #e2eaff;   /* Цвет текста кнопки */
+  /*базовые цвета*/
+  --primary-color: #194770;
+  --button-txt-color: #e2eaff;
   --content-background: #e2eaff;
-  --border-color: #194770;
-  --basic-background: #fff;
-  --basic-text-color: #194770;
+  --white-color: #fff;
+  --black-color: #000;
+  --basic-text-color-2: #e2f1ff;
 
   /* Основные цвета */
-  --primary-background: #aed4f8; /* Основной фон */
-  --primary-text-color: #194770; /* Основной цвет текста */
-  --active-text-color: #aed4f8;
+  --primary-background: #aed4f8;
+  --primary-text-color: #194770;
+  --active-color: #aed4f8;
 
   /* Фон и текст для контента */
   --content-background-1: #e2eaff; /* Светлый фон для первого типа контента */
-  --content-background-2: #fff;   /* Белый фон для второго типа контента */
+  --content-background-2: #fff;
   --content-background-3: #e2f1ff; /* Светло-синий фон для третьего типа контента */
 
-  --content-text-color-1: #000;   /* Черный текст для первого типа контента */
-  --content-text-color-2: #194770;/* Темно-синий текст для второго типа контента */
+  --button-txt-color-2: #e2eaff;/* Темно-синий текст для второго типа контента */
   --content-text-color-3: #e2f1ff;
 
-  /* Цвета для комментариев */
-  --comment-background: rgba(255, 255, 255, 0.5); /* Фон для комментариев */
-  --comment-text-color: #194770; /* Текст комментариев */
+  /* Фон для комментариев */
+  --comment-background: rgba(255, 255, 255, 0.5);
 
   /* Цвета для кнопок */
-  --button-background-1: #194770;   /* Цвет фона кнопки */
+  --button-background-1: #194770;
   --button-background-2: #194770;   /* Цвет фона кнопки */
-  --button-text-color: #e2eaff;   /* Цвет текста кнопки */
+  --button-background-3: #5a90bf;
+  --message-background-1: #5a90bf;
+  --form-background-1: #5a90bf;
 }
 
 
 /* Определяем переменные для темной темы */
 [data-theme='dark'] {
   /* Основные цвета */
-  --primary-background: #194770; /* Основной фон */
-  --primary-text-color: #e2eaff; /* Основной цвет текста */
-  --active-text-color: #194770;
+  --primary-background: #194770;
+  --primary-text-color: #aed4f8;
+  --active-color: #194770;
 
   /* Фон и текст для контента */
   --content-background-1: #194770; /* Светлый фон для первого типа контента */
-  --content-background-2: #e2eaff;   /* Белый фон для второго типа контента */
+  --content-background-2: #e2eaff;
   --content-background-3: #b6c2e3; /* Светло-синий фон для третьего типа контента */
 
-  --content-text-color-1: #000;   /* Черный текст для первого типа контента */
-  --content-text-color-2: #194770;/* Темно-синий текст для второго типа контента */
+  --button-txt-color-2: #194770;/* Темно-синий текст для второго типа контента */
   --content-text-color-3: #194770;
 
   /* Цвета для комментариев */
   --comment-background: #fff; /* Фон для комментариев */
-  --comment-text-color: #194770; /* Текст комментариев */
 
   /* Цвета для кнопок */
-  --button-background-1: #e2eaff;   /* Цвет фона кнопки */
+  --button-background-1: #e2eaff;
   --button-background-2: #194770;   /* Цвет фона кнопки */
-  --button-text-color: #e2eaff;   /* Цвет текста кнопки */
+  --button-background-3: #194770;
+  --message-background-1: #194770;
+  --form-background-1: #194770;
 }
 
 body {

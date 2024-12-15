@@ -3,13 +3,6 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 0 15px;
-}
-
-.title {
-  font-size: 22px;
-  color: #194770;
-  margin-bottom: 15px;
 }
 
 .form {
@@ -17,12 +10,13 @@
 }
 
 .input {
-  width: 200px;
-  height: 30px;
+  width: 100%;
+  height: 50px;
   outline: none;
   border: none;
-  background-color: #ffffff;
-  color: #194770;
+  font-size: 25px;
+  padding-left: 10px;
+  color: var(--primary-color);
 }
 
 .button {
@@ -32,10 +26,6 @@
 
 @media (max-width: 650px) {
   .input {
-    width: 90px;
-  }
-
-  .title {
-    font-size: 14px;
+    font-size: 15px;
   }
 }

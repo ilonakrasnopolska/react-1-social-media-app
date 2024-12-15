@@ -5,12 +5,12 @@
   align-items: center;
   width: 100%;
   margin-bottom: 50px;
-  background-color: #194770;
+  background-color: var(--button-background-3);
   padding: 20px;
 }
 
 .title {
-  color: #ffffff;
+  color: var(--basic-text-color-2);
   padding: 5px;
   font-size: 25px;
   margin-bottom: 10px;
@@ -22,9 +22,9 @@
   align-items: center;
   gap: 10px;
   font-size: 23px;
-  background-color: #ffffff;
+  background-color: var(--content-background-2);
   padding: 10px;
-  color: #194770;
+  color: var(--primary-color);
 }
 
 
@@ -34,7 +34,7 @@
   -moz-appearance: none;
   font-size: 20px;
   outline: none;
-  background-color: #e2eaff;
+  background-color: var(--basic-text-color-2);
   padding: 2px;
   cursor: pointer;
 }
@@ -42,22 +42,22 @@
 .reactSelect__control {
   outline: none;
   padding: 5px;
-  background-color: #e2eaff;
+  background-color: var(--basic-text-color-2);
 }
 
 .reactSelect__menu {
-  background-color: #e2eaff;
+  background-color: var(--basic-text-color-2);
 }
 
 .post_translation input {
   width: 40px;
   height: 20px;
-  border: 2px solid #194770;
+  border: 2px solid var(--primary-color);
 }
 
 .button {
   padding: 15px;
-  background-color: #194770;
-  color: #fff;
+  background-color: var(--button-background-3);
+  color: var(--basic-text-color-2);
   font-size: 20px;
 }

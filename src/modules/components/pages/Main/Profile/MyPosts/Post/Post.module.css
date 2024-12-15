@@ -43,7 +43,7 @@
   grid-area: delete;
   font-size: 35px;
   font-weight: 600;
-  color: #194770;
+  color: var(--primary-color);
   transform: rotate(90deg);
   background-color: transparent;
 }
@@ -51,7 +51,7 @@
 .comments {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Меньше отступов для лучшего эффекта */
+  gap: 20px;
   padding: 20px;
   background-color: var(--comment-background);
   overflow: hidden; /* Скрыть переполнение */

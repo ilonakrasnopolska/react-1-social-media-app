@@ -6,6 +6,7 @@
 
 .title {
   font-size: 25px;
+  color: var(--primary-color);
 }
 
 .form {
@@ -30,6 +31,6 @@
   width: 130px;
   padding: 10px 20px;
   font-size: 15px;
-  background-color: var(--button-background);
+  background-color: var(--primary-color);
   color: var(--button-txt-color);
 }

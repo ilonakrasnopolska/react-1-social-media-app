@@ -1,6 +1,6 @@
 .container {
-  border-top: 1px solid #ddd;
-  background-color: rgba(25, 71, 112, 0.7);
+  border-top: 1px solid var(--white-color);
+  background-color: var(--message-background-1);
 }
 
 .form {
@@ -15,7 +15,7 @@
   border: none;
   outline: none;
   border-radius: 5px;
-  color: #fff;
+  color: var(--basic-text-color-2);
   font-size: 16px;
   resize: none; /* Отключает возможность изменения размера */
   background-color: transparent;
@@ -27,7 +27,7 @@
 }
 
 .textarea::placeholder {
-  color: #fff;
+  color: var(--basic-text-color-2);
 }
 
 .button {

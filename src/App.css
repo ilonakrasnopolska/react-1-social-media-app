@@ -73,8 +73,7 @@ button {
 
 .users.section {
   padding: 0;
-  background-color: var(--content-background);
-  display: grid;
+  border-right: 1px solid var(--message-background-1);
 }
 
 .chat {

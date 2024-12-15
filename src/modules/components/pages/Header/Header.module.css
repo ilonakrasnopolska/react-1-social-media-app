@@ -14,7 +14,7 @@
 
 .themeButton button {
   background-color: var(--button-background-1);
-  color: var(--button-text-color);
+  color: var(--button-txt-color);
   border: none;
   padding: 5px 10px;
   cursor: pointer;

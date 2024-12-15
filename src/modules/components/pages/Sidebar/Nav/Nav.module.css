@@ -20,7 +20,7 @@
 }
 
 .active {
-  color: var(--active-text-color);
+  color: var(--active-color);
   background-color: var(--button-background-1);
 }
 

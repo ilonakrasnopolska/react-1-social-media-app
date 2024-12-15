@@ -7,8 +7,8 @@
 
 .button {
   width: 150px;
-  background-color: #194770;
-  color: #e2eaff;
+  background-color: var(--button-background-3);
+  color: var(--basic-text-color-2);
   padding: 10px;
   font-size: 15px;
 }

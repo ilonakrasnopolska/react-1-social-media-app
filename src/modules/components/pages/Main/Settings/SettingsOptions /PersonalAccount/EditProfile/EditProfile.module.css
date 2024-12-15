@@ -2,29 +2,21 @@
   padding: 15px;
   font-size: 20px;
   font-weight: bold;
-  background-color: #e2eaff;
-  color: #194770;
+  opacity: 100%;
+  background-color: var(--button-background-1);
+  color: var(--button-txt-color-2);
   transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
 }
 
 .button:hover {
-  background-color: #194770;
-  color: #e2eaff;
-  border: 1px solid #e2eaff;
+  background-color: var(--white-color);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .button:disabled {
-  background-color: #000000;
-  color: #e2eaff;
+  background-color: var(--black-color);
+  color: var(--basic-text-color-2);
   border: none;
   opacity: 0.5;
-}
-
-.link {
-  color: #194770;
-  padding: 15px 95px;
-}
-
-.link:hover {
-  color: #e2eaff;
 }

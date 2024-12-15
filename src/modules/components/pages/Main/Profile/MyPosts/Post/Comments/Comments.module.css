@@ -54,7 +54,7 @@
 
 .response_btn {
   font-size: 17px;
-  border-bottom: 1px solid #194770;
+  border-bottom: 1px solid var(--primary-color);
   background-color: transparent;
   color: #194770;
   opacity: 40%;

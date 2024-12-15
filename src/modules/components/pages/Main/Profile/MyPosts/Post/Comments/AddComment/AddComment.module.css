@@ -16,11 +16,12 @@
   width: 90%;
   height: 40px;
   padding: 5px;
+  background-color: var(--content-background-2);
 }
 
 .submit_button {
   padding: 5px 30px;
   height: 40px;
-  background-color: #194770;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--button-txt-color);
 }
