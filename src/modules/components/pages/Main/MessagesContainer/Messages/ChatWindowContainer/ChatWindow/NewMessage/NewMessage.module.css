@@ -15,7 +15,7 @@
   border: none;
   outline: none;
   border-radius: 5px;
-  color: var(--basic-text-color-2);
+  color: var(--basic-text-color);
   font-size: 16px;
   resize: none; /* Отключает возможность изменения размера */
   background-color: transparent;
@@ -27,7 +27,7 @@
 }
 
 .textarea::placeholder {
-  color: var(--basic-text-color-2);
+  color: var(--basic-text-color);
 }
 
 .button {

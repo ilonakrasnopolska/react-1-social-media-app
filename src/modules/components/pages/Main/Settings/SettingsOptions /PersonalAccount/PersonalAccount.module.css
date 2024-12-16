@@ -22,14 +22,14 @@
 
 .button:hover {
   background-color: var(--white-color);
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--app-background);
 }
 
 .link {
-  color: var(--button-txt-color-2);
+  color: var(--text-color-1);
   padding: 15px 95px;
 }
 
 .link:hover {
-  color: var(--primary-color);
+  color: var(--app-background);
 }

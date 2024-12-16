@@ -6,7 +6,7 @@
 
 .title {
   font-size: 25px;
-  color: var(--primary-color);
+  color: var(--app-background);
 }
 
 .form {
@@ -31,6 +31,6 @@
   width: 130px;
   padding: 10px 20px;
   font-size: 15px;
-  background-color: var(--primary-color);
-  color: var(--button-txt-color);
+  background-color: var(--app-background);
+  color: var(--profile-button-text-color);
 }

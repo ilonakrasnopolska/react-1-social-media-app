@@ -55,7 +55,7 @@
   height: 100%;
   top: 8px;
   right: 0;
-  color: var(--content-text-color-3);
+  color: var(--text-color-1);
 }
 
 .button:hover {

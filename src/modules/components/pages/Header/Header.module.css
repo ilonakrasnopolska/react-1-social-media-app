@@ -13,11 +13,14 @@
 }
 
 .themeButton button {
-  background-color: var(--button-background-1);
-  color: var(--button-txt-color);
+  background-color: transparent;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+}
+
+.themeButton button svg {
+  fill:var(--theme-button-svg-color);
 }
 
 

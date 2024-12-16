@@ -21,12 +21,12 @@
   background-color: transparent;
   padding: 10px;
   font-size: 21px;
-  color: var(--primary-color);
+  color: var(--app-background);
 }
 
 .activeButton {
-  background-color: var(--button-background-3);
-  color: var(--basic-text-color-2);
+  background-color: var(--button-background-2);
+  color: var(--basic-text-color);
 }
 
 @media (max-width: 890px) {

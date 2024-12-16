@@ -16,7 +16,7 @@
   border: none;
   font-size: 25px;
   padding-left: 10px;
-  color: var(--primary-color);
+  color: var(--app-background);
 }
 
 .button {

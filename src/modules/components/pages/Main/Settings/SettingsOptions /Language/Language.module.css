@@ -5,12 +5,12 @@
   align-items: center;
   width: 100%;
   margin-bottom: 50px;
-  background-color: var(--button-background-3);
+  background-color: var(--button-background-2);
   padding: 20px;
 }
 
 .title {
-  color: var(--basic-text-color-2);
+  color: var(--basic-text-color);
   padding: 5px;
   font-size: 25px;
   margin-bottom: 10px;
@@ -22,9 +22,9 @@
   align-items: center;
   gap: 10px;
   font-size: 23px;
-  background-color: var(--content-background-2);
+  background-color: var(--content-background-1);
   padding: 10px;
-  color: var(--primary-color);
+  color: var(--app-background);
 }
 
 
@@ -34,7 +34,7 @@
   -moz-appearance: none;
   font-size: 20px;
   outline: none;
-  background-color: var(--basic-text-color-2);
+  background-color: var(--basic-text-color);
   padding: 2px;
   cursor: pointer;
 }
@@ -42,22 +42,22 @@
 .reactSelect__control {
   outline: none;
   padding: 5px;
-  background-color: var(--basic-text-color-2);
+  background-color: var(--basic-text-color);
 }
 
 .reactSelect__menu {
-  background-color: var(--basic-text-color-2);
+  background-color: var(--basic-text-color);
 }
 
 .post_translation input {
   width: 40px;
   height: 20px;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--app-background);
 }
 
 .button {
   padding: 15px;
-  background-color: var(--button-background-3);
-  color: var(--basic-text-color-2);
+  background-color: var(--button-background-2);
+  color: var(--basic-text-color);
   font-size: 20px;
 }

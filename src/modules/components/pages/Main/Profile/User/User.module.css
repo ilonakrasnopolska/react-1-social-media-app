@@ -10,7 +10,7 @@
 .avatar {
   grid-area: avatar;
   width: 200px;
-  border: 3px solid var(--primary-color);
+  border: 3px solid var(--app-background);
 }
 
 .about {
@@ -22,7 +22,7 @@
 
 .about h1 {
   font-size: 25px;
-  color: var(--primary-color);
+  color: var(--app-background);
 }
 
 .list {
@@ -33,6 +33,6 @@
 
 .item {
   font-size: 20px;
-  color: var(--primary-color);
+  color: var(--app-background);
   text-decoration-line: underline;
 }

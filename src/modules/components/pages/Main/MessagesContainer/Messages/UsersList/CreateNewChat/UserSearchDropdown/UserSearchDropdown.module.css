@@ -19,11 +19,11 @@
 }
 
 .contact:hover {
-  background-color: var(--content-background);
+  background-color: var(--card-background);
 }
 
 .contact:hover .name {
-  color: var(--primary-color);
+  color: var(--app-background);
 }
 
 .avatar {

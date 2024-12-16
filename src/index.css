@@ -1,62 +1,38 @@
-/* Определяем переменные по умолчанию для светлой темы */
 :root {
-  /*базовые цвета*/
-  --primary-color: #194770;
-  --button-txt-color: #e2eaff;
-  --content-background: #e2eaff;
+  /*for both - dark and light*/
+  --app-background: #194770;
+  --profile-button-text-color: #e2eaff;
+  --card-background: #e2eaff;
+  --basic-text-color: #e2f1ff;
   --white-color: #fff;
-  --black-color: #000;
-  --basic-text-color-2: #e2f1ff;
+  --disabled-button-color: #000;
 
-  /* Основные цвета */
+  /* light */
   --primary-background: #aed4f8;
   --primary-text-color: #194770;
-  --active-color: #aed4f8;
-
-  /* Фон и текст для контента */
-  --content-background-1: #e2eaff; /* Светлый фон для первого типа контента */
-  --content-background-2: #fff;
-  --content-background-3: #e2f1ff; /* Светло-синий фон для третьего типа контента */
-
-  --button-txt-color-2: #e2eaff;/* Темно-синий текст для второго типа контента */
-  --content-text-color-3: #e2f1ff;
-
-  /* Фон для комментариев */
-  --comment-background: rgba(255, 255, 255, 0.5);
-
-  /* Цвета для кнопок */
+  --theme-button-svg-color: #194770;
+  --content-background-1: #fff;
+  --content-background-2: #e2f1ff;
+  --content-background-3: #5a90bf;
   --button-background-1: #194770;
-  --button-background-2: #194770;   /* Цвет фона кнопки */
-  --button-background-3: #5a90bf;
-  --message-background-1: #5a90bf;
-  --form-background-1: #5a90bf;
+  --button-background-2: #5a90bf;
+  --active-color: #aed4f8;
+  --comment-background: rgba(255, 255, 255, 0.5);
+  --text-color-1: #e2eaff;
 }
 
-
-/* Определяем переменные для темной темы */
 [data-theme='dark'] {
-  /* Основные цвета */
   --primary-background: #194770;
   --primary-text-color: #aed4f8;
-  --active-color: #194770;
-
-  /* Фон и текст для контента */
-  --content-background-1: #194770; /* Светлый фон для первого типа контента */
-  --content-background-2: #e2eaff;
-  --content-background-3: #b6c2e3; /* Светло-синий фон для третьего типа контента */
-
-  --button-txt-color-2: #194770;/* Темно-синий текст для второго типа контента */
-  --content-text-color-3: #194770;
-
-  /* Цвета для комментариев */
-  --comment-background: #fff; /* Фон для комментариев */
-
-  /* Цвета для кнопок */
+  --theme-button-svg-color: #aed4f8;
+  --content-background-1: #e2eaff;
+  --content-background-2: #b6c2e3;
+  --content-background-3: #194770;
   --button-background-1: #e2eaff;
-  --button-background-2: #194770;   /* Цвет фона кнопки */
-  --button-background-3: #194770;
-  --message-background-1: #194770;
-  --form-background-1: #194770;
+  --button-background-2: #194770;
+  --active-color: #194770;
+  --comment-background: #fff;
+  --text-color-1: #194770;
 }
 
 body {

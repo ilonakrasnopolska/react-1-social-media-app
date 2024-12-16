@@ -4,19 +4,19 @@
   font-weight: bold;
   opacity: 100%;
   background-color: var(--button-background-1);
-  color: var(--button-txt-color-2);
+  color: var(--text-color-1);
   transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
 }
 
 .button:hover {
   background-color: var(--white-color);
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
+  border: 1px solid var(--app-background);
+  color: var(--app-background);
 }
 
 .button:disabled {
-  background-color: var(--black-color);
-  color: var(--basic-text-color-2);
+  background-color: var(--disabled-button-color);
+  color: var(--basic-text-color);
   border: none;
   opacity: 0.5;
 }
