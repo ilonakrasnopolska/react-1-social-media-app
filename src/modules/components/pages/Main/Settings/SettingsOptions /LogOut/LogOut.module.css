@@ -9,19 +9,18 @@
 
 .button {
   width: 20%;
-  background-color: #e2eaff;
-  color: #e2eaff;
+  background-color: var(--button-background-2);
   padding: 10px;
   transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s;
 }
 
 .button:hover {
-  border: 1px solid #194770;
+  border: 1px solid var(--profile-button-text-color);
 }
 
 .link {
   width: 100%;
-  color: #194770;
+  color: var(--basic-text-color);
   font-size: 20px;
   font-weight: bold;
   padding: 10px 70px;

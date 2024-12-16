@@ -9,7 +9,6 @@ const CreateNewChat = ({searchUserText, filteredContacts}) => {
   const {useTextChangeHandlers} = useInputHandlers(updateSearchUserText);
   return (
     <div className={Classes.box}>
-      <h3 className={Classes.title}>Create a new chat:</h3>
       <input
         id='create-chat'
         className={Classes.input}

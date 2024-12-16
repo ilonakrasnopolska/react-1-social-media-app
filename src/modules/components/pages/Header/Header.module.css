@@ -1,8 +1,26 @@
 .header {
   grid-area: header;
-  background-color: #194770;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--primary-background);
+  color: var(--primary-text-color);
 }
 
 .logo {
   padding: 5px 0 5px 15px;
 }
+
+.themeButton button {
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.themeButton button svg {
+  fill:var(--theme-button-svg-color);
+}
+
+

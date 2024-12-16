@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #194770;
+  background-color: var(--content-background-3);
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -16,30 +16,30 @@
 .item h3 {
   font-size: 22px;
   margin-bottom: 5px;
-  color: #ffffff;
+  color: var(--basic-text-color);
 }
 
 .item p {
   font-size: 20px;
   margin-bottom: 15px;
-  color: #ffffff;
+  color: var(--basic-text-color);
 }
 
 .subList {
   display: flex;
   padding: 15px;
-  background-color: #ffffff;
+  background-color: var(--basic-text-color);
 }
 
 .subItem {
   margin-right: 30px;
   font-size: 20px;
   font-weight: 600;
-  color: #194770;
+  color: var(--app-background);
 }
 
 .subItem input {
   margin-right: 9px;
   scale: 1.5;
-  border: 1px solid #194770;
+  border: 1px solid var(--app-background);
 }

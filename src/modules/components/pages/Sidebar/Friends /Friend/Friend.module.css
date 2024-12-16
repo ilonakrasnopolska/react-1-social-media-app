@@ -9,10 +9,10 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid #dcdcff;
+  border: 2px solid var(--button-background-1);
 }
 
 .user__name {
-  color: #dcdcff;
+  color: var(--primary-text-color);
   font-size: 20px;
 }

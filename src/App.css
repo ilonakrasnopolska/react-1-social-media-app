@@ -47,11 +47,11 @@ button {
 }
 
 .app-container main {
-  background-color: #e2eaff;
+  background-color: var(--content-background-2);
 }
 
 .section {
-  margin: 30px 0;
+  padding: 30px 0;
 }
 
 .myPosts.section {
@@ -67,19 +67,32 @@ button {
 
 /* Скрытие скроллбара в WebKit-браузерах */
 .users.section::-webkit-scrollbar,
-.dialogs.section::-webkit-scrollbar{
+.dialogs.section::-webkit-scrollbar {
   display: none; /* Скрыть скроллбар */
 }
 
 .users.section {
-  background-color: #bfd1ff;
-  display: grid;
+  padding: 0;
+  border-right: 1px solid var(--message-background-1);
 }
 
 .chat {
+  padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+}
+
+.settings,
+.personal,
+.edit,
+.confidentiality,
+.language,
+.terms,
+.help,
+.log,
+.enter {
   height: 100vh;
 }
 

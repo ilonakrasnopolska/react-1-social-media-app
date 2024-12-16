@@ -8,12 +8,12 @@
 
 .search h1 {
   margin-bottom: 10px;
-  color: #194770;
+  color: var(--app-background);
   font-size: 28px;
 }
 
 .input {
-  border: 1px solid #194770;
+  border: 1px solid var(--app-background);
   outline: none;
   font-size: 15px;
   height: 100%;

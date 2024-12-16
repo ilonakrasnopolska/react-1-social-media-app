@@ -13,12 +13,15 @@
 }
 
 .link {
-  color: #dcdcff;
+  color: var(--primary-text-color);
   font-size: 30px;
   font-weight: 500;
+  padding: 5px 40px;
 }
 
 .active {
-  color: #a4fde5;
+  color: var(--active-color);
+  background-color: var(--button-background-1);
 }
+
 

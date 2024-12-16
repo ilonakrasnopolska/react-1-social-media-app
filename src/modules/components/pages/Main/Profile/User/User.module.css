@@ -10,23 +10,29 @@
 .avatar {
   grid-area: avatar;
   width: 200px;
+  border: 3px solid var(--app-background);
 }
 
 .about {
   grid-area: about;
   display: grid;
-  grid-template-rows: max-content; /* Автоматический размер рядов */
-  row-gap: 20px; /* Отступ между h2 и ul */
+  grid-template-rows: max-content;
+  row-gap: 20px;
+}
+
+.about h1 {
+  font-size: 25px;
+  color: var(--app-background);
 }
 
 .list {
   display: grid;
-  grid-template-rows: max-content; /* Автоматический размер рядов */
+  grid-template-rows: max-content;
   padding: 0;
 }
 
 .item {
   font-size: 20px;
-  color: #194770;
+  color: var(--app-background);
   text-decoration-line: underline;
 }

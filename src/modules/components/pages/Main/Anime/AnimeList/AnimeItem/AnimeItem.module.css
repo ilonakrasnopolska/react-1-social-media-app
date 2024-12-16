@@ -3,7 +3,7 @@
   width: 49%;
   height: 550px;
   padding: 20px;
-  background-color: #bfd1ff;
+  background-color: var(--primary-background);
 }
 
 .avatar {
@@ -32,11 +32,12 @@
 .description h3 {
   font-size: 24px;
   margin-bottom: 15px;
-  color: #194770;
+  color: var(--primary-text-color);
 }
 
 .description span {
   font-size: 22px;
+  color: var(--primary-text-color);
 }
 
 .button {
@@ -45,7 +46,7 @@
   padding: 20px;
   font-size: 20px;
   font-weight: 600;
-  background-color: #194770;
+  background-color: var(--button-background-1);
 }
 
 .button a {
@@ -54,16 +55,13 @@
   height: 100%;
   top: 8px;
   right: 0;
-  color: #ffffff;
+  color: var(--text-color-1);
 }
 
 .button:hover {
-  background-color: #e2eaff;
+  opacity: 0.7;
 }
 
-.button a:hover {
-  color: #194770;
-}
 
 @media (max-width: 1260px) {
   .item {

@@ -1,5 +1,43 @@
+:root {
+  /*for both - dark and light*/
+  --app-background: #194770;
+  --profile-button-text-color: #e2eaff;
+  --card-background: #e2eaff;
+  --basic-text-color: #e2f1ff;
+  --white-color: #fff;
+  --disabled-button-color: #000;
+
+  /* light */
+  --primary-background: #aed4f8;
+  --primary-text-color: #194770;
+  --theme-button-svg-color: #194770;
+  --content-background-1: #fff;
+  --content-background-2: #e2f1ff;
+  --content-background-3: #5a90bf;
+  --button-background-1: #194770;
+  --button-background-2: #5a90bf;
+  --active-color: #aed4f8;
+  --comment-background: rgba(255, 255, 255, 0.5);
+  --text-color-1: #e2eaff;
+}
+
+[data-theme='dark'] {
+  --primary-background: #194770;
+  --primary-text-color: #aed4f8;
+  --theme-button-svg-color: #aed4f8;
+  --content-background-1: #e2eaff;
+  --content-background-2: #b6c2e3;
+  --content-background-3: #194770;
+  --button-background-1: #e2eaff;
+  --button-background-2: #194770;
+  --active-color: #194770;
+  --comment-background: #fff;
+  --text-color-1: #194770;
+}
+
 body {
   margin: 0;
+  transition: background-color 0.3s, color 0.3s;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,3 +49,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+
