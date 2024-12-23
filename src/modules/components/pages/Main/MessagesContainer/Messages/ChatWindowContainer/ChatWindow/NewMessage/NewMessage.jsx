@@ -6,7 +6,7 @@ import {useInputHandlers} from "../../../../../../../../hooks/useInputHandlers";
 import {useDialogsActions} from "../../../../../../../../hooks/useDialogsActions";
 
 
-const NewMessage = ({chatId, newMessageText}) => {
+const NewMessage = ({chatId, newMessageText, t}) => {
   const {handleSendMessage} = useDialogsActions();
   const {useTextChangeHandlers, handleKeyDown} =
     useInputHandlers(updateNewMessageText, (e) => handleSendMessage(e, chatId));
@@ -21,7 +21,7 @@ const NewMessage = ({chatId, newMessageText}) => {
           onChange={useTextChangeHandlers}
           onKeyDown={handleKeyDown}
           className={Classes.textarea}
-          placeholder="Type your message here..."/>
+          placeholder={t('TypeMessage')}/>
         <button className={Classes.button}>
           <SendMessageIcon/>
         </button>

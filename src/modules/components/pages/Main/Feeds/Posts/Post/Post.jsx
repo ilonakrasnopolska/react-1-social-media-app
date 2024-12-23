@@ -1,7 +1,7 @@
 import React from "react";
 import Classes from './Post.module.css'
 
-const Post = ({post}) => {
+const Post = ({post, t}) => {
   const {avatar, name, time, content, poster} = post
   return (
     <li className={Classes.item}>
@@ -13,7 +13,7 @@ const Post = ({post}) => {
           />
           <div className={Classes.info}>
             <div>
-              <h3>{name}</h3>
+              <h3>{t(name)}</h3>
               {name === 'AniHub' && <span role="img" aria-label="verified">✔️</span>}
             </div>
             <div>

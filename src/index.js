@@ -6,7 +6,7 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import {store} from "./redux/redux-store"
 import {Provider} from "react-redux";
-import AppProviders from "./modules/providers/AppProviders";
+import AppProviders from "./providers/AppProviders";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,3 +26,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

@@ -7,7 +7,7 @@ import Title from "../../../../../common/Title";
 import Button from "../../../../../common/Button";
 import {useInputHandlers} from "../../../../../../hooks/useInputHandlers";
 
-const Help = ({helpCenter}) => {
+const Help = ({helpCenter, t}) => {
   const {requestUserNameText, requestMessageText, errors, handleInputChange, handleFormSubmit}
     = useRequestHelpForm(helpCenter);
   const {handleKeyDown} = useInputHandlers('', handleFormSubmit);
@@ -16,18 +16,18 @@ const Help = ({helpCenter}) => {
     <section className='help section'>
       <div className={CommonClasses.content}>
         <div className={CommonClasses.wrapper}>
-          <Title CommonClasses={CommonClasses} text='Contact Support'/>
-          <p className={CommonClasses.text}>Need help? Contact us below!</p>
+          <Title CommonClasses={CommonClasses} text={t("ContactSupport")}/>
+          <p className={CommonClasses.text}>{t("NeedHelp")}</p>
           <form className={Classes.contact_form} onSubmit={handleFormSubmit}>
             <InputField value={requestUserNameText} onChange={handleInputChange("userName")}
-                        onKeyDown={handleKeyDown} placeholder="Your name..."
+                        onKeyDown={handleKeyDown} placeholder={t("YourName")}
                         errors={errors.userNameError}
                         className={Classes.input_name} Classes={Classes}/>
             <TextAreaField value={requestMessageText} onChange={handleInputChange("message")}
-                           onKeyDown={handleKeyDown} placeholder="Your message..."
+                           onKeyDown={handleKeyDown} placeholder={t("YourMessage")}
                            errors={errors.messageError}
                            className={Classes.textarea} Classes={Classes}/>
-            <Button className={Classes.button} onClick={handleFormSubmit} label='Send Message'/>
+            <Button className={Classes.button} onClick={handleFormSubmit} label={t("SendMessage")}/>
           </form>
         </div>
       </div>

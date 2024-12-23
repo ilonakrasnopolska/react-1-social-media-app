@@ -5,14 +5,13 @@ import SearchAnime from "./SearchAnime/SearchAnime";
 import {useSelector} from "react-redux";
 
 
-const Anime = () => {
+const Anime = ({t}) => {
   const {newSearchAnimeText, filteredAnime} = useSelector(state => state.anime);
-
   return (
     <section className="anime section">
       <div className={Classes.container}>
-        <SearchAnime newSearchAnimeText={newSearchAnimeText} />
-        <AnimeList filteredAnime={filteredAnime} />
+        <SearchAnime newSearchAnimeText={newSearchAnimeText} t={t}/>
+        <AnimeList filteredAnime={filteredAnime} t={t}/>
       </div>
     </section>
   )

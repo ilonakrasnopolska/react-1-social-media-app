@@ -3,7 +3,7 @@ import Classes from "./Comments.module.css"
 import {useCommentActions} from "../../../../../../../hooks/useCommentActions";
 import Avatar from "../../../../../../common/Avatar";
 
-const Comments = ({postId}) => {
+const Comments = ({postId, t}) => {
   const { Messages, onReplyToComment, onDeleteComment } = useCommentActions(postId);
   return (
     <ul className={Classes.list}>
@@ -13,12 +13,12 @@ const Comments = ({postId}) => {
             <Avatar src={comment.avatar} alt='User avatar' className={Classes.avatar}/>
             <div className={Classes.post}>
               <div className={Classes.comment}>
-                <strong>{comment.user} </strong>
+                <strong>{t(comment.user)} </strong>
                 <div className={Classes.content}>
                   <span>{comment.message}</span>
                   <span className={Classes.time}>{comment.time}</span>
                   <button onClick={() => onReplyToComment(comment.commentId)}
-                          className={Classes.response_btn}>Response
+                          className={Classes.response_btn}>{t('Response')}
                   </button>
                 </div>
               </div>
@@ -27,7 +27,7 @@ const Comments = ({postId}) => {
           </li>
         ))
       ) : (
-        <li className={Classes.item}>No comments yet</li>
+        <li className={Classes.item}>{t('NoComments')}</li>
       )}
     </ul>
   );

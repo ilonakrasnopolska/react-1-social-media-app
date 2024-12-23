@@ -2,32 +2,38 @@ import React from "react";
 import CommonClasses from '../../Settings.module.css'
 import Classes from './Language.module.css'
 import Select from "react-select";
+import {useContext} from "react";
 import {useLanguageSettings} from "../../../../../../hooks/useLanguageSettings";
+import LanguageContext from "../../../../../../../contexts/LanguageContext";
 import Title from "../../../../../common/Title";
 import Button from "../../../../../common/Button";
 
-const Language = () => {
-  const {options, selectedOption, handleChange} = useLanguageSettings();
+const Language = ({t}) => {
+  const {options, selectedOption, handleChange, saveLanguage} = useLanguageSettings();
+  const { changeLanguage } = useContext(LanguageContext);
+
+  const onChangeLanguage = (selected) => {
+    handleChange(selected.value);
+  };
 
   return (
     <section className='language section'>
       <div className={CommonClasses.content}>
         <div className={CommonClasses.wrapper}>
           <div className={Classes.app_language}>
-            <Title CommonClasses={Classes} text="Language Settings"/>
+            <Title CommonClasses={Classes} text={t("LanguageSettings")}/>
             <label>
-              Interface Language:
+            {t("InterfaceLanguage")+ ":"}
               <Select
                 options={options}
                 value={selectedOption}
-                onChange={handleChange}
+                onChange={onChangeLanguage}
                 className={Classes.reactSelect}
-                placeholder="Select a language"
               />
             </label>
           </div>
           <div className={Classes.post_translation}>
-            <Title CommonClasses={Classes} text='Post Translations'/>
+            <Title CommonClasses={Classes} text={t("PostTranslations")}/>
             <label>
               <input
                 name='translate-app'
@@ -35,12 +41,14 @@ const Language = () => {
                 // checked={autoTranslation}
                 // onChange={toggleAutoTranslation}
               />
-              Enable automatic translation for posts
+              {t("Checker")}
             </label>
           </div>
           <Button className={Classes.button}
-                  onClick={() => alert('Still on work')}
-                  label="Save Changes"/>
+                   onClick={() => {
+                    saveLanguage(changeLanguage, selectedOption.value); // Сохраняем изменения при клике на кнопку
+                  }}
+                  label={t("SaveChanges")}/>
         </div>
       </div>
     </section>

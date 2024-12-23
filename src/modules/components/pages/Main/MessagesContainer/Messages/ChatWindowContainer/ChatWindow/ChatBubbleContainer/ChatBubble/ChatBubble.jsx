@@ -2,7 +2,7 @@ import Classes from "./ChatBubble.module.css";
 import React from "react";
 import {useDialogsActions} from "../../../../../../../../../hooks/useDialogsActions";
 
-const ChatBubble = ({chatId, message}) => {
+const ChatBubble = ({chatId, message, t}) => {
   const {handleDeleteMessage} = useDialogsActions();
 
   return (
@@ -11,7 +11,7 @@ const ChatBubble = ({chatId, message}) => {
         <div className={Classes.messageContent}>
           <img className={Classes.avatar} src={message.avatar} alt="avatar"/>
           <div className={Classes.messageInfo}>
-            <span>{message.name}</span>
+            <span>{t(message.name)}</span>
             <div className={Classes.textContent}>
               <span>{message.message}</span>
               <span className={Classes.data}>{message.time}</span>
@@ -19,7 +19,7 @@ const ChatBubble = ({chatId, message}) => {
           </div>
         </div>
         <div className={Classes.delete_btn}>
-          <button onClick={()=>{handleDeleteMessage(chatId, message.id)}}>Delete</button>
+          <button onClick={()=>{handleDeleteMessage(chatId, message.id)}}>{t('Delete')}</button>
         </div>
       </div>
     </li>

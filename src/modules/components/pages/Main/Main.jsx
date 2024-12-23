@@ -9,18 +9,18 @@ import Settings from "./Settings/Settings";
 import LogIn from "../Main/Settings/SettingsOptions /LogOut/LogIn/LogIn";
 import MessagesContainer from "./MessagesContainer/MessagesContainer";
 
-const Main = () => {
+const Main = ({t}) => {
   return (
     <main>
       <div className={Classes.content}>
         <Routes>
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/messages/:chatId?" element={<MessagesContainer/>}/>
-          <Route path="/feeds" element={<Feeds/>}/>
-          <Route path="/anime" element={<Anime/>}/>
-          <Route path="/anime/:animeId" element={<WatchAnime />} />
-          <Route path="/settings/:id?" element={<Settings />} />
-          <Route path="/logIn" element={<LogIn />} />
+          <Route path="/profile" element={<Profile t={t}/>}/>
+          <Route path="/messages/:chatId?" element={<MessagesContainer t={t}/>}/>
+          <Route path="/feeds" element={<Feeds t={t}/>}/>
+          <Route path="/anime" element={<Anime t={t}/>}/>
+          <Route path="/anime/:animeId" element={<WatchAnime t={t} />} />
+          <Route path="/settings/:id?" element={<Settings t={t} />} />
+          <Route path="/logIn" element={<LogIn t={t} />} />
         </Routes>
       </div>
     </main>

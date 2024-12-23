@@ -1,6 +1,6 @@
 export const filterFeedsHelpers = (state, action) => {
   const category = action.payload;
-  if (category === 'View all') {
+  if (category === 'View All') {
     state.filteredFeeds = state.feeds;
   } else {
     state.filteredFeeds = state.feeds.filter(feed => feed.category === category);

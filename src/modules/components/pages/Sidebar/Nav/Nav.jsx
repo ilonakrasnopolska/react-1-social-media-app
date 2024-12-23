@@ -4,8 +4,9 @@ import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 import clsx from "clsx";
 
-const Nav = () => {
+const Nav = ({t}) => {
   const {nav} = useSelector(state => state.sidebar);
+
   return (
     <ul className={Classes.list}>
       {nav.map(el => (
@@ -13,7 +14,7 @@ const Nav = () => {
           <NavLink
             className={({isActive}) => clsx(Classes.link, {[Classes.active]: isActive})}
             to={el.url}>
-            {el.name}
+            {t(el.name)}
           </NavLink>
         </li>
       ))}

@@ -7,28 +7,29 @@ import Title from "../../../../../../common/Title";
 import {useEditAccountForm} from "../../../../../../../hooks/useEditAccountForm";
 
 
-const EditProfile = ({personalAccount}) => {
+const EditProfile = ({personalAccount, t}) => {
   const {userData, errors, isFormValid, handleSaveChanges} = useEditAccountForm(personalAccount);
 
   return (
     <section className='edit section'>
       <div className={CommonClasses.content}>
         <div className={CommonClasses.wrapper}>
-          <Title CommonClasses={CommonClasses} text="Personal Settings"/>
-          <p className={CommonClasses.text}>Edit your personal profile:</p>
+          <Title CommonClasses={CommonClasses} text={t("PersonalSettings")}/>
+          <p className={CommonClasses.text}>{t("EditProfile")}</p>
           <div className={CommonClasses.user_data_edit}>
             <Avatar src={userData.avatar} alt={"Avatar"} className={CommonClasses.avatar}/>
             <div className={CommonClasses.about_user_edit}>
               <EditForm personalAccount={personalAccount}
                         userData={userData}
                         errors={errors}
+                        t={t}
               />
               <button
                 onClick={handleSaveChanges}
                 className={Classes.button}
                 disabled={!isFormValid}
               >
-                Save
+                {t("Save")}
               </button>
             </div>
           </div>

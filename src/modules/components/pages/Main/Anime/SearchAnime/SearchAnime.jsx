@@ -4,18 +4,18 @@ import {useInputHandlers} from "../../../../../hooks/useInputHandlers";
 import {setSearchQuery} from "../../../../../../redux/AnimeReducer/anime-reducer";
 
 
-const SearchAnime = ({newSearchAnimeText}) => {
+const SearchAnime = ({newSearchAnimeText, t}) => {
   const {useTextChangeHandlers} = useInputHandlers(setSearchQuery);
   return (
     <div className={Classes.search}>
-      <h1>Choose your anime:</h1>
+      <h1>{t('ChooseAnime')}</h1>
         <input
           id='anime-search-input'
           value={newSearchAnimeText}
           className={Classes.input}
           type="text"
           onChange={useTextChangeHandlers}
-          placeholder="Search for anime"
+          placeholder={t('SearchAnime')}
         />
     </div>
   )

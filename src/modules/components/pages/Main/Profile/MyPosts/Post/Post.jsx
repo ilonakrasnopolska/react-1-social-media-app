@@ -5,7 +5,7 @@ import AddComment from "./Comments/AddComment/AddComment";
 import {usePostActions} from "../../../../../../hooks/usePostActions";
 import Avatar from "../../../../../common/Avatar";
 
-const Post = ({ post }) => {
+const Post = ({post, t}) => {
   const { onDeletePost } = usePostActions();
   const isCommentsOpen = post.commentData.commentsVisibility;
 
@@ -16,7 +16,7 @@ const Post = ({ post }) => {
       <div className={Classes.post}>
         <Avatar src={post.avatar} alt='User avatar' className={Classes.avatar}/>
         <div className={Classes.post_message}>
-          <span className={Classes.post_name}>{post.name}</span>
+          <span className={Classes.post_name}>{t(post.name)}</span>
           <div className={Classes.post_content}>
             <span>{post.message}</span>
             <span className={Classes.post_time}>{post.time}</span>
@@ -27,8 +27,8 @@ const Post = ({ post }) => {
       </div>
       {isCommentsOpen && (
         <div className={`${Classes.comments} ${isCommentsOpen ? Classes.visible : ""}`}>
-          <Comments postId={post.postId}/>
-          <AddComment postId={post.postId} />
+          <Comments postId={post.postId} t={t}/>
+          <AddComment postId={post.postId} t={t} />
         </div>
       )}
     </li>

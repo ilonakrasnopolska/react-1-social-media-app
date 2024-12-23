@@ -1,6 +1,6 @@
 .container {
   border-top: 1px solid var(--white-color);
-  background-color: var(--message-background-1);
+  background-color: var(--content-background-3);
 }
 
 .form {

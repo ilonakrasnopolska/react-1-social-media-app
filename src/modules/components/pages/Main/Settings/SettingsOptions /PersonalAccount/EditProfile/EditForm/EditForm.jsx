@@ -3,7 +3,7 @@ import React from "react";
 import {useEditAccountForm} from "../../../../../../../../hooks/useEditAccountForm";
 import renderInputFields from "./InputFields/InputFields";
 
-const EditForm = ({personalAccount, userData, errors}) => {
+const EditForm = ({personalAccount, userData, errors, t}) => {
   const {handleValueChanges, preventNumericInput} = useEditAccountForm(personalAccount)
 
   return (
@@ -12,7 +12,7 @@ const EditForm = ({personalAccount, userData, errors}) => {
         key !== "avatar" ? (
           <div key={key} className={Classes.formGroup}>
             <label htmlFor={`input-${key}`} className={Classes.label}>
-              {key.charAt(0).toUpperCase() + key.slice(1)}:
+              {t(key.charAt(0).toUpperCase() + key.slice(1))}:
             </label>
             <div className={Classes.input_box}>
               {renderInputFields(key, value, handleValueChanges, preventNumericInput, preventNumericInput, Classes)}

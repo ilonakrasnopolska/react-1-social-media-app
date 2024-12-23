@@ -7,22 +7,21 @@ import UserInfo from "../../../../../common/UserInfo/UserInfo";
 import Title from "../../../../../common/Title";
 import {usePersonalAccountData} from "../../../../../../hooks/useGetPersonalAccountData";
 
-const PersonalAccount = () => {
+const PersonalAccount = ({t}) => {
   const {userData, editPage} = usePersonalAccountData();
-
   return (
     <section className='personal section'>
       <div className={CommonClasses.content}>
         <div className={CommonClasses.wrapper}>
-          <Title CommonClasses={CommonClasses} text='Personal Settings'/>
-          <p className={CommonClasses.text}>Edit your personal profile:</p>
+          <Title CommonClasses={CommonClasses} text={t("PersonalSettings")}/>
+          <p className={CommonClasses.text}>{t("EditProfile")}</p>
           <div className={CommonClasses.user_data_edit}>
             <Avatar src={userData.avatar} alt={"Avatar"} className={CommonClasses.avatar}/>
             <div className={CommonClasses.about_user_edit}>
               <h1>{userData.name}</h1>
-              <UserInfo userData={userData} Classes={Classes}/>
+              <UserInfo userData={userData} Classes={Classes} t={t}/>
               <NavButton to={editPage.url}
-                      label="Edit"
+                      label={t('Edit')}
                       className={Classes.button}
                       classNavLink={Classes.link}/>
             </div>

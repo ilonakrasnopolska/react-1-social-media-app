@@ -65,10 +65,9 @@ button {
   height: 100vh;
 }
 
-/* Скрытие скроллбара в WebKit-браузерах */
 .users.section::-webkit-scrollbar,
 .dialogs.section::-webkit-scrollbar {
-  display: none; /* Скрыть скроллбар */
+  display: none;
 }
 
 .users.section {

@@ -4,8 +4,10 @@ import {useSelector} from "react-redux";
 import NavButton from "../../../../../common/NavButton";
 
 
-const AnimeItem = ({animeId}) => {
+const AnimeItem = ({animeId, t}) => {
   const anime = useSelector(state => state.anime.anime.find(el => el.id === animeId));
+  const descriptionKey = `anime_${animeId}`;
+
   return (
     <li className={Classes.item}>
       <img className={Classes.avatar}
@@ -14,10 +16,10 @@ const AnimeItem = ({animeId}) => {
       />
       <div className={Classes.content}>
         <div className={Classes.description}>
-        <h3>{anime.name}</h3>
-        <span>{anime.description}</span>
+        <h3>{t(anime.name)}</h3>
+        <span>{t(descriptionKey)}</span>
         </div>
-        <NavButton to={anime.toWatchUrl} label='Watch now' className={Classes.button}/>
+        <NavButton to={anime.toWatchUrl} label={t('WatchNow')} className={Classes.button}/>
       </div>
     </li>
   )

@@ -1,9 +1,9 @@
-const UserInfo = ({ userData, Classes }) => (
+const UserInfo = ({ userData, Classes, t }) => (
     <ul className={Classes.list}>
-      <li className={Classes.item}>{`Date of Birth: ${userData.dateOfBirth}`}</li>
-      <li className={Classes.item}>{`City: ${userData.city}`}</li>
-      <li className={Classes.item}>{`Gender: ${userData.gender}`}</li>
-      <li className={Classes.item}>{`Favorite anime: ${userData.favAnime}`}</li>
+      <li className={Classes.item}>{`${t('DateOfBirth')}: ${userData.dateOfBirth}`}</li>
+      <li className={Classes.item}>{`${t('City')}: ${userData.city}`}</li>
+      <li className={Classes.item}>{`${t('Gender')}: ${userData.gender}`}</li>
+      <li className={Classes.item}>{`${t('FavoriteAnime')}: ${userData.favoriteAnime}`}</li>
     </ul>
 );
 

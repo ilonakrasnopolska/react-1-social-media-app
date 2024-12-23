@@ -51,11 +51,11 @@ const initialState = {
       title: 'News', id: categoriesIdCounter++ ,
     },
     {
-      title: 'View all', id: categoriesIdCounter++ ,
+      title: 'View All', id: categoriesIdCounter++ ,
     },
   ],
   filteredFeeds: [],
-  activeCategory: 'View all',
+  activeCategory: 'View All',
 }
 
 
