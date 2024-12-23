@@ -4,13 +4,13 @@ import Posts from "./Posts/Posts";
 import Categories from "./Categories/Categories";
 import {useSelector} from "react-redux";
 
-const Feeds = () => {
+const Feeds = ({t}) => {
   const {feeds, filteredFeeds, categories, activeCategory} = useSelector((state) => state.feeds);
   return (
     <section className="news section">
       <div className={Classes.container}>
-        <Posts feeds={feeds} filteredFeeds={filteredFeeds}/>
-        <Categories categories={categories} activeCategory={activeCategory} />
+        <Posts feeds={feeds} filteredFeeds={filteredFeeds} t={t}/>
+        <Categories categories={categories} activeCategory={activeCategory} t={t} />
       </div>
     </section>
   )

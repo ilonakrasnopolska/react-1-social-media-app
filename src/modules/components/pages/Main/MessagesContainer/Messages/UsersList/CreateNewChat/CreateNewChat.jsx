@@ -5,7 +5,7 @@ import {useInputHandlers} from "../../../../../../../hooks/useInputHandlers";
 import {updateSearchUserText} from "../../../../../../../../redux/DialogsReducer/dialogs-reducer";
 
 
-const CreateNewChat = ({searchUserText, filteredContacts}) => {
+const CreateNewChat = ({searchUserText, filteredContacts, t}) => {
   const {useTextChangeHandlers} = useInputHandlers(updateSearchUserText);
   return (
     <div className={Classes.box}>
@@ -15,9 +15,9 @@ const CreateNewChat = ({searchUserText, filteredContacts}) => {
         value={searchUserText}
         onChange={useTextChangeHandlers}
         type="text"
-        placeholder="Find user..."/>
+        placeholder={t('FindUser')}/>
       {searchUserText.length > 0 && (
-        <UserSearchDropdown inShowUserList={true} filteredContacts={filteredContacts} />
+        <UserSearchDropdown inShowUserList={true} filteredContacts={filteredContacts} t={t}/>
       )}
     </div>
   );

@@ -95,7 +95,7 @@ const initialState = {
       dateOfBirth: '1999-07-09',
       city: 'Haifa',
       gender: 'Female',
-      favAnime: 'Naruto'
+      favoriteAnime: 'Naruto'
     }
   },
   profileCover: `${pictures.Cover}`,

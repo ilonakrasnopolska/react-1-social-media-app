@@ -27,7 +27,7 @@ let confSettingIdCounter = 1;
 const initialState = {
   settings: [
     {
-      title: 'Personal account', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'PersonalAccount', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
     {
       title: 'Confidentiality', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
@@ -36,13 +36,13 @@ const initialState = {
       title: 'Language', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
     {
-      title: 'Terms and policy', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'TermsAndPolicy', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
     {
       title: 'Help', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
     {
-      title: 'Log out', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'Out', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
     },
 
   ],
@@ -53,7 +53,7 @@ const initialState = {
       dateOfBirth: '1999-07-09',
       city: 'Haifa',
       gender: 'Female',
-      favAnime: 'Naruto'
+      favoriteAnime: 'Naruto'
     },
     editPage: {
       title: "Edit Profile", id: settingsIdCounter++,  url: `${baseSettingsUrl}${urlIdCounter++}`
@@ -70,32 +70,32 @@ const initialState = {
       {
         id: confOptionIdCounter++,
         title: "Profile Visibility",
-        description: "Choose who can see your profile and activity.",
+        description: "Choose Who Can See Your Profile And Activity",
         checked: "Public",
         settings: [
           {id: confSettingIdCounter++, name: "Public", value: "Public"},
-          {id: confSettingIdCounter++, name: "Friends Only", value: "Friends"},
+          {id: confSettingIdCounter++, name: "FriendsOnly", value: "Friends"},
           {id: confSettingIdCounter++, name: "Private", value: "Private"},
         ],
       },
       {
         id: confOptionIdCounter++,
         title: "Data Sharing",
-        description: "Control how your data is shared with third-party services.",
-        checked: "Allow data sharing",
+        description: "Control How Your Data Is Shared With Third Party Services",
+        checked: "Allow Data Sharing",
         settings: [
-          {id: confSettingIdCounter++, name: "Allow data sharing", value: "Allow data sharing"},
-          {id: confSettingIdCounter++, name: "Disable data sharing", value: "Disable data sharing"},
+          {id: confSettingIdCounter++, name: "Allow Data Sharing", value: "Allow Data Sharing"},
+          {id: confSettingIdCounter++, name: "Disable Data Sharing", value: "Disable Data Sharing"},
         ],
       },
       {
         id: confOptionIdCounter++,
         title: "Ad Preferences",
-        description: "Manage ad personalization based on your activity.",
-        checked: "Enable personalized ads",
+        description: "Manage Ad Personalization Based On Your Activity",
+        checked: "EnablePersonalizedAds",
         settings: [
-          {id: confSettingIdCounter++, name: "Enable personalized ads", value: "Enable personalized ads"},
-          {id: confSettingIdCounter++, name: "Disable personalized ads", value: "Disable personalized ads"},
+          {id: confSettingIdCounter++, name: "Enable Personalized Ads", value: "Enable Personalized Ads"},
+          {id: confSettingIdCounter++, name: "Disable Personalized Ads", value: "Disable Personalized Ads"},
         ],
       },
     ],
@@ -153,7 +153,7 @@ const initialState = {
       ],
     },
     {
-      term: 'No Spam or Bots', id: termIdCounter++,
+      term: 'No Spam Or Bots', id: termIdCounter++,
       isOpen: false,
       description: [
         {
@@ -203,7 +203,7 @@ const initialState = {
       ],
     },
     {
-      term: 'Compliance with Updates', id: termIdCounter++,
+      term: 'Compliance With Updates', id: termIdCounter++,
       isOpen: false,
       description: [
         {
@@ -212,7 +212,7 @@ const initialState = {
       ],
     },
     {
-      term: 'Consequences of Violations', id: termIdCounter++,
+      term: 'Consequences Of Violations', id: termIdCounter++,
       isOpen: false,
       description: [
         {

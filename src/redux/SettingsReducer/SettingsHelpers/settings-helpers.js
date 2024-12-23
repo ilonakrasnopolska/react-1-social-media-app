@@ -116,7 +116,7 @@ export const validateEditAccountFormHelper = (state) => {
   }
 
   // Проверка на пустое название аниме
-  if (state.personalAccount.userData.favAnime.trim() === '') {
+  if (state.personalAccount.userData.favoriteAnime.trim() === '') {
     profileErrors.favAnimeError = 'The field cannot be empty';
     isValid = false;
   }

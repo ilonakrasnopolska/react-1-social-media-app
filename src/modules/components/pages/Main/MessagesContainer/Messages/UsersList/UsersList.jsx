@@ -3,7 +3,7 @@ import React from "react";
 import DialogUser from "./DialogUser/DialogUser";
 import CreateNewChat from "./CreateNewChat/CreateNewChat";
 
-const UsersList = ({users, searchUserText, filteredContacts, urlId}) => {
+const UsersList = ({users, searchUserText, filteredContacts, urlId, t}) => {
   return (
     <section className="users section">
       <div className={Classes.content}>
@@ -13,13 +13,15 @@ const UsersList = ({users, searchUserText, filteredContacts, urlId}) => {
                         urlId={urlId}
                         key={el.userId}
                         users={users}
+                        t={t}
             />)
           }
         </ul>
         <div>
           <CreateNewChat
             searchUserText={searchUserText}
-            filteredContacts={filteredContacts}/>
+            filteredContacts={filteredContacts}
+            t={t}/>
         </div>
       </div>
     </section>

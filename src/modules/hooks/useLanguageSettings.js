@@ -12,9 +12,13 @@ export const useLanguageSettings = () => {
 
   const selectedOption = options.find((option) => option.value === selectedLanguage);
 
-  const handleChange = (selectedOption) => {
-    dispatch(updateSelectedLanguage(selectedOption.value));
+  const handleChange = (value) => {
+    dispatch(updateSelectedLanguage(value));
   };
 
-  return { options, selectedOption, handleChange };
+  const saveLanguage = (changeLanguage, value) => {
+    changeLanguage(value)
+  };
+
+  return { options, selectedOption, handleChange, saveLanguage };
 };

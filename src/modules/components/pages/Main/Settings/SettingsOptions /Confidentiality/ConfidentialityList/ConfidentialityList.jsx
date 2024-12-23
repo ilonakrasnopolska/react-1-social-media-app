@@ -2,15 +2,15 @@ import React from "react";
 import Classes from './ConfidentialityList.module.css'
 import {useConfidentialityActions} from "../../../../../../../hooks/useConfidentialityActions";
 
-const ConfidentialityList = ({confidentiality}) => {
+const ConfidentialityList = ({confidentiality, t}) => {
   const {handleChange} = useConfidentialityActions()
 
   return (
     <ul className={Classes.list}>
       {confidentiality.map((confidentiality, index) => (
         <li key={index} className={Classes.item}>
-          <h3>{confidentiality.title}</h3>
-          <p>{confidentiality.description}</p>
+          <h3>{t(confidentiality.title)}</h3>
+          <p>{t(confidentiality.description)}</p>
           <ul className={Classes.subList}>
             {confidentiality.settings.map((setting) => (
               <li key={setting.id} className={Classes.subItem}>
@@ -22,7 +22,7 @@ const ConfidentialityList = ({confidentiality}) => {
                     checked={setting.value === confidentiality.checked}
                     onChange={() => handleChange(setting.value, confidentiality.title)}
                   />
-                  {setting.name}
+                  {t(setting.name)}
                 </label>
               </li>
             ))}

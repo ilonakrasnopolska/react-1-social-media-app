@@ -5,14 +5,14 @@ import MyPosts from "./MyPosts/MyPosts";
 import Hero from "./Hero/Hero";
 import {useSelector} from "react-redux";
 
-const Profile = () => {
+const Profile = ({t}) => {
   const profileData = useSelector(state => state.profile)
   return (
     <div>
       <Hero wallpaper={profileData.profileCover}/>
-      <User userData={profileData.personalAccount.userData}/>
-      <PostMaker/>
-      <MyPosts posts={profileData.posts}/>
+      <User userData={profileData.personalAccount.userData} t={t}/>
+      <PostMaker t={t}/>
+      <MyPosts posts={profileData.posts} t={t}/>
     </div>
   );
 }

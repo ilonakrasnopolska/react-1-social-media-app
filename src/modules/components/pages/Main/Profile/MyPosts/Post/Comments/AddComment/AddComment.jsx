@@ -4,7 +4,7 @@ import Classes from "./AddComment.module.css"
 import {useCommentActions} from "../../../../../../../../hooks/useCommentActions";
 import {useInputHandlers} from "../../../../../../../../hooks/useInputHandlers";
 
-const AddComment = ({postId}) => {
+const AddComment = ({postId, t}) => {
   const newCommentText = useSelector(state =>
     state.profile.posts.find(post => post.postId === postId)?.newCommentText || '');
   const { handleCommentChange, handleAddComment } = useCommentActions(postId, newCommentText);
@@ -21,8 +21,8 @@ const AddComment = ({postId}) => {
           onChange={handleCommentChange}
           onKeyDown={handleKeyDown}
           className={Classes.comment_input}
-          placeholder="Add a comment..."/>
-        <button onClick={handleAddComment} className={Classes.submit_button}>Add</button>
+          placeholder={t("AddComment")}/>
+        <button onClick={handleAddComment} className={Classes.submit_button}>{t('Add')}</button>
       </form>
     </div>
   );

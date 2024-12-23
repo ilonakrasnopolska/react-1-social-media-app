@@ -9,7 +9,7 @@ export const useEditAccountForm = (personalAccount) => {
 
   // Получаем данные из store
   const personalAccountPage = useSelector((state) =>
-    state.settings.settings.find((page) => page.title === "Personal account")
+    state.settings.settings.find((page) => page.title === "PersonalAccount")
   );
 
   const { userData, isFormValid, errors } = personalAccount;

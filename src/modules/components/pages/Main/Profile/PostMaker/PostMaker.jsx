@@ -5,14 +5,14 @@ import Button from "../../../../common/Button";
 import {useInputHandlers} from "../../../../../hooks/useInputHandlers";
 import {updateNewPostText} from "../../../../../../redux/ProfileReducer/profile-reducer";
 
-const PostMaker = () => {
+const PostMaker = ({t}) => {
   const {newPostText, handleAddPost} = usePostActions();
   const {handleKeyDown} = useInputHandlers('',handleAddPost);
   const {useTextChangeHandlers} = useInputHandlers(updateNewPostText);
   return (
     <section className="newPost section">
       <div className={Classes.content}>
-        <span className={Classes.title}>My posts</span>
+        <span className={Classes.title}>{t('My Posts')}</span>
         <form className={Classes.form}
               onSubmit={handleAddPost}>
           <textarea
@@ -21,9 +21,9 @@ const PostMaker = () => {
             onChange={useTextChangeHandlers}
             onKeyDown={handleKeyDown}
             className={Classes.textarea}
-            placeholder="Your news..."/>
+            placeholder={t("Your News")}/>
           <div className={Classes.buttonBox}>
-            <Button className={Classes.button} onClick={handleAddPost} label='Post'/>
+            <Button className={Classes.button} onClick={handleAddPost} label={t('Post')}/>
           </div>
         </form>
       </div>
