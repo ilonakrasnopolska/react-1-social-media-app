@@ -1,10 +1,14 @@
 import {useDispatch} from "react-redux";
+import { useContext } from 'react';
+import LanguageContext from '../../contexts/LanguageContext';
+
 
 export const useInputHandlers = (action, func) => {
   const dispatch = useDispatch();
+  const { language } = useContext(LanguageContext);
 
   const useTextChangeHandlers = (e) => {
-    dispatch(action(e.target.value));
+    dispatch(action({ text: e.target.value, language }));
   };
 
   const handleKeyDown = (e) => {

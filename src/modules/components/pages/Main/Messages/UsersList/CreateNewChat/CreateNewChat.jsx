@@ -1,8 +1,8 @@
 import Classes from "./CreateNewChat.module.css";
 import React from "react";
 import UserSearchDropdown from "./UserSearchDropdown/UserSearchDropdown";
-import {useInputHandlers} from "../../../../../../../hooks/useInputHandlers";
-import {updateSearchUserText} from "../../../../../../../../redux/DialogsReducer/dialogs-reducer";
+import {useInputHandlers} from "../../../../../../hooks/useInputHandlers";
+import {updateSearchUserText} from "../../../../../../../redux/DialogsReducer/dialogs-reducer";
 
 
 const CreateNewChat = ({searchUserText, filteredContacts, t}) => {

@@ -8,7 +8,7 @@ const getData = () => {
   return `${hours}:${minutes}`
 }
 export const updateNewPostTextHelper = (state, action) => {
-  return state.newPostText = action.payload;
+  return state.newPostText = action.payload.text;
 }
 export const addPostHelper = (state) => {
   if (state.newPostText.trim() !== '') {

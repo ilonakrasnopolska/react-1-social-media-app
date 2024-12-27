@@ -1,7 +1,7 @@
 import Classes from "./UserSearchDropdown.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {useDialogsActions} from "../../../../../../../../hooks/useDialogsActions";
+import {useDialogsActions} from "../../../../../../../hooks/useDialogsActions";
 
 
 const UserSearchDropdown = ({filteredContacts, t}) => {
@@ -17,7 +17,7 @@ const UserSearchDropdown = ({filteredContacts, t}) => {
                 <NavLink to={`/messages/${contact.userId}`}>
                   <button onClick={() => handleStartChat(contact)} className={Classes.button}>
                     <img className={Classes.avatar} src={contact.avatar} alt="Avatar"/>
-                    <span className={Classes.name}>{t(contact.name)}</span>
+                    <span className={Classes.name}>{t(contact.name.en)}</span>
                   </button>
                 </NavLink>
             </li>

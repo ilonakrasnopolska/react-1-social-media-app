@@ -11,7 +11,7 @@ const findById = (state, id) => {
   return state.find(item => item.chatId === id);
 }
 export const updateNewMessageTextHelper = (state, action) => {
-  state.newMessageText = action.payload;
+  state.newMessageText = action.payload.text;
   return state
 }
 export const sendMessageHelper = (state, action) => {
@@ -51,13 +51,16 @@ export const deleteMessageHelper = (state, action) => {
 
   return state;
 }
-export const filterContactsHelper = (state) => {
-  state.filteredContacts = state.contacts.filter(contact =>
-    contact.name.toLowerCase().includes(state.searchUserText)
+export const filterContactsHelper = (state, action) => {
+  const {language} = action.payload
+  state.filteredContacts = state.contacts.filter(contact => {
+    const contactName = contact.name[language] || '';
+    return contactName.toLowerCase().includes(state.searchUserText)
+  }
   );
 };
 export const updateSearchUserTextHelper = (state, action) => {
-  state.searchUserText = action.payload.toLowerCase();
+  state.searchUserText = action.payload.text.toLowerCase();
   filterContactsHelper(state, action)
 }
 export const startConversationHelper = (state, action) => {

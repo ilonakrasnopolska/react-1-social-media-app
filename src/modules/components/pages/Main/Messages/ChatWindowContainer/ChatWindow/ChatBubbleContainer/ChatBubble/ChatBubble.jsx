@@ -1,6 +1,6 @@
 import Classes from "./ChatBubble.module.css";
 import React from "react";
-import {useDialogsActions} from "../../../../../../../../../hooks/useDialogsActions";
+import {useDialogsActions} from "../../../../../../../../hooks/useDialogsActions";
 
 const ChatBubble = ({chatId, message, t}) => {
   const {handleDeleteMessage} = useDialogsActions();

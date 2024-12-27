@@ -7,7 +7,8 @@ import Anime from "./Anime/Anime";
 import WatchAnime from "./Anime/AnimeList/AnimeItem/WatchAnime/WatchAnime";
 import Settings from "./Settings/Settings";
 import LogIn from "../Main/Settings/SettingsOptions /LogOut/LogIn/LogIn";
-import MessagesContainer from "./MessagesContainer/MessagesContainer";
+import MessagesContainer from "./Messages/MessagesContainer";
+import FriendsPage from "./FriendsPage/FriendsPage"
 
 const Main = ({t}) => {
   return (
@@ -21,6 +22,7 @@ const Main = ({t}) => {
           <Route path="/anime/:animeId" element={<WatchAnime t={t} />} />
           <Route path="/settings/:id?" element={<Settings t={t} />} />
           <Route path="/logIn" element={<LogIn t={t} />} />
+          <Route path="/friends" element={<FriendsPage t={t} />} />
         </Routes>
       </div>
     </main>
