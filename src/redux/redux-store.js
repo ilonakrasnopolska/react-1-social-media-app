@@ -5,6 +5,7 @@ import sidebarReducer from "./SidebarReducer/sidebar-reducer";
 import feedsReducer from "./FeedsReducer/feeds-reducer";
 import animeReducer from "./AnimeReducer/anime-reducer";
 import settingsReducer from "./SettingsReducer/settings-reducer";
+import friendsPageReducer from './FriendsPageReducer/friends-page-reducer';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     feeds: feedsReducer,
     anime: animeReducer,
     settings: settingsReducer,
+    friends: friendsPageReducer,
   },
 })

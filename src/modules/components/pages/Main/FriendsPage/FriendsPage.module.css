@@ -1,0 +1,52 @@
+.content,
+.wrapper,
+.friends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.content {
+  padding: 0 120px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  padding: 30px;
+  width: 100%;
+  height: 1200px;
+  overflow: auto;
+  background-color: var(--white-color);
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+
+.title {
+  color: var(--app-background);
+  margin-bottom: 15px;
+}
+
+.text {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: var(--app-background);
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+

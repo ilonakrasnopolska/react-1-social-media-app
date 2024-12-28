@@ -82,6 +82,10 @@ export const en = {
     Vikky: 'Vikky',
     IlonaSue: 'Ilona Sue'
   },
+  friends: {
+    MyFriends: 'My friends',
+    Description: `Here’s a list of everyone you’re connected with.`,
+  },
   settings: {
       PersonalAccount: 'Personal account',
       Confidentiality: 'Confidentiality',
@@ -166,7 +170,6 @@ export const en = {
     NeedHelp: 'Need help? Contact us below!',
     YourName: 'Your Name',
     YourMessage: 'Your Message',
-    SendMessage: 'Send Message',
   },
   log: {
     LogOut: 'Are you sure you want to log out?',
@@ -176,6 +179,7 @@ export const en = {
   etc: {
     Empty: 'Nothing found',
     Delete: 'Delete',
+    SendMessage: 'Send Message',
   }
 };
 

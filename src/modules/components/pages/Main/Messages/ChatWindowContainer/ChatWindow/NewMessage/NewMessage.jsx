@@ -1,9 +1,9 @@
 import Classes from "./NewMessage.module.css";
 import React from "react";
-import {SendMessageIcon} from "../../../../../../../../../redux/assets/SVG-icons";
-import {updateNewMessageText} from '../../../../../../../../../redux/DialogsReducer/dialogs-reducer';
-import {useInputHandlers} from "../../../../../../../../hooks/useInputHandlers";
-import {useDialogsActions} from "../../../../../../../../hooks/useDialogsActions";
+import {SendMessageIcon} from "../../../../../../../../redux/assets/SVG-icons";
+import {updateNewMessageText} from '../../../../../../../../redux/DialogsReducer/dialogs-reducer';
+import {useInputHandlers} from "../../../../../../../hooks/useInputHandlers";
+import {useDialogsActions} from "../../../../../../../hooks/useDialogsActions";
 
 
 const NewMessage = ({chatId, newMessageText, t}) => {

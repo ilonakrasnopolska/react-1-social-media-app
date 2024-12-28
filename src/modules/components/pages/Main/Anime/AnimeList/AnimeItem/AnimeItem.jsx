@@ -16,7 +16,7 @@ const AnimeItem = ({animeId, t}) => {
       />
       <div className={Classes.content}>
         <div className={Classes.description}>
-        <h3>{t(anime.name)}</h3>
+        <h3>{t(anime.name.en)}</h3>
         <span>{t(descriptionKey)}</span>
         </div>
         <NavButton to={anime.toWatchUrl} label={t('WatchNow')} className={Classes.button}/>

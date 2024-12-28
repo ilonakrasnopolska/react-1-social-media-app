@@ -20,18 +20,18 @@ let messageIdCounter = 1;
 //Базовый state
 const initialState = {
   users: [
-    {name: 'Mark', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.markPic}`},
-    {name: 'Vikky', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.vikkyPic}`},
-    {name: 'Sunny', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.sunnyPic}`},
+    {name: {en:'Mark', ru:'Марк'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.markPic}`},
+    {name: {en:'Vikky', ru:'Викки'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.vikkyPic}`},
+    {name: {en:'Sunny', ru:'Санни'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.sunnyPic}`},
     {
-      name: 'Phillip',
+      name: {en:'Phillip', ru:'Филипп'},
       userId: userIdCounter,
       url: `${baseMessageUrl}${userIdCounter++}`,
       avatar: `${avatars.phillipPic}`
     },
-    {name: 'Elon', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.elonPic}`},
-    {name: 'Sakura', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.sakuraPic}`},
-    {name: 'Ino', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.inoPic}`},
+    {name: {en:'Elon', ru:'Илон'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.elonPic}`},
+    {name: {en:'Sakura', ru:'Сакура'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.sakuraPic}`},
+    {name: {en:'Ino', ru:'Ино'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.inoPic}`},
   ],
   chats: [
     {
@@ -126,9 +126,9 @@ const initialState = {
     },
   ],
   contacts: [
-    {name: 'Violet', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.violetPic}`},
-    {name: 'Anna', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.annaPic}`},
-    {name: 'Artur', userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.arturPic}`},
+    {name: {en:'Violet', ru:'Виолетта'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.violetPic}`},
+    {name: {en:'Anna', ru:'Анна'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.annaPic}`},
+    {name: {en:'Artur', ru:'Артур'}, userId: userIdCounter, url: `${baseMessageUrl}${userIdCounter++}`, avatar: `${avatars.arturPic}`},
   ],
   newMessageText: '',
   searchUserText: '',
@@ -138,7 +138,7 @@ const initialState = {
 
 initialState.contacts = initialState.users
   .map(user => ({
-    name: user.name,
+    name: user.name.en,
     userId: user.userId,
     url: user.url,
     avatar: user.avatar,

@@ -8,8 +8,9 @@ export const useDialogsActions = () => {
     dispatch(setActiveUser(userId));
   };
 
-  const handleStartChat = (contact) => {
-    dispatch(setActiveUser(contact.userId));
+  const handleStartChat = (contact, id) => {
+    console.log(contact, id);
+    dispatch(setActiveUser(contact, id));
     dispatch(startConversation(contact))
   }
 

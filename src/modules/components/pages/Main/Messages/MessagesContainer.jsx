@@ -1,5 +1,5 @@
 import React from "react";
-import Messages from "./Messages/Messages";
+import Messages from "./Messages";
 import { useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
 import { useResetActiveUserOnRouteChange } from "../../../../hooks/useResetActiveUser";
