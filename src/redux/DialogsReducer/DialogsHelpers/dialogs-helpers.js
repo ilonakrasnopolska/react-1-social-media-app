@@ -66,6 +66,12 @@ export const updateSearchUserTextHelper = (state, action) => {
 export const startConversationHelper = (state, action) => {
   const newUser = action.payload;
   const name = action.payload.name;
+  const existingChatById = state.chats.find(chat => chat.chatId === action.payload.userId);
+
+    // Проверяем, существует ли чат с таким ID
+    if (existingChatById) {
+      return state;
+    }
 
   const existingChat = state.chats.find(chat =>
     chat.participants.includes(name) && chat.participants.includes('Ilona Sue')

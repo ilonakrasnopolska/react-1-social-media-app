@@ -75,6 +75,10 @@ export const ru = {
     Vikky: 'Викки',
     IlonaSue: 'Илона Сью'
   },
+  friends: {
+    MyFriends: 'Мои друзья',
+    Description: `Здесь представлен список всех твоих друзей.`,
+  },
   settings: {
     PersonalAccount: "Личный аккаунт",
     Confidentiality: "Приватность",
@@ -176,7 +180,6 @@ export const ru = {
     NeedHelp: "Нужна помощь?Свяжитесь с нами!",
     YourName: "Твое имя",
     YourMessage: "Твое сообщение",
-    SendMessage: "Отправить сообщение",
   },
   log: {
     LogOut: "Вы уверены,что хотите выйти?",
@@ -186,5 +189,6 @@ export const ru = {
   etc: {
     Empty: 'Ничего не найдено',
     Delete: 'Удалить',
+    SendMessage: "Написать",
   }
 };

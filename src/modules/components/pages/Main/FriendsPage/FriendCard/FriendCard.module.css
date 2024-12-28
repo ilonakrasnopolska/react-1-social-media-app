@@ -1,0 +1,48 @@
+.friend_card {
+  width: 60%;
+  background-color: var(--content-background-3);
+  max-height: 250px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: flex;
+}
+
+.content div {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border: 2px solid var(--app-background);
+  margin-right: 30px;
+  object-fit: cover;
+}
+
+.title {
+  color: var(--basic-text-color);
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  color: var(--basic-text-color);
+  font-size: 18px;
+  border-bottom: 1px solid var(--basic-text-color);
+}
+
+.delete {
+  font-size: 35px;
+  color: var(--basic-text-color);
+  background-color: transparent;
+  transform: rotate(90deg);
+}

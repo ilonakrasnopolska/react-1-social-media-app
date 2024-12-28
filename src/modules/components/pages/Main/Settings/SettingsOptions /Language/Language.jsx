@@ -12,10 +12,6 @@ const Language = ({t}) => {
   const {options, selectedOption, handleChange, saveLanguage} = useLanguageSettings();
   const { changeLanguage } = useContext(LanguageContext);
 
-  const onChangeLanguage = (selected) => {
-    handleChange(selected.value);
-  };
-
   return (
     <section className='language section'>
       <div className={CommonClasses.content}>
@@ -27,26 +23,14 @@ const Language = ({t}) => {
               <Select
                 options={options}
                 value={selectedOption}
-                onChange={onChangeLanguage}
+                onChange={(selected) => handleChange(selected.value)}
                 className={Classes.reactSelect}
               />
             </label>
           </div>
-          <div className={Classes.post_translation}>
-            <Title CommonClasses={Classes} text={t("PostTranslations")}/>
-            <label>
-              <input
-                name='translate-app'
-                type="checkbox"
-                // checked={autoTranslation}
-                // onChange={toggleAutoTranslation}
-              />
-              {t("Checker")}
-            </label>
-          </div>
           <Button className={Classes.button}
                    onClick={() => {
-                    saveLanguage(changeLanguage, selectedOption.value); // Сохраняем изменения при клике на кнопку
+                    saveLanguage(changeLanguage, selectedOption.value);
                   }}
                   label={t("SaveChanges")}/>
         </div>

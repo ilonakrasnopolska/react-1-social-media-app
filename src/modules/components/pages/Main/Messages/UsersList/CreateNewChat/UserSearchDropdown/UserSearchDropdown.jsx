@@ -15,7 +15,7 @@ const UserSearchDropdown = ({filteredContacts, t}) => {
           filteredContacts.map(contact => (
             <li key={contact.userId} className={Classes.contact}>
                 <NavLink to={`/messages/${contact.userId}`}>
-                  <button onClick={() => handleStartChat(contact)} className={Classes.button}>
+                  <button onClick={() => handleStartChat(contact, contact.userId)} className={Classes.button}>
                     <img className={Classes.avatar} src={contact.avatar} alt="Avatar"/>
                     <span className={Classes.name}>{t(contact.name.en)}</span>
                   </button>
