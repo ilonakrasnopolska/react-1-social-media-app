@@ -8,7 +8,6 @@ import Avatar from "../../../../../common/Avatar";
 const Post = ({post, t}) => {
   const { onDeletePost } = usePostActions();
   const isCommentsOpen = post.commentData.commentsVisibility;
-
   if (!post) return null;
 
   return (

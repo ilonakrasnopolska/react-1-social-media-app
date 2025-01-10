@@ -2,13 +2,9 @@ import React from "react";
 import Classes from './PostMaker.module.css';
 import {usePostActions} from "../../../../../hooks/usePostActions";
 import Button from "../../../../common/Button";
-import {useInputHandlers} from "../../../../../hooks/useInputHandlers";
-import {updateNewPostText} from "../../../../../../redux/ProfileReducer/profile-reducer";
 
 const PostMaker = ({t}) => {
-  const {newPostText, handleAddPost} = usePostActions();
-  const {handleKeyDown} = useInputHandlers('',handleAddPost);
-  const {useTextChangeHandlers} = useInputHandlers(updateNewPostText);
+  const {newPostText ,useTextChangeHandlers, handleKeyDown, handleAddPost} = usePostActions();
   return (
     <section className="newPost section">
       <div className={Classes.content}>

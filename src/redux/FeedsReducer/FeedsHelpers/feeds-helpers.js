@@ -8,5 +8,5 @@ export const filterFeedsHelpers = (state, action) => {
 }
 
 export const setActiveCategoryHelpers = (state, action) => {
-  return state.activeCategory = action.payload;
+  state.activeCategory = action.payload;
 }

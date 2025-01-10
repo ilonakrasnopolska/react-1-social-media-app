@@ -3,10 +3,10 @@ import User from "./User/User";
 import PostMaker from "./PostMaker/PostMaker";
 import MyPosts from "./MyPosts/MyPosts";
 import Hero from "./Hero/Hero";
-import {useSelector} from "react-redux";
+import useData from "../../../../hooks/useData"
 
 const Profile = ({t}) => {
-  const profileData = useSelector(state => state.profile)
+  const profileData = useData('profile');
   return (
     <div>
       <Hero wallpaper={profileData.profileCover}/>

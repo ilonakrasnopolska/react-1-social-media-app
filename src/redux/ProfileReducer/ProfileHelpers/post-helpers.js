@@ -30,16 +30,10 @@ export const addPostHelper = (state) => {
 
     state.posts.push(newPost);
     state.newPostText = '';
-    return state
   }
 };
 export const deletePostHelper = (state, action) => {
-  const newPosts = state.posts.filter(post => post.postId !== action.payload);
-  if (newPosts.length === state.posts.length) {
-    console.error(`Пост с id ${action.payload} не найден.`);
-    return;
-  }
-  return state.posts = newPosts;
+  state.posts = state.posts.filter((post) => post.postId !== action.payload);
 }
 export const toggleCommentsHelper = (state, action) => {
   const post = state.posts.find(post => post.postId === action.payload);
@@ -54,8 +48,7 @@ export const handleLikeHelper = (state, action) => {
     post.likedByUser = !post.likedByUser;
     post.likes += post.likedByUser ? 1 : -1;
   }
-  return state;
 }
 export const updateProfileInfoHelper = (state, action) => {
-  return state.personalAccount.userData = action.payload;
+  state.personalAccount.userData = { ...state.personalAccount.userData, ...action.payload };
 }

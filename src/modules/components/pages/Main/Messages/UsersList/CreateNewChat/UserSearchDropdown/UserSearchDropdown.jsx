@@ -6,7 +6,6 @@ import {useDialogsActions} from "../../../../../../../hooks/useDialogsActions";
 
 const UserSearchDropdown = ({filteredContacts, t}) => {
   const {handleStartChat} = useDialogsActions();
-
   return (
     <ul className={Classes.dropdown}>
         {filteredContacts.length === 0 ? (

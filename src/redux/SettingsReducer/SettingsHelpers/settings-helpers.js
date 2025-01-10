@@ -10,9 +10,10 @@ export const editPersonalInfoTextHelper = (state, action) => {
 
       // Обновляем отформатированное значение
       state.personalAccount.userData.dateOfBirth = `${day} ${month}`;
+    } else {
+      // Обновляем остальную информацию
+      state.personalAccount.userData[key] = value;
     }
-    // Обновляем остальную информацию
-    state.personalAccount.userData[key] = value;
   }
 }
 export const updateSelectedLanguageHelper = (state, action) => {
@@ -25,10 +26,10 @@ export const toggleTermHelper = (state, action) => {
   }
 }
 export const updateRequestUserNameTextHelper = (state, action) => {
-  return state.helpCenter.requestUserNameText = action.payload;
+  state.helpCenter.requestUserNameText = action.payload;
 }
 export const updateRequestMessageTextHelper = (state, action) => {
-  return state.helpCenter.requestMessageText = action.payload;
+  state.helpCenter.requestMessageText = action.payload;
 }
 export const sendSupportMessageHelper = (state) => {
   if (state.helpCenter.errors.userNameError || state.helpCenter.errors.messageError) return;
@@ -56,7 +57,6 @@ export const sendSupportMessageHelper = (state) => {
     state.helpCenter.requestMessageText = '';
     state.helpCenter.requestUserNameText = '';
     alert('Message sent!');
-    return state;
   }
 }
 export const validateRequestForHelpFormHelper = (state) => {

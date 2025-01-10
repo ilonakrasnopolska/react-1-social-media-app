@@ -1,9 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
-import {addPost, deletePost} from "../../redux/ProfileReducer/profile-reducer";
+import { useContext } from "react";
+import LanguageContext from "../../contexts/LanguageContext";
+import {addPost, deletePost, updateNewPostText} from "../../redux/ProfileReducer/profile-reducer";
 
 export const usePostActions = () => {
   const dispatch = useDispatch();
+  const { language } = useContext(LanguageContext);
   const newPostText = useSelector((state) => state.profile.newPostText);
+
+
+  const useTextChangeHandlers = (e) => {
+    dispatch(updateNewPostText({ text: e.target.value, language }));
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleAddPost(e);
+    }
+  };
 
   const handleAddPost = (e) => {
     e.preventDefault();
@@ -19,5 +34,5 @@ export const usePostActions = () => {
     }
   };
 
-  return { newPostText, handleAddPost, onDeletePost };
+  return { newPostText, useTextChangeHandlers, handleKeyDown, handleAddPost, onDeletePost };
 };
