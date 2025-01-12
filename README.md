@@ -65,6 +65,29 @@ The application is built with modern tools and libraries:
 - **Clsx**  
 - **Web Vitals**
 
+## Project Structure  
+
+The project is organized into several folders to maintain clean code and separation of concerns.  
+
+### 1. **Hooks**  
+- Contains custom hooks created to separate logic from components, ensuring cleaner and more maintainable components.  
+
+### 2. **Common**  
+- Stores reusable components such as buttons, titles, and other frequently used UI elements.  
+- Promotes reusability and consistency across the application.  
+
+### 3. **Contexts**  
+- Includes two context files for managing global states:  
+  - **Language Context**: Handles the language-switching functionality.  
+  - **Theme Context**: Manages the theme-switching functionality (light/dark).  
+
+### 4. **Providers**  
+- Contains a higher-order component `AppProvider`.  
+  - `AppProvider` wraps the entire application and integrates the **Language Context** and **Theme Context**.  
+
+
+This structured approach ensures that the application remains modular, scalable, and easy to maintain as it evolves.  
+
 ## Architecture  
 The application is designed with a modular and clean architecture to ensure maintainability and scalability:
 
