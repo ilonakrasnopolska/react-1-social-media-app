@@ -85,6 +85,9 @@ export const en = {
   friends: {
     MyFriends: 'My friends',
     Description: `Here’s a list of everyone you’re connected with.`,
+    Follow: 'Follow',
+    Unfollow: 'Unfollow',
+    Find: 'Find user'
   },
   settings: {
       PersonalAccount: 'Personal account',

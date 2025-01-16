@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {updateSelectedLanguage} from "../../redux/SettingsReducer/settings-reducer";
 
+
 export const useLanguageSettings = () => {
   const dispatch = useDispatch();
   const { languages, selectedLanguage } = useSelector((state) => state.settings.languageSettings);

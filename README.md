@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# Anime Social Network
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About the Project  
+Anime Social Network is a platform designed specifically for anime enthusiasts. It provides a unique user experience with personalized features, seamless navigation, and a clean interface powered by **React** and **Redux Toolkit**.
 
-## Available Scripts
+## Key Features  
+### 1. **Themes**  
+- Switch between **light** and **dark** themes effortlessly.  
+- Theme switching is implemented using **React Context**.
 
-In the project directory, you can run:
+### 2. **Multi-Language Support**  
+- Easily switch between **English** and **Russian** in the app settings.  
+- Translations are stored in a separate file and managed manually.  
+- Language switching is implemented using **Context API** and a custom **Provider**.
 
-### `npm start`
+### 3. **Profile Management**  
+- Create and customize your personal profile.  
+- Publish and delete posts.  
+- Like posts, comment on them, and reply to comments.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 4. **Messages**  
+- Send and receive messages.  
+- Start a conversation by searching for friends in your list.  
+- Delete messages to keep chats organized.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 5. **Feeds**  
+- Browse a feed of the most popular news.  
+- Filter content by your interests with a functional filter system.
 
-### `npm test`
+### 6. **Anime Search (In Progress)**  
+- Search for anime titles in a dedicated search bar.  
+- Select an anime to view more details (watching feature under development).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 7. **Settings**  
+Settings include:  
+- **Account Settings**: Edit personal details like name, age, and city.  
+- **Privacy Settings**: Manage privacy preferences.  
+- **Language**: Switch between available languages.  
+- **Terms and Conditions**: View all terms in an accordion layout with clickable descriptions.  
+- **Help**: Contact developers by submitting a form.  
+- **Log Out**: Currently under development.
 
-### `npm run build`
+### 8. **Friends**  
+- View your friends list and start conversations directly from the Friends page.  
+- Recent active friends are displayed in a circle list for quick access.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 9. **Sidebar Navigation**  
+The sidebar includes the following sections:  
+- **Profile**  
+- **Messages**  
+- **Feeds**  
+- **Anime**  
+- **Settings**  
+- **Friends**  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Each section dynamically renders content based on the **URL** using **React Router**.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used  
+The application is built with modern tools and libraries:  
+- **React**  
+- **Redux Toolkit**  
+- **React Router DOM**  
+- **React Autosuggest**  
+- **React Select**  
+- **Clsx**  
+- **Web Vitals**
 
-### `npm run eject`
+## Project Structure  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The project is organized into several folders to maintain clean code and separation of concerns.  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. **Hooks**  
+- Contains custom hooks created to separate logic from components, ensuring cleaner and more maintainable components.  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2. **Common**  
+- Stores reusable components such as buttons, titles, and other frequently used UI elements.  
+- Promotes reusability and consistency across the application.  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. **Contexts**  
+- Includes two context files for managing global states:  
+  - **Language Context**: Handles the language-switching functionality.  
+  - **Theme Context**: Manages the theme-switching functionality (light/dark).  
 
-## Learn More
+### 4. **Providers**  
+- Contains a higher-order component `AppProvider`.  
+  - `AppProvider` wraps the entire application and integrates the **Language Context** and **Theme Context**.  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This structured approach ensures that the application remains modular, scalable, and easy to maintain as it evolves.  
 
-### Code Splitting
+## Architecture  
+The application is designed with a modular and clean architecture to ensure maintainability and scalability:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### State Management  
+- Utilizes **Redux Toolkit** for concise, readable, and maintainable reducers and actions.  
+- Each page (e.g., Profile, Messages) has its own reducer. Detailed action logic is stored in helper files to keep reducers clean and simple.  
 
-### Analyzing the Bundle Size
+### Routing  
+- Dynamic rendering of pages based on **URL** using **React Router**.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Context API  
+- Used for managing **themes** and **language settings**.  
 
-### Making a Progressive Web App
+### Component Structure  
+- The application follows a **component-based structure**, making it easy to scale and update.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Tools for Development  
+### Flowchart Mapping  
+- A graphical flowchart is used during development to map out the structure and flow of the application, aiding in efficient planning and implementation.  
 
-### Advanced Configuration
+### Package Versions  
+```json
+"@reduxjs/toolkit": "^2.3.0",
+"@testing-library/jest-dom": "^5.17.0",
+"@testing-library/react": "^13.4.0",
+"@testing-library/user-event": "^13.5.0",
+"clsx": "^2.1.1",
+"react": "^18.3.1",
+"react-autosuggest": "^10.1.0",
+"react-dom": "^18.3.1",
+"react-redux": "^9.1.2",
+"react-router-dom": "^6.26.1",
+"react-scripts": "5.0.1",
+"react-select": "^5.8.3",
+"web-vitals": "^2.1.4"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
