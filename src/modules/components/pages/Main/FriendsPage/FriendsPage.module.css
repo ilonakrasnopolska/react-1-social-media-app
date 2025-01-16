@@ -24,6 +24,27 @@
   display: none;
 }
 
+.search_wrapper {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.search_wrapper input {
+  padding-left: 10px;
+  width: 30%;
+  height: 35px;
+  font-size: 19px;
+  outline: none;
+  border: 1px solid var(--app-background);
+}
+
+.search_wrapper button {
+  height: 100%;
+  background-color: var(--content-background-3);
+}
 
 .title {
   color: var(--app-background);

@@ -1,19 +1,12 @@
 import React from "react";
-import {useSelector} from "react-redux";
 import Classes from "./AddComment.module.css"
 import {useCommentActions} from "../../../../../../../../hooks/useCommentActions";
-import {useInputHandlers} from "../../../../../../../../hooks/useInputHandlers";
 
 const AddComment = ({postId, t}) => {
-  const newCommentText = useSelector(state =>
-    state.profile.posts.find(post => post.postId === postId)?.newCommentText || '');
-  const { handleCommentChange, handleAddComment } = useCommentActions(postId, newCommentText);
-  const {handleKeyDown} = useInputHandlers('', handleAddComment);
-
+  const {newCommentText, handleCommentChange, handleAddComment, handleKeyDown } = useCommentActions(postId);
   return (
     <div className={Classes.add_comment}>
-      <form className={Classes.comment_form}
-            onSubmit={handleAddComment}>
+      <form className={Classes.comment_form}>
         <textarea
           id={`comment-${postId}`}
           name="comment"

@@ -11,7 +11,6 @@ import Button from "../../../../../common/Button";
 const Language = ({t}) => {
   const {options, selectedOption, handleChange, saveLanguage} = useLanguageSettings();
   const { changeLanguage } = useContext(LanguageContext);
-
   return (
     <section className='language section'>
       <div className={CommonClasses.content}>

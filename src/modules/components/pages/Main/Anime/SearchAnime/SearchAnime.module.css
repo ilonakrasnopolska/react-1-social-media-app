@@ -12,11 +12,19 @@
   font-size: 28px;
 }
 
+.input_wrapper {
+  display: flex;
+}
+
+.search_btn {
+  background-color: var(--primary-background);
+}
+
 .input {
   border: 1px solid var(--app-background);
   outline: none;
   font-size: 15px;
-  height: 100%;
-  padding: 10px 5px;
+  height: 35px;
+  padding-left: 10px;
 }
 

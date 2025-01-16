@@ -4,7 +4,6 @@ import Post from "./Post/Post";
 
 const Posts = ({feeds, filteredFeeds, t}) => {
   const posts = filteredFeeds.length > 0 ? filteredFeeds : feeds;
-
   return (
     <div className={Classes.feeds}>
     <ul className={Classes.list}>

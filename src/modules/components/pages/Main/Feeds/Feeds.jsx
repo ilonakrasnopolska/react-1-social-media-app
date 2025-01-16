@@ -3,14 +3,15 @@ import Classes from './Feeds.module.css'
 import Posts from "./Posts/Posts";
 import Categories from "./Categories/Categories";
 import {useSelector} from "react-redux";
+import useData from "../../../../hooks/useData";
 
 const Feeds = ({t}) => {
-  const {feeds, filteredFeeds, categories, activeCategory} = useSelector((state) => state.feeds);
+  const feeds = useData('feeds');
   return (
     <section className="news section">
       <div className={Classes.container}>
-        <Posts feeds={feeds} filteredFeeds={filteredFeeds} t={t}/>
-        <Categories categories={categories} activeCategory={activeCategory} t={t} />
+        <Posts feeds={feeds.feeds} filteredFeeds={feeds.filteredFeeds} t={t}/>
+        <Categories categories={feeds.categories} activeCategory={feeds.activeCategory} t={t} />
       </div>
     </section>
   )

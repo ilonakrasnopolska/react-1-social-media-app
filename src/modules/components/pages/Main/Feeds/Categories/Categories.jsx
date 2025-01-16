@@ -4,7 +4,6 @@ import {useFeedsFilter} from "../../../../../hooks/useFeedsFilter";
 
 const Categories = ({categories, activeCategory, t}) => {
   const { handleCategoryFilter } = useFeedsFilter();
-
   return (
     <article className={Classes.categories}>
       <h3>{t('Filter')}</h3>

@@ -1,7 +1,8 @@
 .friend_card {
-  width: 60%;
+  width: 100%;
   background-color: var(--content-background-3);
   max-height: 250px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -9,21 +10,36 @@
 
 .content {
   display: flex;
+  align-items: center;
 }
 
-.content div {
+.avatar_wrapper {
+  width: 150px;
   display: flex;
-  width: 50%;
   flex-direction: column;
-  padding: 20px 0;
+  margin-right: 20px;
 }
 
 .avatar {
-  width: 100px;
+  width: 150px;
   height: 100px;
   border: 2px solid var(--app-background);
-  margin-right: 30px;
   object-fit: cover;
+  object-position: center;
+}
+
+.btn_follow {
+  padding: 10px;
+  font-size: 18px;
+  background-color: var(--button-background-1);
+  color: var(--text-color-1);
+}
+
+.user_info_wrapper {
+  display: flex;
+  max-width: 310px;
+  flex-direction: column;
+  margin-right: 20px;
 }
 
 .title {
@@ -32,9 +48,17 @@
   margin-bottom: 15px;
 }
 
+.status {
+  font-size: 17px;
+  color: var(--basic-text-color);
+  margin-bottom: 15px;
+}
+
 .button {
   margin: 0;
   padding: 0;
+  width: 130px;
+  text-align: center;
   color: var(--basic-text-color);
   font-size: 18px;
   border-bottom: 1px solid var(--basic-text-color);

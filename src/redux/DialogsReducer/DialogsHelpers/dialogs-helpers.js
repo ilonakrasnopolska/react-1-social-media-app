@@ -11,8 +11,7 @@ const findById = (state, id) => {
   return state.find(item => item.chatId === id);
 }
 export const updateNewMessageTextHelper = (state, action) => {
-  state.newMessageText = action.payload.text;
-  return state
+  state.newMessageText = action.payload.text.trim();
 }
 export const sendMessageHelper = (state, action) => {
   const chat = findById(state.chats, action.payload.chatId);
@@ -22,25 +21,21 @@ export const sendMessageHelper = (state, action) => {
   }
 
   if (state.newMessageText.trim() !== '') {
-    // Генерируем уникальный ID для нового сообщения
-    const newMessageId = chat.messages.length + 1
     const newMessage = {
       name: CURRENT_USER_NAME,
-      id: newMessageId,
+      id: chat.messages.length + 1,
       time: getData(),
       avatar: avatars.ilonaSue,
       message: state.newMessageText,
     };
 
-    chat.messages.push(newMessage); // Добавляем новое сообщение в текущий чат
+    chat.messages.push(newMessage);
 
-    state.newMessageText = ''; // Очищаем текстовое поле после отправки
-    return state; // Возвращаем обновлённое состояние
+    state.newMessageText = '';
   }
 }
 export const deleteMessageHelper = (state, action) => {
   const {chatId, messageId} = action.payload;
-
   const chat = state.chats.find(chat => chat.chatId === chatId);
   if (!chat) {
     console.error(`Chat with id ${chatId} not found.`);
@@ -48,8 +43,6 @@ export const deleteMessageHelper = (state, action) => {
   }
 
   chat.messages = chat.messages.filter(message => message.id !== messageId);
-
-  return state;
 }
 export const filterContactsHelper = (state, action) => {
   const {language} = action.payload
@@ -64,34 +57,29 @@ export const updateSearchUserTextHelper = (state, action) => {
   filterContactsHelper(state, action)
 }
 export const startConversationHelper = (state, action) => {
-  const newUser = action.payload;
-  const name = action.payload.name;
-  const existingChatById = state.chats.find(chat => chat.chatId === action.payload.userId);
+  const { userId, name } = action.payload;
+  const existingChatById = state.chats.find(chat => chat.chatId === userId);
 
-    // Проверяем, существует ли чат с таким ID
-    if (existingChatById) {
-      return state;
+  if (existingChatById) {
+      return;
     }
 
   const existingChat = state.chats.find(chat =>
-    chat.participants.includes(name) && chat.participants.includes('Ilona Sue')
+    chat.participants.includes(name) && chat.participants.includes(CURRENT_USER_NAME)
   );
 
   if (existingChat) {
     state.activeUserId = existingChat.chatId;
   } else {
-    const newChatId = action.payload.userId;
     const newChat = {
-      chatId: newChatId,
-      participants: [name, 'Ilona Sue'],
+      chatId: userId,
+      participants: [name, CURRENT_USER_NAME],
       messages: []
     }
-    state.users.push(newUser);
+    state.users.push(action.payload);
     state.chats.push(newChat);
   }
-
   state.searchUserText = '';
-  return state
 }
 export const setActiveUserHelper = (state, action) => {
   state.activeUserId = action.payload;

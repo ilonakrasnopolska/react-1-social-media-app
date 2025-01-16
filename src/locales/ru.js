@@ -78,6 +78,9 @@ export const ru = {
   friends: {
     MyFriends: 'Мои друзья',
     Description: `Здесь представлен список всех твоих друзей.`,
+    Follow: 'Добавить',
+    Unfollow: 'Удалить',
+    Find: 'Найти пользователя'
   },
   settings: {
     PersonalAccount: "Личный аккаунт",
