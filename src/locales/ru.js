@@ -6,7 +6,7 @@ export const ru = {
     Feeds: "Лента",
     Anime: "Аниме",
     Settings: "Настройки",
-    Friends: "Друзья",
+    FindFriends: 'Найти друзей',
   },
   profile: {
     MyPosts: "Мои посты",

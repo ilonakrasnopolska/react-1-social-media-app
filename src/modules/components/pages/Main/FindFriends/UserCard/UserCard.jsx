@@ -1,16 +1,23 @@
-import Classes from "../FriendCard/FriendCard.module.css";
-import Avatar from "../../../../common/Avatar";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import Classes from "../UserCard/UserCard.module.css";
+import Avatar from "../../../../common/Avatar";
 import { useDialogsActions } from "../../../../../hooks/useDialogsActions";
+import { follow, unFollow } from "../../../../../../redux/FindFriendsReducer/find-friends-reducer";
 
-const FriendCard = ({ friend, t }) => {
+const UserCard = ({ friend, t }) => {
+  const dispatch = useDispatch();
   const { handleStartChat } = useDialogsActions();
   return (
     <li className={Classes.friend_card}>
       <div className={Classes.content}>
         <div className={Classes.avatar_wrapper}>
            <Avatar src={friend.avatar} alt="Avatar" className={Classes.avatar} />
-           <button className={Classes.btn_follow}>{t(friend.isFollow ? "Unfollow" : "Follow")}</button>
+           <button
+             onClick={() => dispatch(friend.isFollow ? unFollow({ friend }) : follow({ friend }))}
+              className={Classes[friend.isFollow ? "btn_unFollow" : "btn_follow"]}>
+          {t(friend.isFollow ? "Unfollow" : "Follow")}
+           </button>
       </div>
         <div className={Classes.user_info_wrapper}>
           <h3 className={Classes.title}>{t(friend.name.en)}</h3>
@@ -27,14 +34,8 @@ const FriendCard = ({ friend, t }) => {
         </div>
 
       </div>
-      <button
-          onClick={() => alert("Still on work")}
-          className={Classes.delete}
-        >
-          ...
-        </button>
     </li>
   );
 };
 
-export default FriendCard;
+export default UserCard;
