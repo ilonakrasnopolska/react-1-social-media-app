@@ -2,17 +2,19 @@ import React from "react";
 import Classes from './AnimeList.module.css'
 import AnimeItem from "./AnimeItem/AnimeItem";
 
-const AnimeList = ({filteredAnime, t}) => {
-  if (filteredAnime.length === 0) {
-    return <div className={Classes.noResults}>{t('Empty')}</div>;
-  }
+const AnimeList = ({filteredList, hasResults, t}) => {
   return (
-    <ul className={Classes.list}>
-      {filteredAnime.map(anime => (
-        <AnimeItem key={anime.id} animeId={anime.id} t={t}/>
-      ))
-      }
-    </ul>
+    <div>
+      {hasResults ? (
+            <ul className={Classes.list}>
+              {filteredList.map(anime => (
+                <AnimeItem anime={anime} key={anime.id} animeId={anime.id} t={t} />
+              ))}
+            </ul>
+          ) : (
+            <div className={Classes.noResults}>{t('Empty')}</div>
+          )}
+    </div>
   )
 }
 

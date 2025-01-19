@@ -1,9 +1,7 @@
 import React from "react";
 import Classes from './Categories.module.css'
-import {useFeedsFilter} from "../../../../../hooks/useFeedsFilter";
 
-const Categories = ({categories, activeCategory, t}) => {
-  const { handleCategoryFilter } = useFeedsFilter();
+const Categories = ({categories, activeCategory, handleCategoryFilter, t}) => {
   return (
     <article className={Classes.categories}>
       <h3>{t('Filter')}</h3>

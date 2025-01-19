@@ -6,7 +6,7 @@ export const en = {
       Feeds: 'Feeds',
       Anime: 'Anime',
       Settings: 'Settings',
-      Friends: 'Friends',
+      FindFriends: 'Find Friends',
     },
   profile: {
     MyPosts: 'My Posts',

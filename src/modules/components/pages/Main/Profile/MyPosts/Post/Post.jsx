@@ -2,14 +2,9 @@ import Classes from "./Post.module.css"
 import Reactions from "./Reactions/Reactions";
 import Comments from "./Comments/Comments";
 import AddComment from "./Comments/AddComment/AddComment";
-import {usePostActions} from "../../../../../../hooks/usePostActions";
 import Avatar from "../../../../../common/Avatar";
 
-const Post = ({post, t}) => {
-  const { onDeletePost } = usePostActions();
-  const isCommentsOpen = post.commentData.commentsVisibility;
-  if (!post) return null;
-
+const Post = ({post, onDeletePost, isCommentsOpen, t}) => {
   return (
     <li className={Classes.item}>
       <div className={Classes.post}>

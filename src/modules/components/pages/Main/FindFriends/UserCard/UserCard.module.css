@@ -28,11 +28,26 @@
   object-position: center;
 }
 
-.btn_follow {
+.avatar_wrapper button {
   padding: 10px;
   font-size: 18px;
   background-color: var(--button-background-1);
   color: var(--text-color-1);
+}
+
+.avatar_wrapper button:hover {
+  opacity: 70%;
+}
+
+.btn_follow:hover {
+  opacity: 70%;
+  background-color: var(--follow-btn);
+  color: var(--basic-text-color);
+}
+
+.btn_unFollow:hover {
+  background-color: var(--unFollow-btn);
+  color: var(--basic-text-color);
 }
 
 .user_info_wrapper {
@@ -62,11 +77,4 @@
   color: var(--basic-text-color);
   font-size: 18px;
   border-bottom: 1px solid var(--basic-text-color);
-}
-
-.delete {
-  font-size: 35px;
-  color: var(--basic-text-color);
-  background-color: transparent;
-  transform: rotate(90deg);
 }

@@ -9,9 +9,9 @@ const Friends = ({ t }) => {
     <div className={Classes.content}>
       <NavLink
       className={Classes.title}
-        to={'/friends'}
+        to={'/find_friends'}
       >
-        {t("Friends")}
+        {t("FindFriends")}
       </NavLink>
       {friends?.length > 0 ? (
         <ul className={Classes.list}>
