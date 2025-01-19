@@ -1,10 +1,8 @@
 import React from "react";
 import Classes from './PostMaker.module.css';
-import {usePostActions} from "../../../../../hooks/usePostActions";
 import Button from "../../../../common/Button";
 
-const PostMaker = ({t}) => {
-  const {newPostText ,useTextChangeHandlers, handleKeyDown, handleAddPost} = usePostActions();
+const PostMaker = ({newPostText, useTextChangeHandlers, handleKeyDown, handleAddPost, t}) => {
   return (
     <section className="newPost section">
       <div className={Classes.content}>

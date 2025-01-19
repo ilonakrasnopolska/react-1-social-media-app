@@ -1,5 +1,3 @@
-import { current } from "@reduxjs/toolkit";
-
 const updateFollowStatus = (state, userId, newStatus) => {
   // Обновление в friends
   const friend = state.friends.find(user => user.userId === userId);
@@ -25,7 +23,6 @@ export const followHelper = (state, action) => {
     newFriend.isFollow = true;
     state.friends = [...state.friends, newFriend];
   }
-  console.log(current(state));
   updateFollowStatus(state, userId, true);
 };
 
@@ -40,7 +37,6 @@ export const unFollowHelper = (state, action) => {
 }
 
 export const filterUsersListHelper = (state, language) => {
-  console.log('Filter called with:', state.searchNewFriendText, language);
   if (state.searchNewFriendText === '') {
     state.filteredFriends = state.friends;
   } else {
@@ -49,7 +45,6 @@ export const filterUsersListHelper = (state, language) => {
       return userName.toLowerCase().includes(state.searchNewFriendText.toLowerCase());
     });
   }
-  console.log('Filtered friends:', state.filteredFriends);
 };
 
 export const clearSearchQueryHelper = (state) => {

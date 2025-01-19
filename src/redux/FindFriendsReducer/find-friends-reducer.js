@@ -31,9 +31,9 @@ const initialState = {
   ],
   allUsers: [
   {name: {en:'Violet', ru:'Виолетта'}, userId: friendIdCounter, url: `${baseMessageUrl}${friendIdCounter++}`,
-  avatar: `${avatars.violetPic}`, isFollow: true, status: 'Wanna some beer?'},
+  avatar: `${avatars.violetPic}`, isFollow: false, status: 'Wanna some beer?'},
   {name: {en:'Anna', ru:'Анна'}, userId: friendIdCounter, url: `${baseMessageUrl}${friendIdCounter++}`,
-  avatar: `${avatars.annaPic}`, isFollow: true, status: 'At work('},
+  avatar: `${avatars.annaPic}`, isFollow: false, status: 'At work('},
 ],
   searchNewFriendText: '',
   filteredFriends: [],
@@ -47,7 +47,6 @@ const sidebarSlice = createSlice({
   initialState,
   reducers: {
     setSearchQuery: (state, action) => {
-      console.log('setSearchQuery called', action.payload);
       const { text, language } = action.payload;
       updateSearchNewFriendTextHelper(state, { payload: text });
       filterUsersListHelper(state, language);

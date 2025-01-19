@@ -42,10 +42,12 @@
 .btn_follow:hover {
   opacity: 70%;
   background-color: var(--follow-btn);
+  color: var(--basic-text-color);
 }
 
 .btn_unFollow:hover {
   background-color: var(--unFollow-btn);
+  color: var(--basic-text-color);
 }
 
 .user_info_wrapper {

@@ -1,6 +1,6 @@
 import React from "react";
 import Classes from "./MyPosts.module.css"
-import Post from "./Post/Post"
+import PostContainer from "./Post/PostContainer"
 
 
 const MyPosts = ({posts, t}) => {
@@ -9,7 +9,7 @@ const MyPosts = ({posts, t}) => {
       <div className={Classes.content}>
         <ul className={Classes.list}>
           {posts.map(post => (
-            <Post key={post.postId} post={post} t={t}/>
+            <PostContainer post={post} key={post.postId} t={t}/>
           ))}
         </ul>
       </div>

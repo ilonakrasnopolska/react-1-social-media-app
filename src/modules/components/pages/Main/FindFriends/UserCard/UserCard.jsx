@@ -1,20 +1,15 @@
-import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import Classes from "../UserCard/UserCard.module.css";
 import Avatar from "../../../../common/Avatar";
-import { useDialogsActions } from "../../../../../hooks/useDialogsActions";
-import { follow, unFollow } from "../../../../../../redux/FindFriendsReducer/find-friends-reducer";
+import Classes from "../UserCard/UserCard.module.css";
 
-const UserCard = ({ friend, t }) => {
-  const dispatch = useDispatch();
-  const { handleStartChat } = useDialogsActions();
+const UserCard = ({ friend, t, handleFollowToggle, handleStartChat }) => {
   return (
     <li className={Classes.friend_card}>
       <div className={Classes.content}>
         <div className={Classes.avatar_wrapper}>
            <Avatar src={friend.avatar} alt="Avatar" className={Classes.avatar} />
            <button
-             onClick={() => dispatch(friend.isFollow ? unFollow({ friend }) : follow({ friend }))}
+             onClick={() => handleFollowToggle(friend)}
               className={Classes[friend.isFollow ? "btn_unFollow" : "btn_follow"]}>
           {t(friend.isFollow ? "Unfollow" : "Follow")}
            </button>

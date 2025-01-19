@@ -1,19 +1,10 @@
-import useData from "../../../../hooks/useData"
-import {useInputHandlers} from "../../../../hooks/useInputHandlers";
-import useResetSearchQuery from "../../../../hooks/useResetSearchQuery"
-import {setSearchQuery} from "../../../../../redux/FindFriendsReducer/find-friends-reducer"
 import {SearchIcon} from "../../../../../redux/assets/SVG-icons"
 import Title from "../../../common/Title";
 import Classes from "../FindFriends/FindFriends.module.css";
-import UserCard from "./UserCard/UserCard";
+import UserCardContainer from ".//UserCard/UserCardContainer";
 
-const FindFriends = ({ t }) => {
-  const findFriends = useData('findFriends');
-  const friends = findFriends.filteredFriends || [];
-  const searchNewFriendText = findFriends.searchNewFriendText;
-  const {useTextChangeHandlers} = useInputHandlers(setSearchQuery);
+const FindFriends = ({ t, filteredFriends, hasResults, searchNewFriendText, useTextChangeHandlers, useResetSearchQuery }) => {
   useResetSearchQuery();
-
   return (
     <section className="friends section">
       <div className={Classes.content}>
@@ -29,14 +20,14 @@ const FindFriends = ({ t }) => {
           </div>
           <Title CommonClasses={Classes} text={t("MyFriends") + ":"} />
           <p className={Classes.text}>{t("Description")}</p>
-          {friends.length > 0 ? (
+           {hasResults ? (
             <ul className={Classes.list}>
-              {friends.map((friend) => (
-                <UserCard key={friend.userId} friend={friend} t={t} />
-              ))}
+              {filteredFriends.map(friend => (
+                <UserCardContainer key={friend.userId} friend={friend} t={t} />
+                ))}
             </ul>
           ) : (
-            <p className={Classes.empty_message}>{t("Empty")}</p>
+            <div className={Classes.empty_message}>{t('Empty')}</div>
           )}
         </div>
       </div>
