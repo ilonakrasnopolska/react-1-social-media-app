@@ -2,7 +2,7 @@
   width: 100%;
   background-color: var(--content-background-3);
   max-height: 250px;
-  padding: 15px 20px;
+  padding: 15px 25px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -10,7 +10,6 @@
 
 .content {
   display: flex;
-  align-items: center;
 }
 
 .avatar_wrapper {
@@ -55,6 +54,7 @@
   max-width: 310px;
   flex-direction: column;
   margin-right: 20px;
+  padding: 20px 0;
 }
 
 .title {
@@ -77,4 +77,16 @@
   color: var(--basic-text-color);
   font-size: 18px;
   border-bottom: 1px solid var(--basic-text-color);
+}
+
+.city {
+  display: flex;
+  gap: 5px;
+  padding: 20px 0;
+}
+
+.city h3,
+.city span {
+  color: var(--basic-text-color);
+  font-size: 19px;
 }

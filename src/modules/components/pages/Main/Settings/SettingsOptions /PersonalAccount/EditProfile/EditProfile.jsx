@@ -9,7 +9,6 @@ import {useEditAccountForm} from "../../../../../../../hooks/useEditAccountForm"
 
 const EditProfile = ({personalAccount, t}) => {
   const {userData, errors, isFormValid, handleSaveChanges} = useEditAccountForm(personalAccount);
-
   return (
     <section className='edit section'>
       <div className={CommonClasses.content}>

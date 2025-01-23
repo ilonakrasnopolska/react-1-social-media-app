@@ -3,13 +3,13 @@ import PersonalAccount from "./PersonalAccount/PersonalAccount";
 import Confidentiality from "./Confidentiality/Confidentiality";
 import Language from "./Language/Language";
 import TermsAndPolicy from "./TermsAndPolice/TermsAndPolicy";
-import Help from "./Help/Help";
+import HelpContainer from "./Help/HelpContainer";
 import LogOut from "./LogOut/LogOut";
 import EditProfile from "./PersonalAccount/EditProfile/EditProfile";
-import {useSelector} from "react-redux";
+import useData from "../../../../../hooks/useData";
 
 const SettingsOptions = ({id, t}) => {
-  const settings = useSelector(state => state.settings);
+  const settings = useData('settings');
   let SettingComponent;
   switch (id) {
     case '1':
@@ -25,7 +25,7 @@ const SettingsOptions = ({id, t}) => {
       SettingComponent = <TermsAndPolicy terms={settings.termsAndConditions} t={t}/>;
       break;
     case '5':
-      SettingComponent = <Help helpCenter={settings.helpCenter} t={t}/>;
+      SettingComponent = <HelpContainer helpCenter={settings.helpCenter} t={t}/>;
       break;
     case '6':
       SettingComponent = <LogOut logOut={settings.logOut} t={t}/>;

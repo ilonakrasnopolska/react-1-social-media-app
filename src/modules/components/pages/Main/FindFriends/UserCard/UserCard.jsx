@@ -27,8 +27,11 @@ const UserCard = ({ friend, t, handleFollowToggle, handleStartChat }) => {
             {t("SendMessage")}
           </NavLink>
         </div>
-
       </div>
+      <div className={Classes.city}>
+          <h3>City:</h3>
+          <span>{friend.city}</span>
+        </div>
     </li>
   );
 };
