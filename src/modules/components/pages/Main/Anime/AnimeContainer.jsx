@@ -10,7 +10,6 @@ const AnimeContainer = ({ t }) => {
   const {anime, filteredList, hasResults } = useFilteredAnime('anime');
   const newSearchAnimeText = anime.newSearchAnimeText;
 
-
   return <Anime t={t} newSearchAnimeText={newSearchAnimeText}
   useTextChangeHandlers={useTextChangeHandlers} useResetSearchQuery={useResetSearchQuery}
   filteredList={filteredList} hasResults={hasResults} />;

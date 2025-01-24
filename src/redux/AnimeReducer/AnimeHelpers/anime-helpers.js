@@ -1,3 +1,8 @@
+export const setAnimeListHelper = (state, action) => {
+  state.anime = action.payload;
+  state.filteredAnime = action.payload;
+};
+
 export const updateSearchAnimeTextHelper = (state, action) => {
   state.newSearchAnimeText = action.payload;
 };
