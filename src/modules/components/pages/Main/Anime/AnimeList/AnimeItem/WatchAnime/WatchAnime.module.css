@@ -1,15 +1,81 @@
 .content {
-  display: flex;
   gap: 15px;
-  flex-direction: column;
   padding: 20px 50px;
 }
 
+.anime_page {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-background);
+  padding: 50px;
+}
+
+.anime_page h2 {
+  color: var(--primary-text-color);
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.anime_page ul {
+  display: flex;
+  flex-direction: column;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--primary-text-color);
+  gap: 2px;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
 .cover {
-  width: 300px;
+  width: 35%;
+}
+
+.cover img{
+  border: 1px solid var(--primary-text-color);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.main_data_wrapper {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.main_data {
+  flex-direction: column;
+  gap: 5px;
+  margin-right: 50px;
+}
+
+.about div {
+  display: flex;
 }
 
 .text {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
+  color: var(--primary-text-color);
 }
+
+.description {
+  font-size: 19px;
+  color: var(--primary-text-color);
+}
+
+.trailer {
+  display: block;
+}
+
+

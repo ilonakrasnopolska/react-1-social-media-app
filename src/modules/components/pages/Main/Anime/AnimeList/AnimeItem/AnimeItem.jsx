@@ -4,15 +4,14 @@ import NavButton from "../../../../../common/NavButton";
 
 
 const AnimeItem = ({anime, t}) => {
-  console.log(anime);
   return (
     <li className={Classes.item}>
       <div className={Classes.poster_wrapper}>
       <img className={Classes.avatar}
            src={anime.cover}
            alt="Post avatar"/>
-              <h4>Episodes: {anime.episodes}</h4>
-             <span>Release Date: {anime.year}</span>
+              <h4>{t('Episodes')} {anime.episodes}</h4>
+             <span>{t('ReleaseDate')} {anime.year}</span>
       </div>
       <div className={Classes.content}>
         <div className={Classes.description}>

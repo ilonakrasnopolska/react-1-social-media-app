@@ -4,16 +4,16 @@ export const setAnimeListHelper = (state, action) => {
 };
 
 export const updateSearchAnimeTextHelper = (state, action) => {
-  state.newSearchAnimeText = action.payload;
+  state.newSearchAnimeText = action.payload.text;
 };
 
-export const filterAnimeListHelper = (state, language) => {
+export const filterAnimeListHelper = (state) => {
   if (state.newSearchAnimeText === '') {
     state.filteredAnime = state.anime;
   } else {
     state.filteredAnime = state.anime.filter((anime) => {
-      const animeName = anime.name[language] || '';
-      return animeName.toLowerCase().includes(state.newSearchAnimeText.toLowerCase());
+      const animeName = anime.name.toLowerCase();
+      return animeName.includes(state.newSearchAnimeText.toLowerCase());
     });
   }
 };
