@@ -15,7 +15,7 @@ const UserCard = ({ friend, t, handleFollowToggle, handleStartChat }) => {
            </button>
       </div>
         <div className={Classes.user_info_wrapper}>
-          <h3 className={Classes.title}>{t(friend.name.en)}</h3>
+          <h3 className={Classes.title}>{friend.name}</h3>
           <p className={Classes.status}>{friend.status}</p>
           <NavLink
             onClick={() => {

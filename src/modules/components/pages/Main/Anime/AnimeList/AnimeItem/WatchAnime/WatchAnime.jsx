@@ -3,7 +3,6 @@ import Classes from "./WatchAnime.module.css";
 import Genres from "./Genres/Genres";
 
 const WatchAnime = ({anime}) => {
-  console.log(anime);
   return (
     <div className={Classes.content}>
       <div className={Classes.anime_page}>

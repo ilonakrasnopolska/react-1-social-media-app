@@ -4,6 +4,7 @@ import useResetSearchQuery from "../../../../hooks/useResetSearchQuery"
 import FindFriends from './FindFriends';
 import useFilteredUsers from "../../../../hooks/useFilteredUsers";
 
+
 const FindFriendsContainer = ({ t }) => {
   const {useTextChangeHandlers} = useInputHandlers(setSearchQuery);
   const {findFriends, filteredList, hasResults} = useFilteredUsers('findFriends')

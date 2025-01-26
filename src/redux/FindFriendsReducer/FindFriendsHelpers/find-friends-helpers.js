@@ -12,6 +12,12 @@ const updateFollowStatus = (state, userId, newStatus) => {
   if (filteredUser) filteredUser.isFollow = newStatus;
 };
 
+export const setUsersListHelper = (state, action) => {
+  state.friends = action.payload;
+  state.allUsers = action.payload;
+  state.filteredFriends = action.payload;
+};
+
 export const updateSearchNewFriendTextHelper = (state, action) => {
   state.searchNewFriendText = action.payload;
 }

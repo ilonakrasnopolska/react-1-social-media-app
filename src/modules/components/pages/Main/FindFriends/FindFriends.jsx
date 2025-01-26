@@ -2,9 +2,12 @@ import {SearchIcon} from "../../../../../redux/assets/SVG-icons"
 import Title from "../../../common/Title";
 import Classes from "../FindFriends/FindFriends.module.css";
 import UserCardContainer from ".//UserCard/UserCardContainer";
+import { fetchUsers } from "../../../../../api/usersAPI";
+import { useFetchAndDispatch } from "../../../../hooks/useFetchAndDispatch";
 
 const FindFriends = ({ t, filteredFriends, hasResults, searchNewFriendText, useTextChangeHandlers, useResetSearchQuery }) => {
   useResetSearchQuery();
+  useFetchAndDispatch(fetchUsers)
   return (
     <section className="friends section">
       <div className={Classes.content}>
