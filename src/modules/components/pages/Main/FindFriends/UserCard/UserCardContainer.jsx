@@ -16,7 +16,6 @@ const UserCardContainer = ({ friend, t }) => {
     }
   };
 
-
   return (
     <UserCard
       friend={friend}

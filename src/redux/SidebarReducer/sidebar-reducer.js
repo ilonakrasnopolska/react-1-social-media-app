@@ -32,9 +32,9 @@ const initialState = {
     },
   ],
   friends: [
-    {name: 'Sunny', friendId: 1, avatar: `${avatars.sunnyPic}`},
-    {name: 'Phillip', friendId: 2, avatar: `${avatars.phillipPic}`},
-    {name: 'Elon', friendId: 3, avatar: `${avatars.elonPic}`},
+    {name: 'Sunny', userId: 1, avatar: `${avatars.sunnyPic}`},
+    {name: 'Phillip', userId: 2, avatar: `${avatars.phillipPic}`},
+    {name: 'Elon', userId: 3, avatar: `${avatars.elonPic}`},
   ]
 }
 

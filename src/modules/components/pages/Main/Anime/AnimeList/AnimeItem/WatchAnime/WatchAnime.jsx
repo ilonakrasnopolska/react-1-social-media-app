@@ -1,11 +1,13 @@
 import React from "react";
 import Classes from "./WatchAnime.module.css";
 import Genres from "./Genres/Genres";
+import { NavLink } from "react-router-dom";
 
 const WatchAnime = ({anime}) => {
   return (
     <div className={Classes.content}>
       <div className={Classes.anime_page}>
+      <NavLink to={'/anime'} className={Classes.button_back}>Back to Anime List</NavLink>
       <div className={Classes.data}>
       <div className={Classes.cover}>
       <img src={anime.cover} alt={anime.name} />

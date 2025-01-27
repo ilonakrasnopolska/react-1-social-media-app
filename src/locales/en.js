@@ -77,8 +77,8 @@ export const en = {
     IlonaSue: 'Ilona Sue'
   },
   friends: {
-    MyFriends: 'My friends',
-    Description: `Here’s a list of everyone you’re connected with.`,
+    FindFriends: 'Find Friends',
+    Description: `Here you can find friends to connected with.`,
     Follow: 'Follow',
     Unfollow: 'Unfollow',
     Find: 'Find user'

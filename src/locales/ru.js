@@ -70,8 +70,8 @@ export const ru = {
     IlonaSue: 'Илона Сью'
   },
   friends: {
-    MyFriends: 'Мои друзья',
-    Description: `Здесь представлен список всех твоих друзей.`,
+    FindFriends: 'Найти друзей',
+    Description: `Здесь ты можешь найти друзей.`,
     Follow: 'Добавить',
     Unfollow: 'Удалить',
     Find: 'Найти пользователя'

@@ -71,7 +71,16 @@
 }
 
 .empty_message {
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
   color: var(--app-background);
+  height: 700px;
 }
 
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}

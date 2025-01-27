@@ -1,9 +1,11 @@
 import fetchData from './fetchData';
 import { setAnimeList } from '../redux/AnimeReducer/anime-reducer';
+import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reducer';
 
 const baseAnimeUrl = '/anime/';
 
 export const fetchAnime = () => (dispatch) => {
+  dispatch(startLoading())
   fetchData('https://api.jikan.moe/v4/top/anime', {
     type: 'tv',
     filter: 'bypopularity',
@@ -21,7 +23,7 @@ export const fetchAnime = () => (dispatch) => {
           return {
             id: anime.mal_id,
             name: anime.title_english,
-            trailer: formattedTrailerUrl, // Сохраняем правильный URL трейлера
+            trailer: formattedTrailerUrl,
             description: anime.synopsis,
             episodes: anime.episodes,
             cover: anime.images.jpg.image_url,
@@ -35,5 +37,8 @@ export const fetchAnime = () => (dispatch) => {
     }})
     .catch((error) => {
       console.error('Failed to fetch anime:', error);
+    })
+    .finally(() => {
+      dispatch(stopLoading());
     });
 };
