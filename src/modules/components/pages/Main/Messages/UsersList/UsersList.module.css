@@ -3,6 +3,7 @@
   flex-direction: column-reverse;
   justify-content: flex-end;
   height: 100%;
+  background-color: var(--button-background-2);
 }
 
 .list {

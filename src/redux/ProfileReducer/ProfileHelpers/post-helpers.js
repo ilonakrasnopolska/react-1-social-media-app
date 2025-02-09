@@ -1,4 +1,4 @@
-import avatars from "../../assets/Avatars-src";
+import avatars from "../../../assets/Avatars-src";
 
 const CURRENT_USER_NAME = "Ilona Sue"
 const getData = () => {

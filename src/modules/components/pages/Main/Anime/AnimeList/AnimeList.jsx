@@ -6,7 +6,7 @@ import { useFetchAndDispatch } from "../../../../../hooks/useFetchAndDispatch";
 import { ClipLoader } from "react-spinners";
 
 const AnimeList = ({filteredList, hasResults, isLoading, t}) => {
-  useFetchAndDispatch(fetchAnime)
+  useFetchAndDispatch(() => fetchAnime(filteredList));
   return (
     <div>
       {isLoading ? (

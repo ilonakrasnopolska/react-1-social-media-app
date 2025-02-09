@@ -42,3 +42,4 @@ export const clearSearchQueryHelper = (state) => {
   state.searchNewFriendText = '';
   state.filteredFriends = state.friends;
 }
+

@@ -33,7 +33,7 @@ const sidebarSlice = createSlice({
     },
     unFollow: (state, action) => {
       unFollowHelper(state, action)
-    },
+    }
   }
 })
 

@@ -11,5 +11,6 @@ const avatars = {
   arturPic: require('./avatars/Artur-avatar.webp'),
   ilonaSue: require('./avatars/ilonaSue-avatar.png'),
   aniHub: require('./avatars/aniHub-avatar.png'),
+  defaultPic: require('./avatars/default-avatar.jpg')
 }
 export default avatars

@@ -1,4 +1,4 @@
-import { SearchIcon } from "../../../../../redux/assets/SVG-icons";
+import { SearchIcon } from "../../../../../assets/SVG-icons";
 import Title from "../../../common/Title";
 import Classes from "../FindFriends/FindFriends.module.css";
 import UserCardContainer from ".//UserCard/UserCardContainer";
@@ -8,7 +8,7 @@ import { ClipLoader } from "react-spinners";
 
 const FindFriends = ({ t, filteredFriends, hasResults, searchNewFriendText, isLoading, useTextChangeHandlers, useResetSearchQuery }) => {
   useResetSearchQuery();
-  useFetchAndDispatch(fetchUsers);
+  useFetchAndDispatch(() => fetchUsers(filteredFriends));
   return (
     <section className="friends section">
       <div className={Classes.content}>

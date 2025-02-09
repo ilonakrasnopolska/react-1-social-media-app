@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
-import avatars from "../assets/Avatars-src";
-import {pictures} from "../assets/Pictures-src";
+import { v4 as uuidv4 } from 'uuid';
+import avatars from "../../assets/Avatars-src";
+import {pictures} from "../../assets/Pictures-src";
 
 import {
   addPostHelper, deletePostHelper,
@@ -12,18 +13,16 @@ import {
 } from "./ProfileHelpers/comment-helpers";
 
 const CURRENT_USER_NAME = "Ilona Sue"
-let postIdCounter = 1;
-let commentIdCounter = 1;
 
 const initialState = {
   posts: [
     {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Who is your favourite character in Naruto?',
+      name: CURRENT_USER_NAME, postId: uuidv4(), message: 'Who is your favourite character in Naruto?',
       comments: 1, likes: 123, time: '10:00', likedByUser: false, avatar: avatars.ilonaSue,
       commentData: {
         commentsVisibility: false, messages:
           [{
-            commentId: commentIdCounter++,
+            commentId: uuidv4(),
             message: 'Wow!Amazing!',
             user: 'Mark',
             time: '13:00',
@@ -32,12 +31,12 @@ const initialState = {
       }, newCommentText: '',
     },
     {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Where are you from',
+      name: CURRENT_USER_NAME, postId: uuidv4(), message: 'Where are you from',
       comments: 1, likes: 14, time: '09:00', likedByUser: false, avatar: avatars.ilonaSue,
       commentData: {
         commentsVisibility: false, messages:
           [{
-            commentId: commentIdCounter++,
+            commentId: uuidv4(),
             message: 'Nice!',
             user: 'Vikky',
             time: '13:30',
@@ -46,12 +45,12 @@ const initialState = {
       }, newCommentText: '',
     },
     {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'I wish i had more free time to watch anime!',
+      name: CURRENT_USER_NAME, postId: uuidv4(), message: 'I wish i had more free time to watch anime!',
       comments: 1, likes: 36, time: '08:00', likedByUser: false, avatar: avatars.ilonaSue,
       commentData:  {
         commentsVisibility: false, messages:
           [{
-            commentId: commentIdCounter++,
+            commentId: uuidv4(),
             message: 'Amazing!',
             user: 'Sunny',
             time: '14:30',
@@ -60,12 +59,12 @@ const initialState = {
       }, newCommentText: '',
     },
     {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Have you seen the JK?',
+      name: CURRENT_USER_NAME, postId: uuidv4(), message: 'Have you seen the JK?',
       comments: 1, likes: 13, time: '07:00', likedByUser: false, avatar: avatars.ilonaSue,
       commentData: {
         commentsVisibility: false, messages:
           [{
-            commentId: commentIdCounter++,
+            commentId: uuidv4(),
             message: 'Great!',
             user: 'Ino',
             time: '16:30',
@@ -74,12 +73,12 @@ const initialState = {
       }, newCommentText: '',
     },
     {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Hello everyone!',
+      name: CURRENT_USER_NAME, postId: uuidv4(), message: 'Hello everyone!',
       comments: 1, likes: 3, time: '06:00', likedByUser: false, avatar: avatars.ilonaSue,
       commentData:  {
         commentsVisibility: false, messages:
           [{
-            commentId: commentIdCounter++,
+            commentId: uuidv4(),
             message: 'Hi!',
             user: 'Sakura',
             time: '17:30',

@@ -3,13 +3,14 @@ import ChatWindow from "./ChatWindow/ChatWindow";
 import ChatBubbleContainer from "./ChatWindow/ChatBubbleContainer/ChatBubbleContainer";
 
 
-const ChatWindowContainer = ({chats, newMessageText, urlId, t}) => {
-  const currentChat = chats.find(chat => chat.chatId === Number(urlId));
+const ChatWindowContainer = ({users, newMessageText, idFromUrl, t}) => {
+  const currentUser = users.find(user => user.userId === idFromUrl);
+  const currentChat = currentUser?.chat;
   return (
     <ChatWindow
-      chatContent={<ChatBubbleContainer currentChat={currentChat} chats={chats} t={t} />}
+      chatContent={<ChatBubbleContainer currentChat={currentChat} userId={idFromUrl} t={t} />}
       showNewMessage={!!currentChat}
-      chatId={currentChat?.chatId}
+      userId={currentUser?.userId}
       newMessageText={newMessageText}
       t={t}
     />

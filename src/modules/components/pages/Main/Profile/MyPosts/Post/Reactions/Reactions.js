@@ -1,5 +1,5 @@
 import React from "react";
-import {CommentIcon} from "../../../../../../../../redux/assets/SVG-icons";
+import {CommentIcon} from "../../../../../../../../assets/SVG-icons";
 import Classes from "./Reactions.module.css"
 
 

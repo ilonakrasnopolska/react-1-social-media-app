@@ -2,8 +2,10 @@ import React from "react";
 import Classes from "./WatchAnime.module.css";
 import Genres from "./Genres/Genres";
 import { NavLink } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 
-const WatchAnime = ({anime}) => {
+
+const WatchAnime = ({anime, isLoading}) => {
   return (
     <div className={Classes.content}>
       <div className={Classes.anime_page}>
@@ -26,18 +28,22 @@ const WatchAnime = ({anime}) => {
       </div>
       </div>
       <div className={Classes.trailer}>
-      {anime.trailer ? (
-          <iframe
-            width="100%"
-            height="600px"
-            src={anime.trailer}
-            title="Anime Trailer"
-            frameBorder="0"
-            allowFullScreen
-          />
-        ) : (
-          <p>No trailer available</p>
-        )}
+      {isLoading ? (
+        <div className={Classes.spinner}>
+          <ClipLoader color="#194770" size={50} />
+        </div>
+      ) : anime.trailer ? (
+        <iframe
+          width="100%"
+          height="600px"
+          src={anime.trailer}
+          title="Anime Trailer"
+          frameBorder="0"
+          allowFullScreen
+        />
+      ) : (
+        <p>No trailer available</p>
+      )}
         </div>
      </div>
     </div>

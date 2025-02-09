@@ -1,10 +1,14 @@
 import fetchData from './fetchData';
 import { setAnimeList } from '../redux/AnimeReducer/anime-reducer';
 import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reducer';
+import avatars from "../assets/Avatars-src";
 
 const baseAnimeUrl = '/anime/';
 
-export const fetchAnime = () => (dispatch) => {
+export const fetchAnime = (filteredList) => (dispatch) => {
+  if (filteredList != undefined && filteredList.length > 0) {
+    return;
+  }
   dispatch(startLoading())
   fetchData('https://api.jikan.moe/v4/top/anime', {
     type: 'tv',
@@ -26,7 +30,7 @@ export const fetchAnime = () => (dispatch) => {
             trailer: formattedTrailerUrl,
             description: anime.synopsis,
             episodes: anime.episodes,
-            cover: anime.images.jpg.image_url,
+            cover: anime.images?.jpg?.image_url || avatars.defaultPic,
             genres: anime.genres,
             year: anime.year,
             score: anime.score,

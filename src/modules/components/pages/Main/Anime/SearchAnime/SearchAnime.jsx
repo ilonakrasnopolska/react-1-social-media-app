@@ -1,5 +1,5 @@
 import React from "react";
-import {SearchIcon} from "../../../../../../redux/assets/SVG-icons"
+import {SearchIcon} from "../../../../../../assets/SVG-icons"
 import Classes from './SearchAnime.module.css'
 
 const SearchAnime = ({newSearchAnimeText, useTextChangeHandlers, useResetSearchQuery, t}) => {

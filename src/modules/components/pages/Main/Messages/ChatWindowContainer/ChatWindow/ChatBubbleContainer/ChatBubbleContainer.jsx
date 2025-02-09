@@ -2,7 +2,7 @@ import Classes from "../../ChatWindowContainer.module.css";
 import ChatBubble from "./ChatBubble/ChatBubble";
 import React from "react";
 
-const chatBubbleContainer = ({ currentChat, t }) => {
+const chatBubbleContainer = ({ currentChat, userId, t }) => {
 
   if (!currentChat) {
     return <p className={Classes.noChat}>{t('SelectChat')}</p>;
@@ -14,7 +14,7 @@ const chatBubbleContainer = ({ currentChat, t }) => {
 
   return currentChat.messages.map(message => (
     <ChatBubble
-      chatId={currentChat.chatId}
+      userId={userId}
       message={message}
       key={message.id}
       t={t}

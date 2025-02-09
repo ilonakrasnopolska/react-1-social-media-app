@@ -6,12 +6,12 @@ import { useResetActiveUserOnRouteChange } from "../../../../hooks/useResetActiv
 
 const MessagesContainer = ({t}) => {
   useResetActiveUserOnRouteChange();
-  const { chatId } = useParams();
+  const { userId } = useParams();
   const dialogs = useData('dialogs');
   return (
     <Messages
       dialogs={dialogs}
-      urlId={chatId}
+      idFromUrl={userId}
       t={t}
     />
   );

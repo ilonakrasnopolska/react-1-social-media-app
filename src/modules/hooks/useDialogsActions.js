@@ -1,4 +1,4 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {deleteMessage, sendMessage, setActiveUser, startConversation} from "../../redux/DialogsReducer/dialogs-reducer";
 
 export const useDialogsActions = () => {
@@ -13,15 +13,15 @@ export const useDialogsActions = () => {
     dispatch(startConversation(contact))
   }
 
-  const handleSendMessage = (event, chatId) => {
+  const handleSendMessage = (event, userId) => {
     event.preventDefault();
-    dispatch(sendMessage({chatId}));
+    dispatch(sendMessage({userId}));
   };
 
-  const handleDeleteMessage = (chatId, messageId) => {
+  const handleDeleteMessage = (userId, messageId) => {
     const confirmDelete = window.confirm(`Are you sure you want to delete the message?`);
     if (confirmDelete) {
-      dispatch(deleteMessage({chatId, messageId}));
+      dispatch(deleteMessage({userId, messageId}));
     }
   }
 

@@ -3,9 +3,11 @@ import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import { useFetchAndDispatch } from "../../../../../../../hooks/useFetchAndDispatch";
 import { fetchAnime } from "../../../../../../../../api/animeAPI";
+import useData from "../../../../../../../hooks/useData";
 import WatchAnime from "./WatchAnime";
 
 const WatchAnimeContainer = ({t}) => {
+  const isLoading = useData('loading');
   useFetchAndDispatch(fetchAnime)
   const { animeId } = useParams();
   const anime = useSelector((state) =>
@@ -15,7 +17,7 @@ const WatchAnimeContainer = ({t}) => {
     return <div>Anime not found!</div>;
   }
   return (
-   <WatchAnime t={t} anime={anime} />
+   <WatchAnime t={t} anime={anime} isLoading={isLoading} />
   );
 };
 
