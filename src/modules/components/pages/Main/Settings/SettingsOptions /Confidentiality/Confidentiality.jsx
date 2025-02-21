@@ -8,7 +8,6 @@ import {useConfidentialityActions} from "../../../../../../hooks/useConfidential
 
 const Confidentiality = ({confidentiality, t}) => {
   const {savePrivacySettings} = useConfidentialityActions();
-
   return (
     <section className='confidentiality section'>
       <div className={CommonClasses.content}>

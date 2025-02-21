@@ -1,17 +1,11 @@
 import React from "react";
 import CommonClasses from '../../Settings.module.css'
 import Classes from './Help.module.css'
-import {useRequestHelpForm} from "../../../../../../hooks/useRequestHelpForm";
 import {InputField, TextAreaField} from "../../../../../common/HelpForm/HelpForm";
 import Title from "../../../../../common/Title";
 import Button from "../../../../../common/Button";
-import {useInputHandlers} from "../../../../../../hooks/useInputHandlers";
 
-const Help = ({helpCenter, t}) => {
-  const {requestUserNameText, requestMessageText, errors, handleInputChange, handleFormSubmit}
-    = useRequestHelpForm(helpCenter);
-  const {handleKeyDown} = useInputHandlers('', handleFormSubmit);
-
+const Help = ({requestUserNameText, requestMessageText, errors, handleInputChange, handleKeyDown, handleFormSubmit, t}) => {
   return (
     <section className='help section'>
       <div className={CommonClasses.content}>

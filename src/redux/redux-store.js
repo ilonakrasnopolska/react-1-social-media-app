@@ -6,6 +6,7 @@ import feedsReducer from "./FeedsReducer/feeds-reducer";
 import animeReducer from "./AnimeReducer/anime-reducer";
 import settingsReducer from "./SettingsReducer/settings-reducer";
 import findFriendsReducer from './FindFriendsReducer/find-friends-reducer';
+import loadingReducer from './SpinnerReducer/spinner-reducer';
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     anime: animeReducer,
     settings: settingsReducer,
     findFriends: findFriendsReducer,
+    loading: loadingReducer
   },
 })

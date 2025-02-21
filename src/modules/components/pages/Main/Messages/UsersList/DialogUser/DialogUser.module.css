@@ -19,8 +19,12 @@
 
 .active,
 .activeButton {
-  background-color: var(--button-background-2);
+  background-color: var(--content-background-2);
   opacity: 100%;
+}
+
+.active .name {
+  color: var(--basic-text-color-2);
 }
 
 .avatar {

@@ -1,6 +1,7 @@
 // Константы
-import avatars from "../assets/Avatars-src";
+import avatars from "../../assets/Avatars-src";
 import {createSlice} from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from 'uuid';
 
 //Базовый state
 const initialState = {
@@ -8,33 +9,33 @@ const initialState = {
     {
       name: "Profile",
       url: "/profile",
-      id: 1,
+      id: uuidv4(),
     },
     {
       name: "Messages",
       url: "/messages",
-      id: 2,
+      id: uuidv4(),
     },
     {
       name: "Feeds",
       url: "/feeds",
-      id: 3,
+      id: uuidv4(),
     },
     {
       name: "Anime",
       url: "/anime",
-      id: 4,
+      id: uuidv4(),
     },
     {
       name: "Settings",
       url: "/settings",
-      id: 5,
+      id: uuidv4(),
     },
   ],
   friends: [
-    {name: 'Sunny', friendId: 1, avatar: `${avatars.sunnyPic}`},
-    {name: 'Phillip', friendId: 2, avatar: `${avatars.phillipPic}`},
-    {name: 'Elon', friendId: 3, avatar: `${avatars.elonPic}`},
+    {name: 'Sunny', userId: uuidv4(), avatar: `${avatars.sunnyPic}`},
+    {name: 'Phillip', userId: uuidv4(), avatar: `${avatars.phillipPic}`},
+    {name: 'Elon', userId: uuidv4(), avatar: `${avatars.elonPic}`},
   ]
 }
 

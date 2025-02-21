@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import  ThemeContext from '../../../../../contexts/ThemeContext';
-import {DarkTheme, LightTheme} from "../../../../../redux/assets/SVG-icons";
+import {DarkTheme, LightTheme} from "../../../../../assets/SVG-icons";
 
 const ThemeButton = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);

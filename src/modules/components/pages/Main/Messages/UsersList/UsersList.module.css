@@ -3,6 +3,7 @@
   flex-direction: column-reverse;
   justify-content: flex-end;
   height: 100%;
+  background-color: var(--button-background-2);
 }
 
 .list {
@@ -16,4 +17,11 @@
 
 .list::-webkit-scrollbar {
   display: none;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
 }

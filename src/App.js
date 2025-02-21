@@ -10,7 +10,6 @@ import Main from "./modules/components/pages/Main/Main";
 
 const App = () => {
   const { t } = useContext(LanguageContext);
-
   return (
     <div className="app-container">
       <Header/>

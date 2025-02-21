@@ -15,8 +15,8 @@ const UserCard = ({ friend, t, handleFollowToggle, handleStartChat }) => {
            </button>
       </div>
         <div className={Classes.user_info_wrapper}>
-          <h3 className={Classes.title}>{t(friend.name.en)}</h3>
-          <p className={Classes.status}>{friend.status}</p>
+          <h3 className={Classes.title}>{friend.name}</h3>
+          <p className={Classes.status}>{friend.isActive ? 'Offline' : 'Online'}</p>
           <NavLink
             onClick={() => {
               handleStartChat(friend, friend.userId);
@@ -27,8 +27,11 @@ const UserCard = ({ friend, t, handleFollowToggle, handleStartChat }) => {
             {t("SendMessage")}
           </NavLink>
         </div>
-
       </div>
+      <div className={Classes.city}>
+          <h3>City:</h3>
+          <span>{friend.city}</span>
+        </div>
     </li>
   );
 };

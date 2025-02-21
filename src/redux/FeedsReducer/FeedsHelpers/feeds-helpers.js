@@ -1,3 +1,8 @@
+export const setFeedsListHelpers = (state, action) => {
+  state.feeds = action.payload;
+  state.filteredAnime = action.payload;
+};
+
 export const filterFeedsHelpers = (state, action) => {
   const category = action.payload;
   if (category === 'View All') {

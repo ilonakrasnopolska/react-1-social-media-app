@@ -1,5 +1,5 @@
 import Classes from "./Post.module.css"
-import Reactions from "./Reactions/Reactions";
+import ReactionsContainer from "./Reactions/ReactionsContainer";
 import Comments from "./Comments/Comments";
 import AddComment from "./Comments/AddComment/AddComment";
 import Avatar from "../../../../../common/Avatar";
@@ -16,7 +16,7 @@ const Post = ({post, onDeletePost, isCommentsOpen, t}) => {
             <span className={Classes.post_time}>{post.time}</span>
           </div>
         </div>
-        <Reactions post={post}/>
+        <ReactionsContainer post={post}/>
         <button onClick={() => onDeletePost(post.postId)} className={Classes.delete}>...</button>
       </div>
       {isCommentsOpen && (

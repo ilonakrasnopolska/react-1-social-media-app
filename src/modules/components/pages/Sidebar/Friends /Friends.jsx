@@ -16,7 +16,7 @@ const Friends = ({ t }) => {
       {friends?.length > 0 ? (
         <ul className={Classes.list}>
           {friends.map((friend) => (
-            <Friend key={friend.friendId} friend={friend} t={t} />
+            <Friend key={friend.userId} friend={friend} t={t} />
           ))}
         </ul>
       ) : (

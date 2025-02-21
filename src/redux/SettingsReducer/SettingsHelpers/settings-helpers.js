@@ -1,3 +1,7 @@
+export const setProfileDataEditHelper = (state, action) => {
+  state.personalAccount.userData = action.payload;
+};
+
 export const editPersonalInfoTextHelper = (state, action) => {
   const { key, value } = action.payload;
   if (state.personalAccount.userData[key] !== undefined) {

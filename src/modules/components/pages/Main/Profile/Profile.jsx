@@ -4,13 +4,13 @@ import PostMakerContainer from "./PostMaker/PostMakerContainer";
 import MyPosts from "./MyPosts/MyPosts";
 import Hero from "./Hero/Hero";
 
-const Profile = ({wallpaper, userData, t, posts}) => {
+const Profile = ({wallpaper, userData, t, isLoading, posts}) => {
   return (
     <div>
       <Hero wallpaper={wallpaper}/>
-      <User userData={userData} t={t}/>
+      <User userData={userData} isLoading={isLoading} t={t}/>
       <PostMakerContainer t={t}/>
-      <MyPosts posts={posts} t={t}/>
+      <MyPosts posts={posts} isLoading={isLoading} t={t}/>
     </div>
   );
 }

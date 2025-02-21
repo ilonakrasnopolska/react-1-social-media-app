@@ -62,7 +62,6 @@ button {
 .dialogs.section {
   margin: 0;
   overflow-y: auto;
-  height: 100vh;
 }
 
 .users.section::-webkit-scrollbar,

@@ -1,23 +1,26 @@
 .item {
   background-color: var(--content-background-1);
-  padding: 20px 20px 20px 10px;
+  padding: 20px 0;
+  min-width: 280px;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
 }
 
 .creator{
   display: flex;
-  padding: 0 20px;
 }
 
 .avatar {
-  width: 70px;
+  width: 80px;
   height: 70px;
-  border-radius: 50px;
+  border-radius: 40px;
   margin-right: 15px;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 
 .info {
@@ -46,7 +49,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  padding: 0 20px 0 100px;
+  padding: 0 20px 0 80px;
   overflow-y: auto;
   scrollbar-width: none;
 }
@@ -61,7 +64,7 @@
 }
 
 .content span {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 

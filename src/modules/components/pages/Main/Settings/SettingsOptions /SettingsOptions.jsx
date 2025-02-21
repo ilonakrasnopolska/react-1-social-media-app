@@ -3,34 +3,34 @@ import PersonalAccount from "./PersonalAccount/PersonalAccount";
 import Confidentiality from "./Confidentiality/Confidentiality";
 import Language from "./Language/Language";
 import TermsAndPolicy from "./TermsAndPolice/TermsAndPolicy";
-import Help from "./Help/Help";
+import HelpContainer from "./Help/HelpContainer";
 import LogOut from "./LogOut/LogOut";
 import EditProfile from "./PersonalAccount/EditProfile/EditProfile";
-import {useSelector} from "react-redux";
+import useData from "../../../../../hooks/useData";
 
-const SettingsOptions = ({id, t}) => {
-  const settings = useSelector(state => state.settings);
+const SettingsOptions = ({option, isLoading, t}) => {
+  const settings = useData('settings');
   let SettingComponent;
-  switch (id) {
-    case '1':
-      SettingComponent = <PersonalAccount t={t}/>;
+  switch (option.title) {
+    case 'PersonalAccount':
+      SettingComponent = <PersonalAccount userInfo={settings.personalAccount.userData} isLoading={isLoading} t={t}/>;
       break;
-    case '2':
+    case 'Confidentiality':
       SettingComponent = <Confidentiality confidentiality={settings.confidentiality.confidentialitySettings} t={t}/>;
       break;
-    case '3':
+    case 'Language':
       SettingComponent = <Language t={t}/>;
       break;
-    case '4':
+    case 'TermsAndPolicy':
       SettingComponent = <TermsAndPolicy terms={settings.termsAndConditions} t={t}/>;
       break;
-    case '5':
-      SettingComponent = <Help helpCenter={settings.helpCenter} t={t}/>;
+    case 'Help':
+      SettingComponent = <HelpContainer helpCenter={settings.helpCenter} t={t}/>;
       break;
-    case '6':
+    case 'Out':
       SettingComponent = <LogOut logOut={settings.logOut} t={t}/>;
       break;
-    case '7':
+    case 'EditProfile':
       SettingComponent = <EditProfile personalAccount={settings.personalAccount} t={t}/>;
       break;
     default:

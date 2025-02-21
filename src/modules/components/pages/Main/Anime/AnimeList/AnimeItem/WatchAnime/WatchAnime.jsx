@@ -1,23 +1,51 @@
 import React from "react";
 import Classes from "./WatchAnime.module.css";
-import {useSelector} from "react-redux";
-import {useParams} from "react-router-dom";
+import Genres from "./Genres/Genres";
+import { NavLink } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 
-const WatchAnime = () => {
-  const { animeId } = useParams();
-  const anime = useSelector((state) =>
-    state.anime.anime.find((el) => el.id === Number(animeId))
-  );
 
-  if (!anime) {
-    return <div>Anime not found!</div>;
-  }
-
+const WatchAnime = ({anime, isLoading}) => {
   return (
     <div className={Classes.content}>
+      <div className={Classes.anime_page}>
+      <NavLink to={'/anime'} className={Classes.button_back}>Back to Anime List</NavLink>
+      <div className={Classes.data}>
+      <div className={Classes.cover}>
+      <img src={anime.cover} alt={anime.name} />
+      </div>
+      <div className={Classes.about}>
       <h2>{anime.name}</h2>
-      <img className={Classes.cover} src={anime.cover} alt={anime.name} />
-     <p className={Classes.text}>Still ON WORK...</p>
+        <div className={Classes.main_data_wrapper}>
+        <div className={Classes.main_data}>
+          <span className={Classes.text}>Rating: {anime.score}</span>
+          <span className={Classes.text}>Episodes: {anime.episodes}</span>
+          <span className={Classes.text}>Year: {anime.year}</span>
+        </div>
+        <Genres genres={anime.genres}/>
+        </div>
+      <span className={Classes.description}>{anime.description}</span>
+      </div>
+      </div>
+      <div className={Classes.trailer}>
+      {isLoading ? (
+        <div className={Classes.spinner}>
+          <ClipLoader color="#194770" size={50} />
+        </div>
+      ) : anime.trailer ? (
+        <iframe
+          width="100%"
+          height="600px"
+          src={anime.trailer}
+          title="Anime Trailer"
+          frameBorder="0"
+          allowFullScreen
+        />
+      ) : (
+        <p>No trailer available</p>
+      )}
+        </div>
+     </div>
     </div>
   );
 };

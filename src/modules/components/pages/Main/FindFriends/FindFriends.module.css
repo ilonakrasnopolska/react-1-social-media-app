@@ -15,7 +15,7 @@
 .wrapper {
   padding: 30px;
   width: 100%;
-  height: 1200px;
+  height: 100vh;
   overflow: auto;
   background-color: var(--white-color);
 }
@@ -71,7 +71,16 @@
 }
 
 .empty_message {
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
   color: var(--app-background);
+  height: 700px;
 }
 
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}

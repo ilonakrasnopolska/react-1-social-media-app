@@ -36,16 +36,10 @@ export const en = {
     ChooseAnime: 'Choose your anime:',
     SearchAnime: 'Search for anime',
     WatchNow: 'Watch now',
+    Episodes: 'Episodes:',
+    ReleaseDate: 'Release Date:'
   },
-  anime_list: {
-    Naruto: 'Naruto',
-    OnePiece: 'One Piece',
-    MyHeroAcademia: 'My Hero Academia',
-    JujutsuKaisen: 'Jujutsu Kaisen',
-    TheSevenDeadlySins: 'The Seven Deadly Sins',
-    BlackClover: 'Black Clover',
-    FairyTail: 'Fairy Tail',
-  },
+  anime_list: [],
   anime_description: {
     anime_1: `Naruto Uzumaki, a mischievous adolescent ninja, struggles as he searches for recognition and` +
     `dreams of becoming the Hokage, the village's leader and strongest ninja.`,
@@ -83,8 +77,8 @@ export const en = {
     IlonaSue: 'Ilona Sue'
   },
   friends: {
-    MyFriends: 'My friends',
-    Description: `Here’s a list of everyone you’re connected with.`,
+    FindFriends: 'Find Friends',
+    Description: `Here you can find friends to connected with.`,
     Follow: 'Follow',
     Unfollow: 'Unfollow',
     Find: 'Find user'

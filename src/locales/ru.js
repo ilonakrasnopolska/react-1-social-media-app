@@ -36,16 +36,10 @@ export const ru = {
     ChooseAnime: 'Выбери свое аниме:',
     SearchAnime: 'Поиск аниме',
     WatchNow: 'Смотреть сейчас',
+    Episodes: 'Эпизодов:',
+    ReleaseDate: 'Дата выхода:'
   },
-  anime_list: {
-    Naruto: 'Наруто',
-    OnePiece: 'Ван Пис',
-    MyHeroAcademia: 'Моя геройская академия',
-    JujutsuKaisen: 'Моя магическая битва',
-    TheSevenDeadlySins: 'Семь смертных грехов',
-    BlackClover: 'Черный клевер',
-    FairyTail: 'Хвост феи',
-  },
+  anime_list: {},
   anime_description: {
     anime_1: `Наруто Узумаки, озорной подросток-ниндзя, сталкивается с трудностями в поисках признания и мечтает стать Хокаге — лидером деревни и сильнейшим ниндзя.`,
     anime_2: `Монки Д. Луффи отправляется в путешествие с командой пиратов в надежде найти величайшее сокровище — "One Piece".`,
@@ -76,8 +70,8 @@ export const ru = {
     IlonaSue: 'Илона Сью'
   },
   friends: {
-    MyFriends: 'Мои друзья',
-    Description: `Здесь представлен список всех твоих друзей.`,
+    FindFriends: 'Найти друзей',
+    Description: `Здесь ты можешь найти друзей.`,
     Follow: 'Добавить',
     Unfollow: 'Удалить',
     Find: 'Найти пользователя'

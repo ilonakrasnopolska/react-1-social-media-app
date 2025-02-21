@@ -1,8 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
-import avatars from "../assets/Avatars-src";
-import {pictures} from "../assets/Pictures-src";
+import {pictures} from "../../assets/Pictures-src";
 
-import {
+import { setPostsListHelper,setProfileDataHelper,
   addPostHelper, deletePostHelper,
   updateNewPostTextHelper, handleLikeHelper, toggleCommentsHelper, updateProfileInfoHelper
 } from "./ProfileHelpers/post-helpers";
@@ -11,93 +10,9 @@ import {
   addCommentHelper, deleteCommentHelper
 } from "./ProfileHelpers/comment-helpers";
 
-const CURRENT_USER_NAME = "Ilona Sue"
-let postIdCounter = 1;
-let commentIdCounter = 1;
-
 const initialState = {
-  posts: [
-    {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Who is your favourite character in Naruto?',
-      comments: 1, likes: 123, time: '10:00', likedByUser: false, avatar: avatars.ilonaSue,
-      commentData: {
-        commentsVisibility: false, messages:
-          [{
-            commentId: commentIdCounter++,
-            message: 'Wow!Amazing!',
-            user: 'Mark',
-            time: '13:00',
-            avatar: `${avatars.markPic}`
-          }],
-      }, newCommentText: '',
-    },
-    {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Where are you from',
-      comments: 1, likes: 14, time: '09:00', likedByUser: false, avatar: avatars.ilonaSue,
-      commentData: {
-        commentsVisibility: false, messages:
-          [{
-            commentId: commentIdCounter++,
-            message: 'Nice!',
-            user: 'Vikky',
-            time: '13:30',
-            avatar: `${avatars.vikkyPic}`
-          }],
-      }, newCommentText: '',
-    },
-    {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'I wish i had more free time to watch anime!',
-      comments: 1, likes: 36, time: '08:00', likedByUser: false, avatar: avatars.ilonaSue,
-      commentData:  {
-        commentsVisibility: false, messages:
-          [{
-            commentId: commentIdCounter++,
-            message: 'Amazing!',
-            user: 'Sunny',
-            time: '14:30',
-            avatar: `${avatars.sunnyPic}`
-          }],
-      }, newCommentText: '',
-    },
-    {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Have you seen the JK?',
-      comments: 1, likes: 13, time: '07:00', likedByUser: false, avatar: avatars.ilonaSue,
-      commentData: {
-        commentsVisibility: false, messages:
-          [{
-            commentId: commentIdCounter++,
-            message: 'Great!',
-            user: 'Ino',
-            time: '16:30',
-            avatar: `${avatars.inoPic}`
-          }],
-      }, newCommentText: '',
-    },
-    {
-      name: CURRENT_USER_NAME, postId: postIdCounter++, message: 'Hello everyone!',
-      comments: 1, likes: 3, time: '06:00', likedByUser: false, avatar: avatars.ilonaSue,
-      commentData:  {
-        commentsVisibility: false, messages:
-          [{
-            commentId: commentIdCounter++,
-            message: 'Hi!',
-            user: 'Sakura',
-            time: '17:30',
-            avatar: `${avatars.sakuraPic}`
-          }],
-      }, newCommentText: '',
-    },
-  ],
-  personalAccount: {
-    userData: {
-      avatar: avatars.ilonaSue,
-      name: 'Ilona Sue',
-      dateOfBirth: '1999-07-09',
-      city: 'Haifa',
-      gender: 'Female',
-      favoriteAnime: 'Naruto'
-    }
-  },
+  posts: [],
+  personalAccount: {userData: {}},
   profileCover: `${pictures.Cover}`,
   newPostText: '',
 };
@@ -106,6 +21,12 @@ const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
+    setPostsList: (state, action) => {
+      setPostsListHelper(state, action)
+    },
+    setProfileData: (state, action) => {
+      setProfileDataHelper(state, action)
+    },
     addPost: (state) => {
       addPostHelper(state)
     },
@@ -140,7 +61,7 @@ const profileSlice = createSlice({
 });
 
 export const {
-  addPost, deletePost,
+  setPostsList, setProfileData, addPost, deletePost,
   updateNewPostText, handleLike, toggleComments,
   updateNewCommentText, replyOnComment,
   addComment, deleteComment,

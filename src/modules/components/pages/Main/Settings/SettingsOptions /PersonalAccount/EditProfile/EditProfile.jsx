@@ -9,7 +9,6 @@ import {useEditAccountForm} from "../../../../../../../hooks/useEditAccountForm"
 
 const EditProfile = ({personalAccount, t}) => {
   const {userData, errors, isFormValid, handleSaveChanges} = useEditAccountForm(personalAccount);
-
   return (
     <section className='edit section'>
       <div className={CommonClasses.content}>
@@ -17,6 +16,7 @@ const EditProfile = ({personalAccount, t}) => {
           <Title CommonClasses={CommonClasses} text={t("PersonalSettings")}/>
           <p className={CommonClasses.text}>{t("EditProfile")}</p>
           <div className={CommonClasses.user_data_edit}>
+          <div className={CommonClasses.card}>
             <Avatar src={userData.avatar} alt={"Avatar"} className={CommonClasses.avatar}/>
             <div className={CommonClasses.about_user_edit}>
               <EditForm personalAccount={personalAccount}
@@ -31,6 +31,7 @@ const EditProfile = ({personalAccount, t}) => {
               >
                 {t("Save")}
               </button>
+              </div>
             </div>
           </div>
         </div>
