@@ -18,7 +18,7 @@ export const useEditAccountForm = (personalAccount) => {
     e.preventDefault();
     if (!isFormValid) return;
     dispatch(updateProfileInfo(userData));
-    navigate(personalAccountPage.url);
+    navigate(`/settings/${personalAccountPage.id}`);
   };
 
   const handleValueChanges = (key, value) => {

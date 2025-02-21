@@ -1,14 +1,18 @@
+.anime_list_box {
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
 .list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
-  overflow-y: auto;
   width: 100%;
-  scrollbar-width: none;
 }
 
-.list::-webkit-scrollbar {
+.anime_list_box::-webkit-scrollbar {
   display: none;
 }
 

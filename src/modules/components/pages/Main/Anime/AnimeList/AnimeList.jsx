@@ -8,7 +8,7 @@ import { ClipLoader } from "react-spinners";
 const AnimeList = ({filteredList, hasResults, isLoading, t}) => {
   useFetchAndDispatch(() => fetchAnime(filteredList));
   return (
-    <div>
+    <div className={Classes.anime_list_box}>
       {isLoading ? (
         <div className={Classes.spinner}>
           <ClipLoader color="#194770" size={50} />

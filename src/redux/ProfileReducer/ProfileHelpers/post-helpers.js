@@ -1,12 +1,19 @@
 import avatars from "../../../assets/Avatars-src";
-
 const CURRENT_USER_NAME = "Ilona Sue"
+
 const getData = () => {
   const currentTime = new Date();
   const hours = String(currentTime.getHours()).padStart(2, '0');
   const minutes = String(currentTime.getMinutes()).padStart(2, '0');
   return `${hours}:${minutes}`
 }
+
+export const setPostsListHelper = (state, action) => {
+  state.posts = action.payload;
+};
+export const setProfileDataHelper = (state, action) => {
+  state.personalAccount.userData = action.payload;
+};
 export const updateNewPostTextHelper = (state, action) => {
   return state.newPostText = action.payload.text;
 }

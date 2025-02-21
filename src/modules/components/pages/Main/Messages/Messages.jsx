@@ -3,7 +3,8 @@ import Classes from './Messages.module.css';
 import UsersList from "./UsersList/UsersList";
 import ChatWindowContainer from "./ChatWindowContainer/ChatWindowContainer";
 
-const Messages = ({dialogs, idFromUrl, t}) => {
+
+const Messages = ({dialogs, isLoading, idFromUrl, t}) => {
   return (
     <div className={Classes.window}>
       <UsersList
@@ -12,6 +13,7 @@ const Messages = ({dialogs, idFromUrl, t}) => {
         searchUserText={dialogs.searchUserText}
         filteredContacts={dialogs.filteredContacts}
         t={t}
+        isLoading={isLoading}
       />
       <ChatWindowContainer users={dialogs.users}
                            idFromUrl={idFromUrl}

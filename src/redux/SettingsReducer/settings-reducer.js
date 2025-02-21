@@ -1,6 +1,7 @@
+import { v4 as uuidv4 } from 'uuid';
 import {createSlice} from '@reduxjs/toolkit';
-import avatars from "../../assets/Avatars-src";
 import {
+  setProfileDataEditHelper,
   editPersonalInfoTextHelper,
   toggleTermHelper,
   updateRequestMessageTextHelper,
@@ -13,50 +14,33 @@ import {
   validateRequestForHelpFormHelper,
 } from "./SettingsHelpers/settings-helpers";
 
-// Константы
-const baseSettingsUrl = '/settings/';
-
-// Счетчики
-let settingsIdCounter = 1;
-let urlIdCounter = 1;
-let termIdCounter = 1;
-let confOptionIdCounter = 1;
-let confSettingIdCounter = 1;
 
 //Базовый state
 const initialState = {
   settings: [
     {
-      title: 'PersonalAccount', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'PersonalAccount', id: uuidv4(),
     },
     {
-      title: 'Confidentiality', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'Confidentiality', id: uuidv4(),
     },
     {
-      title: 'Language', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'Language', id: uuidv4(),
     },
     {
-      title: 'TermsAndPolicy', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'TermsAndPolicy', id: uuidv4(),
     },
     {
-      title: 'Help', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'Help', id: uuidv4(),
     },
     {
-      title: 'Out', id: settingsIdCounter++, url: `${baseSettingsUrl}${urlIdCounter++}`,
+      title: 'Out', id: uuidv4(),
     },
 
   ],
-  personalAccount: {
-    userData: {
-      avatar: avatars.ilonaSue,
-      name: 'Ilona Sue',
-      dateOfBirth: '1999-07-09',
-      city: 'Haifa',
-      gender: 'Female',
-      favoriteAnime: 'Naruto'
-    },
+  personalAccount: { userData: {},
     editPage: {
-      title: "Edit Profile", id: settingsIdCounter++,  url: `${baseSettingsUrl}${urlIdCounter++}`
+      title: "EditProfile", id:  uuidv4(),
     },
     errors: {
       nameError: '',
@@ -68,34 +52,34 @@ const initialState = {
   confidentiality: {
     confidentialitySettings: [
       {
-        id: confOptionIdCounter++,
+        id: uuidv4(),
         title: "Profile Visibility",
         description: "Choose Who Can See Your Profile And Activity",
         checked: "Public",
         settings: [
-          {id: confSettingIdCounter++, name: "Public", value: "Public"},
-          {id: confSettingIdCounter++, name: "FriendsOnly", value: "Friends"},
-          {id: confSettingIdCounter++, name: "Private", value: "Private"},
+          {id: uuidv4(), name: "Public", value: "Public"},
+          {id: uuidv4(), name: "FriendsOnly", value: "Friends"},
+          {id: uuidv4(), name: "Private", value: "Private"},
         ],
       },
       {
-        id: confOptionIdCounter++,
+        id: uuidv4(),
         title: "Data Sharing",
         description: "Control How Your Data Is Shared With Third Party Services",
         checked: "Allow Data Sharing",
         settings: [
-          {id: confSettingIdCounter++, name: "Allow Data Sharing", value: "Allow Data Sharing"},
-          {id: confSettingIdCounter++, name: "Disable Data Sharing", value: "Disable Data Sharing"},
+          {id: uuidv4(), name: "Allow Data Sharing", value: "Allow Data Sharing"},
+          {id: uuidv4(), name: "Disable Data Sharing", value: "Disable Data Sharing"},
         ],
       },
       {
-        id: confOptionIdCounter++,
+        id: uuidv4(),
         title: "Ad Preferences",
         description: "Manage Ad Personalization Based On Your Activity",
         checked: "EnablePersonalizedAds",
         settings: [
-          {id: confSettingIdCounter++, name: "Enable Personalized Ads", value: "Enable Personalized Ads"},
-          {id: confSettingIdCounter++, name: "Disable Personalized Ads", value: "Disable Personalized Ads"},
+          {id: uuidv4(), name: "Enable Personalized Ads", value: "Enable Personalized Ads"},
+          {id: uuidv4(), name: "Disable Personalized Ads", value: "Disable Personalized Ads"},
         ],
       },
     ],
@@ -114,7 +98,7 @@ const initialState = {
   },
   termsAndConditions: [
     {
-      term: 'Account Responsibility', id: termIdCounter++,
+      term: 'Account Responsibility', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -129,7 +113,7 @@ const initialState = {
       ],
     },
     {
-      term: 'Respectful Behavior', id: termIdCounter++,
+      term: 'Respectful Behavior', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -141,7 +125,7 @@ const initialState = {
       ]
     },
     {
-      term: 'Legal Use Only', id: termIdCounter++,
+      term: 'Legal Use Only', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -153,7 +137,7 @@ const initialState = {
       ],
     },
     {
-      term: 'No Spam Or Bots', id: termIdCounter++,
+      term: 'No Spam Or Bots', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -165,7 +149,7 @@ const initialState = {
       ]
     },
     {
-      term: 'Intellectual Property', id: termIdCounter++,
+      term: 'Intellectual Property', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -179,7 +163,7 @@ const initialState = {
       ],
     },
     {
-      term: 'Content Guidelines', id: termIdCounter++,
+      term: 'Content Guidelines', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -191,7 +175,7 @@ const initialState = {
       ],
     },
     {
-      term: 'Reporting Violations', id: termIdCounter++,
+      term: 'Reporting Violations', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -203,7 +187,7 @@ const initialState = {
       ],
     },
     {
-      term: 'Compliance With Updates', id: termIdCounter++,
+      term: 'Compliance With Updates', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -212,7 +196,7 @@ const initialState = {
       ],
     },
     {
-      term: 'Consequences Of Violations', id: termIdCounter++,
+      term: 'Consequences Of Violations', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -221,7 +205,7 @@ const initialState = {
       ],
     },
     {
-      term: 'Age Requirement', id: termIdCounter++,
+      term: 'Age Requirement', id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -257,6 +241,9 @@ const settingsSlice = createSlice({
   name: 'settings',
   initialState,
   reducers: {
+    setProfileDataEdit: (state, action) => {
+      setProfileDataEditHelper(state, action)
+    },
     editPersonalInfoText: (state, action) => {
       editPersonalInfoTextHelper(state, action)
         state.personalAccount.errors.nameError = '';
@@ -296,6 +283,7 @@ const settingsSlice = createSlice({
 })
 
 export const {
+  setProfileDataEdit,
   editPersonalInfoText,
   saveConfidentialSettings,
   updateConfidentialitySetting,

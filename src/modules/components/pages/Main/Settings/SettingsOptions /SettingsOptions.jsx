@@ -8,29 +8,29 @@ import LogOut from "./LogOut/LogOut";
 import EditProfile from "./PersonalAccount/EditProfile/EditProfile";
 import useData from "../../../../../hooks/useData";
 
-const SettingsOptions = ({id, t}) => {
+const SettingsOptions = ({option, isLoading, t}) => {
   const settings = useData('settings');
   let SettingComponent;
-  switch (id) {
-    case '1':
-      SettingComponent = <PersonalAccount t={t}/>;
+  switch (option.title) {
+    case 'PersonalAccount':
+      SettingComponent = <PersonalAccount userInfo={settings.personalAccount.userData} isLoading={isLoading} t={t}/>;
       break;
-    case '2':
+    case 'Confidentiality':
       SettingComponent = <Confidentiality confidentiality={settings.confidentiality.confidentialitySettings} t={t}/>;
       break;
-    case '3':
+    case 'Language':
       SettingComponent = <Language t={t}/>;
       break;
-    case '4':
+    case 'TermsAndPolicy':
       SettingComponent = <TermsAndPolicy terms={settings.termsAndConditions} t={t}/>;
       break;
-    case '5':
+    case 'Help':
       SettingComponent = <HelpContainer helpCenter={settings.helpCenter} t={t}/>;
       break;
-    case '6':
+    case 'Out':
       SettingComponent = <LogOut logOut={settings.logOut} t={t}/>;
       break;
-    case '7':
+    case 'EditProfile':
       SettingComponent = <EditProfile personalAccount={settings.personalAccount} t={t}/>;
       break;
     default:

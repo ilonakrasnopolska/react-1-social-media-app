@@ -15,14 +15,13 @@ export const AccordionButton = ({MainClass, ClassActive, term, t}) => {
   );
 };
 
-export const AccordionContent = ({MainClass, Classes, term, index, t}) => {
+export const AccordionContent = ({MainClass, Classes, term, t}) => {
   return (
     <ol className={MainClass}>
       {term.description.map((desc, descIndex) => {
-        const descriptionKey = `term_${index + 1}_${descIndex + 1}`;
         return (
-          <li key={descriptionKey} className={Classes.description}>
-            {t(descriptionKey)}
+          <li key={descIndex} className={Classes.description}>
+            {t(desc.text)}
           </li>
         );
       })}

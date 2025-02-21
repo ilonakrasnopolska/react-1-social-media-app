@@ -8,10 +8,12 @@ const MessagesContainer = ({t}) => {
   useResetActiveUserOnRouteChange();
   const { userId } = useParams();
   const dialogs = useData('dialogs');
+  const isLoading = useData('loading');
   return (
     <Messages
       dialogs={dialogs}
       idFromUrl={userId}
+      isLoading={isLoading}
       t={t}
     />
   );

@@ -43,7 +43,12 @@
 }
 
 .user_data_edit {
+  width: 100%;
+}
+
+.user_data_edit .card {
   display: flex;
+  justify-content: center;
   width: 100%;
   background-color: var(--primary-background);
   padding: 30px;
@@ -80,7 +85,7 @@
     margin-bottom: 20px;
   }
 
-  .user_data_edit {
+  .user_data_edit .card {
     flex-direction: column;
   }
 

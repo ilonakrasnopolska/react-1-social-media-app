@@ -2,6 +2,8 @@ import avatars from "../../../assets/Avatars-src";
 import { v4 as uuidv4 } from 'uuid';
 
 const CURRENT_USER_NAME = "Ilona Sue"
+const baseMessageUrl = '/messages/';
+
 const getData = () => {
   const currentTime = new Date();
   const hours = String(currentTime.getHours()).padStart(2, '0');
@@ -11,6 +13,28 @@ const getData = () => {
 const findById = (state, id) => {
   return state.find(item => item.userId === id);
 }
+
+export const setUsersListHelper = (state, action) => {
+  const usersArr = action.payload;
+  state.users = usersArr;
+  state.contacts =
+  [...usersArr, {name: 'Violet', userId: uuidv4(), url: `${baseMessageUrl}uuidv4()`, avatar: `${avatars.violetPic}`,
+  chat: { chatId: uuidv4(),
+    participants: ['Violet', 'Ilona Sue'],
+    messages: []
+  }},
+  {name: 'Anna', userId: uuidv4(), url: `${baseMessageUrl}uuidv4()`, avatar: `${avatars.annaPic}`,
+  chat: { chatId: uuidv4(),
+    participants: ['Anna', 'Ilona Sue'],
+    messages: []
+  }},
+  {name: 'Artur', userId: uuidv4(), url: `${baseMessageUrl}uuidv4()`, avatar: `${avatars.arturPic}`,
+  chat: { chatId: uuidv4(),
+    participants: ['Artur', 'Ilona Sue'],
+    messages: []
+  }},];
+};
+
 export const updateNewMessageTextHelper = (state, action) => {
   state.newMessageText = action.payload.text;
 }

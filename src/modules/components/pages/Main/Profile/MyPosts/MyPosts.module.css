@@ -2,7 +2,7 @@
   padding: 0 30px;
   display: grid;
   grid-gap: 10px;
-  height: 400px;
+  height: 550px;
   overflow-y: auto;
 }
 
@@ -18,3 +18,8 @@
   margin-bottom: 50px;
 }
 
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

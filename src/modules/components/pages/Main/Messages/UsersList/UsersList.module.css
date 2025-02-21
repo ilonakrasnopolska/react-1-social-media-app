@@ -18,3 +18,10 @@
 .list::-webkit-scrollbar {
   display: none;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+}

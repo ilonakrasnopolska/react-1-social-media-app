@@ -7,10 +7,11 @@ const Settings = ({t, enhancedSettingsOptions}) => {
   return (
     <section className='settings section'>
       <ul className={Classes.list}>
-        {enhancedSettingsOptions.map(option => (
-          <li key={option.id} className={Classes.item}>
-            <NavLink to={option.url}>{t(option.title)}</NavLink>
-          </li>))}
+      {enhancedSettingsOptions.map((option, index) => (
+          <li key={index} className={Classes.item}>
+            <NavLink to={option.id}>{t(option.title)}</NavLink>
+          </li>
+        ))}
       </ul>
     </section>
   )
