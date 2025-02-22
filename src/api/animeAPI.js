@@ -1,15 +1,20 @@
 import fetchData from './fetchData';
+import { useSelector } from 'react-redux';
 import { setAnimeList } from '../redux/AnimeReducer/anime-reducer';
 import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reducer';
 import avatars from "../assets/Avatars-src";
 
 const baseAnimeUrl = '/anime/';
 
-export const fetchAnime = (filteredList) => (dispatch) => {
-  if (filteredList != undefined && filteredList.length > 0) {
+export const fetchAnime = (animeData) => (dispatch) => {
+  if (Array.isArray(animeData) && animeData.length > 0) {
     return;
   }
-  dispatch(startLoading())
+  if (animeData && animeData.id) {
+   return
+}
+
+dispatch(startLoading())
   fetchData('https://api.jikan.moe/v4/top/anime', {
     type: 'tv',
     filter: 'bypopularity',

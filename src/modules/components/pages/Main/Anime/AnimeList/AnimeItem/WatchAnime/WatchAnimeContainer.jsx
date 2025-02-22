@@ -8,16 +8,16 @@ import WatchAnime from "./WatchAnime";
 
 const WatchAnimeContainer = ({t}) => {
   const isLoading = useData('loading');
-  useFetchAndDispatch(fetchAnime)
   const { animeId } = useParams();
   const anime = useSelector((state) =>
-    state.anime.anime.find((el) => el.id === Number(animeId))
-  );
-  if (!anime) {
+    state.anime.anime);
+  const animeById = anime.find((el) => el.id === Number(animeId));
+  useFetchAndDispatch(() => fetchAnime(animeById));
+  if (!animeById) {
     return <div>Anime not found!</div>;
   }
   return (
-   <WatchAnime t={t} anime={anime} isLoading={isLoading} />
+   <WatchAnime t={t} animeById={animeById} isLoading={isLoading} />
   );
 };
 

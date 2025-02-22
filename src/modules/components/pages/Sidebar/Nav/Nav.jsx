@@ -6,7 +6,6 @@ import clsx from "clsx";
 
 const Nav = ({t}) => {
   const {nav} = useSelector(state => state.sidebar);
-
   return (
     <ul className={Classes.list}>
       {nav.map(el => (

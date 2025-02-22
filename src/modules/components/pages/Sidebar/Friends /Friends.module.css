@@ -5,6 +5,7 @@
 }
 
 .title {
+  padding-left: 15px;
   font-size: 30px;
   font-weight: 600;
   color: var(--primary-text-color);
@@ -18,4 +19,9 @@
 
 .list::-webkit-scrollbar {
   display: none;
+}
+
+.active {
+  color: var(--active-color);
+  background-color: var(--button-background-1);
 }

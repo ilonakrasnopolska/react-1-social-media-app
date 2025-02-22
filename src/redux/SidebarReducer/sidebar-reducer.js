@@ -32,6 +32,11 @@ const initialState = {
       id: uuidv4(),
     },
   ],
+  findFriends: {
+    name: "FindFriends",
+    url: "/find_friends",
+    id: uuidv4(),
+  },
   friends: [
     {name: 'Sunny', userId: uuidv4(), avatar: `${avatars.sunnyPic}`},
     {name: 'Phillip', userId: uuidv4(), avatar: `${avatars.phillipPic}`},
