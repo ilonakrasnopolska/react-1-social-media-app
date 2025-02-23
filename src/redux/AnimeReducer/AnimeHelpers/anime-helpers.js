@@ -1,3 +1,5 @@
+import { current } from "@reduxjs/toolkit";
+
 export const setAnimeListHelper = (state, action) => {
   state.anime = action.payload;
   state.filteredAnime = action.payload;
@@ -22,3 +24,27 @@ export const clearSearchQueryHelper = (state) => {
   state.newSearchAnimeText = '';
   state.filteredAnime = state.anime;
 }
+
+export const toggleWatchListHelper = (state, action) => {
+  const anime = action.payload.animeObj;
+  const index = state.watchList.findIndex(item => item.id === anime.id);
+
+  if (index !== -1) {
+    state.watchList.splice(index, 1);
+  } else {
+    state.watchList.push(anime);
+  }
+  console.log(current(state))
+};
+
+export const toggleWatchedListHelper = (state, action) => {
+  const anime = action.payload.animeObj;
+  const index = state.watchedList.findIndex(item => item.id === anime.id);
+
+  if (index !== -1) {
+    state.watchedList.splice(index, 1);
+  } else {
+    state.watchedList.push(anime);
+  }
+  console.log(current(state))
+};

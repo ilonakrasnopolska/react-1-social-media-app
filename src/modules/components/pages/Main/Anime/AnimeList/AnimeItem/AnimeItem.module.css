@@ -21,9 +21,11 @@
 
 .avatar {
   width: 100%;
-  min-height: 300px;
-  margin-bottom: 5px;
+  height: 350px;
   object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+  margin-bottom: 5px;
 }
 
 .content {
@@ -61,13 +63,64 @@
 
 .anime_actions {
   display: flex;
+  align-items: center;
 }
 
 .anime_actions button {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 3px;
   background-color: transparent;
+}
+
+.anime_actions button svg {
+  fill: var(--theme-button-svg-color);
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.anime_actions button:hover svg {
+  transform: scale(1.2);
+  fill: var(--unFollow-btn); /* Изменение цвета */
+}
+
+.heart_button,
+.watched_button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.heart_button::after,
+.watched_button::after {
+  position: absolute;
+  bottom: 100%;
+  left: 120%;
+  transform: translateX(-50%);
+  background-color: var(--content-background-2);
+  color: #194770;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.heart_button::after {
+  content: 'Add to Watchlist';
+}
+
+.watched_button::after  {
+  content: 'Watched';
+}
+
+.heart_button:hover::after,
+.watched_button:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 .button {
@@ -97,11 +150,14 @@
   .item {
     width: 70%;
   }
+
+  .avatar {
+    height: 200px;
+  }
 }
 
 @media (max-width: 850px) {
   .item {
-    width: 100%;
     flex-direction: column;
   }
 
@@ -114,22 +170,35 @@
   }
 
   .poster_wrapper h4 {
-  font-size: 28px;
-  margin-bottom: 5px;
-  color: var(--primary-text-color);
+    font-size: 23px;
+    margin-bottom: 5px;
+    color: var(--primary-text-color);
+  }
+
+  .avatar {
+    height: 200px;
+  }
+
+  .anime_actions {
+    justify-content: center;
   }
 
   .content {
     width: 100%;
-    padding: 20px 0;
+    padding: 0;
   }
 
   .description {
     align-items: center;
     height: 50px;
+    margin: 0;
   }
 
   .description h3 {
-    font-size: 25px;
+    font-size: 17px;
+  }
+
+  .button {
+    font-size: 17px;
   }
 }

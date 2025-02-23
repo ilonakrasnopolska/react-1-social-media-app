@@ -2,11 +2,15 @@ import {createSlice} from "@reduxjs/toolkit";
 import {setAnimeListHelper,
   updateSearchAnimeTextHelper,
   filterAnimeListHelper,
-  clearSearchQueryHelper} from "./AnimeHelpers/anime-helpers";
+  clearSearchQueryHelper,
+  toggleWatchListHelper,
+  toggleWatchedListHelper} from "./AnimeHelpers/anime-helpers";
 
 
 const initialState = {
   anime: [],
+  watchList: [],
+  watchedList: [],
   newSearchAnimeText: '',
   filteredAnime: [],
 }
@@ -25,13 +29,21 @@ const animeSlice = createSlice({
     clearSearchQuery: (state) => {
       clearSearchQueryHelper(state);
     },
+    toggleWatchList: (state, action) => {
+      toggleWatchListHelper(state, action)
+    },
+    toggleWatchedList: (state, action) => {
+      toggleWatchedListHelper(state, action)
+    },
   }
 })
 
 export const {
   setAnimeList,
   setSearchQuery,
-  clearSearchQuery
+  clearSearchQuery,
+  toggleWatchList,
+  toggleWatchedList
 } = animeSlice.actions;
 
 
