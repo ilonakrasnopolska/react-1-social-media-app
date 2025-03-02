@@ -1,5 +1,4 @@
 import fetchData from './fetchData';
-import { useSelector } from 'react-redux';
 import { setAnimeList } from '../redux/AnimeReducer/anime-reducer';
 import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reducer';
 import avatars from "../assets/Avatars-src";
@@ -39,7 +38,12 @@ dispatch(startLoading())
             genres: anime.genres,
             year: anime.year,
             score: anime.score,
-            toWatchUrl: `${baseAnimeUrl}${anime.mal_id}`
+            toWatchUrl: `${baseAnimeUrl}${anime.mal_id}`,
+            rating: null,
+            votes: {
+              likes: Number(anime.mal_id),
+              dislikes: 2,
+            }
           };
         });
         dispatch(setAnimeList(animeArr));

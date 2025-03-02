@@ -1,26 +1,30 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {setAnimeListHelper,
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  setAnimeListHelper,
   updateSearchAnimeTextHelper,
   filterAnimeListHelper,
   clearSearchQueryHelper,
   toggleWatchListHelper,
-  toggleWatchedListHelper} from "./AnimeHelpers/anime-helpers";
-
+  toggleWatchedListHelper,
+  setRatingHelper,
+  showWatchListHelper,
+  showWatchedListHelper
+} from "./AnimeHelpers/anime-helpers";
 
 const initialState = {
   anime: [],
   watchList: [],
   watchedList: [],
-  newSearchAnimeText: '',
+  newSearchAnimeText: "",
   filteredAnime: [],
-}
+};
 
 const animeSlice = createSlice({
-  name: 'anime',
+  name: "anime",
   initialState,
   reducers: {
     setAnimeList: (state, action) => {
-      setAnimeListHelper(state, action)
+      setAnimeListHelper(state, action);
     },
     setSearchQuery: (state, action) => {
       updateSearchAnimeTextHelper(state, action);
@@ -30,21 +34,32 @@ const animeSlice = createSlice({
       clearSearchQueryHelper(state);
     },
     toggleWatchList: (state, action) => {
-      toggleWatchListHelper(state, action)
+      toggleWatchListHelper(state, action);
     },
     toggleWatchedList: (state, action) => {
-      toggleWatchedListHelper(state, action)
+      toggleWatchedListHelper(state, action);
     },
-  }
-})
+    setRating: (state, action) => {
+      setRatingHelper(state, action);
+    },
+    showWatchList: (state, action) => {
+      showWatchListHelper(state, action);
+    },
+    showWatchedList: (state, action) => {
+      showWatchedListHelper(state, action);
+    },
+  },
+});
 
 export const {
   setAnimeList,
   setSearchQuery,
   clearSearchQuery,
   toggleWatchList,
-  toggleWatchedList
+  toggleWatchedList,
+  setRating,
+  showWatchList,
+  showWatchedList
 } = animeSlice.actions;
-
 
 export default animeSlice.reducer;

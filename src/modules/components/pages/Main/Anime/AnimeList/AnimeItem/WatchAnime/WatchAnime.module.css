@@ -38,6 +38,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  max-height: 600px;
 }
 
 .cover {
@@ -83,6 +84,45 @@
 .description {
   font-size: 19px;
   color: var(--basic-text-color-2);
+  margin-bottom: 30px;
+  height: 360px;
+  overflow-y: auto;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+.reactions {
+  display: flex;
+  gap: 5px;
+}
+
+.like_button,
+.unlike_button {
+  background-color: transparent;
+  display: flex;
+  align-items: flex-end;
+}
+
+.reactions button svg {
+  width: 40px;
+  height: 30px;
+  fill: white;
+  stroke: var(--basic-text-color-2);
+}
+
+.like_button.active svg {
+  fill: rgb(5, 223, 2);
+}
+
+.unlike_button.active svg {
+  fill: rgb(255 37 37);
+}
+
+.reactions span {
+  font-size: 16px;
+  color: var(--basic-text-color-2);
 }
 
 .trailer {
@@ -95,4 +135,47 @@
   align-items: center;
   height: 700px;
 }
+
+@media (max-width: 1290px) {
+  .data {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .data {
+    max-height: 300px;
+  }
+
+  .anime_page h2 {
+    font-size: 25px;
+  }
+
+  .text {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 990px) {
+  .data {
+    max-height: 920px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+
+  .cover {
+    width: 250px;
+    height: 350px;
+    margin-bottom: 20px;
+  }
+
+  .about {
+    width: 100%;
+  }
+}
+
+
+
 

@@ -75,16 +75,13 @@
 }
 
 .anime_actions button svg {
-  fill: var(--theme-button-svg-color);
+  fill: var(--white-color);
+  width: 40px;
+  height: 40px;
   transition: transform 0.3s ease, fill 0.3s ease;
 }
 
-.anime_actions button:hover svg {
-  transform: scale(1.2);
-  fill: var(--unFollow-btn); /* Изменение цвета */
-}
-
-.heart_button,
+.watch_button,
 .watched_button {
   position: relative;
   background: none;
@@ -92,14 +89,21 @@
   cursor: pointer;
 }
 
-.heart_button::after,
+.watch_button:hover svg {
+  fill: #fce041;
+}
+
+.watched_button:hover svg {
+  fill: #04b731;
+}
+
+.watch_button::after,
 .watched_button::after {
   position: absolute;
   bottom: 100%;
-  left: 120%;
   transform: translateX(-50%);
   background-color: var(--content-background-2);
-  color: #194770;
+  fill: #194770;
   padding: 10px;
   font-size: 18px;
   font-weight: 600;
@@ -109,18 +113,31 @@
   white-space: nowrap;
 }
 
-.heart_button::after {
+.watch_button::after {
   content: 'Add to Watchlist';
+  left: 120%;
 }
 
 .watched_button::after  {
   content: 'Watched';
+  left: 60%;
+  fill: var(--content-background-2);
 }
 
-.heart_button:hover::after,
+.watch_button:hover::after,
 .watched_button:hover::after {
   opacity: 1;
   visibility: visible;
+}
+
+.item .active svg {
+  transform: scale(1.2);
+  fill: #FFD700;
+}
+
+.item .watched_button.active svg {
+  transform: scale(1.2);
+  fill: #90d89e;
 }
 
 .button {
