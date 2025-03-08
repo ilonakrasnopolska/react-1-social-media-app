@@ -2,8 +2,8 @@ import fetchData from "./fetchData";
 import { setUsersList } from "../redux/FindFriendsReducer/find-friends-reducer";
 import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reducer';
 import avatars from "../assets/Avatars-src";
+import {baseMessageUrl} from "../constants/constants"
 
-const baseMessageUrl = '/messages/';
 
 export const fetchUsers = (filteredFriends) => (dispatch) => {
   if (filteredFriends.length > 0) return;

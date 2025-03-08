@@ -7,8 +7,7 @@ import {
   toggleWatchListHelper,
   toggleWatchedListHelper,
   setRatingHelper,
-  showWatchListHelper,
-  showWatchedListHelper
+  showAnimeListHelper
 } from "./AnimeHelpers/anime-helpers";
 
 const initialState = {
@@ -42,12 +41,9 @@ const animeSlice = createSlice({
     setRating: (state, action) => {
       setRatingHelper(state, action);
     },
-    showWatchList: (state, action) => {
-      showWatchListHelper(state, action);
-    },
-    showWatchedList: (state, action) => {
-      showWatchedListHelper(state, action);
-    },
+    showAnimeList: (state, action) => {
+      showAnimeListHelper(state, action);
+    }
   },
 });
 
@@ -58,8 +54,7 @@ export const {
   toggleWatchList,
   toggleWatchedList,
   setRating,
-  showWatchList,
-  showWatchedList
+  showAnimeList
 } = animeSlice.actions;
 
 export default animeSlice.reducer;

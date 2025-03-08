@@ -1,4 +1,19 @@
 import { current } from "@reduxjs/toolkit";
+import { ANIME_LIST_TYPES } from "../../../constants/constants"
+
+const toggleAnimeInList = (animeList, filteredAnime, action) => {
+  const anime = action.payload.animeObj;
+  const index = animeList.findIndex((item) => item.id === anime.id);
+  const indexFiltered = filteredAnime.findIndex((item) => item.id === anime.id);
+
+  if (index !== -1) {
+   animeList.splice(index, 1);
+   filteredAnime.splice(indexFiltered, 1);
+  } else {
+   animeList.push(anime);
+  }
+
+}
 
 export const setAnimeListHelper = (state, action) => {
   state.anime = action.payload;
@@ -26,26 +41,11 @@ export const clearSearchQueryHelper = (state) => {
 };
 
 export const toggleWatchListHelper = (state, action) => {
-  const anime = action.payload.animeObj;
-  const index = state.watchList.findIndex((item) => item.id === anime.id);
-
-  if (index !== -1) {
-    state.watchList.splice(index, 1);
-  } else {
-    state.watchList.push(anime);
-  }
+  toggleAnimeInList(state.watchList, state.filteredAnime, action)
 };
 
 export const toggleWatchedListHelper = (state, action) => {
-  const anime = action.payload.animeObj;
-  const index = state.watchedList.findIndex((item) => item.id === anime.id);
-
-  if (index !== -1) {
-    state.watchedList.splice(index, 1);
-  } else {
-    state.watchedList.push(anime);
-  }
-  console.log(current(state));
+  toggleAnimeInList(state.watchedList, state.filteredAnime, action)
 };
 
 export const setRatingHelper = (state, action) => {
@@ -79,10 +79,18 @@ export const setRatingHelper = (state, action) => {
   }
 };
 
-export const showWatchListHelper = (state, action) => {
-  console.log(action);
-};
-
-export const showWatchedListHelper = (state, action) => {
-  console.log(action);
+export const showAnimeListHelper = (state, action) => {
+  switch (action.payload.text) {
+    case ANIME_LIST_TYPES.WATCH:
+      state.filteredAnime = state.watchList
+      break;
+    case ANIME_LIST_TYPES.WATCHED:
+      state.filteredAnime = state.watchedList
+      break;
+    case ANIME_LIST_TYPES.ALL:
+      state.filteredAnime = state.anime
+      break;
+    default:
+      console.log('not found');
+  }
 };

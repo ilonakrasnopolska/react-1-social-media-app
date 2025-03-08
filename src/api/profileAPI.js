@@ -4,8 +4,8 @@ import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reduc
 import { setPostsList, setProfileData } from "../redux/ProfileReducer/profile-reducer";
 import { setProfileDataEdit } from "../redux/SettingsReducer/settings-reducer";
 import avatars from "../assets/Avatars-src";
+import {CURRENT_USER_NAME} from "../constants/constants"
 
-const CURRENT_USER_NAME = "Ilona Sue"
 
 //ЗАГЛУШКИ
 const texts = [`Who is your favourite character in Naruto?`,

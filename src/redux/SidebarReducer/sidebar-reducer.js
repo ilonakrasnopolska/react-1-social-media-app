@@ -2,39 +2,40 @@
 import avatars from "../../assets/Avatars-src";
 import {createSlice} from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from 'uuid';
+import {NAV_LIST_NAME, NAV_LIST_URL} from "../../constants/constants"
 
 //Базовый state
 const initialState = {
   nav: [
     {
-      name: "Profile",
-      url: "/profile",
+      name: NAV_LIST_NAME.PROFILE,
+      url: NAV_LIST_URL.PROFILE,
       id: uuidv4(),
     },
     {
-      name: "Messages",
-      url: "/messages",
+      name: NAV_LIST_NAME.MESSAGES,
+      url: NAV_LIST_URL.MESSAGES,
       id: uuidv4(),
     },
     {
-      name: "Feeds",
-      url: "/feeds",
+      name: NAV_LIST_NAME.FEEDS,
+      url: NAV_LIST_URL.FEEDS,
       id: uuidv4(),
     },
     {
-      name: "Anime",
-      url: "/anime",
+      name: NAV_LIST_NAME.ANIME,
+      url: NAV_LIST_URL.ANIME,
       id: uuidv4(),
     },
     {
-      name: "Settings",
-      url: "/settings",
+      name: NAV_LIST_NAME.SETTINGS,
+      url: NAV_LIST_URL.SETTINGS,
       id: uuidv4(),
     },
   ],
   findFriends: {
-    name: "FindFriends",
-    url: "/find_friends",
+    name: NAV_LIST_NAME.FIND_FRIENDS,
+    url: NAV_LIST_URL.FIND_FRIENDS,
     id: uuidv4(),
   },
   friends: [

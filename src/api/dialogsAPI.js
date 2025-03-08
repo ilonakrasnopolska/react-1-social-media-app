@@ -3,8 +3,8 @@ import fetchData from "./fetchData";
 import { setUsersList } from "../redux/DialogsReducer/dialogs-reducer";
 import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reducer';
 import avatars from "../assets/Avatars-src";
+import {baseMessageUrl} from "../constants/constants"
 
-const baseMessageUrl = '/messages/';
 //ЗАГЛУШКА
 const users = [
   {name: 'Mark', userId: uuidv4(), url: `${baseMessageUrl}${uuidv4()}`, avatar: `${avatars.markPic}` ,

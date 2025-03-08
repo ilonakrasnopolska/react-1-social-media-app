@@ -1,6 +1,7 @@
 import React from "react";
 import {toggleTerm} from "../../../../redux/SettingsReducer/settings-reducer";
 import {useDispatch} from "react-redux";
+import { generateKey } from "../../../../constants/constants";
 
 
 export const AccordionButton = ({MainClass, ClassActive, term, t}) => {
@@ -18,10 +19,11 @@ export const AccordionButton = ({MainClass, ClassActive, term, t}) => {
 export const AccordionContent = ({MainClass, Classes, term, t}) => {
   return (
     <ol className={MainClass}>
-      {term.description.map((desc, descIndex) => {
+      {term.description.map((desc, index) => {
+        const key = generateKey(term.term, index);
         return (
-          <li key={descIndex} className={Classes.description}>
-            {t(desc.text)}
+          <li key={key} className={Classes.description}>
+            {t(key)}
           </li>
         );
       })}

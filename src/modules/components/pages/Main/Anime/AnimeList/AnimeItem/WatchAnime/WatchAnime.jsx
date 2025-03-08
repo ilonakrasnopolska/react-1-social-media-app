@@ -5,12 +5,12 @@ import Rating from "./Rating/Rating";
 import { NavLink } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
-const WatchAnime = ({ animeById, isLoading }) => {
+const WatchAnime = ({ animeById, isLoading, t }) => {
   return (
     <div className={Classes.content}>
       <div className={Classes.anime_page}>
         <NavLink to={"/anime"} className={Classes.button_back}>
-          Back to Anime List
+          {t('BackToAnimeList')}
         </NavLink>
         <div className={Classes.data}>
           <div className={Classes.cover}>
@@ -20,11 +20,11 @@ const WatchAnime = ({ animeById, isLoading }) => {
             <h2>{animeById.name}</h2>
             <div className={Classes.main_data_wrapper}>
               <div className={Classes.main_data}>
-                <span className={Classes.text}>Rating: {animeById.score}</span>
+                <span className={Classes.text}>{t('Rating')}: {animeById.score}</span>
                 <span className={Classes.text}>
-                  Episodes: {animeById.episodes}
+                  {t('Episodes')}: {animeById.episodes}
                 </span>
-                <span className={Classes.text}>Year: {animeById.year}</span>
+                <span className={Classes.text}>{t('Year')}: {animeById.year}</span>
               </div>
               <Genres genres={animeById.genres} />
             </div>

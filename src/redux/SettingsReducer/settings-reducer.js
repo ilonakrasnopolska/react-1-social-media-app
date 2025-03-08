@@ -1,5 +1,15 @@
-import { v4 as uuidv4 } from 'uuid';
-import {createSlice} from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from "uuid";
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  SETTINGS_LIST_TITLE,
+  CONFIDENTIALITY_TITLE,
+  CONFIDENTIALITY_CHECKED,
+  CONFIDENTIALITY_SETTINGS,
+  LANGUAGES_TITLE,
+  TERMS_TITLE,
+  LOG_TITLE,
+  LOG_URL,
+} from "../../constants/constants";
 import {
   setProfileDataEditHelper,
   editPersonalInfoTextHelper,
@@ -14,38 +24,44 @@ import {
   validateRequestForHelpFormHelper,
 } from "./SettingsHelpers/settings-helpers";
 
-
 //Базовый state
 const initialState = {
   settings: [
     {
-      title: 'PersonalAccount', id: uuidv4(),
+      title: SETTINGS_LIST_TITLE.PERSONAL_ACCOUNT,
+      id: uuidv4(),
     },
     {
-      title: 'Confidentiality', id: uuidv4(),
+      title: SETTINGS_LIST_TITLE.CONFIDENTIALITY,
+      id: uuidv4(),
     },
     {
-      title: 'Language', id: uuidv4(),
+      title: SETTINGS_LIST_TITLE.LANGUAGE,
+      id: uuidv4(),
     },
     {
-      title: 'TermsAndPolicy', id: uuidv4(),
+      title: SETTINGS_LIST_TITLE.TERMS_AND_POLICY,
+      id: uuidv4(),
     },
     {
-      title: 'Help', id: uuidv4(),
+      title: SETTINGS_LIST_TITLE.HELP,
+      id: uuidv4(),
     },
     {
-      title: 'Out', id: uuidv4(),
+      title: SETTINGS_LIST_TITLE.OUT,
+      id: uuidv4(),
     },
-
   ],
-  personalAccount: { userData: {},
+  personalAccount: {
+    userData: {},
     editPage: {
-      title: "EditProfile", id:  uuidv4(),
+      title: SETTINGS_LIST_TITLE.EDIT_PROFILE,
+      id: uuidv4(),
     },
     errors: {
-      nameError: '',
-      cityError: '',
-      favAnimeError: ''
+      nameError: "",
+      cityError: "",
+      favAnimeError: "",
     },
     isFormValid: true,
   },
@@ -53,117 +69,142 @@ const initialState = {
     confidentialitySettings: [
       {
         id: uuidv4(),
-        title: "Profile Visibility",
-        description: "Choose Who Can See Your Profile And Activity",
-        checked: "Public",
+        title: CONFIDENTIALITY_TITLE.VISIBILITY,
+        description: CONFIDENTIALITY_SETTINGS.CONFIDENTIALITY_desc,
+        checked: CONFIDENTIALITY_CHECKED.PUBLIC,
         settings: [
-          {id: uuidv4(), name: "Public", value: "Public"},
-          {id: uuidv4(), name: "FriendsOnly", value: "Friends"},
-          {id: uuidv4(), name: "Private", value: "Private"},
+          { id: uuidv4(), name: CONFIDENTIALITY_SETTINGS.PUBLIC, value: CONFIDENTIALITY_SETTINGS.PUBLIC },
+          { id: uuidv4(), name: CONFIDENTIALITY_SETTINGS.FRIENDS_ONLY, value: CONFIDENTIALITY_SETTINGS.FRIENDS_value},
+          { id: uuidv4(), name: CONFIDENTIALITY_SETTINGS.PRIVATE, value: CONFIDENTIALITY_SETTINGS.PRIVATE },
         ],
       },
       {
         id: uuidv4(),
-        title: "Data Sharing",
-        description: "Control How Your Data Is Shared With Third Party Services",
-        checked: "Allow Data Sharing",
+        title: CONFIDENTIALITY_TITLE.DATA_SHARING,
+        description:
+        CONFIDENTIALITY_SETTINGS.DATA_SHARING_desc,
+        checked: CONFIDENTIALITY_CHECKED.DATA_SHARING,
         settings: [
-          {id: uuidv4(), name: "Allow Data Sharing", value: "Allow Data Sharing"},
-          {id: uuidv4(), name: "Disable Data Sharing", value: "Disable Data Sharing"},
+          {
+            id: uuidv4(),
+            name: CONFIDENTIALITY_SETTINGS.DATA_SHARING,
+            value: CONFIDENTIALITY_SETTINGS.DATA_SHARING,
+          },
+          {
+            id: uuidv4(),
+            name: CONFIDENTIALITY_SETTINGS.DISABLE_DATA_SHARING,
+            value: CONFIDENTIALITY_SETTINGS.DISABLE_DATA_SHARING,
+          },
         ],
       },
       {
         id: uuidv4(),
-        title: "Ad Preferences",
-        description: "Manage Ad Personalization Based On Your Activity",
-        checked: "EnablePersonalizedAds",
+        title: CONFIDENTIALITY_TITLE.AD_PREFERENCES,
+        description: CONFIDENTIALITY_SETTINGS.AD_PREFERENCES_desc,
+        checked: CONFIDENTIALITY_CHECKED.AD_PREFERENCES,
         settings: [
-          {id: uuidv4(), name: "Enable Personalized Ads", value: "Enable Personalized Ads"},
-          {id: uuidv4(), name: "Disable Personalized Ads", value: "Disable Personalized Ads"},
+          {
+            id: uuidv4(),
+            name: CONFIDENTIALITY_SETTINGS.AD_PREFERENCES,
+            value: CONFIDENTIALITY_SETTINGS.AD_PREFERENCES,
+          },
+          {
+            id: uuidv4(),
+            name: CONFIDENTIALITY_SETTINGS.DISABLE_AD_PREFERENCES,
+            value: CONFIDENTIALITY_SETTINGS.DISABLE_AD_PREFERENCES,
+          },
         ],
       },
     ],
     selectedConfidentialitySettings: {
-      profileVisibility: "Public",
+      profileVisibility: CONFIDENTIALITY_SETTINGS.PUBLIC,
       dataSharing: true,
       adPreferences: true,
     },
   },
   languageSettings: {
     languages: {
-      en: { name: 'English', code: 'en' },
-      ru: { name: 'Russian', code: 'ru' },
+      en: { name: LANGUAGES_TITLE.ENGLISH, code: LANGUAGES_TITLE.CODE_EN },
+      ru: { name: LANGUAGES_TITLE.RUSSIAN, code: LANGUAGES_TITLE.CODE_RU },
     },
-    selectedLanguage: 'en',
+    selectedLanguage: LANGUAGES_TITLE.CODE_EN,
   },
   termsAndConditions: [
     {
-      term: 'Account Responsibility', id: uuidv4(),
+      term: TERMS_TITLE.ACCOUNT_RESPONSIBILITY,
+      id: uuidv4(),
       isOpen: false,
       description: [
         {
-          text: 'Users must provide accurate and up-to-date information when creating an account.'
+          text: "Users must provide accurate and up-to-date information when creating an account.",
         },
         {
-          text: 'Keep your account login details secure and do not share them with others.'
+          text: "Keep your account login details secure and do not share them with others.",
         },
         {
-          text: 'Notify us immediately if you suspect unauthorized access to your account.',
-        }
-      ],
-    },
-    {
-      term: 'Respectful Behavior', id: uuidv4(),
-      isOpen: false,
-      description: [
-        {
-          text: 'Treat other users with respect and avoid harassment, bullying, or discrimination.',
-        },
-        {
-          text: 'Do not post or share content that is offensive, harmful, or violates the rights of others.',
-        },
-      ]
-    },
-    {
-      term: 'Legal Use Only', id: uuidv4(),
-      isOpen: false,
-      description: [
-        {
-          text: 'Use the platform only for lawful purposes.',
-        },
-        {
-          text: 'Do not engage in activities that violate any laws or regulations.',
+          text: "Notify us immediately if you suspect unauthorized access to your account.",
         },
       ],
     },
     {
-      term: 'No Spam Or Bots', id: uuidv4(),
+      term: TERMS_TITLE.RESPECTFUL_BEHAVIOR,
+      id: uuidv4(),
       isOpen: false,
       description: [
         {
-          text: 'Do not use the platform to send spam, unsolicited messages, or automated scripts.',
+          text: "Treat other users with respect and avoid harassment, bullying, or discrimination.",
         },
         {
-          text: 'Avoid creating multiple fake accounts or manipulating the system.',
+          text: "Do not post or share content that is offensive, harmful, or violates the rights of others.",
         },
-      ]
+      ],
     },
     {
-      term: 'Intellectual Property', id: uuidv4(),
+      term: TERMS_TITLE.LEGAL_USE_ONLY,
+      id: uuidv4(),
       isOpen: false,
       description: [
         {
-          text: `Do not upload or share content that infringes on someone else's copyrights,` +
+          text: "Use the platform only for lawful purposes.",
+        },
+        {
+          text: "Do not engage in activities that violate any laws or regulations.",
+        },
+      ],
+    },
+    {
+      term: TERMS_TITLE.NO_SPAM,
+      id: uuidv4(),
+      isOpen: false,
+      description: [
+        {
+          text: "Do not use the platform to send spam, unsolicited messages, or automated scripts.",
+        },
+        {
+          text: "Avoid creating multiple fake accounts or manipulating the system.",
+        },
+      ],
+    },
+    {
+      term: TERMS_TITLE.INTELLECTUAL_PROPERTY,
+      id: uuidv4(),
+      isOpen: false,
+      description: [
+        {
+          text:
+            `Do not upload or share content that infringes on someone else's copyrights,` +
             `trademarks, or other rights.`,
         },
         {
-          text: `Respect the intellectual property of the platform and do not copy, modify,` +
+          text:
+            `Respect the intellectual property of the platform and do not copy, modify,` +
             `or distribute any part of it.`,
-        }
+        },
       ],
     },
     {
-      term: 'Content Guidelines', id: uuidv4(),
+      term: TERMS_TITLE.CONTENT_GUIDELINES,
+      id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -171,11 +212,12 @@ const initialState = {
         },
         {
           text: `Do not share explicit or adult content , misinformation or fake news`,
-        }
+        },
       ],
     },
     {
-      term: 'Reporting Violations', id: uuidv4(),
+      term: TERMS_TITLE.REPORTING_VIOLATIONS,
+      id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -187,7 +229,8 @@ const initialState = {
       ],
     },
     {
-      term: 'Compliance With Updates', id: uuidv4(),
+      term: TERMS_TITLE.COMPLIANCE_WITH_UPDATES,
+      id: uuidv4(),
       isOpen: false,
       description: [
         {
@@ -196,91 +239,93 @@ const initialState = {
       ],
     },
     {
-      term: 'Consequences Of Violations', id: uuidv4(),
+      term: TERMS_TITLE.CONSEQUENCES_OF_VIOLATIONS,
+      id: uuidv4(),
       isOpen: false,
       description: [
         {
           text: `Understand that violations may result in warnings, temporary suspension, or permanent account termination.`,
-        }
+        },
       ],
     },
     {
-      term: 'Age Requirement', id: uuidv4(),
+      term: TERMS_TITLE.AGE_REQUIREMENT,
+      id: uuidv4(),
       isOpen: false,
       description: [
         {
           text: `You must be at least [insert minimum age, e.g., 13 or 16, depending on the platform] to use the platform.`,
-        }
+        },
       ],
     },
   ],
   helpCenter: {
     userQueries: [],
-    requestUserNameText: '',
-    requestMessageText: '',
+    requestUserNameText: "",
+    requestMessageText: "",
     errors: {
-      userNameError: '',
-      messageError: ''
-    }
+      userNameError: "",
+      messageError: "",
+    },
   },
   logOut: {
     goBack: {
-      name: "Settings",
-      url: "/settings",
+      name: LOG_TITLE.SETTINGS,
+      url: LOG_URL.SETTINGS,
       id: 5,
     },
     goOut: {
-      name: "LogIn",
-      url: "/logIn",
+      name: LOG_TITLE.LOG_IN,
+      url: LOG_URL.LOG_IN,
       id: 6,
     },
   },
-}
+};
 
 const settingsSlice = createSlice({
-  name: 'settings',
+  name: "settings",
   initialState,
   reducers: {
     setProfileDataEdit: (state, action) => {
-      setProfileDataEditHelper(state, action)
+      setProfileDataEditHelper(state, action);
     },
     editPersonalInfoText: (state, action) => {
-      editPersonalInfoTextHelper(state, action)
-        state.personalAccount.errors.nameError = '';
-        state.personalAccount.errors.cityError = '';
-        state.personalAccount.errors.favAnimeError = '';
+      editPersonalInfoTextHelper(state, action);
+      state.personalAccount.errors.nameError = "";
+      state.personalAccount.errors.cityError = "";
+      state.personalAccount.errors.favAnimeError = "";
     },
     saveConfidentialSettings: (state) => {
-      saveConfidentialSettingsHelper(state)
+      saveConfidentialSettingsHelper(state);
     },
     updateConfidentialitySetting: (state, action) => {
-      updateConfidentialitySettingHelper(state, action)
+      updateConfidentialitySettingHelper(state, action);
     },
     updateSelectedLanguage: (state, action) => {
-      updateSelectedLanguageHelper(state, action)
+      updateSelectedLanguageHelper(state, action);
     },
     toggleTerm: (state, action) => {
-      toggleTermHelper(state, action)
+      toggleTermHelper(state, action);
     },
     updateRequestUserNameText: (state, action) => {
-      updateRequestUserNameTextHelper(state, action)
-      state.helpCenter.errors.userNameError = '';
+      updateRequestUserNameTextHelper(state, action);
+      state.helpCenter.errors.userNameError = "";
     },
     updateRequestMessageText: (state, action) => {
-      updateRequestMessageTextHelper(state, action)
-      state.helpCenter.errors.messageError = '';
+      updateRequestMessageTextHelper(state, action);
+      state.helpCenter.errors.messageError = "";
     },
     sendSupportMessage: (state) => {
-      sendSupportMessageHelper(state)
+      sendSupportMessageHelper(state);
     },
     validateRequestForHelpForm: (state) => {
-      validateRequestForHelpFormHelper(state)
+      validateRequestForHelpFormHelper(state);
     },
     validateEditAccountForm: (state) => {
-      validateEditAccountFormHelper(state)
-    }
-  }
-})
+      validateEditAccountFormHelper(state);
+    },
+  },
+});
 
 export const {
   setProfileDataEdit,

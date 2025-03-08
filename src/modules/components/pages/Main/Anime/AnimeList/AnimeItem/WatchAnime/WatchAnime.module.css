@@ -5,7 +5,7 @@
 
 .button_back {
   width: 200px;
-  padding: 10px 15px;
+  padding: 10px 14px;
   font-size: 20px;
   background-color: var(--button-background-1);
   color: var(--active-color);

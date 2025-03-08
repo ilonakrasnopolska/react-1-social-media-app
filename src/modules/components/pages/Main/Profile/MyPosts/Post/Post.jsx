@@ -10,7 +10,7 @@ const Post = ({post, onDeletePost, isCommentsOpen, t}) => {
       <div className={Classes.post}>
         <Avatar src={post.avatar} alt='User avatar' className={Classes.avatar}/>
         <div className={Classes.post_message}>
-          <span className={Classes.post_name}>{t(post.name)}</span>
+          <span className={Classes.post_name}>{post.name}</span>
           <div className={Classes.post_content}>
             <span>{post.message}</span>
             <span className={Classes.post_time}>{post.time}</span>

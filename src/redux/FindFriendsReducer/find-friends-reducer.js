@@ -1,25 +1,26 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {setUsersListHelper,
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  setUsersListHelper,
   updateSearchNewFriendTextHelper,
   followHelper,
   unFollowHelper,
   filterUsersListHelper,
-  clearSearchQueryHelper} from "./FindFriendsHelpers/find-friends-helpers"
-
+  clearSearchQueryHelper,
+} from "./FindFriendsHelpers/find-friends-helpers";
 
 //Базовый state
 const initialState = {
   friends: [],
-  searchNewFriendText: '',
+  searchNewFriendText: "",
   filteredFriends: [],
-}
+};
 
 const sidebarSlice = createSlice({
   name: "findFriends",
   initialState,
   reducers: {
     setUsersList: (state, action) => {
-      setUsersListHelper(state, action)
+      setUsersListHelper(state, action);
     },
     setSearchQuery: (state, action) => {
       updateSearchNewFriendTextHelper(state, action);
@@ -29,22 +30,20 @@ const sidebarSlice = createSlice({
       clearSearchQueryHelper(state);
     },
     follow: (state, action) => {
-      followHelper(state, action)
+      followHelper(state, action);
     },
     unFollow: (state, action) => {
-      unFollowHelper(state, action)
-    }
-  }
-})
+      unFollowHelper(state, action);
+    },
+  },
+});
 
 export const {
   setUsersList,
   setSearchQuery,
   clearSearchQuery,
   follow,
-  unFollow
+  unFollow,
 } = sidebarSlice.actions;
 
 export default sidebarSlice.reducer;
-
-

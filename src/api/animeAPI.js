@@ -2,8 +2,7 @@ import fetchData from './fetchData';
 import { setAnimeList } from '../redux/AnimeReducer/anime-reducer';
 import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reducer';
 import avatars from "../assets/Avatars-src";
-
-const baseAnimeUrl = '/anime/';
+import { baseAnimeUrl } from '../constants/constants';
 
 export const fetchAnime = (animeData) => (dispatch) => {
   if (Array.isArray(animeData) && animeData.length > 0) {
@@ -27,7 +26,6 @@ dispatch(startLoading())
           // Обрабатываем URL трейлера
           const trailerUrl = anime.trailer?.url ? new URL(anime.trailer.url).searchParams.get("v") : null;
           const formattedTrailerUrl = trailerUrl ? `https://www.youtube.com/embed/${trailerUrl}` : null;
-
           return {
             id: anime.mal_id,
             name: anime.title_english,
