@@ -1,45 +1,73 @@
+/* Основной контейнер для списка, занимает всю ширину и имеет внутренние отступы */
 .list {
   width: 100%;
   display: flex;
   flex-direction: column;
+  /* Элементы внутри списка будут расположены вертикально */
   background-color: var(--content-background-3);
+  /* Фон списка */
   padding: 20px;
+  /* Внутренний отступ */
   margin-bottom: 20px;
+  /* Отступ снизу */
 }
 
+/* Элемент списка, с отступами и вертикальной ориентацией */
 .item {
   display: flex;
   flex-direction: column;
+  /* Элементы внутри будут вертикально расположены */
   margin-bottom: 30px;
+  /* Отступ снизу */
 }
 
+/* Заголовок в элементе списка */
 .item h3 {
   font-size: 22px;
+  /* Размер шрифта */
   margin-bottom: 5px;
+  /* Отступ снизу */
   color: var(--basic-text-color);
+  /* Цвет текста */
 }
 
+/* Параграф в элементе списка */
 .item p {
   font-size: 20px;
+  /* Размер шрифта */
   margin-bottom: 15px;
+  /* Отступ снизу */
   color: var(--basic-text-color);
+  /* Цвет текста */
 }
 
+/* Вложенный список внутри элемента списка, фон и отступы */
 .subList {
   display: flex;
   padding: 15px;
+  /* Внутренний отступ */
   background-color: var(--basic-text-color);
+  /* Фон */
 }
 
+/* Элемент внутри вложенного списка */
 .subItem {
   margin-right: 30px;
+  /* Отступ справа */
   font-size: 20px;
+  /* Размер шрифта */
   font-weight: 600;
+  /* Жирное начертание шрифта */
   color: var(--app-background);
+  /* Цвет текста */
 }
 
+/* Стиль для чекбоксов или радиокнопок внутри вложенного списка */
 .subItem input {
   margin-right: 9px;
+  /* Отступ справа */
   scale: 1.5;
+  /* Увеличение размера */
   border: 1px solid var(--app-background);
+  /* Цвет границы */
 }

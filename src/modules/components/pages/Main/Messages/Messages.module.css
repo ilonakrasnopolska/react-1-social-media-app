@@ -1,5 +1,6 @@
+/* Основной контейнер окна */
 .window {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  min-height: 1200px;
+  display: grid; /* Используем грид для размещения элементов */
+  grid-template-columns: 300px 1fr; /* Левая колонка 300px, правая занимает оставшееся пространство */
+  min-height: 1200px; /* Минимальная высота окна */
 }

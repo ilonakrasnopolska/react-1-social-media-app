@@ -1,86 +1,145 @@
+/* Общие стили для контейнеров, использующих flex */
 .content,
 .wrapper,
 .friends {
   display: flex;
+  /* Используем flex-контейнер */
   flex-direction: column;
+  /* Элементы внутри будут располагаться по вертикали */
   align-items: center;
+  /* Центрируем элементы по горизонтали */
   width: 100%;
+  /* Ширина 100% */
 }
 
+/* Стили для контента */
 .content {
   padding: 0 120px;
+  /* Отступы слева и справа */
   margin: 0 auto;
+  /* Центрирование по горизонтали */
 }
 
+/* Стили для обертки, которая занимает весь экран */
 .wrapper {
   padding: 30px;
+  /* Внутренние отступы */
   width: 100%;
+  /* Ширина 100% */
   height: 100vh;
+  /* Высота 100% от высоты экрана */
   overflow: auto;
+  /* Если контент не помещается, показываем полосу прокрутки */
   background-color: var(--white-color);
+  /* Белый фон */
 }
 
+/* Убираем полосу прокрутки у обертки */
 .wrapper::-webkit-scrollbar {
   display: none;
+  /* Скрываем полосу прокрутки */
 }
 
+/* Стили для обертки поиска */
 .search_wrapper {
   display: flex;
+  /* Используем flex для выравнивания элементов */
   justify-content: center;
+  /* Выравнивание по центру по горизонтали */
   text-align: center;
+  /* Текст по центру */
   width: 100%;
+  /* Ширина 100% */
   margin-bottom: 15px;
+  /* Отступ снизу */
 }
 
+/* Стили для поля ввода в поиске */
 .search_wrapper input {
   padding-left: 10px;
+  /* Отступ слева */
   width: 30%;
+  /* Ширина 30% */
   height: 35px;
+  /* Высота 35px */
   font-size: 19px;
+  /* Размер шрифта 19px */
   outline: none;
+  /* Убираем обводку при фокусе */
   border: 1px solid var(--app-background);
+  /* Рамка того же цвета, что и фон приложения */
 }
 
+/* Стили для кнопки поиска */
 .search_wrapper button {
   height: 100%;
+  /* Высота 100% */
   background-color: var(--content-background-3);
+  /* Фон кнопки */
 }
 
+/* Заголовок */
 .title {
   color: var(--app-background);
+  /* Цвет заголовка */
   margin-bottom: 15px;
+  /* Отступ снизу */
 }
 
+/* Текст */
 .text {
   font-size: 20px;
+  /* Размер шрифта 20px */
   margin-bottom: 15px;
+  /* Отступ снизу */
   color: var(--app-background);
+  /* Цвет текста */
 }
 
+/* Стили для списка */
 .list {
   width: 100%;
+  /* Ширина 100% */
   display: flex;
+  /* Используем flex-контейнер */
   flex-direction: column-reverse;
+  /* Элементы списка будут располагаться снизу вверх */
   align-items: center;
+  /* Центрируем элементы по горизонтали */
   justify-content: flex-end;
+  /* Содержимое будет выровнено внизу */
   padding: 20px;
+  /* Внутренние отступы */
 }
 
+/* Убираем полосу прокрутки у списка */
 .list::-webkit-scrollbar {
   display: none;
+  /* Скрываем полосу прокрутки */
 }
 
+/* Стили для сообщения, если список пуст */
 .empty_message {
   display: flex;
+  /* Используем flex-контейнер */
   align-items: center;
+  /* Выравнивание по вертикали */
   font-size: 22px;
+  /* Размер шрифта 22px */
   color: var(--app-background);
+  /* Цвет текста */
   height: 700px;
+  /* Высота блока 700px */
 }
 
+/* Стили для спиннера (загрузочного индикатора) */
 .spinner {
   display: flex;
+  /* Используем flex-контейнер */
   justify-content: center;
+  /* Центрируем по горизонтали */
   align-items: center;
+  /* Центрируем по вертикали */
   height: 700px;
+  /* Высота блока 700px */
 }

@@ -1,40 +1,68 @@
+/* .container - Контейнер для области ввода сообщений */
 .container {
   border-top: 1px solid var(--white-color);
+  /* Добавляем верхнюю границу, чтобы отделить область ввода от остальной части чата */
   background-color: var(--content-background-3);
+  /* Устанавливаем фон для области ввода */
 }
 
+/* .form - Форма для ввода сообщения */
 .form {
   display: flex;
+  /* Используем flexbox для выравнивания элементов */
   align-items: center;
+  /* Центрируем элементы по вертикали */
   padding: 15px;
+  /* Добавляем отступы вокруг содержимого формы */
 }
 
+/* .textarea - Поле для ввода текста */
 .textarea {
-  width: calc(100% - 60px); /* Учитываем ширину кнопки */
+  width: calc(100% - 60px);
+  /* Ширина поля для ввода текста с учётом ширины кнопки (60px) */
   height: 20px;
+  /* Высота поля для ввода */
   border: none;
+  /* Убираем стандартную рамку */
   outline: none;
+  /* Убираем контур, который появляется при фокусе */
   border-radius: 5px;
+  /* Скругляем углы */
   color: var(--basic-text-color);
+  /* Цвет текста */
   font-size: 16px;
-  resize: none; /* Отключает возможность изменения размера */
+  /* Размер шрифта */
+  resize: none;
+  /* Отключаем возможность изменения размера поля ввода */
   background-color: transparent;
+  /* Прозрачный фон */
   scrollbar-width: none;
+  /* Отключаем скроллбар для поля ввода */
 }
 
+/* .textarea::-webkit-scrollbar - Отключаем отображение скроллбара в Webkit браузерах */
 .textarea::-webkit-scrollbar {
   display: none;
 }
 
+/* .textarea::placeholder - Стиль для текста-подсказки в поле ввода */
 .textarea::placeholder {
   color: var(--basic-text-color);
+  /* Цвет текста подсказки */
 }
 
+/* .button - Кнопка для отправки сообщения */
 .button {
   width: 50px;
+  /* Ширина кнопки */
   height: 50px;
+  /* Высота кнопки */
   margin-left: 10px;
+  /* Отступ слева для кнопки */
   border: none;
+  /* Убираем рамку */
   background-color: transparent;
+  /* Прозрачный фон */
   cursor: pointer;
+  /* Изменяем курсор на указатель при наведении */
 }

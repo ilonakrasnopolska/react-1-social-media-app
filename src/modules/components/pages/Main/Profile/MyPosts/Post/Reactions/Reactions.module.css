@@ -1,3 +1,4 @@
+/* Контейнер для кнопок реакций (лайки, комментарии) */
 .btn__box {
   grid-area: reactions;
   grid-template-areas: "comment like";
@@ -6,6 +7,7 @@
   gap: 10px;
 }
 
+/* Общий стиль для кнопок комментариев и лайков */
 .btn__comment,
 .btn__likeBox {
   display: flex;
@@ -16,28 +18,33 @@
   height: 60px;
 }
 
+/* Размеры иконок комментариев и лайков */
 .btn__commentSvg,
 .btn__like {
   width: 40px;
   height: 35px;
 }
 
+/* Цвет и размер счетчиков лайков и комментариев */
 .btn__likeCount,
 .btn__commentCount {
   color: red;
   font-size: 18px;
 }
 
+/* Кнопка комментария (прозрачный фон, скругленные края) */
 .btn__commentSvg {
   border-radius: 30px;
   background-color: transparent;
 }
 
+/* Кнопка лайка (без фона, позиционирование) */
 .btn__like {
   position: relative;
   background-color: transparent;
 }
 
+/* Стилизация иконки лайка (сердца) */
 .btn__likeSvg {
   position: absolute;
   border: none;
@@ -48,7 +55,8 @@
   right: 12px;
 }
 
-.btn__likeSvg , .btn__likeSvg::before,
+/* Основные параметры иконки лайка и её псевдоэлементов */
+.btn__likeSvg, .btn__likeSvg::before,
 .btn__likeSvg::after {
   width: 16px; /* Ширина кнопки */
   height: 16px; /* Высота кнопки */
@@ -56,6 +64,7 @@
   transition: background-color 0.3s ease-in-out;
 }
 
+/* Псевдоэлементы для формирования сердца */
 .btn__likeSvg::before,
 .btn__likeSvg::after {
   content: "";
@@ -63,16 +72,19 @@
   border-radius: 50%; /* Создание полукруга */
 }
 
+/* Верхний полукруг сердца */
 .btn__likeSvg::before {
   top: -10px; /* Расположение верхнего полукруга */
   left: 0;
 }
 
+/* Правый полукруг сердца */
 .btn__likeSvg::after {
   left: 10px; /* Расположение правого полукруга */
   top: 0;
 }
 
+/* Стилизация лайкнутого сердца (красный цвет) */
 .liked .btn__likeSvg::before,
 .liked .btn__likeSvg::after,
 .liked .btn__likeSvg {

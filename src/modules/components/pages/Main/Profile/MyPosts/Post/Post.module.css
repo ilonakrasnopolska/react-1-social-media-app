@@ -1,66 +1,76 @@
+/* Основной контейнер поста */
 .item {
-  width: 100%;
+  width: 100%; /* Растягиваем пост на всю ширину */
 }
 
+/* Разметка и стили для поста */
 .post {
-  display: grid;
-  grid-template-areas: "pic post reactions delete";
-  grid-template-columns: max-content 1fr max-content;
-  align-items: center;
-  grid-gap: 20px;
-  background-color: var(--content-background-1);
-  padding: 20px;
+  display: grid; /* Используем грид для размещения элементов */
+  grid-template-areas: "pic post reactions delete"; /* Определяем зоны */
+  grid-template-columns: max-content 1fr max-content; /* Колонки: аватар, текст, реакции, кнопка удаления */
+  align-items: center; /* Выравнивание элементов по центру */
+  grid-gap: 20px; /* Расстояние между элементами */
+  background-color: var(--content-background-1); /* Фон */
+  padding: 20px; /* Внутренние отступы */
 }
 
+/* Стили для аватара */
 .avatar {
-  grid-area: pic;
-  width: 70px;
-  border-radius: 50%;
+  grid-area: pic; /* Закрепляем аватар в зоне pic */
+  width: 70px; /* Размер */
+  border-radius: 50%; /* Скругление */
 }
 
+/* Контейнер для текста поста */
 .post_message {
   display: flex;
-  flex-direction: column;
-  grid-area: post;
-  font-size: 18px;
+  flex-direction: column; /* Располагаем текст вертикально */
+  grid-area: post; /* Зона для текста */
+  font-size: 18px; /* Размер шрифта */
 }
 
+/* Имя пользователя */
 .post_name {
-  font-weight: 600;
-  margin-bottom: 5px;
+  font-weight: 600; /* Жирный текст */
+  margin-bottom: 5px; /* Отступ вниз */
 }
 
+/* Контейнер для основного контента поста */
 .post_content {
   display: flex;
-  gap: 10px;
+  gap: 10px; /* Расстояние между элементами */
 }
 
+/* Время публикации поста */
 .post_time {
-  opacity: 30%;
+  opacity: 30%; /* Полупрозрачность */
 }
 
+/* Кнопка удаления поста */
 .delete {
-  grid-area: delete;
-  font-size: 35px;
-  font-weight: 600;
-  color: var(--app-background);
-  transform: rotate(90deg);
-  background-color: transparent;
+  grid-area: delete; /* Размещение в зоне delete */
+  font-size: 35px; /* Размер */
+  font-weight: 600; /* Жирность */
+  color: var(--app-background); /* Цвет */
+  transform: rotate(90deg); /* Поворот */
+  background-color: transparent; /* Прозрачный фон */
 }
 
+/* Контейнер для комментариев */
 .comments {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  background-color: var(--comment-background);
+  flex-direction: column; /* Вертикальное расположение */
+  gap: 20px; /* Отступ между комментариями */
+  padding: 20px; /* Внутренние отступы */
+  background-color: var(--comment-background); /* Фон комментариев */
   overflow: hidden; /* Скрыть переполнение */
-  opacity: 0; /* Изначально невидимо */
-  transition: opacity 0.6s ease, transform 0.6s ease; /* Плавный переход */
-  transform: translateY(-20px); /* Сдвиг вверх для эффекта появления */
+  opacity: 0; /* Скрыть изначально */
+  transition: opacity 0.6s ease, transform 0.6s ease; /* Анимация появления */
+  transform: translateY(-20px); /* Сдвиг вверх */
 }
 
+/* Класс для отображения комментариев */
 .visible {
-  opacity: 1; /* Сделать видимым */
-  transform: translateY(0); /* Вернуть на место */
+  opacity: 1; /* Делаем видимым */
+  transform: translateY(0); /* Убираем сдвиг */
 }

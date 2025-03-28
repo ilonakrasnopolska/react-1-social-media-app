@@ -1,28 +1,29 @@
 import React from "react";
-import {CommentIcon} from "../../../../../../../../assets/SVG-icons";
-import Classes from "./Reactions.module.css"
+import { CommentIcon } from "../../../../../../../../assets/SVG-icons"; // Импорт иконки комментария
+import Classes from "./Reactions.module.css"; // Подключаем стили для реакций
 
-
-const Reactions = ({comments, likes, likeButtonClass, onLike, onComment}) => {
+// Компонент Reactions отображает кнопки для комментариев и лайков
+const Reactions = ({ comments, likes, likeButtonClass, onLike, onComment }) => {
   return (
     <div className={Classes.btn__box}>
+
+      {/* Кнопка для открытия комментариев */}
       <div className={Classes.btn__comment}>
-        <button onClick={onComment}
-                className={Classes.btn__commentSvg}>
-          <CommentIcon/>
+        <button onClick={onComment} className={Classes.btn__commentSvg}>
+          <CommentIcon /> {/* Иконка комментария */}
         </button>
         <span className={Classes.btn__commentCount}>
-          {comments}
+          {comments} {/* Количество комментариев */}
         </span>
       </div>
+
+      {/* Кнопка лайка */}
       <div className={Classes.btn__likeBox}>
-        <button onClick={onLike}
-                className={likeButtonClass}>
-          <span className={Classes.btn__likeSvg}>
-          </span>
+        <button onClick={onLike} className={likeButtonClass}>
+          <span className={Classes.btn__likeSvg}></span> {/* Иконка лайка (можно добавить сюда) */}
         </button>
         <span className={Classes.btn__likeCount}>
-          {likes}
+          {likes} {/* Количество лайков */}
         </span>
       </div>
 
@@ -30,4 +31,4 @@ const Reactions = ({comments, likes, likeButtonClass, onLike, onComment}) => {
   );
 }
 
-export default Reactions;
+export default Reactions; // Экспорт компонента

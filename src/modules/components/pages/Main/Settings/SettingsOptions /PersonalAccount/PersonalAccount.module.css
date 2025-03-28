@@ -1,42 +1,64 @@
 .list {
   display: flex;
+  /* Использование flexbox для расположения элементов */
   flex-direction: column;
+  /* Расположение элементов по вертикали */
   gap: 10px;
+  /* Отступ между элементами списка */
   padding: 0;
+  /* Убирает отступы вокруг списка */
 }
 
 .item {
   font-size: 25px;
+  /* Размер шрифта для элементов списка */
   margin-bottom: 10px;
+  /* Отступ снизу для элементов списка */
   color: var(--primary-text-color);
+  /* Цвет текста */
   text-decoration-line: underline;
+  /* Подчеркивание текста */
 }
 
 .button {
   padding: 15px;
+  /* Внутренние отступы для кнопки */
   font-size: 20px;
+  /* Размер шрифта для кнопки */
   font-weight: bold;
+  /* Жирное начертание шрифта */
   background-color: var(--button-background-1);
+  /* Цвет фона кнопки */
   transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
+  /* Плавные переходы для изменения цветов */
 }
 
 .button:hover {
   background-color: var(--white-color);
+  /* Цвет фона кнопки при наведении */
   border: 1px solid var(--app-background);
+  /* Обводка кнопки при наведении */
 }
 
 .link {
   color: var(--text-color-1);
+  /* Цвет текста ссылки */
   padding: 15px 95px;
+  /* Внутренние отступы для ссылки */
 }
 
 .link:hover {
   color: var(--app-background);
+  /* Цвет текста ссылки при наведении */
 }
 
 .spinner {
   display: flex;
+  /* Используется flexbox для центрирования содержимого */
   justify-content: center;
+  /* Центрирует по горизонтали */
   align-items: center;
+  /* Центрирует по вертикали */
   height: 300px;
+  /* Высота для контейнера спиннера */
 }

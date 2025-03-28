@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { pictures } from "../../assets/Pictures-src";
 
+// Импорт хелперов для работы с постами и комментариями
 import {
   setPostsListHelper,
   setProfileDataHelper,
@@ -18,56 +19,71 @@ import {
   deleteCommentHelper,
 } from "./ProfileHelpers/comment-helpers";
 
+// Начальное состояние для слайса профиля
 const initialState = {
-  posts: [],
-  personalAccount: { userData: {} },
-  profileCover: `${pictures.Cover}`,
-  newPostText: "",
+  posts: [], // Список постов
+  personalAccount: { userData: {} }, // Данные пользователя
+  profileCover: `${pictures.Cover}`, // Обложка профиля
+  newPostText: "", // Текст нового поста
 };
 
+// Слайс для управления профилем
 const profileSlice = createSlice({
-  name: "profile",
-  initialState,
+  name: "profile", // Имя слайса
+  initialState, // Начальное состояние
   reducers: {
+    // Установка списка постов
     setPostsList: (state, action) => {
-      setPostsListHelper(state, action);
+      setPostsListHelper(state, action); // Вызов хелпера для установки списка постов
     },
+    // Установка данных профиля
     setProfileData: (state, action) => {
-      setProfileDataHelper(state, action);
+      setProfileDataHelper(state, action); // Вызов хелпера для установки данных профиля
     },
+    // Добавление нового поста
     addPost: (state) => {
-      addPostHelper(state);
+      addPostHelper(state); // Вызов хелпера для добавления нового поста
     },
+    // Удаление поста
     deletePost: (state, action) => {
-      deletePostHelper(state, action);
+      deletePostHelper(state, action); // Вызов хелпера для удаления поста
     },
+    // Обновление текста нового поста
     updateNewPostText: (state, action) => {
-      updateNewPostTextHelper(state, action);
+      updateNewPostTextHelper(state, action); // Вызов хелпера для обновления текста нового поста
     },
+    // Обработка лайка
     handleLike: (state, action) => {
-      handleLikeHelper(state, action);
+      handleLikeHelper(state, action); // Вызов хелпера для обработки лайка
     },
+    // Переключение видимости комментариев
     toggleComments: (state, action) => {
-      toggleCommentsHelper(state, action);
+      toggleCommentsHelper(state, action); // Вызов хелпера для переключения видимости комментариев
     },
+    // Обновление текста нового комментария
     updateNewCommentText: (state, action) => {
-      updateNewCommentTextHelper(state, action);
+      updateNewCommentTextHelper(state, action); // Вызов хелпера для обновления текста нового комментария
     },
+    // Ответ на комментарий
     replyOnComment: (state, action) => {
-      replyOnCommentHelper(state, action);
+      replyOnCommentHelper(state, action); // Вызов хелпера для ответа на комментарий
     },
+    // Добавление нового комментария
     addComment: (state, action) => {
-      addCommentHelper(state, action);
+      addCommentHelper(state, action); // Вызов хелпера для добавления нового комментария
     },
+    // Удаление комментария
     deleteComment: (state, action) => {
-      deleteCommentHelper(state, action);
+      deleteCommentHelper(state, action); // Вызов хелпера для удаления комментария
     },
+    // Обновление информации профиля
     updateProfileInfo: (state, action) => {
-      updateProfileInfoHelper(state, action);
+      updateProfileInfoHelper(state, action); // Вызов хелпера для обновления информации профиля
     },
   },
 });
 
+// Экспорт всех действий слайса
 export const {
   setPostsList,
   setProfileData,
@@ -83,4 +99,5 @@ export const {
   updateProfileInfo,
 } = profileSlice.actions;
 
+// Экспорт редьюсера слайса
 export default profileSlice.reducer;

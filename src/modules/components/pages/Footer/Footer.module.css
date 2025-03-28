@@ -1,38 +1,61 @@
 .footer {
   display: grid;
+  /* Используем grid layout для футера */
   grid-template-columns: 1fr auto;
+  /* Создаем две колонки: одна гибкая (1fr), другая с авто-шириной */
   grid-area: footer;
+  /* Устанавливаем область для футера */
   background-color: var(--primary-background);
+  /* Задаем фон из переменной для основного фона */
 }
 
 .wrapper {
   display: grid;
+  /* Используем grid для внутреннего контейнера */
   grid-template-areas:
     "text icons";
+  /* Определяем две области: text и icons */
   grid-template-columns: auto 1fr auto;
+  /* Три колонки: первая авто-ширины, вторая гибкая, третья авто-ширины */
   grid-template-rows: 60px;
+  /* Высота строк: одна строка высотой 60px */
   align-items: center;
-  gap: 20px; /* Adjust gap between text and icons */
+  /* Центрируем элементы по вертикали */
+  gap: 20px;
+  /* Отступ между текстом и иконками */
 }
 
 .list {
   grid-area: icons;
+  /* Устанавливаем область для списка иконок */
   display: flex;
-  justify-content: flex-end; /* Align icons to the right */
-  gap: 10px; /* Adjust space between icons */
+  /* Используем flexbox для выравнивания элементов */
+  justify-content: flex-end;
+  /* Выравниваем иконки по правому краю */
+  gap: 10px;
+  /* Отступ между иконками */
   list-style: none;
+  /* Убираем стандартные маркеры списка */
   margin: 0;
+  /* Убираем внешние отступы */
   padding: 0;
+  /* Убираем внутренние отступы */
 }
 
 .icon {
   display: block;
+  /* Блокируем иконки */
   position: relative;
+  /* Относительное позиционирование для возможных настроек */
 }
 
 .copyright {
   grid-area: text;
+  /* Устанавливаем область для текста с копирайтом */
   text-align: center;
-  grid-column: 2; /* Center the text */
+  /* Выравниваем текст по центру */
+  grid-column: 2;
+  /* Текст будет находиться во второй колонке (центр) */
   color: var(--primary-text-color);
+  /* Цвет текста из переменной */
 }

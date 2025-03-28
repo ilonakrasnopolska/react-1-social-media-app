@@ -1,58 +1,88 @@
+/* Стили для каждого элемента аниме */
 .item {
   display: flex;
+  /* Flexbox для выравнивания контента */
   justify-content: space-between;
+  /* Распределяет элементы с пространством между ними */
   width: 48%;
+  /* Устанавливает ширину на 48% для равномерного распределения */
   min-height: 350px;
+  /* Минимальная высота */
   padding: 20px;
+  /* Отступы */
   margin-bottom: 20px;
+  /* Отступ снизу */
   background-color: var(--primary-background);
+  /* Цвет фона */
 }
 
+/* Обертка для постера аниме */
 .poster_wrapper {
   width: 45%;
+  /* Ширина блока */
 }
 
+/* Заголовки и текст для постера */
 .poster_wrapper h4,
 .poster_wrapper span {
   font-size: 22px;
   margin-bottom: 5px;
   color: var(--primary-text-color);
+  /* Цвет текста */
 }
 
+/* Обложка аниме */
 .avatar {
   width: 100%;
+  /* Ширина 100% от родителя */
   height: 350px;
+  /* Высота */
   object-fit: cover;
+  /* Обтекание изображения */
   object-position: center;
+  /* Центрирование изображения */
   max-width: 100%;
+  /* Ограничение максимальной ширины */
   margin-bottom: 5px;
 }
 
+/* Контент (описание, кнопки) */
 .content {
   width: 50%;
+  /* Ширина контента */
   display: flex;
   flex-direction: column;
+  /* Выравнивание по колонкам */
   justify-content: space-between;
+  /* Пространство между элементами */
   padding: 10px;
 }
 
+/* Описание аниме */
 .description {
   display: flex;
   flex-direction: column;
+  /* Вертикальное выравнивание */
   margin-bottom: 10px;
   height: 370px;
+  /* Высота для описания */
   overflow-y: auto;
+  /* Прокрутка по вертикали */
   scrollbar-width: none;
+  /* Убирает стандартный скроллбар */
 }
 
 .description::-webkit-scrollbar {
   display: none;
+  /* Убирает скроллбар в Webkit-браузерах */
 }
 
+/* Заголовок и описание в блоке описания */
 .description h3 {
   font-size: 24px;
   margin-bottom: 15px;
   color: var(--primary-text-color);
+  /* Цвет заголовка */
 }
 
 .description span {
@@ -61,11 +91,14 @@
   margin-bottom: 10px;
 }
 
+/* Стили для кнопок действий (добавить в список, просмотрено) */
 .anime_actions {
   display: flex;
   align-items: center;
+  /* Центрирование элементов */
 }
 
+/* Стиль кнопок действий */
 .anime_actions button {
   position: relative;
   display: flex;
@@ -74,13 +107,18 @@
   background-color: transparent;
 }
 
+/* Иконки в кнопках */
 .anime_actions button svg {
   fill: var(--white-color);
+  /* Белый цвет иконки */
   width: 40px;
+  /* Размер иконки */
   height: 40px;
   transition: transform 0.3s ease, fill 0.3s ease;
+  /* Плавное изменение при наведении */
 }
 
+/* Стили для кнопок с действиями */
 .watch_button,
 .watched_button {
   position: relative;
@@ -89,21 +127,28 @@
   cursor: pointer;
 }
 
+/* Эффекты при наведении на кнопки */
 .watch_button:hover svg {
   fill: #fce041;
+  /* Желтый цвет при наведении */
 }
 
 .watched_button:hover svg {
   fill: #04b731;
+  /* Зеленый цвет при наведении */
 }
 
+/* Всплывающие подсказки для кнопок */
 .watch_button::after,
 .watched_button::after {
   position: absolute;
   bottom: 100%;
+  /* Положение сверху от кнопки */
   transform: translateX(-50%);
   background-color: var(--content-background-2);
+  /* Фон подсказки */
   fill: #194770;
+  /* Цвет текста подсказки */
   padding: 10px;
   font-size: 18px;
   font-weight: 600;
@@ -113,33 +158,42 @@
   white-space: nowrap;
 }
 
+/* Контент подсказок */
 .watch_button::after {
   content: 'Add to Watchlist';
+  /* Текст подсказки */
   left: 120%;
 }
 
-.watched_button::after  {
+.watched_button::after {
   content: 'Watched';
+  /* Текст подсказки */
   left: 60%;
   fill: var(--content-background-2);
+  /* Цвет для уже просмотренного */
 }
 
+/* Показываем подсказку при наведении */
 .watch_button:hover::after,
 .watched_button:hover::after {
   opacity: 1;
   visibility: visible;
 }
 
+/* Анимация для активных иконок */
 .item .active svg {
   transform: scale(1.2);
   fill: #FFD700;
+  /* Золотой цвет для активных кнопок */
 }
 
 .item .watched_button.active svg {
   transform: scale(1.2);
   fill: #90d89e;
+  /* Светло-зеленый для просмотренных */
 }
 
+/* Стили для кнопки "Смотреть сейчас" */
 .button {
   position: relative;
   width: 100%;
@@ -147,8 +201,10 @@
   font-size: 20px;
   font-weight: 600;
   background-color: var(--button-background-1);
+  /* Цвет кнопки */
 }
 
+/* Ссылка внутри кнопки */
 .button a {
   position: absolute;
   width: 100%;
@@ -158,32 +214,39 @@
   color: var(--text-color-1);
 }
 
+/* Эффект при наведении на кнопку */
 .button:hover {
   opacity: 0.7;
 }
 
+/* Медиа-запросы для адаптивности */
 
 @media (max-width: 1260px) {
   .item {
     width: 70%;
+    /* Уменьшаем ширину для среднего экрана */
   }
 
   .avatar {
     height: 200px;
+    /* Уменьшаем высоту изображения */
   }
 }
 
 @media (max-width: 850px) {
   .item {
     flex-direction: column;
+    /* Изменяем направление элементов на колонку */
   }
 
   .item span {
     display: none;
+    /* Прячем span */
   }
 
   .poster_wrapper {
     width: 100%;
+    /* Ширина постера на всю ширину */
   }
 
   .poster_wrapper h4 {
@@ -198,15 +261,18 @@
 
   .anime_actions {
     justify-content: center;
+    /* Центрируем кнопки */
   }
 
   .content {
     width: 100%;
+    /* Ширина контента на всю ширину */
     padding: 0;
   }
 
   .description {
     align-items: center;
+    /* Выравнивание описания */
     height: 50px;
     margin: 0;
   }
@@ -217,5 +283,6 @@
 
   .button {
     font-size: 17px;
+    /* Размер шрифта для кнопки на маленьких экранах */
   }
 }

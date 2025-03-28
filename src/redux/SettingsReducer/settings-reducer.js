@@ -7,9 +7,10 @@ import {
   CONFIDENTIALITY_SETTINGS,
   LANGUAGES_TITLE,
   TERMS_TITLE,
+  TERMS_DESCRIPTION,
   LOG_TITLE,
   LOG_URL,
-} from "../../constants/constants";
+} from "../../constants/state-constants";
 import {
   setProfileDataEditHelper,
   editPersonalInfoTextHelper,
@@ -73,16 +74,27 @@ const initialState = {
         description: CONFIDENTIALITY_SETTINGS.CONFIDENTIALITY_desc,
         checked: CONFIDENTIALITY_CHECKED.PUBLIC,
         settings: [
-          { id: uuidv4(), name: CONFIDENTIALITY_SETTINGS.PUBLIC, value: CONFIDENTIALITY_SETTINGS.PUBLIC },
-          { id: uuidv4(), name: CONFIDENTIALITY_SETTINGS.FRIENDS_ONLY, value: CONFIDENTIALITY_SETTINGS.FRIENDS_value},
-          { id: uuidv4(), name: CONFIDENTIALITY_SETTINGS.PRIVATE, value: CONFIDENTIALITY_SETTINGS.PRIVATE },
+          {
+            id: uuidv4(),
+            name: CONFIDENTIALITY_SETTINGS.PUBLIC,
+            value: CONFIDENTIALITY_SETTINGS.PUBLIC,
+          },
+          {
+            id: uuidv4(),
+            name: CONFIDENTIALITY_SETTINGS.FRIENDS_ONLY,
+            value: CONFIDENTIALITY_SETTINGS.FRIENDS_value,
+          },
+          {
+            id: uuidv4(),
+            name: CONFIDENTIALITY_SETTINGS.PRIVATE,
+            value: CONFIDENTIALITY_SETTINGS.PRIVATE,
+          },
         ],
       },
       {
         id: uuidv4(),
         title: CONFIDENTIALITY_TITLE.DATA_SHARING,
-        description:
-        CONFIDENTIALITY_SETTINGS.DATA_SHARING_desc,
+        description: CONFIDENTIALITY_SETTINGS.DATA_SHARING_desc,
         checked: CONFIDENTIALITY_CHECKED.DATA_SHARING,
         settings: [
           {
@@ -136,13 +148,13 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: "Users must provide accurate and up-to-date information when creating an account.",
+          text: TERMS_DESCRIPTION.ACCOUNT_RESPONSIBILITY_1,
         },
         {
-          text: "Keep your account login details secure and do not share them with others.",
+          text: TERMS_DESCRIPTION.ACCOUNT_RESPONSIBILITY_2,
         },
         {
-          text: "Notify us immediately if you suspect unauthorized access to your account.",
+          text: TERMS_DESCRIPTION.ACCOUNT_RESPONSIBILITY_3,
         },
       ],
     },
@@ -152,10 +164,10 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: "Treat other users with respect and avoid harassment, bullying, or discrimination.",
+          text: TERMS_DESCRIPTION.RESPECTFUL_BEHAVIOR_1,
         },
         {
-          text: "Do not post or share content that is offensive, harmful, or violates the rights of others.",
+          text: TERMS_DESCRIPTION.RESPECTFUL_BEHAVIOR_2,
         },
       ],
     },
@@ -165,10 +177,10 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: "Use the platform only for lawful purposes.",
+          text: TERMS_DESCRIPTION.LEGAL_USE_ONLY_1,
         },
         {
-          text: "Do not engage in activities that violate any laws or regulations.",
+          text: TERMS_DESCRIPTION.LEGAL_USE_ONLY_2,
         },
       ],
     },
@@ -178,10 +190,10 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: "Do not use the platform to send spam, unsolicited messages, or automated scripts.",
+          text: TERMS_DESCRIPTION.NO_SPAM_1,
         },
         {
-          text: "Avoid creating multiple fake accounts or manipulating the system.",
+          text: TERMS_DESCRIPTION.NO_SPAM_2,
         },
       ],
     },
@@ -191,14 +203,10 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text:
-            `Do not upload or share content that infringes on someone else's copyrights,` +
-            `trademarks, or other rights.`,
+          text: TERMS_DESCRIPTION.INTELLECTUAL_PROPERTY_1,
         },
         {
-          text:
-            `Respect the intellectual property of the platform and do not copy, modify,` +
-            `or distribute any part of it.`,
+          text: TERMS_DESCRIPTION.INTELLECTUAL_PROPERTY_2,
         },
       ],
     },
@@ -208,10 +216,10 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: `Ensure that any content you post complies with community standards and is appropriate for all users.`,
+          text: TERMS_DESCRIPTION.CONTENT_GUIDELINES_1,
         },
         {
-          text: `Do not share explicit or adult content , misinformation or fake news`,
+          text: TERMS_DESCRIPTION.CONTENT_GUIDELINES_2,
         },
       ],
     },
@@ -221,10 +229,10 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: `Report any suspicious or harmful behavior to our support team.`,
+          text: TERMS_DESCRIPTION.REPORTING_VIOLATIONS_1,
         },
         {
-          text: `Do not misuse the reporting tools to harass or falsely accuse others.`,
+          text: TERMS_DESCRIPTION.REPORTING_VIOLATIONS_2,
         },
       ],
     },
@@ -234,7 +242,7 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: `Regularly review updates to the Terms and Policies and comply with the most recent rules.`,
+          text: TERMS_DESCRIPTION.COMPLIANCE_WITH_UPDATES_1,
         },
       ],
     },
@@ -244,7 +252,7 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: `Understand that violations may result in warnings, temporary suspension, or permanent account termination.`,
+          text: TERMS_DESCRIPTION.CONSEQUENCES_OF_VIOLATIONS_1,
         },
       ],
     },
@@ -254,7 +262,7 @@ const initialState = {
       isOpen: false,
       description: [
         {
-          text: `You must be at least [insert minimum age, e.g., 13 or 16, depending on the platform] to use the platform.`,
+          text: TERMS_DESCRIPTION.AGE_REQUIREMENT_1,
         },
       ],
     },
@@ -286,41 +294,52 @@ const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
+    // Обработка изменения данных профиля
     setProfileDataEdit: (state, action) => {
       setProfileDataEditHelper(state, action);
     },
+    // Изменение текста личной информации
     editPersonalInfoText: (state, action) => {
       editPersonalInfoTextHelper(state, action);
       state.personalAccount.errors.nameError = "";
       state.personalAccount.errors.cityError = "";
       state.personalAccount.errors.favAnimeError = "";
     },
+    // Сохранение настроек конфиденциальности
     saveConfidentialSettings: (state) => {
       saveConfidentialSettingsHelper(state);
     },
+    // Обновление настроек конфиденциальности
     updateConfidentialitySetting: (state, action) => {
       updateConfidentialitySettingHelper(state, action);
     },
+    // Обновление выбранного языка
     updateSelectedLanguage: (state, action) => {
       updateSelectedLanguageHelper(state, action);
     },
+    // Переключение условий
     toggleTerm: (state, action) => {
       toggleTermHelper(state, action);
     },
+    // Обновление текста имени пользователя при запросе
     updateRequestUserNameText: (state, action) => {
       updateRequestUserNameTextHelper(state, action);
       state.helpCenter.errors.userNameError = "";
     },
+    // Обновление текста сообщения при запросе
     updateRequestMessageText: (state, action) => {
       updateRequestMessageTextHelper(state, action);
       state.helpCenter.errors.messageError = "";
     },
+    // Отправка сообщения в службу поддержки
     sendSupportMessage: (state) => {
       sendSupportMessageHelper(state);
     },
+    // Валидация формы запроса помощи
     validateRequestForHelpForm: (state) => {
       validateRequestForHelpFormHelper(state);
     },
+    // Валидация формы редактирования аккаунта
     validateEditAccountForm: (state) => {
       validateEditAccountFormHelper(state);
     },

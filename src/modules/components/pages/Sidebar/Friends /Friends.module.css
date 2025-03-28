@@ -1,27 +1,40 @@
 .content {
   display: grid;
+  /* Используем грид для организации элементов */
   gap: 30px;
+  /* Отступы между элементами */
   width: 230px;
+  /* Ширина контейнера */
 }
 
 .title {
   padding-left: 15px;
+  /* Отступ слева для заголовка */
   font-size: 30px;
+  /* Размер шрифта для заголовка */
   font-weight: 600;
+  /* Жирное начертание для заголовка */
   color: var(--primary-text-color);
+  /* Цвет текста заголовка, определённый в CSS-переменной */
 }
 
 .list {
   display: flex;
+  /* Используем flexbox для списка */
   gap: 18px;
+  /* Отступы между элементами списка */
   overflow-y: auto;
+  /* Вертикальная прокрутка при необходимости */
 }
 
 .list::-webkit-scrollbar {
   display: none;
+  /* Скрываем полосу прокрутки */
 }
 
 .active {
   color: var(--active-color);
+  /* Цвет активного элемента */
   background-color: var(--button-background-1);
+  /* Фон для активного элемента */
 }

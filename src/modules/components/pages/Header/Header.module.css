@@ -1,26 +1,37 @@
 .header {
   grid-area: header;
+  /* Определяем область в сетке для хедера */
   display: flex;
+  /* Используем флекс-контейнер для выравнивания элементов */
   justify-content: space-between;
+  /* Размещаем элементы с равным расстоянием между ними */
   align-items: center;
+  /* Выравниваем элементы по вертикали по центру */
   padding: 10px;
+  /* Добавляем отступы вокруг хедера */
   background-color: var(--primary-background);
+  /* Устанавливаем фоновый цвет, используя переменную */
   color: var(--primary-text-color);
+  /* Устанавливаем цвет текста, используя переменную */
 }
 
 .logo {
   padding: 5px 0 5px 15px;
+  /* Добавляем отступы для логотипа с левой стороны */
 }
 
 .themeButton button {
   background-color: transparent;
+  /* Сделать фон кнопки прозрачным */
   border: none;
+  /* Убираем границу у кнопки */
   padding: 5px 10px;
+  /* Добавляем отступы внутри кнопки */
   cursor: pointer;
+  /* Изменяем курсор на указатель при наведении */
 }
 
 .themeButton button svg {
-  fill:var(--theme-button-svg-color);
+  fill: var(--theme-button-svg-color);
+  /* Устанавливаем цвет для иконки внутри кнопки */
 }
-
-

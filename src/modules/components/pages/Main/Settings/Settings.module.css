@@ -1,95 +1,142 @@
+/* Общие стили для контейнеров с flex-расположением */
 .content,
 .wrapper,
 .terms {
   display: flex;
   flex-direction: column;
+  /* Расположение дочерних элементов по колонкам */
   align-items: center;
+  /* Центрирование элементов по горизонтали */
   width: 100%;
+  /* Занимает всю ширину родительского элемента */
 }
 
+/* Стиль для контента, с отступами слева и справа */
 .content {
   padding: 0 120px;
   margin: 0 auto;
+  /* Автоматические отступы по бокам для выравнивания */
 }
 
+/* Стиль для обертки */
 .wrapper {
   padding: 30px;
   width: 100%;
   height: 1200px;
+  /* Фиксированная высота */
   overflow: auto;
+  /* Возможность прокрутки */
   background-color: var(--white-color);
+  /* Белый фон */
 }
 
+/* Скрытие полосы прокрутки */
 .wrapper::-webkit-scrollbar {
   display: none;
+  /* Не показывать полосу прокрутки */
 }
 
-
+/* Заголовок */
 .title {
   color: var(--app-background);
+  /* Цвет заголовка */
   margin-bottom: 15px;
 }
 
+/* Описание текста */
 .text {
   font-size: 20px;
   margin-bottom: 15px;
   color: var(--app-background);
+  /* Цвет текста */
 }
 
+/* Стили для аватара */
 .avatar {
   width: 300px;
+  /* Ширина аватара */
   border: 2px solid var(--app-background);
+  /* Обводка аватара */
   margin-right: 50px;
+  /* Отступ справа */
 }
 
+/* Редактирование данных пользователя */
 .user_data_edit {
   width: 100%;
+  /* Занимает всю ширину */
 }
 
 .user_data_edit .card {
   display: flex;
   justify-content: center;
+  /* Выравнивание по центру */
   width: 100%;
   background-color: var(--primary-background);
+  /* Фон */
   padding: 30px;
+  /* Отступы */
 }
 
+/* Стили для блока "о пользователе" */
 .about_user_edit {
   width: 50%;
+  /* Ширина 50% */
   display: flex;
   flex-direction: column;
+  /* Расположение элементов в колонку */
   justify-content: space-between;
+  /* Равномерное распределение пространства */
   color: var(--primary-text-color);
+  /* Цвет текста */
 }
 
+/* Список элементов */
 .list {
   display: flex;
   flex-direction: column;
+  /* Элементы в колонку */
   padding: 0 100px;
+  /* Отступы слева и справа */
   gap: 20px;
+  /* Промежуток между элементами */
 }
 
+/* Стили для каждого элемента в списке */
 .item {
   font-size: 22px;
   background-color: var(--primary-background);
+  /* Фон элемента */
   padding: 20px;
+  /* Отступы внутри элемента */
 }
 
+/* Ссылки внутри элемента */
 .item a {
   color: var(--primary-text-color);
+  /* Цвет ссылок */
 }
 
+/* Медиазапрос для экранов шириной до 990px */
 @media (max-width: 990px) {
+
+  /* Изменение стилей для аватара */
   .avatar {
     margin-right: 0;
+    /* Убираем отступ справа */
     margin-bottom: 20px;
+    /* Добавляем отступ снизу */
   }
 
+  /* Изменение стилей для карточки данных пользователя */
   .user_data_edit .card {
     flex-direction: column;
+    /* Изменение направления на колонку */
   }
 
+  /* Изменение ширины блока "о пользователе" */
   .about_user_edit {
     width: 100%;
+    /* Теперь занимает всю ширину */
   }
 }

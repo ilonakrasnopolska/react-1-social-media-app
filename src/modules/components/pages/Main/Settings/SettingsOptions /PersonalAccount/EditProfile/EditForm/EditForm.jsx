@@ -1,24 +1,39 @@
 import Classes from "./EditForm.module.css";
 import React from "react";
-import {useEditAccountForm} from "../../../../../../../../hooks/useEditAccountForm";
-import renderInputFields from "./InputFields/InputFields";
+import { useEditAccountForm } from "../../../../../../../../hooks/useEditAccountForm"; // Хук для обработки данных формы
+import renderInputFields from "./InputFields/InputFields"; // Функция для рендеринга полей ввода
 
-const EditForm = ({personalAccount, userData, errors, t}) => {
-  const {handleValueChanges, preventNumericInput} = useEditAccountForm(personalAccount)
+// Компонент для редактирования данных профиля
+const EditForm = ({ personalAccount, userData, errors, t }) => {
+  // Деструктуризация функции из хука для обработки изменений значений и предотвращения ввода чисел
+  const { handleValueChanges, preventNumericInput } =
+    useEditAccountForm(personalAccount);
 
   return (
     <form className={Classes.form}>
+      {/* Перебор всех данных пользователя, за исключением аватара */}
       {Object.entries(userData).map(([key, value]) =>
-        key !== "avatar" ? (
+        key !== "avatar" ? ( // Пропускаем аватар
           <div key={key} className={Classes.formGroup}>
+            {/* Метка для каждого поля ввода */}
             <label htmlFor={`input-${key}`} className={Classes.label}>
+              {/* Заголовок для каждого поля, с переводом */}
               {t(key.charAt(0).toUpperCase() + key.slice(1))}:
             </label>
             <div className={Classes.input_box}>
-              {renderInputFields(key, value, handleValueChanges, preventNumericInput, preventNumericInput, Classes)}
+              {/* Рендеринг полей ввода с помощью вспомогательной функции */}
+              {renderInputFields(
+                key,
+                value,
+                handleValueChanges,
+                preventNumericInput,
+                preventNumericInput,
+                Classes
+              )}
+              {/* Отображение ошибок, если они есть */}
               {errors[`${key}Error`] && (
                 <span className={Classes.errorText}>
-                  {errors[`${key}Error`]}
+                  {errors[`${key}Error`]} {/* Текст ошибки */}
                 </span>
               )}
             </div>
@@ -28,6 +43,5 @@ const EditForm = ({personalAccount, userData, errors, t}) => {
     </form>
   );
 };
-
 
 export default EditForm;

@@ -1,13 +1,17 @@
+// Обновление данных профиля с помощью action.payload
 export const setProfileDataEditHelper = (state, action) => {
   state.personalAccount.userData = action.payload;
 };
 
+// Редактирование текста личной информации
 export const editPersonalInfoTextHelper = (state, action) => {
   const { key, value } = action.payload;
+
+  // Проверяем, существует ли ключ в userData
   if (state.personalAccount.userData[key] !== undefined) {
     // Если редактируется дата рождения
     if (key === 'dateOfBirth') {
-      // Преобразуем значение в объект Date
+      // Преобразуем строку в объект Date
       const date = new Date(value);
       const day = date.getDate();
       const month = date.toLocaleString('default', { month: 'long' });
@@ -15,31 +19,44 @@ export const editPersonalInfoTextHelper = (state, action) => {
       // Обновляем отформатированное значение
       state.personalAccount.userData.dateOfBirth = `${day} ${month}`;
     } else {
-      // Обновляем остальную информацию
+      // Обновляем остальную информацию в userData
       state.personalAccount.userData[key] = value;
     }
   }
-}
+};
+
+// Обновление выбранного языка
 export const updateSelectedLanguageHelper = (state, action) => {
   state.languageSettings.selectedLanguage = action.payload;
-}
+};
+
+// Переключение состояния термина (открыт/закрыт)
 export const toggleTermHelper = (state, action) => {
   const term = state.termsAndConditions.find((t) => t.id === action.payload);
+
   if (term) {
+    // Изменяем состояние термина (открыт или закрыт)
     term.isOpen = !term.isOpen;
   }
-}
+};
+
+// Обновление текста запроса имени пользователя
 export const updateRequestUserNameTextHelper = (state, action) => {
   state.helpCenter.requestUserNameText = action.payload;
-}
+};
+
+// Обновление текста запроса сообщения
 export const updateRequestMessageTextHelper = (state, action) => {
   state.helpCenter.requestMessageText = action.payload;
-}
+};
+
+// Отправка сообщения в службу поддержки
 export const sendSupportMessageHelper = (state) => {
+  // Проверка на наличие ошибок в имени или сообщении
   if (state.helpCenter.errors.userNameError || state.helpCenter.errors.messageError) return;
 
-  if (state.helpCenter.requestMessageText.trim() !== ''
-    && state.helpCenter.requestUserNameText.trim() !== '') {
+  // Проверяем, что имя и сообщение не пустые
+  if (state.helpCenter.requestMessageText.trim() !== '' && state.helpCenter.requestUserNameText.trim() !== '') {
     const currentTime = new Date();
     const formattedTime = currentTime.toLocaleTimeString('en-GB', {
       hour: '2-digit',
@@ -47,22 +64,26 @@ export const sendSupportMessageHelper = (state) => {
       hour12: false,
     });
 
-
+    // Формируем новый запрос
     const newRequest = {
       id: Date.now(),
       user: state.helpCenter.requestUserNameText,
       text: state.helpCenter.requestMessageText,
       status: 'unread',
       timestamp: formattedTime,
-    }
+    };
 
+    // Добавляем новый запрос в очередь
     state.helpCenter.userQueries.push(newRequest);
 
+    // Очищаем текстовые поля
     state.helpCenter.requestMessageText = '';
     state.helpCenter.requestUserNameText = '';
     alert('Message sent!');
   }
-}
+};
+
+// Валидация формы запроса помощи
 export const validateRequestForHelpFormHelper = (state) => {
   let isValid = true;
   const requestErrors = { userNameError: '', messageError: '' };
@@ -85,12 +106,11 @@ export const validateRequestForHelpFormHelper = (state) => {
     isValid = false;
   }
 
-  // Проверка на цифры в сообщение
+  // Проверка на цифры в сообщении
   if (/\d/.test(state.helpCenter.requestMessageText)) {
     requestErrors.messageError = 'Message cannot contain numbers';
     isValid = false;
   }
-
 
   // Проверка длины сообщения
   if (state.helpCenter.requestMessageText.trim().length > 200) {
@@ -102,7 +122,9 @@ export const validateRequestForHelpFormHelper = (state) => {
   state.helpCenter.errors = requestErrors;
 
   return isValid; // Возвращаем true, если форма валидна
-}
+};
+
+// Валидация формы редактирования профиля
 export const validateEditAccountFormHelper = (state) => {
   let isValid = true;
   const profileErrors = { cityError: '', nameError: '', favAnimeError: '' };
@@ -125,12 +147,14 @@ export const validateEditAccountFormHelper = (state) => {
     isValid = false;
   }
 
-
+  // Обновляем ошибки в state
   state.personalAccount.errors = profileErrors;
-
   state.personalAccount.isFormValid = isValid;
-  return isValid;
-}
+
+  return isValid; // Возвращаем true, если форма валидна
+};
+
+// Обновление настроек конфиденциальности
 export const updateConfidentialitySettingHelper = (state, action) => {
   const { settingValue, settingTitle } = action.payload;
   const confidentialitySetting = state.confidentiality.confidentialitySettings.find(
@@ -138,10 +162,12 @@ export const updateConfidentialitySettingHelper = (state, action) => {
   );
 
   if (confidentialitySetting) {
+    // Обновляем значение для выбранной настройки
     confidentialitySetting.checked = settingValue;
   }
+};
 
-}
+// Сохранение настроек конфиденциальности
 export const saveConfidentialSettingsHelper = (state) => {
   const confirmSave = window.confirm('Are you sure you want to save the changes?');
   if (confirmSave) {
@@ -170,4 +196,4 @@ export const saveConfidentialSettingsHelper = (state) => {
     // Обновляем состояние с новыми значениями
     state.confidentiality.selectedConfidentialitySettings = selectedConfidentialitySettings;
   }
-}
+};

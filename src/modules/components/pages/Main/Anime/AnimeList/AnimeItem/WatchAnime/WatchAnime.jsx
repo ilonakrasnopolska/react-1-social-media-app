@@ -6,38 +6,63 @@ import { NavLink } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
 const WatchAnime = ({ animeById, isLoading, t }) => {
+  // Проверяем, если идет загрузка, сразу возвращаем спиннер
+  if (isLoading) {
+    return (
+      <div className={Classes.spinner}>
+        <ClipLoader color="#194770" size={50} />
+      </div>
+    );
+  }
+
+  // Если данных о аниме нет, показываем сообщение
+  if (!animeById) {
+    return <p>{t("NoAnimeData")}</p>; // Показать сообщение, если данные о аниме отсутствуют
+  }
+
   return (
     <div className={Classes.content}>
       <div className={Classes.anime_page}>
         <NavLink to={"/anime"} className={Classes.button_back}>
-          {t('BackToAnimeList')}
+          {t("BackToAnimeList")} {/* Кнопка для возврата в список аниме */}
         </NavLink>
         <div className={Classes.data}>
           <div className={Classes.cover}>
-            <img src={animeById.cover} alt={animeById.name} />
+            {/* Показываем обложку аниме или используем изображение по умолчанию */}
+            <img
+              src={animeById.cover || "default-cover.jpg"}
+              alt={animeById.name}
+            />
           </div>
           <div className={Classes.about}>
-            <h2>{animeById.name}</h2>
+            <h2>{animeById.name}</h2> {/* Название аниме */}
             <div className={Classes.main_data_wrapper}>
               <div className={Classes.main_data}>
-                <span className={Classes.text}>{t('Rating')}: {animeById.score}</span>
+                {/* Показываем основные данные: рейтинг, количество эпизодов, год выпуска */}
                 <span className={Classes.text}>
-                  {t('Episodes')}: {animeById.episodes}
+                  {t("Rating")}: {animeById.score}
                 </span>
-                <span className={Classes.text}>{t('Year')}: {animeById.year}</span>
+                <span className={Classes.text}>
+                  {t("Episodes")}: {animeById.episodes}
+                </span>
+                <span className={Classes.text}>
+                  {t("Year")}: {animeById.year}
+                </span>
               </div>
-              <Genres genres={animeById.genres} />
+              {/* Если есть жанры, то показываем их */}
+              {animeById.genres && <Genres genres={animeById.genres} />}
             </div>
-            <span className={Classes.description}>{animeById.description}</span>
+            {/* Описание аниме, если оно есть */}
+            <span className={Classes.description}>
+              {animeById.description || t("NoDescriptionAvailable")}
+            </span>
+            {/* Компонент для отображения рейтинга */}
             <Rating animeById={animeById} votes={animeById.votes} />
           </div>
         </div>
         <div className={Classes.trailer}>
-          {isLoading ? (
-            <div className={Classes.spinner}>
-              <ClipLoader color="#194770" size={50} />
-            </div>
-          ) : animeById.trailer ? (
+          {/* Если есть трейлер, показываем его, иначе выводим сообщение о его отсутствии */}
+          {animeById.trailer ? (
             <iframe
               width="100%"
               height="600px"
@@ -47,7 +72,7 @@ const WatchAnime = ({ animeById, isLoading, t }) => {
               allowFullScreen
             />
           ) : (
-            <p>No trailer available</p>
+            <p>{t("NoTrailerAvailable")}</p>
           )}
         </div>
       </div>

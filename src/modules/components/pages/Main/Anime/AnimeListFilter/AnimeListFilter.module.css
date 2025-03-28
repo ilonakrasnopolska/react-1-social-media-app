@@ -1,20 +1,34 @@
 .anime_filter {
+  /* Стили для контейнера фильтра аниме */
   display: flex;
   justify-content: center;
+  /* Выравнивание кнопок по центру */
   width: 100%;
+  /* Ширина контейнера 100% */
   margin-bottom: 15px;
+  /* Отступ снизу */
 }
 
 .button {
+  /* Стили для кнопок фильтров */
   cursor: pointer;
+  /* Указатель при наведении */
   font-size: 25px;
+  /* Размер шрифта */
   font-weight: 600;
+  /* Жирный шрифт */
   margin-right: 30px;
+  /* Отступ справа */
   color: var(--text-color-1);
+  /* Цвет текста */
   padding: 10px 15px;
+  /* Отступы внутри кнопки */
   background-color: var(--button-background-1);
+  /* Цвет фона кнопки */
 }
 
 .button:hover {
+  /* Эффект при наведении на кнопку */
   opacity: 70%;
+  /* Уменьшение прозрачности при наведении */
 }

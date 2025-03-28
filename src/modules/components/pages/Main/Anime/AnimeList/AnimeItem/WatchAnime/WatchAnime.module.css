@@ -1,3 +1,4 @@
+/* Общие стили */
 .content {
   gap: 15px;
   padding: 20px 50px;
@@ -20,11 +21,12 @@
 }
 
 .anime_page h2 {
-  color: var( --basic-text-color-2);
+  color: var(--basic-text-color-2);
   font-size: 35px;
   margin-bottom: 15px;
 }
 
+/* Стили для списка данных */
 .anime_page ul {
   display: flex;
   flex-direction: column;
@@ -45,7 +47,7 @@
   width: 35%;
 }
 
-.cover img{
+.cover img {
   border: 1px solid var(--primary-text-color);
   object-fit: cover;
   width: 100%;
@@ -98,8 +100,7 @@
   gap: 5px;
 }
 
-.like_button,
-.unlike_button {
+.reactions button {
   background-color: transparent;
   display: flex;
   align-items: flex-end;
@@ -114,10 +115,12 @@
 
 .like_button.active svg {
   fill: rgb(5, 223, 2);
+  /* Зеленый цвет при активации */
 }
 
 .unlike_button.active svg {
   fill: rgb(255 37 37);
+  /* Красный цвет при активации */
 }
 
 .reactions span {
@@ -136,6 +139,7 @@
   height: 700px;
 }
 
+/* Медиазапросы для адаптивности */
 @media (max-width: 1290px) {
   .data {
     max-height: 400px;
@@ -175,7 +179,3 @@
     width: 100%;
   }
 }
-
-
-
-
