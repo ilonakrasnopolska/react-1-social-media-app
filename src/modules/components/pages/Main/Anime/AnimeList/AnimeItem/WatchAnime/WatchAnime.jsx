@@ -1,51 +1,81 @@
 import React from "react";
 import Classes from "./WatchAnime.module.css";
 import Genres from "./Genres/Genres";
+import Rating from "./Rating/Rating";
 import { NavLink } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
+const WatchAnime = ({ animeById, isLoading, t }) => {
+  // Проверяем, если идет загрузка, сразу возвращаем спиннер
+  if (isLoading) {
+    return (
+      <div className={Classes.spinner}>
+        <ClipLoader color="#194770" size={50} />
+      </div>
+    );
+  }
 
-const WatchAnime = ({anime, isLoading}) => {
+  // Если данных о аниме нет, показываем сообщение
+  if (!animeById) {
+    return <p>{t("NoAnimeData")}</p>; // Показать сообщение, если данные о аниме отсутствуют
+  }
+
   return (
     <div className={Classes.content}>
       <div className={Classes.anime_page}>
-      <NavLink to={'/anime'} className={Classes.button_back}>Back to Anime List</NavLink>
-      <div className={Classes.data}>
-      <div className={Classes.cover}>
-      <img src={anime.cover} alt={anime.name} />
+        <NavLink to={"/anime"} className={Classes.button_back}>
+          {t("BackToAnimeList")} {/* Кнопка для возврата в список аниме */}
+        </NavLink>
+        <div className={Classes.data}>
+          <div className={Classes.cover}>
+            {/* Показываем обложку аниме или используем изображение по умолчанию */}
+            <img
+              src={animeById.cover || "default-cover.jpg"}
+              alt={animeById.name}
+            />
+          </div>
+          <div className={Classes.about}>
+            <h2>{animeById.name}</h2> {/* Название аниме */}
+            <div className={Classes.main_data_wrapper}>
+              <div className={Classes.main_data}>
+                {/* Показываем основные данные: рейтинг, количество эпизодов, год выпуска */}
+                <span className={Classes.text}>
+                  {t("Rating")}: {animeById.score}
+                </span>
+                <span className={Classes.text}>
+                  {t("Episodes")}: {animeById.episodes}
+                </span>
+                <span className={Classes.text}>
+                  {t("Year")}: {animeById.year}
+                </span>
+              </div>
+              {/* Если есть жанры, то показываем их */}
+              {animeById.genres && <Genres genres={animeById.genres} />}
+            </div>
+            {/* Описание аниме, если оно есть */}
+            <span className={Classes.description}>
+              {animeById.description || t("NoDescriptionAvailable")}
+            </span>
+            {/* Компонент для отображения рейтинга */}
+            <Rating animeById={animeById} votes={animeById.votes} />
+          </div>
+        </div>
+        <div className={Classes.trailer}>
+          {/* Если есть трейлер, показываем его, иначе выводим сообщение о его отсутствии */}
+          {animeById.trailer ? (
+            <iframe
+              width="100%"
+              height="600px"
+              src={animeById.trailer}
+              title="Anime Trailer"
+              frameBorder="0"
+              allowFullScreen
+            />
+          ) : (
+            <p>{t("NoTrailerAvailable")}</p>
+          )}
+        </div>
       </div>
-      <div className={Classes.about}>
-      <h2>{anime.name}</h2>
-        <div className={Classes.main_data_wrapper}>
-        <div className={Classes.main_data}>
-          <span className={Classes.text}>Rating: {anime.score}</span>
-          <span className={Classes.text}>Episodes: {anime.episodes}</span>
-          <span className={Classes.text}>Year: {anime.year}</span>
-        </div>
-        <Genres genres={anime.genres}/>
-        </div>
-      <span className={Classes.description}>{anime.description}</span>
-      </div>
-      </div>
-      <div className={Classes.trailer}>
-      {isLoading ? (
-        <div className={Classes.spinner}>
-          <ClipLoader color="#194770" size={50} />
-        </div>
-      ) : anime.trailer ? (
-        <iframe
-          width="100%"
-          height="600px"
-          src={anime.trailer}
-          title="Anime Trailer"
-          frameBorder="0"
-          allowFullScreen
-        />
-      ) : (
-        <p>No trailer available</p>
-      )}
-        </div>
-     </div>
     </div>
   );
 };

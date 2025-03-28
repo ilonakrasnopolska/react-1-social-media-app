@@ -1,57 +1,66 @@
+/* Контейнер для списка комментариев */
 .list {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 40px; /* Отступ между комментариями */
 }
 
+/* Элемент комментария */
 .item {
   display: grid;
-  grid-template-areas: "pic post delete";
-  grid-template-columns: max-content 1fr max-content;
+  grid-template-areas: "pic post delete"; /* Определяем области для сетки */
+  grid-template-columns: max-content 1fr max-content; /* Колонки: аватар - содержимое - кнопка удаления */
   align-items: center;
-  grid-gap: 20px;
-  border-radius: 10px;
+  grid-gap: 20px; /* Отступ между элементами */
+  border-radius: 10px; /* Закругление углов */
 }
 
+/* Аватар пользователя */
 .avatar {
   grid-area: pic;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 50%; /* Делаем круглый */
 }
 
+/* Основной блок с комментарием */
 .post {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 15px; /* Отступ между элементами внутри */
   grid-area: post;
-  font-size: 18px;
+  font-size: 18px; /* Размер шрифта */
 }
 
+/* Обертка для текста комментария */
 .comment {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 7px; /* Отступ между строками */
 }
 
+/* Содержимое комментария */
 .content {
   display: flex;
-  gap: 7px;
+  gap: 7px; /* Отступ между элементами (текст, время, кнопка ответа) */
 }
 
+/* Время комментария */
 .time {
-  opacity: 30%;
+  opacity: 30%; /* Делаем менее заметным */
 }
 
+/* Кнопка удаления комментария */
 .delete {
   grid-area: delete;
   font-size: 35px;
   font-weight: 600;
   color: #194770;
-  transform: rotate(90deg);
+  transform: rotate(90deg); /* Поворачиваем кнопку */
   background-color: transparent;
 }
 
+/* Кнопка "Ответить" */
 .response_btn {
   font-size: 17px;
   border-bottom: 1px solid var(--app-background);
@@ -60,6 +69,7 @@
   opacity: 40%;
 }
 
+/* Сообщение, если комментариев нет */
 .no_comments {
   font-size: 20px;
 }

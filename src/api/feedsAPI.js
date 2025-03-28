@@ -1,50 +1,65 @@
-import fetchData from './fetchData';
-import { startLoading, stopLoading } from '../redux/SpinnerReducer/spinner-reducer';
-import { setFeedsList } from '../redux/FeedsReducer/feeds-reducer';
+import fetchData from "./fetchData";
+import {
+  startLoading,
+  stopLoading,
+} from "../redux/SpinnerReducer/spinner-reducer";
+import { setFeedsList } from "../redux/FeedsReducer/feeds-reducer";
 import avatars from "../assets/Avatars-src";
 
-//Заглушки
-const categories = ['Fans', 'Trends', 'Manga', 'News'];
-const times = ['13:34', '12:24', '12:04', '11:54'];
-const contents = [`Have someone seen a new episode of Naruto?`,
-`A new chapter of My Hero Academia manga is coming out tomorrow!`,
-`Did you hear about the Naruto cafe opening?`,
-`A new chapter of Jujutsu K manga is coming out tomorrow!`];
-
+// Заглушки данных, которые мы будем использовать для имитации данных
+const categories = ["Fans", "Trends", "Manga", "News"]; // Категории для постов
+const times = ["13:34", "12:24", "12:04", "11:54"]; // Время, когда был опубликован пост
+const contents = [
+  `Have someone seen a new episode of Naruto?`, // Пример контента
+  `A new chapter of My Hero Academia manga is coming out tomorrow!`,
+  `Did you hear about the Naruto cafe opening?`,
+  `A new chapter of Jujutsu Kaisen manga is coming out tomorrow!`,
+];
 
 export const fetchFeeds = (posts) => (dispatch) => {
-  if (posts != undefined && posts.length > 0) {
+  // Проверяем, если список постов уже существует и не пуст, то не загружаем данные
+  if (posts !== undefined && posts.length > 0) {
     return;
   }
-  dispatch(startLoading())
-  fetchData('https://api.jikan.moe/v4/top/anime', {
-    limit: 10,
-    sort: 'bypopularity'
+
+  // Запуск загрузки данных
+  dispatch(startLoading());
+
+  // Выполняем запрос к API
+  fetchData("https://api.jikan.moe/v4/top/anime", {
+    limit: 10, // Ограничиваем вывод топ-10 аниме
+    sort: "bypopularity", // Сортируем по популярности
   })
     .then((data) => {
       if (data && data.data) {
+        // Если получены данные, обрабатываем их
         const feedsArr = data.data.map((post) => {
-           // Случайным образом выбираем из списка
-           const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-           const randomTime = times[Math.floor(Math.random() * times.length)];
-           const randomContent = contents[Math.floor(Math.random() * contents.length)];
-           return {
-            feedId: post.mal_id,
-            name: post.title,
-            avatar: post.images?.jpg?.image_url || avatars.defaultPic,
-            category: randomCategory,
-            time: randomTime,
-            content: randomContent
+          // Случайным образом выбираем данные для каждого поста из заранее подготовленных массивов
+          const randomCategory =
+            categories[Math.floor(Math.random() * categories.length)];
+          const randomTime = times[Math.floor(Math.random() * times.length)];
+          const randomContent =
+            contents[Math.floor(Math.random() * contents.length)];
+
+          // Формируем объект для каждого поста
+          return {
+            feedId: post.mal_id, // ID поста
+            name: post.title, // Название аниме
+            avatar: post.images?.jpg?.image_url || avatars.defaultPic, // Используем изображение, если оно есть, или заглушку
+            category: randomCategory, // Случайная категория
+            time: randomTime, // Случайное время
+            content: randomContent, // Случайный контент
           };
         });
+
+        // Отправляем список постов в хранилище Redux
         dispatch(setFeedsList(feedsArr));
       }
-    }
-    )
+    })
     .catch((error) => {
-      console.error('Failed to fetch random posts:', error);
+      console.error("Failed to fetch random posts:", error); // Логирование ошибки, если запрос не удался
     })
     .finally(() => {
-      dispatch(stopLoading());
+      dispatch(stopLoading()); // Завершаем загрузку
     });
 };

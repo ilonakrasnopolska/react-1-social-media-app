@@ -34,7 +34,8 @@
   align-items: center;
   background-color: var(--button-background-2);
   color: #e2eaff;
-  padding: 30px;
+  padding: 20px 50px;
+  list-style-type: none;
 }
 
 .description {

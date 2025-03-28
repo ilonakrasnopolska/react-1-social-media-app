@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
-import  ThemeContext from '../../../../../contexts/ThemeContext';
-import {DarkTheme, LightTheme} from "../../../../../assets/SVG-icons";
+import React, { useContext } from "react"; // Импортируем необходимые модули
+import ThemeContext from "../../../../../contexts/ThemeContext"; // Импортируем контекст для темы
+import { DarkTheme, LightTheme } from "../../../../../assets/SVG-icons"; // Импортируем иконки для светлой и темной темы
 
 const ThemeButton = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext); // Используем контекст для получения текущей темы и функции для переключения темы
 
   return (
     <button onClick={toggleTheme}>
-      {theme === 'light' ? <DarkTheme /> : <LightTheme />}
+      {" "}
+      {/* Обработчик клика для переключения темы */}
+      {theme === "light" ? <DarkTheme /> : <LightTheme />}{" "}
+      {/* Если текущая тема светлая, показываем иконку для темной темы, иначе показываем для светлой */}
     </button>
   );
 };
 
-export default ThemeButton;
+export default ThemeButton; // Экспортируем компонент

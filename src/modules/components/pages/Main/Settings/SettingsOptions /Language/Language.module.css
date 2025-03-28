@@ -1,63 +1,107 @@
+/* Стили для контейнеров "app_language" и "post_translation" */
 .app_language,
 .post_translation {
   display: flex;
+  /* Используем flexbox для выравнивания элементов */
   flex-direction: column;
+  /* Элементы будут располагаться по вертикали */
   align-items: center;
+  /* Выравнивание элементов по центру */
   width: 100%;
+  /* Ширина контейнера — 100% */
   margin-bottom: 50px;
+  /* Отступ снизу */
   background-color: var(--button-background-2);
+  /* Цвет фона */
   padding: 20px;
+  /* Отступы внутри контейнера */
 }
 
+/* Стили для заголовков в контейнерах */
 .title {
   color: var(--basic-text-color);
+  /* Цвет текста */
   padding: 5px;
+  /* Отступы внутри заголовка */
   font-size: 25px;
+  /* Размер шрифта */
   margin-bottom: 10px;
+  /* Отступ снизу */
 }
 
+/* Стили для меток (label) в контейнерах */
 .app_language label,
 .post_translation label {
   display: flex;
+  /* Используем flexbox для выравнивания меток */
   align-items: center;
+  /* Выравнивание по вертикали */
   gap: 10px;
+  /* Расстояние между элементами в метке */
   font-size: 23px;
+  /* Размер шрифта */
   background-color: var(--content-background-1);
+  /* Цвет фона метки */
   padding: 10px;
+  /* Отступы внутри метки */
   color: var(--app-background);
+  /* Цвет текста */
 }
 
-
+/* Стили для кастомных селектов (react-select) */
 .reactSelect {
   appearance: none;
+  /* Убираем стандартный стиль селектора */
   -webkit-appearance: none;
+  /* Убираем стиль для Safari */
   -moz-appearance: none;
+  /* Убираем стиль для Firefox */
   font-size: 20px;
+  /* Размер шрифта */
   outline: none;
+  /* Убираем обводку */
   background-color: var(--basic-text-color);
+  /* Цвет фона */
   padding: 2px;
+  /* Отступы внутри селектора */
   cursor: pointer;
+  /* Указатель мыши */
 }
 
+/* Стили для области контрола в react-select */
 .reactSelect__control {
   outline: none;
+  /* Убираем обводку */
   padding: 5px;
+  /* Отступы */
   background-color: var(--basic-text-color);
+  /* Цвет фона */
 }
 
+/* Стили для выпадающего меню в react-select */
 .reactSelect__menu {
   background-color: var(--basic-text-color);
+  /* Цвет фона выпадающего меню */
 }
 
+/* Стили для инпута в блоке "post_translation" */
 .post_translation input {
   width: 40px;
+  /* Ширина инпута */
   height: 20px;
+  /* Высота инпута */
   border: 2px solid var(--app-background);
+  /* Цвет и толщина рамки */
 }
 
+/* Стили для кнопки */
 .button {
   padding: 15px;
+  /* Отступы внутри кнопки */
   background-color: var(--button-background-2);
+  /* Цвет фона кнопки */
   color: var(--basic-text-color);
+  /* Цвет текста кнопки */
   font-size: 20px;
+  /* Размер шрифта кнопки */
 }

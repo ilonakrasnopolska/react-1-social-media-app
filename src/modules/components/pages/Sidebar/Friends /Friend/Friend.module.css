@@ -1,18 +1,28 @@
 .item {
   display: flex;
+  /* Используем flexbox для выравнивания элементов */
   flex-direction: column;
+  /* Расставляем элементы по вертикали */
   align-items: center;
+  /* Выравниваем элементы по центру */
   cursor: pointer;
+  /* Устанавливаем курсор в виде руки при наведении */
 }
 
 .avatar {
   width: 60px;
+  /* Задаем ширину аватара */
   height: 60px;
+  /* Задаем высоту аватара */
   border-radius: 50%;
+  /* Скругляем углы, чтобы аватар был кругом */
   border: 2px solid var(--button-background-1);
+  /* Добавляем обводку вокруг аватара */
 }
 
 .user__name {
   color: var(--primary-text-color);
+  /* Задаем цвет текста */
   font-size: 20px;
+  /* Устанавливаем размер шрифта */
 }

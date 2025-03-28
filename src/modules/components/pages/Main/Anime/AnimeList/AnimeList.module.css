@@ -1,27 +1,38 @@
 .anime_list_box {
+  /* Высота блока равна 100% высоты экрана */
   height: 100vh;
+  /* Включаем вертикальную прокрутку */
   overflow-y: auto;
+  /* Убираем стандартную ширину полосы прокрутки */
   scrollbar-width: none;
 }
 
+/* Стили для списка аниме */
 .list {
   display: flex;
+  /* Разрешаем обертывание элементов */
   flex-wrap: wrap;
+  /* Равномерное распределение элементов с промежутками */
   justify-content: space-between;
+  /* Промежутки между элементами */
   gap: 10px;
   width: 100%;
 }
 
+/* Убираем полосу прокрутки в Webkit-браузерах */
 .anime_list_box::-webkit-scrollbar {
   display: none;
 }
 
+/* Сообщение "Нет результатов" */
 .noResults {
   font-size: 20px;
   color: var(--app-background);
+  /* Отступ сверху для центрирования текста */
   padding-top: 100px;
 }
 
+/* Стили для спиннера загрузки */
 .spinner {
   display: flex;
   justify-content: center;
@@ -29,8 +40,10 @@
   height: 700px;
 }
 
+/* Адаптивные стили для экранов меньше 1260px */
 @media (max-width: 1260px) {
   .list {
+    /* Центрируем элементы в списке */
     justify-content: center;
   }
 }

@@ -1,22 +1,39 @@
+/* Основной стиль кнопки */
 .button {
   padding: 15px;
+  /* Отступы внутри кнопки */
   font-size: 20px;
+  /* Размер шрифта */
   font-weight: bold;
+  /* Жирный шрифт */
   opacity: 100%;
+  /* Полная непрозрачность */
   background-color: var(--button-background-1);
+  /* Цвет фона кнопки */
   color: var(--text-color-1);
+  /* Цвет текста на кнопке */
   transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
+  /* Плавный переход для изменения цвета текста, фона и границы */
 }
 
+/* Состояние кнопки при наведении */
 .button:hover {
   background-color: var(--white-color);
+  /* Изменение фона на белый при наведении */
   border: 1px solid var(--app-background);
+  /* Добавление рамки */
   color: var(--app-background);
+  /* Цвет текста при наведении */
 }
 
+/* Состояние кнопки, когда она отключена */
 .button:disabled {
   background-color: var(--disabled-button-color);
+  /* Цвет фона кнопки при отключении */
   color: var(--basic-text-color);
+  /* Цвет текста при отключении */
   border: none;
+  /* Убирает рамку */
   opacity: 0.5;
+  /* Полупрозрачность кнопки при отключении */
 }

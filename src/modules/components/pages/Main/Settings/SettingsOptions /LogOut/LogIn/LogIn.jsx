@@ -1,14 +1,17 @@
-import React from "react";
-import Classes from './LogIn.module.css'
+import React from "react"; // Импортируем библиотеку React
+import Classes from "./LogIn.module.css"; // Импортируем стили для компонента
 
+// Компонент LogIn
 const LogIn = () => {
   return (
-    <section className='enter section'>
+    <section className="enter section">
+      {/* Основной контейнер с классом "enter section" */}
       <div className={Classes.content}>
-        Still on process:
+        {/* Контейнер с классом "content" для стилизации текста */}
+        Still on process: {/* Текст, который отображается на странице */}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default LogIn;
+export default LogIn; // Экспортируем компонент для использования в других частях приложения

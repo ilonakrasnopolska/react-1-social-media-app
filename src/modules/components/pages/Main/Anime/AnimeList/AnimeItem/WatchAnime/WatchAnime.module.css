@@ -1,3 +1,4 @@
+/* Общие стили */
 .content {
   gap: 15px;
   padding: 20px 50px;
@@ -5,7 +6,7 @@
 
 .button_back {
   width: 200px;
-  padding: 10px 15px;
+  padding: 10px 14px;
   font-size: 20px;
   background-color: var(--button-background-1);
   color: var(--active-color);
@@ -20,11 +21,12 @@
 }
 
 .anime_page h2 {
-  color: var( --basic-text-color-2);
+  color: var(--basic-text-color-2);
   font-size: 35px;
   margin-bottom: 15px;
 }
 
+/* Стили для списка данных */
 .anime_page ul {
   display: flex;
   flex-direction: column;
@@ -38,13 +40,14 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  max-height: 600px;
 }
 
 .cover {
   width: 35%;
 }
 
-.cover img{
+.cover img {
   border: 1px solid var(--primary-text-color);
   object-fit: cover;
   width: 100%;
@@ -83,6 +86,46 @@
 .description {
   font-size: 19px;
   color: var(--basic-text-color-2);
+  margin-bottom: 30px;
+  height: 360px;
+  overflow-y: auto;
+}
+
+.description::-webkit-scrollbar {
+  display: none;
+}
+
+.reactions {
+  display: flex;
+  gap: 5px;
+}
+
+.reactions button {
+  background-color: transparent;
+  display: flex;
+  align-items: flex-end;
+}
+
+.reactions button svg {
+  width: 40px;
+  height: 30px;
+  fill: white;
+  stroke: var(--basic-text-color-2);
+}
+
+.like_button.active svg {
+  fill: rgb(5, 223, 2);
+  /* Зеленый цвет при активации */
+}
+
+.unlike_button.active svg {
+  fill: rgb(255 37 37);
+  /* Красный цвет при активации */
+}
+
+.reactions span {
+  font-size: 16px;
+  color: var(--basic-text-color-2);
 }
 
 .trailer {
@@ -96,3 +139,43 @@
   height: 700px;
 }
 
+/* Медиазапросы для адаптивности */
+@media (max-width: 1290px) {
+  .data {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .data {
+    max-height: 300px;
+  }
+
+  .anime_page h2 {
+    font-size: 25px;
+  }
+
+  .text {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 990px) {
+  .data {
+    max-height: 920px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+
+  .cover {
+    width: 250px;
+    height: 350px;
+    margin-bottom: 20px;
+  }
+
+  .about {
+    width: 100%;
+  }
+}

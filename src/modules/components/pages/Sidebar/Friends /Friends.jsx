@@ -1,17 +1,15 @@
-import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import clsx from "clsx";
 import Classes from "./Friends.module.css";
 import Friend from "./Friend/Friend";
 
-const Friends = ({ t }) => {
-  const friends = useSelector((state) => state.sidebar.friends) || [];
+const Friends = ({ findFriends, friends, t }) => {
   return (
     <div className={Classes.content}>
       <NavLink
-      className={Classes.title}
-        to={'/find_friends'}
-      >
-        {t("FindFriends")}
+       className={({isActive}) => clsx(Classes.title, {[Classes.active]: isActive})}
+       to={findFriends.url}>
+       {t(findFriends.name)}
       </NavLink>
       {friends?.length > 0 ? (
         <ul className={Classes.list}>

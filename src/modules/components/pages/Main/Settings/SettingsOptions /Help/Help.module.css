@@ -1,43 +1,90 @@
+/* Контейнер формы */
 .contact_form {
   display: flex;
+  /* Используем Flexbox для расположения элементов */
   flex-direction: column;
+  /* Строка элементов будет располагаться по вертикали */
   background-color: var(--content-background-3);
+  /* Задний фон формы */
   padding: 20px;
+  /* Отступы внутри контейнера */
 }
 
+/* Отступы для каждого div в форме */
 .contact_form div {
   margin-bottom: 10px;
+  /* Отступ снизу для разделения элементов */
 }
 
+/* Стили для поля ввода имени */
 .input_name {
   width: 50%;
+  /* Ширина поля ввода 50% от родительского элемента */
   padding: 5px;
+  /* Отступы внутри поля */
 }
 
+/* Общие стили для всех текстовых полей и текстовых областей */
 .input_name,
 .textarea {
   background-color: var(--content-background-1);
+  /* Фон элементов */
   border: 1px solid var(--app-background);
+  /* Граница поля */
   color: var(--app-background);
+  /* Цвет текста */
   padding: 10px;
+  /* Внутренние отступы */
   outline: none;
+  /* Убираем обводку при фокусе */
 }
 
+/* Стили для кнопки */
 .button {
   width: 150px;
+  /* Ширина кнопки */
   background-color: var(--profile-button-text-color);
+  /* Цвет фона кнопки */
   color: var(--app-background);
+  /* Цвет текста на кнопке */
   padding: 10px;
+  /* Отступы внутри кнопки */
   font-size: 18px;
+  /* Размер шрифта на кнопке */
 }
 
+/* Стили для ошибки (например, для поля ввода с ошибкой) */
 .error {
   border-color: red;
-  background-color: #ffe6e6; /* Красный фон для ошибок */
+  /* Красная граница при ошибке */
+  background-color: #ffe6e6;
+  /* Красный фон для ошибок */
 }
 
+/* Стили для сообщения об ошибке */
 .error_message {
   color: red;
+  /* Цвет текста ошибки */
   font-size: 12px;
+  /* Размер шрифта сообщения об ошибке */
   margin-top: 4px;
+  /* Отступ сверху для разделения с полем */
+}
+
+/* Дополнительные стили для text area */
+.textarea {
+  background-color: var(--content-background-1);
+  /* Фон textarea */
+  border: 1px solid var(--app-background);
+  /* Граница textarea */
+  color: var(--app-background);
+  /* Цвет текста в textarea */
+  padding: 10px;
+  /* Отступы внутри textarea */
+  outline: none;
+  /* Убираем обводку при фокусе */
+  resize: vertical;
+  /* Позволяет пользователю изменять размер textarea по вертикали */
+  min-height: 80px;
+  /* Минимальная высота для textarea */
 }

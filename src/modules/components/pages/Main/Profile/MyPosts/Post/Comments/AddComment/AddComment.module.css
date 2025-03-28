@@ -1,27 +1,31 @@
+/* Контейнер для формы добавления комментария */
 .add_comment {
-  width: 100%;
+  width: 100%; /* Растягиваем на всю ширину */
 }
 
+/* Форма для ввода комментария */
 .comment_form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; /* Размещаем элементы в строку */
+  align-items: center; /* Выравниваем элементы по центру */
+  justify-content: space-between; /* Размещаем элементы по краям */
   width: 100%;
 }
 
+/* Поле ввода комментария */
 .comment_input {
-  border: none;
-  outline: none;
-  margin-right: 15px;
-  width: 90%;
-  height: 40px;
-  padding: 5px;
-  background-color: var(--content-background-1);
+  border: none; /* Убираем границу */
+  outline: none; /* Убираем подсветку при фокусе */
+  margin-right: 15px; /* Отступ справа */
+  width: 90%; /* Ширина 90% от контейнера */
+  height: 40px; /* Высота */
+  padding: 5px; /* Внутренние отступы */
+  background-color: var(--content-background-1); /* Цвет фона */
 }
 
+/* Кнопка отправки комментария */
 .submit_button {
-  padding: 5px 30px;
-  height: 40px;
-  background-color: var(--app-background);
-  color: var(--profile-button-text-color);
+  padding: 5px 30px; /* Внутренние отступы */
+  height: 40px; /* Высота кнопки */
+  background-color: var(--app-background); /* Цвет фона */
+  color: var(--profile-button-text-color); /* Цвет текста */
 }

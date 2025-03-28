@@ -1,38 +1,78 @@
+/* Контейнер для контента */
 .content {
   padding: 0 30px;
+  /* Отступы по бокам */
   display: grid;
+  /* Использование Grid layout */
   grid-template-areas:
     "avatar about";
+  /* Размещение элементов: аватар слева, информация о пользователе справа */
   grid-template-columns: 2fr 10fr;
+  /* 2:10 — пропорции ширины колонок */
   grid-gap: 30px;
+  /* Отступы между элементами */
 }
 
+/* Стиль для аватара */
 .avatar {
   grid-area: avatar;
+  /* Указание позиции в сетке */
   width: 200px;
+  /* Ширина аватара */
   border: 3px solid var(--app-background);
+  /* Рамка вокруг аватара */
+  border-radius: 50%;
+  /* Сделать аватар круглым */
 }
 
+/* Контейнер для информации о пользователе */
 .about {
   grid-area: about;
+  /* Указание позиции в сетке */
   display: grid;
+  /* Использование Grid layout */
   grid-template-rows: max-content;
+  /* Ряд для информации */
   row-gap: 20px;
+  /* Отступы между строками */
 }
 
+/* Заголовок информации о пользователе */
 .about h1 {
   font-size: 25px;
+  /* Размер шрифта */
   color: var(--app-background);
+  /* Цвет текста */
 }
 
+/* Список комментариев или постов */
 .list {
   display: grid;
+  /* Использование Grid layout */
   grid-template-rows: max-content;
+  /* Строки списка автоматически подстраиваются под содержимое */
   padding: 0;
+  /* Убираем отступы */
 }
 
+/* Элемент списка (пост или комментарий) */
 .item {
   font-size: 20px;
+  /* Размер шрифта */
   color: var(--app-background);
+  /* Цвет текста */
   text-decoration-line: underline;
+  /* Подчеркивание текста */
+  cursor: pointer;
+  /* Курсор как указатель на элемент */
+  transition: all 0.3s ease;
+  /* Плавные переходы для улучшения взаимодействия */
+}
+
+/* Добавим эффект при наведении на элемент списка */
+.item:hover {
+  color: var(--hover-color, #4a90e2);
+  /* Цвет при наведении (используйте переменную или конкретный цвет) */
+  text-decoration-line: none;
+  /* Убираем подчеркивание при наведении */
 }

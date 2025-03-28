@@ -1,36 +1,100 @@
+/* Контейнер для контента */
 .content {
   padding: 0 30px;
+  /* Отступы по бокам */
   display: grid;
+  /* Использование Grid layout */
   grid-gap: 10px;
+  /* Отступы между элементами */
 }
 
+/* Заголовок */
 .title {
   font-size: 25px;
+  /* Размер шрифта */
   color: var(--app-background);
+  /* Цвет текста */
+  font-weight: bold;
+  /* Можно добавить жирное начертание для выделения заголовка */
+  margin-bottom: 10px;
+  /* Отступ снизу для отступа между элементами */
 }
 
+/* Формуляр */
 .form {
   display: grid;
+  /* Использование Grid layout */
   grid-gap: 10px;
+  /* Отступы между элементами формы */
 }
 
+/* Текстовое поле */
 .textarea {
   width: 100%;
+  /* Ширина 100% от родительского контейнера */
   min-height: 80px;
-  border: none;
+  /* Минимальная высота */
+  border: 1px solid #ccc;
+  /* Граница для визуального разделения */
   border-radius: 5px;
+  /* Скругленные углы */
   outline: none;
+  /* Убираем обводку при фокусе */
+  padding: 10px;
+  /* Отступы внутри текстового поля */
+  font-size: 14px;
+  /* Размер шрифта для текста */
+  color: var(--app-background);
+  /* Цвет текста */
+  transition: border 0.3s ease;
+  /* Плавный переход для границы */
 }
 
+/* Эффект при фокусе на текстовом поле */
+.textarea:focus {
+  border-color: var(--highlight-color, #4a90e2);
+  /* Цвет границы при фокусе (можно изменить на свой) */
+}
+
+/* Контейнер для кнопки */
 .buttonBox {
   display: grid;
   justify-content: flex-end;
+  /* Выравнивание кнопки по правому краю */
 }
 
+/* Кнопка */
 .button {
   width: 130px;
+  /* Ширина кнопки */
   padding: 10px 20px;
+  /* Внутренние отступы */
   font-size: 15px;
+  /* Размер шрифта */
   background-color: var(--app-background);
+  /* Цвет фона */
   color: var(--profile-button-text-color);
+  /* Цвет текста */
+  border: none;
+  /* Убираем рамку */
+  border-radius: 5px;
+  /* Скругляем углы */
+  cursor: pointer;
+  /* Курсор в виде указателя */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Плавный переход для фона и эффекта масштабирования */
+}
+
+/* Эффект при наведении на кнопку */
+.button:hover {
+  background-color: var(--highlight-color, #4a90e2);
+  /* Цвет фона при наведении */
+  transform: scale(1.05);
+  /* Легкое увеличение кнопки */
+}
+
+/* Эффект при нажатии на кнопку */
+.button:active {
+  transform: scale(0.98);
+  /* Легкое уменьшение кнопки при нажатии */
 }

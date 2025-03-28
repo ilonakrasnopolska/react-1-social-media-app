@@ -1,57 +1,99 @@
+/* .chatItem - Контейнер для сообщения */
 .chatItem {
   width: 100%;
+  /* Ширина элемента занимает всю доступную ширину */
   display: grid;
+  /* Используем grid для выравнивания элементов */
   grid-template-columns: 1fr 0fr;
+  /* Делаем один столбец гибким, а второй фиксированным */
   align-items: center;
+  /* Выравниваем по центру по вертикали */
   gap: 10px;
+  /* Расстояние между элементами */
   background-color: var(--button-background-2);
+  /* Фон для элемента чата */
   border-radius: 30px;
+  /* Скругляем углы */
   padding: 30px 20px;
+  /* Отступы внутри элемента */
 }
 
+/* .messageWrapper - Обертка для содержимого сообщения */
 .messageWrapper {
   display: flex;
+  /* Используем flexbox для выравнивания элементов */
   align-items: center;
+  /* Центрируем по вертикали */
   justify-content: space-between;
+  /* Размещаем элементы по краям */
   gap: 20px;
+  /* Расстояние между элементами */
 }
 
+/* .messageContent - Контейнер для сообщения и аватара */
 .messageContent {
   display: flex;
+  /* Используем flexbox для выравнивания аватара и текста */
   align-items: center;
+  /* Центрируем по вертикали */
   gap: 10px;
+  /* Расстояние между элементами */
 }
 
+/* .avatar - Аватар пользователя */
 .avatar {
   width: 50px;
+  /* Ширина аватара */
   height: 50px;
+  /* Высота аватара */
   border-radius: 50%;
+  /* Круглый аватар */
 }
 
+/* .messageInfo - Информация о сообщении (имя и текст) */
 .messageInfo {
   display: flex;
+  /* Используем flexbox для выравнивания имени и текста */
   flex-direction: column;
+  /* Размещаем элементы по вертикали */
   gap: 10px;
+  /* Расстояние между элементами */
   color: var(--basic-text-color);
+  /* Цвет текста */
   font-size: 20px;
+  /* Размер шрифта */
 }
 
+/* .textContent - Контейнер для текста и времени сообщения */
 .textContent {
   display: flex;
+  /* Используем flexbox для выравнивания текста и времени */
   gap: 10px;
+  /* Расстояние между элементами */
 }
 
-.delete_btn button{
+/* .delete_btn button - Стиль кнопки удаления сообщения */
+.delete_btn button {
   font-size: 20px;
+  /* Размер шрифта */
   background-color: transparent;
+  /* Прозрачный фон */
   color: var(--basic-text-color);
+  /* Цвет текста */
   padding: 0;
+  /* Убираем отступы */
   border-bottom: 1px solid var(--basic-text-color);
+  /* Нижняя граница кнопки */
   margin-right: 10px;
+  /* Отступ справа */
 }
 
+/* .data - Стиль для отображения времени */
 .data {
   color: var(--basic-text-color);
+  /* Цвет текста */
   opacity: 50%;
+  /* Полупрозрачность текста */
   font-size: 20px;
+  /* Размер шрифта */
 }

@@ -1,10 +1,15 @@
 import React from "react";
 
-const Genres = ({genres}) => {
+// Компонент для отображения списка жанров
+const Genres = ({ genres }) => {
   return (
     <ul>
-      {genres.map(genre => {
-        return <li key={genre.mal_id}>{genre.name}</li>
+      {/* Проходим по массиву жанров и отображаем каждый жанр в списке */}
+      {genres.map((genre) => {
+        return (
+          // Каждый жанр отображается в элементе списка (li) с уникальным ключом
+          <li key={genre.mal_id}>{genre.name}</li>
+        );
       })}
     </ul>
   );

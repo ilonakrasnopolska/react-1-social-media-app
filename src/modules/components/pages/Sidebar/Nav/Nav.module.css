@@ -1,27 +1,36 @@
 .list {
   display: grid;
+  /* Используем grid layout для списка */
   grid-gap: 10px;
+  /* Расстояние между элементами списка */
   margin-bottom: 100px;
+  /* Отступ снизу */
 }
 
 .item:first-child {
   padding-top: 20px;
+  /* Увеличиваем верхний отступ для первого элемента списка */
 }
 
 .item:nth-child(4n) {
   margin-bottom: 50px;
+  /* Устанавливаем дополнительный отступ снизу для каждого 4-го элемента */
 }
 
 .link {
   color: var(--primary-text-color);
+  /* Цвет текста для ссылок */
   font-size: 30px;
+  /* Размер шрифта */
   font-weight: 500;
+  /* Толщина шрифта */
   padding: 5px 40px;
+  /* Внутренние отступы (слева и справа 40px) */
 }
 
 .active {
   color: var(--active-color);
+  /* Цвет текста для активной ссылки */
   background-color: var(--button-background-1);
+  /* Фоновый цвет для активной ссылки */
 }
-
-
