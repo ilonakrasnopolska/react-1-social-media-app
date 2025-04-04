@@ -7,7 +7,7 @@ import { ClipLoader } from "react-spinners";
 
 const AnimeList = ({ filteredList, hasResults, isLoading, t }) => {
   // Используем хук для загрузки аниме
-  useFetchAndDispatch(() => fetchAnime(filteredList), [filteredList]);
+  useFetchAndDispatch(fetchAnime(filteredList), [filteredList]);
 
   return (
     <div className={Classes.anime_list_box}>

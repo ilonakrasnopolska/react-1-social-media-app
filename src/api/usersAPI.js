@@ -1,5 +1,8 @@
 import fetchData from "./fetchData"; // Импорт функции для загрузки данных
-import { setUsersList } from "../redux/FindFriendsReducer/find-friends-reducer"; // Импорт экшена для установки списка пользователей
+import {
+  setUsersList,
+  setTotalUsersCount,
+} from "../redux/FindFriendsReducer/find-friends-reducer"; // Импорт экшена для установки списка пользователей
 import {
   startLoading,
   stopLoading,
@@ -8,14 +11,15 @@ import avatars from "../assets/Avatars-src"; // Импорт изображен�
 import { baseMessageUrl } from "../constants/constants"; // Импорт базового URL для сообщений
 
 // Функция для загрузки пользователей
-export const fetchUsers = (filteredFriends) => (dispatch) => {
+export const fetchUsers = (pageSize, currentPage) => (dispatch) => {
   // Если уже есть отфильтрованные пользователи, не выполняем запрос
-  if (filteredFriends.length > 0) return;
-
   dispatch(startLoading()); // Запуск индикатора загрузки
 
   // Выполняем запрос на сервер для получения списка пользователей
-  fetchData("https://randomuser.me/api/?results=10", {})
+  fetchData(
+    `https://randomuser.me/api/?results=${pageSize}&page=${currentPage}&seed=customseed`,
+    {}
+  )
     .then((data) => {
       // Если данные получены, создаем массив пользователей
       if (data && data.results) {
@@ -34,6 +38,7 @@ export const fetchUsers = (filteredFriends) => (dispatch) => {
 
         // Диспатчим список пользователей в редьюсер
         dispatch(setUsersList(usersArr));
+        dispatch(setTotalUsersCount(20));
       }
     })
     .catch((error) => {

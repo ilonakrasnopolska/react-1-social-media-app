@@ -7,7 +7,7 @@ import { fetchPosts } from "../../../../../../api/profileAPI"; // Импорт �
 
 const MyPosts = ({ posts, isLoading, t }) => {
   // Вызов хука для выполнения запроса на получение постов
-  useFetchAndDispatch(() => fetchPosts(posts));
+  useFetchAndDispatch(fetchPosts(posts));
 
   return (
     <section className="myPosts section">

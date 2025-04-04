@@ -7,8 +7,7 @@ import { ClipLoader } from "react-spinners"; // Спиннер для отобр
 
 const Posts = ({ isLoading, posts, t }) => {
   // Хук useFetchAndDispatch вызывает функцию для загрузки постов
-  useFetchAndDispatch(() => fetchFeeds(posts));
-
+  useFetchAndDispatch(fetchFeeds(posts));
   return (
     <div className={Classes.feeds}>
       {isLoading ? (

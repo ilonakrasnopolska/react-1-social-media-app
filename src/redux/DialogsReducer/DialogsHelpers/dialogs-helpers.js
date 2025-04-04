@@ -20,42 +20,27 @@ const findById = (state, id) => {
 // Хелпер для установки списка пользователей
 export const setUsersListHelper = (state, action) => {
   const usersArr = action.payload; // Получаем список пользователей из действия
-  state.users = usersArr; // Обновляем список пользователей
+
+  // Находим уже существующие ID пользователей в списке
+  const existingIds = new Set(state.users.map((u) => u.userId));
+
+  // Фильтруем новые пользователи, чтобы избежать добавления дубликатов
+  const newUsers = usersArr.filter((u) => !existingIds.has(u.userId));
+
+  // Добавляем новых пользователей в список
+  state.users.push(...newUsers);
+
+  // Обновляем список контактов, добавляя новых пользователей
   state.contacts = [
-    ...usersArr,
-    {
-      name: "Violet",
-      userId: uuidv4(),
-      url: `${baseMessageUrl}uuidv4()`,
-      avatar: `${avatars.violetPic}`,
+    ...state.contacts,
+    ...newUsers.map((user) => ({
+      ...user,
       chat: {
         chatId: uuidv4(),
-        participants: ["Violet", "Ilona Sue"],
+        participants: [user.name, CURRENT_USER_NAME],
         messages: [],
       },
-    },
-    {
-      name: "Anna",
-      userId: uuidv4(),
-      url: `${baseMessageUrl}uuidv4()`,
-      avatar: `${avatars.annaPic}`,
-      chat: {
-        chatId: uuidv4(),
-        participants: ["Anna", "Ilona Sue"],
-        messages: [],
-      },
-    },
-    {
-      name: "Artur",
-      userId: uuidv4(),
-      url: `${baseMessageUrl}uuidv4()`,
-      avatar: `${avatars.arturPic}`,
-      chat: {
-        chatId: uuidv4(),
-        participants: ["Artur", "Ilona Sue"],
-        messages: [],
-      },
-    },
+    })),
   ];
 };
 

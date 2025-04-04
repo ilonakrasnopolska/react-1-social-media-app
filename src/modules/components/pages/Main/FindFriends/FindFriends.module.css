@@ -143,3 +143,27 @@
   height: 700px;
   /* Высота блока 700px */
 }
+
+/* Стили для контейнера кнопок пагинации */
+.pagination {
+  display: flex;
+  /* Используем flex-контейнер */
+  gap: 15px;
+}
+
+/* Стили для кнопок пагинации */
+.pagination button {
+  font-size: 18px;
+  /* Размер шрифта 18px */
+  font-weight: 600;
+  background-color: transparent;
+  padding: 5px 5px 0 5px;
+  color: var(--content-background-3);
+}
+
+/* Стили для кнопки пагинации, когда она активна */
+.pagination .selectedPage {
+  /* Размер шрифта 27px */
+  font-size: 27px;
+  border-bottom: 3px solid var(--content-background-3);
+}

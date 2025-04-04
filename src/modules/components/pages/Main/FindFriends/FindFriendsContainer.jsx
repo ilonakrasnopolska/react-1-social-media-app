@@ -4,8 +4,13 @@ import useResetSearchQuery from "../../../../hooks/useResetSearchQuery";
 import FindFriends from "./FindFriends";
 import useFilteredUsers from "../../../../hooks/useFilteredUsers";
 import useData from "../../../../hooks/useData";
+import usePagination from "../../../../hooks/usePagination";
+import usePageChange from "../../../../hooks/usePageChange";
 
 const FindFriendsContainer = ({ t }) => {
+  //Сбросить строку поиска при изменении компоненты
+  useResetSearchQuery();
+
   // Получаем состояние загрузки
   const isLoading = useData("loading");
 
@@ -13,11 +18,20 @@ const FindFriendsContainer = ({ t }) => {
   const { useTextChangeHandlers } = useInputHandlers(setSearchQuery);
 
   // Получаем отфильтрованный список пользователей и информацию о наличии результатов
-  const { findFriends, filteredList, hasResults } =
-    useFilteredUsers("findFriends");
-
+  const {
+    findFriends,
+    filteredList,
+    pageSize,
+    totalUsersCount,
+    currentPage,
+    hasResults,
+  } = useFilteredUsers("findFriends");
   // Текст для поиска нового друга
   const searchNewFriendText = findFriends.searchNewFriendText;
+  // Используем хук для изменения страницы
+  const changePage = usePageChange();
+  // Используем хук пагинации
+  const { pages } = usePagination(totalUsersCount, pageSize, currentPage);
 
   return (
     // Компонент, который отображает список найденных друзей
@@ -27,9 +41,13 @@ const FindFriendsContainer = ({ t }) => {
       hasResults={hasResults}
       searchNewFriendText={searchNewFriendText}
       isLoading={isLoading}
+      pageSize={pageSize}
+      currentPage={currentPage}
+      changePage={changePage}
+      pages={pages}
+      totalUsersCount={totalUsersCount}
       // Передаем хэндлеры и функцию сброса запроса для поиска
       useTextChangeHandlers={useTextChangeHandlers}
-      useResetSearchQuery={() => useResetSearchQuery}
     />
   );
 };

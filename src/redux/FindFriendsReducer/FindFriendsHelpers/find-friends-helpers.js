@@ -18,6 +18,17 @@ export const setUsersListHelper = (state, action) => {
   state.filteredFriends = action.payload;
 };
 
+// Функция для установки текущей страницы
+export const setCurrentPageHelper = (state, action) => {
+  state.currentPage = action.payload; // Обновляем текущую страницу
+  filterUsersListHelper(state); // Применяем фильтрацию
+};
+
+// Функция для установки общего кол-во пользователей
+export const setTotalUsersCountHelper = (state, action) => {
+  state.totalUsersCount = action.payload;
+};
+
 // Функция для обновления текста поискового запроса
 export const updateSearchNewFriendTextHelper = (state, action) => {
   // Обновляем текст поискового запроса
@@ -42,17 +53,15 @@ export const unFollowHelper = (state, action) => {
 
 // Функция для фильтрации списка друзей по поисковому запросу
 export const filterUsersListHelper = (state) => {
-  // Если поисковый запрос пустой, показываем всех друзей
   if (state.searchNewFriendText === "") {
-    state.filteredFriends = state.friends;
+    state.filteredFriends = state.friends; // Если запрос пустой, показываем всех пользователей
   } else {
-    // Фильтруем друзей по имени, если в поисковом запросе что-то есть
     state.filteredFriends = state.friends.filter((user) => {
       const userName = user.name;
       return userName
         .toLowerCase()
         .includes(state.searchNewFriendText.toLowerCase());
-    });
+    }); // Фильтруем по имени
   }
 };
 
