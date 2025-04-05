@@ -11,13 +11,16 @@ import {
   showAnimeListHelper
 } from "./AnimeHelpers/anime-helpers";
 
-// Начальное состояние для слайса аниме
 const initialState = {
-  anime: [], // Список всех аниме
-  watchList: [], // Список аниме для просмотра
-  watchedList: [], // Список просмотренных аниме
-  newSearchAnimeText: "", // Текст поискового запроса
-  filteredAnime: [], // Отфильтрованный список аниме
+  anime: [], // массив аниме для получения данных с сервера
+  watchList: [], // массив аниме - Планирую смотреть
+  watchedList: [], // массив аниме - Уже смотрела
+  newSearchAnimeText: "", // Поисковый текст
+  filteredAnime: [], //массив аниме - Только для хранения данных с поиска
+  currentList: [], // массив для UI показывает нужный список в нужный момент
+  pageSize: 6, //Кол-во аниме на странице
+  totalAnimeCount: 30, //Общее кол-во аниме
+  currentPage: 1, //Текущая страница
 };
 
 // Создание слайса аниме

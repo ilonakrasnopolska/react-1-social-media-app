@@ -9,9 +9,10 @@ const Anime = ({
   newSearchAnimeText, // Текст для поиска аниме
   useTextChangeHandlers, // Хук для обработки изменений текста
   useResetSearchQuery, // Хук для сброса поискового запроса
-  filteredList, // Отфильтрованный список аниме
+  currentList, // список аниме
   hasResults, // Есть ли результаты поиска
   isLoading, // Флаг загрузки данных
+  animeList, //Базовый массив для получения данных с сервера
 }) => {
   return (
     <section className="anime section">
@@ -29,9 +30,10 @@ const Anime = ({
 
         {/* Компонент для отображения списка аниме */}
         <AnimeList
-          filteredList={filteredList}
+          currentList={currentList}
           hasResults={hasResults}
           isLoading={isLoading}
+          animeList={animeList}
           t={t}
         />
       </div>

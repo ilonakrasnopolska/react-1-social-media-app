@@ -1,22 +1,34 @@
 import useData from "./useData";
 
-// Кастомный хук для получения отфильтрованного списка аниме
-const useFilteredAnime = (reducer) => {
+// Кастомный хук для получения данных из редьюсера аниме
+const useGetDataAnime = (reducer) => {
   // Используем хук useData для получения данных из Redux
   const anime = useData(reducer);
 
   // Извлекаем отфильтрованный список аниме, список для просмотра и просмотренные
-  const filteredList = anime.filteredAnime;
   const watchList = anime.watchList;
   const watchedList = anime.watchedList;
-
+  const currentList = anime.currentList;
   // Проверяем, есть ли результаты в отфильтрованном списке
-  const hasResults = Array.isArray(filteredList) && filteredList.length > 0;
+  const hasResults = currentList.length > 0;
+
+  const pageSize = anime.pageSize;
+  const totalAnimeCount = anime.totalAnimeCount;
+  const currentPage = anime.currentPage;
 
   // Возвращаем необходимые данные:
   // оригинальные данные аниме, отфильтрованный список, флаг наличия результатов,
   // а также списки для просмотра и просмотренные
-  return { anime, filteredList, hasResults, watchList, watchedList };
+  return {
+    anime,
+    hasResults,
+    watchList,
+    watchedList,
+    currentList,
+    pageSize,
+    totalAnimeCount,
+    currentPage,
+  };
 };
 
-export default useFilteredAnime;
+export default useGetDataAnime;

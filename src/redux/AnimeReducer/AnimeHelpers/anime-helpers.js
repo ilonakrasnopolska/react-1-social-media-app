@@ -1,25 +1,9 @@
 import { ANIME_LIST_TYPES } from "../../../constants/constants";
 
-// Хелпер-функция для переключения аниме в списке (добавить или удалить в зависимости от наличия)
-const toggleAnimeInList = (animeList, filteredAnime, action) => {
-  const anime = action.payload.animeObj; // Получаем объект аниме из payload
-  const index = animeList.findIndex((item) => item.id === anime.id); // Находим индекс аниме в основном списке
-  const indexFiltered = filteredAnime.findIndex((item) => item.id === anime.id); // Находим индекс аниме в отфильтрованном списке
-
-  if (index !== -1) {
-    // Если аниме уже существует в списке, удаляем его из обоих списков
-    animeList.splice(index, 1);
-    filteredAnime.splice(indexFiltered, 1);
-  } else {
-    // Если аниме нет в списке, добавляем его в основной список
-    animeList.push(anime);
-  }
-};
-
 // Устанавливаем список аниме и отфильтрованный список
 export const setAnimeListHelper = (state, action) => {
   state.anime = action.payload; // Устанавливаем все аниме в состояние
-  state.filteredAnime = action.payload; // Отфильтрованный список аниме изначально содержит все аниме
+  state.currentList = action.payload; //Устанавливаем все аниме в текущий лист
 };
 
 // Обновляем текст поиска
@@ -31,13 +15,21 @@ export const updateSearchAnimeTextHelper = (state, action) => {
 export const filterAnimeListHelper = (state) => {
   if (state.newSearchAnimeText === "") {
     // Если текст поиска пустой, показываем все аниме
-    state.filteredAnime = state.anime;
+    state.currentList = state.anime;
+    state.filteredAnime = [];
   } else {
     // Иначе фильтруем аниме по имени на основе текста поиска
-    state.filteredAnime = state.anime.filter((anime) => {
+    state.currentList = state.anime.filter((anime) => {
       const animeName = anime.name.toLowerCase();
+      state.filteredAnime = state.currentList;
       return animeName.includes(state.newSearchAnimeText.toLowerCase());
     });
+  }
+  // Проверка на пустоту после фильтрации
+  if (state.filteredAnime.length === 0) {
+    state.hasResults = false; // Пишем, что нет результатов
+  } else {
+    state.hasResults = true;
   }
 };
 
@@ -49,12 +41,38 @@ export const clearSearchQueryHelper = (state) => {
 
 // Переключаем аниме в списке для просмотра (добавляем или удаляем)
 export const toggleWatchListHelper = (state, action) => {
-  toggleAnimeInList(state.watchList, state.filteredAnime, action); // Переключаем аниме в списке для просмотра
+  const anime = action.payload.animeObj; // Получаем объект аниме из payload
+  const index = state.watchList.findIndex((item) => item.id === anime.id); // Находим индекс аниме в списке
+
+  if (index !== -1) {
+    // Если аниме уже существует в списке, удаляем его
+    state.watchList = state.watchList.filter((item) => item.id !== anime.id);
+    state.currentList = state.currentList.filter(
+      (item) => item.id !== anime.id
+    );
+  } else {
+    // Если аниме нет в списке, добавляем его
+    state.watchList.push(anime);
+  }
 };
 
 // Переключаем аниме в списке просмотренных (добавляем или удаляем)
 export const toggleWatchedListHelper = (state, action) => {
-  toggleAnimeInList(state.watchedList, state.filteredAnime, action); // Переключаем аниме в списке просмотренных
+  const anime = action.payload.animeObj; // Получаем объект аниме из payload
+  const index = state.watchedList.findIndex((item) => item.id === anime.id); // Находим индекс аниме в списке
+
+  if (index !== -1) {
+    // Если аниме уже существует в списке, удаляем его
+    state.watchedList = state.watchedList.filter(
+      (item) => item.id !== anime.id
+    );
+    state.currentList = state.currentList.filter(
+      (item) => item.id !== anime.id
+    );
+  } else {
+    // Если аниме нет в списке, добавляем его
+    state.watchedList.push(anime);
+  }
 };
 
 // Устанавливаем рейтинг для аниме
@@ -95,16 +113,15 @@ export const setRatingHelper = (state, action) => {
 export const showAnimeListHelper = (state, action) => {
   switch (action.payload.text) {
     case ANIME_LIST_TYPES.WATCH:
-      state.filteredAnime = state.watchList.length > 0 ? state.watchList : []; // Показываем список для просмотра, если он не пуст
+      state.currentList = state.watchList;
       break;
     case ANIME_LIST_TYPES.WATCHED:
-      state.filteredAnime =
-        state.watchedList.length > 0 ? state.watchedList : []; // Показываем список просмотренных, если он не пуст
+      state.currentList = state.watchedList;
       break;
     case ANIME_LIST_TYPES.ALL:
-      state.filteredAnime = state.anime.length > 0 ? state.anime : []; // Показываем все аниме, если оно доступно
+      state.currentList = state.anime;
       break;
     default:
-      console.log("not found"); // Если тип не найден, выводим сообщение
+      console.log("not found");
   }
 };

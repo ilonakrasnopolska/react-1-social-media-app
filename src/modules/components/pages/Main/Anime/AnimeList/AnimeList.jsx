@@ -5,26 +5,22 @@ import { fetchAnime } from "../../../../../../api/animeAPI";
 import { useFetchAndDispatch } from "../../../../../hooks/useFetchAndDispatch";
 import { ClipLoader } from "react-spinners";
 
-const AnimeList = ({ filteredList, hasResults, isLoading, t }) => {
+const AnimeList = ({ currentList, hasResults, isLoading, animeList, t }) => {
   // Используем хук для загрузки аниме
-  useFetchAndDispatch(fetchAnime(filteredList), [filteredList]);
-
+  useFetchAndDispatch(fetchAnime(animeList, hasResults), [animeList]);
   return (
     <div className={Classes.anime_list_box}>
-      {/* Если идет загрузка, показываем спиннер */}
       {isLoading ? (
         <div className={Classes.spinner}>
           <ClipLoader color="#194770" size={50} />
         </div>
       ) : hasResults ? (
-        // Если есть результаты, отображаем список аниме
         <ul className={Classes.list}>
-          {filteredList.map((anime) => (
+          {currentList.map((anime) => (
             <AnimeItem anime={anime} key={anime.id} t={t} />
           ))}
         </ul>
       ) : (
-        // Если результатов нет, показываем сообщение
         <div className={Classes.noResults}>{t("Empty")}</div>
       )}
     </div>

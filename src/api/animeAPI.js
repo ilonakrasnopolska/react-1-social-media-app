@@ -17,7 +17,6 @@ export const fetchAnime = (animeData) => (dispatch) => {
   ) {
     return;
   }
-
   // Показываем индикатор загрузки
   dispatch(startLoading());
 
