@@ -5,13 +5,16 @@ const useGetDataAnime = (reducer) => {
   // Используем хук useData для получения данных из Redux
   const anime = useData(reducer);
 
-  // Извлекаем отфильтрованный список аниме, список для просмотра и просмотренные
-  const watchList = anime.watchList;
-  const watchedList = anime.watchedList;
+  // Извлекаем данные из редюсера аниме
   const currentList = anime.currentList;
+  const newSearchAnimeText = anime.newSearchAnimeText;
+  const loadedPages = anime.loadedPages;
+  const animePages = anime.animePages;
+  const listType = anime.pageType;
   // Проверяем, есть ли результаты в отфильтрованном списке
   const hasResults = currentList.length > 0;
 
+  //Получаем данные для пагинации
   const pageSize = anime.pageSize;
   const totalAnimeCount = anime.totalAnimeCount;
   const currentPage = anime.currentPage;
@@ -22,12 +25,14 @@ const useGetDataAnime = (reducer) => {
   return {
     anime,
     hasResults,
-    watchList,
-    watchedList,
+    listType,
     currentList,
     pageSize,
     totalAnimeCount,
     currentPage,
+    newSearchAnimeText,
+    loadedPages,
+    animePages
   };
 };
 

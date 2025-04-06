@@ -31,7 +31,7 @@ const FindFriendsContainer = ({ t }) => {
   // Используем хук для изменения страницы
   const changePage = usePageChange();
   // Используем хук пагинации
-  const { pages } = usePagination(totalUsersCount, pageSize, currentPage);
+  const { pages } = usePagination(totalUsersCount, pageSize);
 
   return (
     // Компонент, который отображает список найденных друзей

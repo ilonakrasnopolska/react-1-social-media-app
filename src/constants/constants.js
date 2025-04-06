@@ -11,7 +11,8 @@ export const CURRENT_USER_NAME = "Ilona Sue";
 export const ANIME_LIST_TYPES = {
   WATCH: 'Watch',     // Аниме, которое нужно смотреть
   WATCHED: 'Watched', // Аниме, которое уже просмотрено
-  ALL: 'Anime'        // Все аниме
+  ALL: 'Anime',        // Все аниме
+  SEARCH: 'Search'    //Поиск аниме
 };
 
 // Функция для генерации уникального ключа на основе термина и индекса

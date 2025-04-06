@@ -12,44 +12,46 @@ const AnimeContainer = ({ t }) => {
   // Получаем флаг загрузки из хука useData
   const isLoading = useData("loading");
 
-  // Хук для обработки изменений текста поиска
-  const { useTextChangeHandlers } = useInputHandlers(setSearchQuery);
+  // Сбросить поисковый запрос перед рендером компонента
+  useResetSearchQuery();
 
   // Получаем отфильтрованные данные аниме, список аниме, есть ли результаты и списки просмотра
   const {
     anime,
     hasResults,
-    watchList,
-    watchedList,
     currentList,
-    totalAnimeCount,
+    listType,
     pageSize,
     currentPage,
+    totalAnimeCount,
+    newSearchAnimeText,
+    loadedPages,
+    animePages
   } = useGetDataAnime("anime");
-  // Извлекаем текст для поиска
-  const newSearchAnimeText = anime.newSearchAnimeText;
+
+  // Хук для обработки изменений текста поиска
+  const { useTextChangeHandlers } = useInputHandlers(setSearchQuery);
   // Используем хук для изменения страницы
   const changePage = usePageChange();
   // Используем хук пагинации
-  const { pages } = usePagination(totalAnimeCount, pageSize, currentPage);
+  const { pages } = usePagination(totalAnimeCount, pageSize);
 
   return (
     <Anime
       t={t} // Передаем функцию перевода для текста
       newSearchAnimeText={newSearchAnimeText} // Передаем текст для поиска
       useTextChangeHandlers={useTextChangeHandlers} // Функция для изменения текста поиска
-      useResetSearchQuery={useResetSearchQuery} // Функция для сброса поиска
       animeList={anime.anime} //Базовый массив в который приходит список из сервера
+      animePages={animePages} //Страницы с аниме
       currentList={currentList} // Отфильтрованные аниме
       hasResults={hasResults} // Есть ли результаты поиска
       isLoading={isLoading} // Флаг загрузки
-      watchList={watchList} // Список аниме, которые находятся в списке "к просмотру"
-      watchedList={watchedList} // Список аниме, которые уже были просмотрены
       pages={pages} //страницы для пагинации
-      totalAnimeCount={totalAnimeCount} //общее кол-во аниме
       pageSize={pageSize} //аниме кол-во на 1 странице
       currentPage={currentPage} //текущая страница
       changePage={changePage} //функция смены страницы
+      loadedPages={loadedPages} //Загруженные страницы
+      listType={listType} //Тип страницы
     />
   );
 };

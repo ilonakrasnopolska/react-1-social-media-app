@@ -8,11 +8,17 @@ const Anime = ({
   t, // Функция для перевода
   newSearchAnimeText, // Текст для поиска аниме
   useTextChangeHandlers, // Хук для обработки изменений текста
-  useResetSearchQuery, // Хук для сброса поискового запроса
+  animeList, //Базовый массив для получения данных с сервера
+  animePages, //Загруженные страницы с аниме
   currentList, // список аниме
   hasResults, // Есть ли результаты поиска
   isLoading, // Флаг загрузки данных
-  animeList, //Базовый массив для получения данных с сервера
+  pages, //страницы для пагинации
+  pageSize, //аниме кол-во на 1 странице
+  currentPage, //текущая страница
+  changePage, //функция смены страницы
+  loadedPages, //Загруженные страницы
+  listType, //Тип страницы
 }) => {
   return (
     <section className="anime section">
@@ -21,7 +27,6 @@ const Anime = ({
         <SearchAnime
           newSearchAnimeText={newSearchAnimeText}
           useTextChangeHandlers={useTextChangeHandlers}
-          useResetSearchQuery={useResetSearchQuery}
           t={t}
         />
 
@@ -34,7 +39,14 @@ const Anime = ({
           hasResults={hasResults}
           isLoading={isLoading}
           animeList={animeList}
+          pages={pages}
+          currentPage={currentPage}
+          changePage={changePage}
+          pageSize={pageSize}
           t={t}
+          loadedPages={loadedPages}
+          animePages={animePages}
+          listType={listType}
         />
       </div>
     </section>

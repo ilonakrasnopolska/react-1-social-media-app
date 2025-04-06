@@ -1,4 +1,4 @@
-const usePagination = (totalCount, pageSize, currentPage) => {
+const usePagination = (totalCount, pageSize) => {
   // Если общее количество пользователей равно 0, то пагинация не нужна
   if (totalCount === 0) {
     return { pages: [], pagesCount: 0 };

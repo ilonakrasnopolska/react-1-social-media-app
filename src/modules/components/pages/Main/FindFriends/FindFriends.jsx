@@ -5,6 +5,8 @@ import UserCardContainer from ".//UserCard/UserCardContainer";
 import { fetchUsers } from "../../../../../api/usersAPI";
 import { useFetchAndDispatch } from "../../../../hooks/useFetchAndDispatch";
 import { ClipLoader } from "react-spinners";
+import { Pagination } from "../../../common/Pagination/Pagination";
+import { setCurrentPage } from "../../../../../redux/FindFriendsReducer/find-friends-reducer";
 
 const FindFriends = ({
   t,
@@ -58,17 +60,13 @@ const FindFriends = ({
           )}
 
           {/* Блок пагинации */}
-          <div className={Classes.pagination}>
-            {pages.map((p) => (
-              <button
-                key={p}
-                className={currentPage === p ? Classes.selectedPage : ""}
-                onClick={() => changePage(p)} // Обработчик для изменения текущей страницы
-              >
-                {p}
-              </button>
-            ))}
-          </div>
+          <Pagination
+            pages={pages}
+            Classes={Classes}
+            currentPage={currentPage}
+            changePage={changePage}
+            setCurrentPageAction={setCurrentPage}
+          />
         </div>
       </div>
     </section>
