@@ -16,6 +16,7 @@ const ProfileContainer = ({ t }) => {
 
   return (
     // Передаем данные в компонент Profile
+    <div>
     <Profile
       wallpaper={wallpaper}
       userData={userData}
@@ -23,6 +24,7 @@ const ProfileContainer = ({ t }) => {
       isLoading={isLoading}
       t={t}
     />
+    </div>
   );
 };
 

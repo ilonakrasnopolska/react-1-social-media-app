@@ -1,10 +1,9 @@
 import { ANIME_LIST_TYPES } from "../../../constants/constants";
-
 // Устанавливаем список аниме и отфильтрованный список
 export const setAnimeListHelper = (state, action) => {
   state.currentList = action.payload; //Устанавливаем все аниме в текущий лист
   state.filteredAnime = []; // Очищаем фильтрованный список
-  const allAnime = [...state.fullList, ...action.payload];
+  const allAnime = [...state.fullList, ...action.payload.map(anime => ({ ...anime }))];
   const uniqueAnime = allAnime.filter(
     (anime, index, self) => index === self.findIndex((a) => a.id === anime.id)
   );
@@ -61,7 +60,7 @@ export const setLoadedPageHelper = (state, action) => {
     //добаляем обьекты аниме в массив
     state.animePages.push({
       page: action.payload,
-      animeList: state.currentList,
+      animeList: state.currentList.map(anime => ({ ...anime })), // копируем каждый объект
     });
   }
 };
@@ -74,35 +73,36 @@ export const clearSearchQueryHelper = (state) => {
 
 // Переключаем аниме в списке для просмотра (добавляем или удаляем)
 export const toggleWatchListHelper = (state, action) => {
-  const anime = action.payload.animeObj;
+  const anime = { ...action.payload.animeObj }; // Копируем объект, чтобы избежать мутаций
   const index = state.watchList.findIndex((item) => item.id === anime.id);
 
   if (index !== -1) {
-    // Если аниме уже существует в списке, удаляем его
     state.watchList = state.watchList.filter((item) => item.id !== anime.id);
-    state.currentList = state.currentList.filter(
-      (item) => item.id !== anime.id
-    );
   } else {
-    // Если аниме нет в списке, добавляем его
-    state.watchList.push(anime);
+    state.watchList.push({ ...anime });
+  }
+
+  // Обновляем currentList, если сейчас мы в режиме WATCH
+  if (state.pageType === ANIME_LIST_TYPES.WATCH) {
+    state.currentList = [...state.watchList];
   }
 };
 
 // Переключаем аниме в списке просмотренных (добавляем или удаляем)
 export const toggleWatchedListHelper = (state, action) => {
-  const anime = action.payload.animeObj;
+  const anime = { ...action.payload.animeObj };
   const index = state.watchedList.findIndex((item) => item.id === anime.id);
 
   if (index !== -1) {
-    // Если аниме уже существует в списке, удаляем его
     state.watchedList = state.watchedList.filter(
       (item) => item.id !== anime.id
     );
-
   } else {
-    // Если аниме нет в списке, добавляем его
-    state.watchedList.push(anime);
+    state.watchedList.push({ ...anime });
+  }
+
+  if (state.pageType === ANIME_LIST_TYPES.WATCHED) {
+    state.currentList = [...state.watchedList];
   }
 };
 
@@ -155,7 +155,9 @@ export const showAnimeListHelper = (state, action) => {
       state.pageType = ANIME_LIST_TYPES.WATCHED;
       break;
     case ANIME_LIST_TYPES.ALL:
-      state.currentList = state.fullList;
+      state.currentList = state.animePages.find(
+        (item) => item.page === state.currentPage
+      ).animeList;
       state.pageType = ANIME_LIST_TYPES.ALL;
       break;
     default:

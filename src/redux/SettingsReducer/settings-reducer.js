@@ -275,6 +275,7 @@ const initialState = {
       userNameError: "",
       messageError: "",
     },
+    isMessageSend: false,
   },
   logOut: {
     goBack: {
@@ -334,6 +335,7 @@ const settingsSlice = createSlice({
     // Отправка сообщения в службу поддержки
     sendSupportMessage: (state) => {
       sendSupportMessageHelper(state);
+      state.helpCenter.isMessageSend = false;
     },
     // Валидация формы запроса помощи
     validateRequestForHelpForm: (state) => {

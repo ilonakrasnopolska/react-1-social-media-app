@@ -11,6 +11,7 @@ const useGetDataAnime = (reducer) => {
   const loadedPages = anime.loadedPages;
   const animePages = anime.animePages;
   const listType = anime.pageType;
+  const fullList = anime.fullList;
   // Проверяем, есть ли результаты в отфильтрованном списке
   const hasResults = currentList.length > 0;
 
@@ -32,7 +33,8 @@ const useGetDataAnime = (reducer) => {
     currentPage,
     newSearchAnimeText,
     loadedPages,
-    animePages
+    animePages,
+    fullList
   };
 };
 

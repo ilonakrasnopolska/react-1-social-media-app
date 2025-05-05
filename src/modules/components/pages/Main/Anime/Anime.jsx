@@ -31,7 +31,7 @@ const Anime = ({
         />
 
         {/* Компонент для фильтрации списка аниме */}
-        <AnimeListFilter t={t} />
+        <AnimeListFilter t={t} listType={listType}/>
 
         {/* Компонент для отображения списка аниме */}
         <AnimeList

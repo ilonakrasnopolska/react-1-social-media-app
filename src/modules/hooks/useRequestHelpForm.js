@@ -9,15 +9,16 @@ import {
 // Хук для обработки формы запроса в центр поддержки
 export const useRequestHelpForm = (helpCenter) => {
   const dispatch = useDispatch(); // Получаем dispatch для отправки экшенов в Redux
-  const { requestUserNameText, requestMessageText, errors } = helpCenter; // Деструктуризация состояния из helpCenter
+  const { requestUserNameText, requestMessageText, errors, isMessageSend } = helpCenter; // Деструктуризация состояния из helpCenter
 
   // Обработчик сабмита формы
   const handleFormSubmit = (event) => {
-    event.preventDefault(); // Предотвращаем стандартное поведение формы
-    const isValid = dispatch(validateRequestForHelpForm()); // Валидируем форму через Redux
-    if (isValid) {
-      dispatch(sendSupportMessage()); // Если форма валидна, отправляем запрос в службу поддержки
+    event.preventDefault();
+    dispatch(validateRequestForHelpForm()); // Валидация формы
+    if (isMessageSend) {
+      dispatch(sendSupportMessage()); // Отправляем сообщение, если форма валидна
     }
+    return isMessageSend; // Возвращаем результат валидации для родительского компонента
   };
 
   // Обработчик изменения текста в полях формы

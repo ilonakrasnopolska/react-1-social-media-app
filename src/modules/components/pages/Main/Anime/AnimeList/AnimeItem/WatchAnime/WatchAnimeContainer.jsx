@@ -1,9 +1,9 @@
 import React from "react";
 import { ClipLoader } from "react-spinners";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useFetchAndDispatch } from "../../../../../../../hooks/useFetchAndDispatch";
 import { fetchAnime } from "../../../../../../../../api/animeAPI";
+import useGetDataAnime from "../../../../../../../hooks/useGetDataAnime";
 import useData from "../../../../../../../hooks/useData";
 import WatchAnime from "./WatchAnime";
 import Classes from "../WatchAnime/WatchAnime.module.css";
@@ -15,15 +15,23 @@ const WatchAnimeContainer = ({ t }) => {
   // Получаем ID аниме из параметров маршрута
   const { animeId } = useParams();
 
-  // Извлекаем список аниме и отфильтрованный список из Redux-стора
-  const anime = useSelector((state) => state.anime.anime);
-  const filteredList = useSelector((state) => state.anime.filteredList);
+  // Получаем отфильтрованные данные аниме, список аниме, есть ли результаты и списки просмотра
+  const {
+    pageSize,
+    currentPage,
+    loadedPages,
+    animePages,
+    fullList,
+  } = useGetDataAnime("anime");
 
   // Ищем аниме по ID из списка
-  const animeById = anime.find((el) => el.id === Number(animeId));
+  const animeById = fullList.find((el) => el.id === Number(animeId));
 
   // Используем хук для получения и диспатча данных о выбранном аниме
-  useFetchAndDispatch(() => fetchAnime(animeById, [filteredList]));
+  useFetchAndDispatch(
+    fetchAnime(pageSize, currentPage, loadedPages, animePages),
+    [pageSize, currentPage]
+  );
 
   // Если данные еще загружаются, показываем спиннер
   if (isLoading) {

@@ -1,5 +1,5 @@
 .content {
   background-color: var(--content-background-2);
-  min-height: 325px;
+  height: 100%;
 }
 

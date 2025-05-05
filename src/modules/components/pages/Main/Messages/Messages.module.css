@@ -4,3 +4,14 @@
   grid-template-columns: 300px 1fr; /* Левая колонка 300px, правая занимает оставшееся пространство */
   min-height: 1200px; /* Минимальная высота окна */
 }
+
+.messages_wrapper {
+  height: 100%;
+}
+
+.messages_wrapper > div:first-child {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+

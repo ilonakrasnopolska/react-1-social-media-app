@@ -3,6 +3,7 @@ import {
   setUsersListHelper,
   updateSearchNewFriendTextHelper,
   setCurrentPageHelper,
+  setLoadedPageHelper,
   setTotalUsersCountHelper,
   followHelper,
   unFollowHelper,
@@ -12,12 +13,15 @@ import {
 
 // Начальный стейт для хранения информации о друзьях и поиске
 const initialState = {
-  friends: [], // Список всех друзей
+  users: [], // Список всех друзей
+  usersPages: [], // Объект для хранения пользователей по страницам
+  currentList: [], // массив для UI показывает нужный список в нужный момент
   searchNewFriendText: "", // Текст для поиска новых друзей
-  filteredFriends: [], // Отфильтрованные друзья на основе текста поиска
-  pageSize: 5, //Кол-во пользователей на странице
+  filteredUsers: [], // Отфильтрованные друзья на основе текста поиска
+  pageSize: 10, //Кол-во пользователей на странице
   totalUsersCount: 0, //Общее кол-во пользователей
   currentPage: 1, //Текущая страница
+  loadedPages: [], // Загруженные страницы
 };
 
 const sidebarSlice = createSlice({
@@ -27,6 +31,9 @@ const sidebarSlice = createSlice({
     // Редьюсер для установки списка пользователей
     setUsersList: (state, action) => {
       setUsersListHelper(state, action); // Вызов хелпера для установки списка друзей
+    },
+    setLoadedPage: (state, action) => {
+      setLoadedPageHelper(state, action); //Установить загруженные страницы аниме
     },
     // Редьюсер для обновления строки поиска и фильтрации списка друзей
     setSearchQuery: (state, action) => {
@@ -60,6 +67,7 @@ const sidebarSlice = createSlice({
 export const {
   setUsersList,
   setSearchQuery,
+  setLoadedPage,
   setCurrentPage,
   setTotalUsersCount,
   clearSearchQuery,

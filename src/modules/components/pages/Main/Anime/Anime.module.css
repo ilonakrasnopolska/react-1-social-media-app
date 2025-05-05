@@ -1,8 +1,8 @@
 .container {
-  display: grid;
-  /* Используем grid для создания сетки */
-  place-items: center;
+  display: flex;
+  flex-direction: column;
   /* Выравнивание элементов по центру по обеим осям */
   padding: 0 25px;
   /* Отступы слева и справа по 25px */
+  height: 100%;
 }

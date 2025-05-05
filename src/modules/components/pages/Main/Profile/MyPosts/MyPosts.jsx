@@ -1,18 +1,20 @@
-import React from "react";
 import Classes from "./MyPosts.module.css"; // Импорт CSS модуля для стилей
 import PostContainer from "./Post/PostContainer"; // Импорт компонента контейнера для поста
 import { ClipLoader } from "react-spinners"; // Импорт спиннера для загрузки
 import { useFetchAndDispatch } from "../../../../../hooks/useFetchAndDispatch"; // Хук для выполнения запросов
 import { fetchPosts } from "../../../../../../api/profileAPI"; // Импорт функции для получения постов
+import DeletePostModal from "./Post/DeletePostModal"; // Импорт модалки для удаления поста
+import { useDeleteModal } from "../../../../../hooks/useDeletePostModal";
 
 const MyPosts = ({ posts, isLoading, t }) => {
-  // Вызов хука для выполнения запроса на получение постов
+  const { isModalOpen, openModal, closeModal, confirmDelete } =
+    useDeleteModal();
+
   useFetchAndDispatch(fetchPosts(posts));
 
   return (
     <section className="myPosts section">
       <div className={Classes.content}>
-        {/* Если загрузка, и постов еще нет, показываем спиннер */}
         {isLoading && posts.length === 0 ? (
           <div className={Classes.spinner}>
             <ClipLoader color="#194770" size={50} />{" "}
@@ -20,13 +22,25 @@ const MyPosts = ({ posts, isLoading, t }) => {
           </div>
         ) : (
           <ul className={Classes.list}>
-            {/* Для каждого поста создаем компонент PostContainer */}
             {posts.map((post) => (
-              <PostContainer post={post} key={post.postId} t={t} />
+              <PostContainer
+                key={post.postId}
+                post={post}
+                t={t}
+                onDelete={() => openModal(post)}
+              />
             ))}
           </ul>
         )}
       </div>
+
+      {/* Модалка для удаления */}
+      <DeletePostModal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        onConfirmDelete={confirmDelete}
+        t={t}
+      />
     </section>
   );
 };

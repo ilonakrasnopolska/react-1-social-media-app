@@ -1,6 +1,5 @@
 // Redux slice для управления состоянием аниме
 import { createSlice } from "@reduxjs/toolkit";
-import { current } from "@reduxjs/toolkit";
 import { ANIME_LIST_TYPES } from "../../constants/constants";
 import {
   setAnimeListHelper,
@@ -24,7 +23,7 @@ const initialState = {
   newSearchAnimeText: "", // Поисковый текст
   filteredAnime: [], //массив аниме - Только для хранения данных с поиска
   currentList: [], // массив для UI показывает нужный список в нужный момент
-  pageSize: 6, // Кол-во аниме на странице
+  pageSize: 8, // Кол-во аниме на странице
   totalAnimeCount: 0, // Общее кол-во аниме
   currentPage: 1, // Текущая страница
   loadedPages: [], // Загруженные страницы
@@ -51,7 +50,6 @@ const animeSlice = createSlice({
     },
     setLoadedPage: (state, action) => {
       setLoadedPageHelper(state, action) //Установить загруженные страницы аниме
-      console.log(current(state));
     },
     clearSearchQuery: (state) => {
       clearSearchQueryHelper(state); // Очищаем поисковый запрос и сбрасываем отфильтрованный список

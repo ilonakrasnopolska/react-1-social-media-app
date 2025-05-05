@@ -21,10 +21,13 @@ const FindFriendsContainer = ({ t }) => {
   const {
     findFriends,
     filteredList,
+    currentList,
+    usersPages,
     pageSize,
     totalUsersCount,
     currentPage,
     hasResults,
+    loadedPages,
   } = useFilteredUsers("findFriends");
   // Текст для поиска нового друга
   const searchNewFriendText = findFriends.searchNewFriendText;
@@ -38,6 +41,9 @@ const FindFriendsContainer = ({ t }) => {
     <FindFriends
       t={t}
       filteredFriends={filteredList}
+      currentList={currentList}
+      usersPages={usersPages}
+      loadedPages={loadedPages}
       hasResults={hasResults}
       searchNewFriendText={searchNewFriendText}
       isLoading={isLoading}

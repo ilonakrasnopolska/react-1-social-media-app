@@ -1,3 +1,4 @@
+import { current } from "@reduxjs/toolkit";
 // Обновление данных профиля с помощью action.payload
 export const setProfileDataEditHelper = (state, action) => {
   state.personalAccount.userData = action.payload;
@@ -57,6 +58,7 @@ export const sendSupportMessageHelper = (state) => {
 
   // Проверяем, что имя и сообщение не пустые
   if (state.helpCenter.requestMessageText.trim() !== '' && state.helpCenter.requestUserNameText.trim() !== '') {
+    state.helpCenter.isMessageSend = true;
     const currentTime = new Date();
     const formattedTime = currentTime.toLocaleTimeString('en-GB', {
       hour: '2-digit',
@@ -79,48 +81,57 @@ export const sendSupportMessageHelper = (state) => {
     // Очищаем текстовые поля
     state.helpCenter.requestMessageText = '';
     state.helpCenter.requestUserNameText = '';
-    alert('Message sent!');
   }
 };
 
 // Валидация формы запроса помощи
 export const validateRequestForHelpFormHelper = (state) => {
   let isValid = true;
+  state.helpCenter.isMessageSend = false;
   const requestErrors = { userNameError: '', messageError: '' };
+  console.log(current(state.helpCenter));
 
   // Проверка на пустое имя
   if (state.helpCenter.requestUserNameText.trim() === '') {
     requestErrors.userNameError = 'Name cannot be empty';
     isValid = false;
+    state.helpCenter.isMessageSend = false;
   }
 
   // Проверка на цифры в имени
   if (/\d/.test(state.helpCenter.requestUserNameText)) {
     requestErrors.userNameError = 'Name cannot contain numbers';
     isValid = false;
+    state.helpCenter.isMessageSend = false;
   }
 
   // Проверка на пустое сообщение
   if (state.helpCenter.requestMessageText.trim() === '') {
     requestErrors.messageError = 'Message cannot be empty';
     isValid = false;
+    state.helpCenter.isMessageSend = false;
   }
 
   // Проверка на цифры в сообщении
   if (/\d/.test(state.helpCenter.requestMessageText)) {
     requestErrors.messageError = 'Message cannot contain numbers';
     isValid = false;
+    state.helpCenter.isMessageSend = false;
   }
 
   // Проверка длины сообщения
   if (state.helpCenter.requestMessageText.trim().length > 200) {
     requestErrors.messageError = 'Message cannot be longer than 200 characters';
     isValid = false;
+    state.helpCenter.isMessageSend = false;
   }
 
   // Обновляем ошибки в state
   state.helpCenter.errors = requestErrors;
-
+  if (isValid) {
+    console.log(current(state.helpCenter));
+    state.helpCenter.isMessageSend = true;
+  }
   return isValid; // Возвращаем true, если форма валидна
 };
 

@@ -1,21 +1,53 @@
-// Функция для обновления статуса подписки на друга
+// Оптимизированная версия с использованием Map для быстрого поиска
 const updateFollowStatus = (state, userId, newStatus) => {
-  // Обновление статуса в списке друзей (friends)
-  const friend = state.friends.find((user) => user.userId === userId);
-  if (friend) friend.isFollow = newStatus;
+  const userIndex = state.users.findIndex((user) => user.userId === userId);
+  if (userIndex !== -1) {
+    state.users[userIndex].isFollow = newStatus;
+  }
 
-  // Обновление статуса в отфильтрованных друзьях (filteredFriends)
-  const filteredUser = state.filteredFriends.find(
+  const currentListIndex = state.currentList.findIndex(
     (user) => user.userId === userId
   );
-  if (filteredUser) filteredUser.isFollow = newStatus;
+  if (currentListIndex !== -1) {
+    state.currentList[currentListIndex].isFollow = newStatus;
+  }
+
+  // Дополнительно проверим, чтобы обновление также распространялось на другие массивы
+  state.usersPages.forEach((pageData) => {
+    const userPageIndex = pageData.usersList.findIndex(
+      (user) => user.userId === userId
+    );
+    if (userPageIndex !== -1) {
+      pageData.usersList[userPageIndex].isFollow = newStatus;
+    }
+  });
 };
 
 // Функция для установки списка пользователей (друзей)
 export const setUsersListHelper = (state, action) => {
-  // Устанавливаем полученные данные в друзья и отфильтрованных друзей
-  state.friends = action.payload;
-  state.filteredFriends = action.payload;
+  action.payload.forEach((newUser) => {
+    const exists = state.users.find((user) => user.userId === newUser.userId);
+    if (!exists) {
+      state.users.push(newUser); // добавляем напрямую
+    }
+  });
+
+  // currentList ссылается на элементы из users (по ссылке!)
+  state.currentList = action.payload.map((newUser) =>
+    state.users.find((user) => user.userId === newUser.userId)
+  );
+};
+
+// Функция для установки загруженных страниц
+export const setLoadedPageHelper = (state, action) => {
+  if (!state.loadedPages.includes(action.payload)) {
+    state.loadedPages.push(action.payload); // Добавляем страницу в список
+    //добаляем обьекты аниме в массив
+    state.usersPages.push({
+      page: action.payload,
+      usersList: state.currentList, // сохраняем ссылки, не копии!
+    });
+  }
 };
 
 // Функция для установки текущей страницы
@@ -35,40 +67,46 @@ export const updateSearchNewFriendTextHelper = (state, action) => {
   state.searchNewFriendText = action.payload.text;
 };
 
-// Функция для подписки на пользователя
 export const followHelper = (state, action) => {
-  // Получаем идентификатор пользователя
   const userId = action.payload.friend.userId;
-  // Обновляем статус подписки на true
   updateFollowStatus(state, userId, true);
 };
 
-// Функция для отписки от пользователя
 export const unFollowHelper = (state, action) => {
-  // Получаем идентификатор пользователя
   const userId = action.payload.friend.userId;
-  // Обновляем статус подписки на false
   updateFollowStatus(state, userId, false);
 };
 
 // Функция для фильтрации списка друзей по поисковому запросу
 export const filterUsersListHelper = (state) => {
-  if (state.searchNewFriendText === "") {
-    state.filteredFriends = state.friends; // Если запрос пустой, показываем всех пользователей
+  const searchText = state.searchNewFriendText.toLowerCase().trim();
+
+  if (searchText === "") {
+    const currentPageData = state.usersPages.find(
+      (pageData) => pageData.page === state.currentPage
+    );
+    state.filteredUsers = [];
+    state.currentList = currentPageData ? currentPageData.usersList : [];
   } else {
-    state.filteredFriends = state.friends.filter((user) => {
-      const userName = user.name;
-      return userName
-        .toLowerCase()
-        .includes(state.searchNewFriendText.toLowerCase());
-    }); // Фильтруем по имени
+    state.filteredUsers = state.users.filter((user) =>
+      user.name.toLowerCase().includes(searchText)
+    );
+    state.currentList = state.filteredUsers;
   }
 };
 
 // Функция для очистки поискового запроса и возврата к полному списку друзей
 export const clearSearchQueryHelper = (state) => {
-  // Очищаем текст поискового запроса
   state.searchNewFriendText = "";
-  // Возвращаем список всех друзей
-  state.filteredFriends = state.friends;
+  state.filteredUsers = [];
+
+  const currentPageData = state.usersPages.find(
+    (pageData) => pageData.page === state.currentPage
+  );
+
+  if (currentPageData) {
+    state.currentList = [...currentPageData.usersList]; // ссылки на те же объекты
+  } else {
+    state.currentList = [];
+  }
 };

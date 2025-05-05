@@ -10,7 +10,9 @@ import { setCurrentPage } from "../../../../../redux/FindFriendsReducer/find-fri
 
 const FindFriends = ({
   t,
-  filteredFriends,
+  currentList,
+  usersPages,
+  loadedPages,
   hasResults,
   searchNewFriendText,
   isLoading,
@@ -21,11 +23,10 @@ const FindFriends = ({
   pages,
 }) => {
   // Запрашиваем пользователей с API
-  useFetchAndDispatch(fetchUsers(pageSize, currentPage), [
-    pageSize,
-    currentPage,
-  ]);
-
+  useFetchAndDispatch(
+    fetchUsers(pageSize, currentPage, loadedPages, usersPages),
+    [pageSize, currentPage]
+  );
   return (
     <section className="friends section">
       <div className={Classes.content}>
@@ -51,22 +52,23 @@ const FindFriends = ({
             </div>
           ) : hasResults ? (
             <ul className={Classes.list}>
-              {filteredFriends.map((friend) => (
+              {currentList.map((friend) => (
                 <UserCardContainer key={friend.userId} friend={friend} t={t} />
               ))}
             </ul>
           ) : (
             <div className={Classes.empty_message}>{t("Empty")}</div>
           )}
-
           {/* Блок пагинации */}
-          <Pagination
-            pages={pages}
-            Classes={Classes}
-            currentPage={currentPage}
-            changePage={changePage}
-            setCurrentPageAction={setCurrentPage}
-          />
+          {searchNewFriendText.trim() === "" && (
+            <Pagination
+              pages={pages}
+              Classes={Classes}
+              currentPage={currentPage}
+              changePage={changePage}
+              setCurrentPageAction={setCurrentPage}
+            />
+          )}
         </div>
       </div>
     </section>

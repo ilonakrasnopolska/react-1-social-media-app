@@ -1,8 +1,8 @@
 import avatars from "../../../assets/Avatars-src"; // Импортируем аватары пользователей
 import { v4 as uuidv4 } from "uuid"; // Импортируем функцию для генерации уникальных ID
+import { current } from "@reduxjs/toolkit";
 
 const CURRENT_USER_NAME = "Ilona Sue"; // Имя текущего пользователя
-const baseMessageUrl = "/messages/"; // Базовый URL для сообщений
 
 // Функция для получения текущего времени в формате "часы:минуты"
 const getData = () => {
@@ -23,6 +23,7 @@ export const setUsersListHelper = (state, action) => {
 
   // Находим уже существующие ID пользователей в списке
   const existingIds = new Set(state.users.map((u) => u.userId));
+  console.log(current(state));
 
   // Фильтруем новые пользователи, чтобы избежать добавления дубликатов
   const newUsers = usersArr.filter((u) => !existingIds.has(u.userId));
@@ -51,6 +52,11 @@ export const updateNewMessageTextHelper = (state, action) => {
 
 // Хелпер для отправки сообщения
 export const sendMessageHelper = (state, action) => {
+  const messageText = state.newMessageText.trim();
+
+  if (messageText === "") {
+    return; // Не отправляем сообщение и не начинаем чат, если текст пуст
+  }
   const user = findById(state.users, action.payload.userId); // Находим пользователя по ID
   const chat = user.chat; // Получаем чат этого пользователя
 
@@ -104,6 +110,11 @@ export const updateSearchUserTextHelper = (state, action) => {
 
 // Хелпер для начала новой беседы
 export const startConversationHelper = (state, action) => {
+  const messageText = state.newMessageText?.trim();
+
+  if (!messageText) {
+    return; // Не начинаем разговор, если нет текста
+  }
   const { userId, name } = action.payload; // Получаем ID пользователя и имя участника
   const user = findById(state.users, userId); // Находим пользователя по ID
 

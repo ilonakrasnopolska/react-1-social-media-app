@@ -45,15 +45,17 @@ export const useDialogsActions = () => {
    * @param {string} userId - ID пользователя, чье сообщение нужно удалить.
    * @param {string} messageId - ID сообщения, которое нужно удалить.
    */
-  const handleDeleteMessage = (userId, messageId) => {
-    // Запрашиваем подтверждение удаления
-    const confirmDelete = window.confirm(
-      `Are you sure you want to delete the message?`
-    );
-    if (confirmDelete) {
-      // Удаляем сообщение
-      dispatch(deleteMessage({ userId, messageId }));
-    }
+   const handleDeleteMessage = (userId, messageId) => {
+    dispatch(deleteMessage({ userId, messageId }));
+  };
+
+  // Функция для отправки сообщения
+  const handleSendMessageAndCloseModal = (newMessageText, friend, closeModal) => {
+    if (newMessageText.trim() === "") return;
+
+    handleStartChat(friend, friend.userId);
+    dispatch(sendMessage({ userId: friend.userId }));
+    closeModal();
   };
 
   return {
@@ -61,5 +63,6 @@ export const useDialogsActions = () => {
     handleStartChat,
     handleSendMessage,
     handleDeleteMessage,
+    handleSendMessageAndCloseModal,
   };
 };

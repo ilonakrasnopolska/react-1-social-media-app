@@ -1,61 +1,64 @@
 import React, { memo } from "react";
 import Classes from "./Comments.module.css";
 import { useCommentActions } from "../../../../../../../hooks/useCommentActions";
+import { useCommentDeleteModal } from "../../../../../../../hooks/useDeleteCommentModal";
 import Avatar from "../../../../../../common/Avatar";
+import DeleteCommentModal from "./DeleteCommentModal";
 
-// Компонент для отображения комментариев к посту
 const Comments = memo(({ postId, t }) => {
-  // Получаем список комментариев и функции для работы с ними
-  const { Messages, onReplyToComment, onDeleteComment } =
-    useCommentActions(postId);
+  const { Messages, onReplyToComment } = useCommentActions(postId);
+
+  const { isModalOpen, openModal, closeModal, confirmDelete } =
+    useCommentDeleteModal();
 
   return (
-    <ul className={Classes.list}>
-      {/* Проверяем, есть ли комментарии */}
-      {Messages.length > 0 ? (
-        Messages.map((comment) => (
-          <li key={comment.commentId} className={Classes.item}>
-            {/* Аватар пользователя, оставившего комментарий */}
-            <Avatar
-              src={comment.avatar}
-              alt="User avatar"
-              className={Classes.avatar}
-            />
+    <>
+      <ul className={Classes.list}>
+        {Messages.length > 0 ? (
+          Messages.map((comment) => (
+            <li key={comment.commentId} className={Classes.item}>
+              <Avatar
+                src={comment.avatar}
+                alt="User avatar"
+                className={Classes.avatar}
+              />
 
-            <div className={Classes.post}>
-              <div className={Classes.comment}>
-                {/* Имя пользователя */}
-                <strong>{t(comment.user)} </strong>
-                <div className={Classes.content}>
-                  {/* Текст комментария */}
-                  <span>{comment.message}</span>
-                  {/* Время комментария */}
-                  <span className={Classes.time}>{comment.time}</span>
-                  {/* Кнопка "Ответить" */}
-                  <button
-                    onClick={() => onReplyToComment(comment.commentId)}
-                    className={Classes.response_btn}
-                  >
-                    {t("Response")}
-                  </button>
+              <div className={Classes.post}>
+                <div className={Classes.comment}>
+                  <strong>{t(comment.user)} </strong>
+                  <div className={Classes.content}>
+                    <span>{comment.message}</span>
+                    <span className={Classes.time}>{comment.time}</span>
+                    <button
+                      onClick={() => onReplyToComment(comment.commentId)}
+                      className={Classes.response_btn}
+                    >
+                      {t("Response")}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Кнопка удаления комментария */}
-            <button
-              onClick={() => onDeleteComment(comment.commentId)}
-              className={Classes.delete}
-            >
-              ...
-            </button>
-          </li>
-        ))
-      ) : (
-        // Сообщение, если комментариев нет
-        <li className={Classes.item}>{t("NoComments")}</li>
-      )}
-    </ul>
+              <button
+                onClick={() => openModal(comment.commentId, postId)}
+                className={Classes.delete}
+              >
+                ...
+              </button>
+            </li>
+          ))
+        ) : (
+          <li className={Classes.item}>{t("NoComments")}</li>
+        )}
+      </ul>
+
+      <DeleteCommentModal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        onConfirmDelete={confirmDelete}
+        t={t}
+      />
+    </>
   );
 });
 

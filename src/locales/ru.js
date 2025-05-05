@@ -19,12 +19,15 @@ export const ru = {
     Add: "Добавить",
     Female: "Женский",
     Male: "Мужской",
+    AskIfDeletePost: "Вы уверены что хотите удалить пост?"
   },
   dialogs: {
     FindUser: "Найти пользователя",
     Start: "Начать диалог...",
     SelectChat: "Пожалуйста выберите диалог...",
     TypeMessage: "Напиши свое сообщение здесь...",
+    AskIfDelete: "Вы уверены что хотите удалить сообщение?",
+    DeleteCommentQuestion: "Вы уверены что хотите удалить комментарий?"
   },
   feeds: {
     Filter: "Сортировать:",
@@ -176,5 +179,6 @@ export const ru = {
     Empty: "Ничего не найдено",
     Delete: "Удалить",
     SendMessage: "Написать",
+    Cancel: "Отмена"
   },
 };
