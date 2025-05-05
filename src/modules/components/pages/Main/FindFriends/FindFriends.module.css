@@ -10,6 +10,7 @@
   /* Центрируем элементы по горизонтали */
   width: 100%;
   /* Ширина 100% */
+  height: 100%;
 }
 
 /* Стили для контента */
@@ -25,8 +26,6 @@
   padding: 30px;
   /* Внутренние отступы */
   width: 100%;
-  /* Ширина 100% */
-  height: 100vh;
   /* Высота 100% от высоты экрана */
   overflow: auto;
   /* Если контент не помещается, показываем полосу прокрутки */
@@ -103,8 +102,6 @@
   display: flex;
   /* Используем flex-контейнер */
   flex-direction: column-reverse;
-  /* Элементы списка будут располагаться снизу вверх */
-  align-items: center;
   /* Центрируем элементы по горизонтали */
   justify-content: flex-end;
   /* Содержимое будет выровнено внизу */
@@ -142,4 +139,28 @@
   /* Центрируем по вертикали */
   height: 700px;
   /* Высота блока 700px */
+}
+
+/* Стили для контейнера кнопок пагинации */
+.pagination {
+  display: flex;
+  /* Используем flex-контейнер */
+  gap: 15px;
+}
+
+/* Стили для кнопок пагинации */
+.pagination button {
+  font-size: 18px;
+  /* Размер шрифта 18px */
+  font-weight: 600;
+  background-color: transparent;
+  padding: 5px 5px 0 5px;
+  color: var(--content-background-3);
+}
+
+/* Стили для кнопки пагинации, когда она активна */
+.pagination .selectedPage {
+  /* Размер шрифта 27px */
+  font-size: 27px;
+  border-bottom: 3px solid var(--content-background-3);
 }

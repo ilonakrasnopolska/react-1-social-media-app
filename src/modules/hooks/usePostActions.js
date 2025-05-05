@@ -44,14 +44,8 @@ export const usePostActions = () => {
 
   // Обработчик удаления поста
   const onDeletePost = (postId) => {
-    // Подтверждаем удаление
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this post?"
-    );
-    if (confirmDelete) {
       // Отправляем действие для удаления поста
       dispatch(deletePost(postId));
-    }
   };
 
   // Возвращаем все необходимые данные и функции для работы с постами

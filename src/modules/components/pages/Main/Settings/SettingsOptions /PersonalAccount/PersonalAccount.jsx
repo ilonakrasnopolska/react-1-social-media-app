@@ -11,7 +11,7 @@ import { useFetchAndDispatch } from "../../../../../../hooks/useFetchAndDispatch
 import { fetchProfileData } from "../../../../../../../api/profileAPI"; // Функция для запроса данных профиля
 
 const PersonalAccount = ({ userInfo, isLoading, t }) => {
-  useFetchAndDispatch(() => fetchProfileData(userInfo)); // Выполняем запрос для получения данных профиля пользователя
+  useFetchAndDispatch(fetchProfileData(userInfo), [userInfo]);
   const { userData, editPage } = usePersonalAccountData(); // Получаем данные пользователя и страницу редактирования через хук
 
   return (

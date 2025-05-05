@@ -16,7 +16,7 @@ const UsersList = ({
   t,
 }) => {
   // Хук для загрузки данных пользователей
-  useFetchAndDispatch(() => fetchUsers(users));
+  useFetchAndDispatch(fetchUsers(users));
 
   return (
     <section className="users section">

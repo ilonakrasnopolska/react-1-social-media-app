@@ -6,7 +6,7 @@ import ChatWindowContainer from "./ChatWindowContainer/ChatWindowContainer";
 // Компонент для отображения сообщений (списка пользователей и окна чата)
 const Messages = ({ dialogs, isLoading, idFromUrl, t }) => {
   return (
-    <div className={Classes.window}>
+    <div className={Classes.window_dialogs}>
       {/* Компонент для отображения списка пользователей */}
       <UsersList
         users={dialogs.users} // Список пользователей

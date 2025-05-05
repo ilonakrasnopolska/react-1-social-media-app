@@ -1,0 +1,110 @@
+/* Оверлей (затемнение фона) */
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Контейнер модального окна */
+.modal_content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal_content div {
+  display: flex;
+  /* Элементы внутри обертки (аватар и кнопка) располагаются вертикально */
+  gap: 10px;
+  /* Отступ справа от обертки аватара */
+  align-items: center;
+  /* Центрирование */
+  margin-bottom: 5px;
+}
+
+.modal_content img {
+  width: 40px;
+  /* Ширина аватара */
+  height: 40px;
+  /* Высота аватара */
+  object-fit: cover;
+  /* Заполнение области аватара без искажения */
+  object-position: center;
+  /* Центрирование аватара в области */
+  border-radius: 50px;
+  /* Округляем аватар */
+}
+
+.modal_content h2 {
+  color: var(--button-background-1);
+  font-size: 18px;
+}
+
+.modal_content textarea {
+  margin-bottom: 5px;
+  outline: none;
+  min-height: 90px;
+}
+
+.modal_content button {
+  background-color: var(--button-background-1);
+  padding: 5px 10px;
+  color: var(--basic-text-color);
+}
+
+.modal_content button:disabled {
+  opacity: 50%;
+}
+
+/* Кнопка для закрытия */
+.close_button {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.close_button:hover {
+  background-color: var(--button-background-2);
+}
+
+
+
+/* Анимация для появления модального окна */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+

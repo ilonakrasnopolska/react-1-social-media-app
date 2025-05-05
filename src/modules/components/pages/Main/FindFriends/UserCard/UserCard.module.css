@@ -120,6 +120,12 @@
   /* Размер шрифта */
   border-bottom: 1px solid var(--basic-text-color);
   /* Нижняя граница кнопки */
+  background-color: transparent;
+  /* Фон кнопки */
+}
+
+.button:hover {
+  font-size: 20px;
 }
 
 .city {

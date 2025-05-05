@@ -5,10 +5,8 @@ import Classes from "./SearchAnime.module.css"; // Импорт стилей к�
 const SearchAnime = ({
   newSearchAnimeText,
   useTextChangeHandlers,
-  useResetSearchQuery,
   t,
 }) => {
-  useResetSearchQuery(); // Сбросить поисковый запрос перед рендером компонента
 
   return (
     <div className={Classes.search}>

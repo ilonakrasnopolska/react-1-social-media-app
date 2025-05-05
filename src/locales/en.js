@@ -19,12 +19,15 @@ export const en = {
     Add: "Add",
     Female: "Female",
     Male: "Male",
+    AskIfDeletePost: "Are you sure you want to delete this post?",
+    DeleteCommentQuestion: "Are you sure you want to delete this comment?"
   },
   dialogs: {
     FindUser: "Find user",
     Start: "Start conversation...",
     SelectChat: "Please select a chat...",
     TypeMessage: "Type your message here...",
+    AskIfDelete: "Are you sure you want to delete the message?"
   },
   feeds: {
     Filter: "Filter:",
@@ -171,5 +174,6 @@ export const en = {
     Empty: "Nothing found",
     Delete: "Delete",
     SendMessage: "Send Message",
+    Cancel: "Cancel"
   },
 };

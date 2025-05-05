@@ -253,7 +253,6 @@ const users = [
 // Функция для получения пользователей (с использованием заглушки)
 export const fetchUsers = (dialogsUsers) => (dispatch) => {
   // Если пользователи уже загружены (переданы в качестве аргумента), не запрашиваем их снова
-  if (dialogsUsers.length > 0) return;
   dispatch(startLoading());
   fetchData("https://social-network.samuraijs.com/api/1.0/users")
     .then((data) => {

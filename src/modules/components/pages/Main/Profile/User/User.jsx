@@ -8,7 +8,7 @@ import { ClipLoader } from "react-spinners"; // Компонент для ото
 
 const User = ({ userData, isLoading, t }) => {
   // Вызываем хук для получения и отправки данных профиля
-  useFetchAndDispatch(() => fetchProfileData(userData));
+  useFetchAndDispatch(fetchProfileData(userData));
 
   return (
     <section className="user section">

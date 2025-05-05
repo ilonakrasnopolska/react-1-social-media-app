@@ -5,7 +5,7 @@
   /* Выравнивание кнопок по центру */
   width: 100%;
   /* Ширина контейнера 100% */
-  margin-bottom: 15px;
+  margin-bottom: 35px;
   /* Отступ снизу */
 }
 
@@ -25,10 +25,28 @@
   /* Отступы внутри кнопки */
   background-color: var(--button-background-1);
   /* Цвет фона кнопки */
+  opacity: 60%;
 }
 
 .button:hover {
-  /* Эффект при наведении на кнопку */
-  opacity: 70%;
-  /* Уменьшение прозрачности при наведении */
+  scale: 1.1;
+}
+
+.active {
+  opacity: 100%;
+  scale: 1.1;
+}
+
+@media (max-width: 990px) {
+  .button {
+    font-size: 20px;
+    /* Размер шрифта */
+  }
+}
+
+@media (max-width: 660px) {
+  .button {
+    padding: 5px;
+    /* Отступы внутри кнопки */
+  }
 }

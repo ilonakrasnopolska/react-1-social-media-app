@@ -8,12 +8,18 @@ import Settings from "./Settings"; // Компонент для отображе
 const SettingsContainer = ({ t }) => {
   // Получение параметра id из URL
   const { id } = useParams();
-
   // Использование хука для отслеживания состояния загрузки
-  const isLoading = useData('loading');
+  const isLoading = useData("loading");
+  // Получаем state настроек
+  const settings = useData("settings");
 
   // Логика обработки страницы настроек
-  const { enhancedSettingsOptions, selectedOption, isNotFound } = useSettingsPageHandler(id);
+  const { enhancedSettingsOptions, selectedOption, isNotFound } =
+    useSettingsPageHandler(id);
+
+  if (isLoading || !settings) {
+    return <div>Loading...</div>; // Или спиннер
+  }
 
   // Если настройки не найдены, показываем сообщение
   if (isNotFound) {
@@ -22,10 +28,15 @@ const SettingsContainer = ({ t }) => {
 
   // Если выбранная опция настроек существует, отображаем её, иначе отображаем все настройки
   return selectedOption ? (
-    <SettingsOptions option={selectedOption} id={id} t={t} isLoading={isLoading} />
+    <SettingsOptions
+      option={selectedOption}
+      id={id}
+      t={t}
+      isLoading={isLoading}
+    />
   ) : (
     <Settings t={t} enhancedSettingsOptions={enhancedSettingsOptions} />
   );
-}
+};
 
 export default SettingsContainer;

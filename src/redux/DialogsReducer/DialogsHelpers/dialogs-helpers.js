@@ -1,8 +1,8 @@
 import avatars from "../../../assets/Avatars-src"; // Импортируем аватары пользователей
 import { v4 as uuidv4 } from "uuid"; // Импортируем функцию для генерации уникальных ID
+import { current } from "@reduxjs/toolkit";
 
 const CURRENT_USER_NAME = "Ilona Sue"; // Имя текущего пользователя
-const baseMessageUrl = "/messages/"; // Базовый URL для сообщений
 
 // Функция для получения текущего времени в формате "часы:минуты"
 const getData = () => {
@@ -20,42 +20,28 @@ const findById = (state, id) => {
 // Хелпер для установки списка пользователей
 export const setUsersListHelper = (state, action) => {
   const usersArr = action.payload; // Получаем список пользователей из действия
-  state.users = usersArr; // Обновляем список пользователей
+
+  // Находим уже существующие ID пользователей в списке
+  const existingIds = new Set(state.users.map((u) => u.userId));
+  console.log(current(state));
+
+  // Фильтруем новые пользователи, чтобы избежать добавления дубликатов
+  const newUsers = usersArr.filter((u) => !existingIds.has(u.userId));
+
+  // Добавляем новых пользователей в список
+  state.users.push(...newUsers);
+
+  // Обновляем список контактов, добавляя новых пользователей
   state.contacts = [
-    ...usersArr,
-    {
-      name: "Violet",
-      userId: uuidv4(),
-      url: `${baseMessageUrl}uuidv4()`,
-      avatar: `${avatars.violetPic}`,
+    ...state.contacts,
+    ...newUsers.map((user) => ({
+      ...user,
       chat: {
         chatId: uuidv4(),
-        participants: ["Violet", "Ilona Sue"],
+        participants: [user.name, CURRENT_USER_NAME],
         messages: [],
       },
-    },
-    {
-      name: "Anna",
-      userId: uuidv4(),
-      url: `${baseMessageUrl}uuidv4()`,
-      avatar: `${avatars.annaPic}`,
-      chat: {
-        chatId: uuidv4(),
-        participants: ["Anna", "Ilona Sue"],
-        messages: [],
-      },
-    },
-    {
-      name: "Artur",
-      userId: uuidv4(),
-      url: `${baseMessageUrl}uuidv4()`,
-      avatar: `${avatars.arturPic}`,
-      chat: {
-        chatId: uuidv4(),
-        participants: ["Artur", "Ilona Sue"],
-        messages: [],
-      },
-    },
+    })),
   ];
 };
 
@@ -66,6 +52,11 @@ export const updateNewMessageTextHelper = (state, action) => {
 
 // Хелпер для отправки сообщения
 export const sendMessageHelper = (state, action) => {
+  const messageText = state.newMessageText.trim();
+
+  if (messageText === "") {
+    return; // Не отправляем сообщение и не начинаем чат, если текст пуст
+  }
   const user = findById(state.users, action.payload.userId); // Находим пользователя по ID
   const chat = user.chat; // Получаем чат этого пользователя
 
@@ -119,6 +110,11 @@ export const updateSearchUserTextHelper = (state, action) => {
 
 // Хелпер для начала новой беседы
 export const startConversationHelper = (state, action) => {
+  const messageText = state.newMessageText?.trim();
+
+  if (!messageText) {
+    return; // Не начинаем разговор, если нет текста
+  }
   const { userId, name } = action.payload; // Получаем ID пользователя и имя участника
   const user = findById(state.users, userId); // Находим пользователя по ID
 

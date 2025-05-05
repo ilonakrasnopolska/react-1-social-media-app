@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 20px 10px 5px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper h2 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.wrapper .button {
+  min-width: 120px;
+  font-size: 18px;
+  padding: 15px;
+}
+
+.wrapper .button:hover {
+  background-color: var(--button-background-2);
+}
+
+/* Медиазапрос для экранов с шириной меньше 350px */
+@media (max-width: 350px) {
+
+  .wrapper .button {
+    min-width: 5px;
+  }
+}

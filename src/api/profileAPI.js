@@ -116,7 +116,6 @@ export const fetchProfileData = (userInfo) => (dispatch) => {
           gender: "Female", // Пол
           favoriteAnime: "Naruto", // Любимое аниме
         };
-
         // Диспатчим данные профиля в редьюсеры
         dispatch(setProfileData(personalAccount));
         dispatch(setProfileDataEdit(personalAccount));
