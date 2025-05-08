@@ -53,11 +53,7 @@ export const updateRequestMessageTextHelper = (state, action) => {
 
 // Отправка сообщения в службу поддержки
 export const sendSupportMessageHelper = (state) => {
-  // Проверка на наличие ошибок в имени или сообщении
-  if (state.helpCenter.errors.userNameError || state.helpCenter.errors.messageError) return;
-
-  // Проверяем, что имя и сообщение не пустые
-  if (state.helpCenter.requestMessageText.trim() !== '' && state.helpCenter.requestUserNameText.trim() !== '') {
+  console.log(current(state.helpCenter));
     state.helpCenter.isMessageSend = true;
     const currentTime = new Date();
     const formattedTime = currentTime.toLocaleTimeString('en-GB', {
@@ -77,11 +73,11 @@ export const sendSupportMessageHelper = (state) => {
 
     // Добавляем новый запрос в очередь
     state.helpCenter.userQueries.push(newRequest);
+    console.log(current(state.helpCenter));
 
     // Очищаем текстовые поля
     state.helpCenter.requestMessageText = '';
     state.helpCenter.requestUserNameText = '';
-  }
 };
 
 // Валидация формы запроса помощи
@@ -89,7 +85,6 @@ export const validateRequestForHelpFormHelper = (state) => {
   let isValid = true;
   state.helpCenter.isMessageSend = false;
   const requestErrors = { userNameError: '', messageError: '' };
-  console.log(current(state.helpCenter));
 
   // Проверка на пустое имя
   if (state.helpCenter.requestUserNameText.trim() === '') {
@@ -129,7 +124,6 @@ export const validateRequestForHelpFormHelper = (state) => {
   // Обновляем ошибки в state
   state.helpCenter.errors = requestErrors;
   if (isValid) {
-    console.log(current(state.helpCenter));
     state.helpCenter.isMessageSend = true;
   }
   return isValid; // Возвращаем true, если форма валидна
@@ -180,8 +174,6 @@ export const updateConfidentialitySettingHelper = (state, action) => {
 
 // Сохранение настроек конфиденциальности
 export const saveConfidentialSettingsHelper = (state) => {
-  const confirmSave = window.confirm('Are you sure you want to save the changes?');
-  if (confirmSave) {
     const selectedConfidentialitySettings = {};
 
     state.confidentiality.confidentialitySettings.forEach((setting) => {
@@ -206,5 +198,4 @@ export const saveConfidentialSettingsHelper = (state) => {
 
     // Обновляем состояние с новыми значениями
     state.confidentiality.selectedConfidentialitySettings = selectedConfidentialitySettings;
-  }
 };

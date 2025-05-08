@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 
 // Хук для обработки данных страницы настроек
-export const useSettingsPageHandler = (id) => {
+export const useSettingsPageHandler = (title) => {
+  console.log(title);
   const settingsOptions = useSelector((state) => state.settings.settings);
   const editProfileOption = useSelector(
     (state) => state.settings.personalAccount.editPage
@@ -11,21 +12,25 @@ export const useSettingsPageHandler = (id) => {
   const isLoading = !settingsOptions || settingsOptions.length === 0;
 
   const enhancedSettingsOptions =
-    id && editProfileOption && String(id) === String(editProfileOption.id)
+    title &&
+    editProfileOption &&
+    String(title) === String(editProfileOption.title)
       ? [...settingsOptions, editProfileOption]
       : settingsOptions || [];
 
-  const selectedOption = id
-    ? enhancedSettingsOptions.find((option) => String(option.id) === String(id))
+  const selectedOption = title
+    ? enhancedSettingsOptions.find(
+        (option) => String(option.title) === String(title)
+      )
     : null;
 
   const isNotFound =
     !isLoading &&
-    id &&
+    title &&
     (!selectedOption || Object.keys(selectedOption).length === 0);
 
   return {
-    id,
+    title,
     enhancedSettingsOptions,
     selectedOption,
     isNotFound,

@@ -20,7 +20,7 @@ const Main = ({t}) => {
           <Route path="/feeds" element={<FeedsContainer t={t}/>}/>
           <Route path="/anime" element={<AnimeContainer t={t}/>}/>
           <Route path="/anime/:animeId" element={<WatchAnimeContainer t={t} />} />
-          <Route path="/settings/:id?" element={<SettingsContainer t={t} />} />
+          <Route path="/settings/:title?" element={<SettingsContainer t={t} />} />
           <Route path="/logIn" element={<LogIn t={t} />} />
           <Route path="/find_friends" element={<FindFriendsContainer t={t} />} />
         </Routes>

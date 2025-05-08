@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import {
   updateRequestUserNameText, // Экшен для обновления текста имени пользователя в запросе
   updateRequestMessageText, // Экшен для обновления текста сообщения в запросе
@@ -15,10 +16,6 @@ export const useRequestHelpForm = (helpCenter) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     dispatch(validateRequestForHelpForm()); // Валидация формы
-    if (isMessageSend) {
-      dispatch(sendSupportMessage()); // Отправляем сообщение, если форма валидна
-    }
-    return isMessageSend; // Возвращаем результат валидации для родительского компонента
   };
 
   // Обработчик изменения текста в полях формы
@@ -32,6 +29,13 @@ export const useRequestHelpForm = (helpCenter) => {
     dispatch(action); // Отправляем экшен для обновления текста в Redux
   };
 
+   // Используем useEffect для отслеживания изменения isMessageSend
+   useEffect(() => {
+    if (isMessageSend) {
+      dispatch(sendSupportMessage()); // Отправляем сообщение, если форма валидна и isMessageSend true
+    }
+  }, [isMessageSend, dispatch]);
+
   // Возвращаем данные и обработчики для использования в компоненте
   return {
     requestUserNameText, // Текст имени пользователя в запросе
@@ -39,5 +43,6 @@ export const useRequestHelpForm = (helpCenter) => {
     errors, // Ошибки формы, если они есть
     handleInputChange, // Обработчик изменений в полях формы
     handleFormSubmit, // Обработчик отправки формы
+    isMessageSend,
   };
 };
