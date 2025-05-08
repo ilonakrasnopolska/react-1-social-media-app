@@ -1,6 +1,5 @@
 import avatars from "../../../assets/Avatars-src"; // Импортируем аватары пользователей
 import { v4 as uuidv4 } from "uuid"; // Импортируем функцию для генерации уникальных ID
-import { current } from "@reduxjs/toolkit";
 
 const CURRENT_USER_NAME = "Ilona Sue"; // Имя текущего пользователя
 
@@ -23,7 +22,6 @@ export const setUsersListHelper = (state, action) => {
 
   // Находим уже существующие ID пользователей в списке
   const existingIds = new Set(state.users.map((u) => u.userId));
-  console.log(current(state));
 
   // Фильтруем новые пользователи, чтобы избежать добавления дубликатов
   const newUsers = usersArr.filter((u) => !existingIds.has(u.userId));

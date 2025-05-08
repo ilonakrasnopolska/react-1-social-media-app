@@ -18,7 +18,7 @@ const Settings = ({ t, enhancedSettingsOptions }) => {
             <li key={index} className={Classes.item}>
               {" "}
               {/* Каждый элемент списка */}
-              <NavLink to={option.id}>{t(option.title)}</NavLink>{" "}
+              <NavLink to={option.title}>{t(option.title)}</NavLink>{" "}
               {/* Навигация по id опции с переводом title */}
             </li>
           )

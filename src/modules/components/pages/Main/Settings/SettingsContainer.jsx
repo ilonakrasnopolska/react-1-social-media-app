@@ -7,7 +7,7 @@ import Settings from "./Settings"; // Компонент для отображе
 
 const SettingsContainer = ({ t }) => {
   // Получение параметра id из URL
-  const { id } = useParams();
+  const { title } = useParams();
   // Использование хука для отслеживания состояния загрузки
   const isLoading = useData("loading");
   // Получаем state настроек
@@ -15,7 +15,7 @@ const SettingsContainer = ({ t }) => {
 
   // Логика обработки страницы настроек
   const { enhancedSettingsOptions, selectedOption, isNotFound } =
-    useSettingsPageHandler(id);
+    useSettingsPageHandler(title);
 
   if (isLoading || !settings) {
     return <div>Loading...</div>; // Или спиннер
@@ -30,7 +30,7 @@ const SettingsContainer = ({ t }) => {
   return selectedOption ? (
     <SettingsOptions
       option={selectedOption}
-      id={id}
+      title={title}
       t={t}
       isLoading={isLoading}
     />

@@ -52,11 +52,9 @@ const Help = ({
             />
 
             {/* Кнопка отправки формы */}
-            <Button
-              className={Classes.button} // Класс для кнопки
-              onClick={handleFormSubmit} // Обработчик клика по кнопке (отправка формы)
-              label={t("SendMessage")} // Текст на кнопке
-            />
+            <button className={Classes.button} type="submit">
+              {t("SendMessage")}
+            </button>
           </form>
         </div>
       </div>
