@@ -11,6 +11,7 @@
   /* 2:10 — пропорции ширины колонок */
   grid-gap: 30px;
   /* Отступы между элементами */
+  align-items: center;
 }
 
 /* Стиль для аватара */
@@ -75,4 +76,12 @@
   /* Цвет при наведении (используйте переменную или конкретный цвет) */
   text-decoration-line: none;
   /* Убираем подчеркивание при наведении */
+}
+
+.centeredLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  /* или сколько нужно */
 }

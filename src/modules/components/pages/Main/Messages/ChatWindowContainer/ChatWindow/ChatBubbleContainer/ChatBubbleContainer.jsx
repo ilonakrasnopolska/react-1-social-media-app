@@ -4,7 +4,8 @@ import DeleteMessageModal from "../ChatBubbleContainer/DeleteMessageModal";
 import { useDeleteMessageModal } from "../../../../../../../hooks/useDeleteMessageModal";
 
 const ChatBubbleContainer = ({ currentChat, userId, t }) => {
-  const { isModalOpen, openModal, closeModal, onConfirmDelete } = useDeleteMessageModal(userId);
+  const { isModalOpen, openModal, closeModal, onConfirmDelete } =
+    useDeleteMessageModal(userId);
 
   if (!currentChat) {
     return <p className={Classes.noChat}>{t("SelectChat")}</p>;

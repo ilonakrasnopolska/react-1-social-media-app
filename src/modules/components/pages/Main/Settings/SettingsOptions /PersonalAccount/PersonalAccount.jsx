@@ -43,7 +43,7 @@ const PersonalAccount = ({ userInfo, isLoading, t }) => {
                   <UserInfo userData={userData} Classes={Classes} t={t} />{" "}
                   {/* Отображение информации о пользователе */}
                   <NavButton
-                    to={`/settings/${editPage.id}`}
+                    to={`/settings/${editPage.title}`}
                     label={t("Edit")}
                     className={Classes.button}
                     classNavLink={Classes.link}

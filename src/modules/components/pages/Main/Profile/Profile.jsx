@@ -8,7 +8,7 @@ const Profile = ({ wallpaper, userData, t, isLoading, posts }) => {
   return (
     <div>
       {/* Компонент Hero для отображения обоев/фона */}
-      <Hero wallpaper={wallpaper} />
+      <Hero wallpaper={wallpaper} isLoading={isLoading}/>
 
       {/* Компонент User для отображения информации о пользователе */}
       <User userData={userData} isLoading={isLoading} t={t} />

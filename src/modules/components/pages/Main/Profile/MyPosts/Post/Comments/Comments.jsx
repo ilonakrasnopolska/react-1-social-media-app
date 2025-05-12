@@ -4,6 +4,7 @@ import { useCommentActions } from "../../../../../../../hooks/useCommentActions"
 import { useCommentDeleteModal } from "../../../../../../../hooks/useDeleteCommentModal";
 import Avatar from "../../../../../../common/Avatar";
 import DeleteCommentModal from "./DeleteCommentModal";
+import ImageWithLoader from "../../../../../../common/ImageWithLoader/ImageWithLoader";
 
 const Comments = memo(({ postId, t }) => {
   const { Messages, onReplyToComment } = useCommentActions(postId);
@@ -17,12 +18,12 @@ const Comments = memo(({ postId, t }) => {
         {Messages.length > 0 ? (
           Messages.map((comment) => (
             <li key={comment.commentId} className={Classes.item}>
-              <Avatar
+              <ImageWithLoader
                 src={comment.avatar}
                 alt="User avatar"
                 className={Classes.avatar}
+                height='50px'
               />
-
               <div className={Classes.post}>
                 <div className={Classes.comment}>
                   <strong>{t(comment.user)} </strong>

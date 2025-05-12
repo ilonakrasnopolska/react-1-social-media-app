@@ -24,7 +24,7 @@ export const useEditAccountForm = (personalAccount) => {
     e.preventDefault(); // Предотвращаем стандартное поведение формы
     if (!isFormValid) return; // Если форма невалидна, то ничего не сохраняем
     dispatch(updateProfileInfo(userData)); // Диспатчим изменения профиля в хранилище
-    navigate(`/settings/${personalAccountPage.id}`); // Перенаправляем на страницу настроек
+    navigate(`/settings/${personalAccountPage.title}`); // Перенаправляем на страницу настроек
   };
 
   // Обработчик изменения значений в форме

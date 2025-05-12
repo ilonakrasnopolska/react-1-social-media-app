@@ -48,6 +48,7 @@
   /* Цвет текста */
   transition: border 0.3s ease;
   /* Плавный переход для границы */
+  outline: none;
 }
 
 /* Эффект при фокусе на текстовом поле */
@@ -97,4 +98,15 @@
 .button:active {
   transform: scale(0.98);
   /* Легкое уменьшение кнопки при нажатии */
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.button:disabled:hover {
+  transform: scale(1);
+  background-color: var(--app-background);
 }

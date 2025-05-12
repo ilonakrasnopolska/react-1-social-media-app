@@ -22,7 +22,7 @@ const NewMessage = ({userId, newMessageText, t}) => {
           onKeyDown={handleKeyDown}
           className={Classes.textarea}
           placeholder={t('TypeMessage')}/>
-        <button className={Classes.button}>
+        <button className={Classes.button} disabled={!newMessageText}>
           <SendMessageIcon/>
         </button>
       </form>

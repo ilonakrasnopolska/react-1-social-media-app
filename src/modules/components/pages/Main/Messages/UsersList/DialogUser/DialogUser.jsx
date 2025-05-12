@@ -2,7 +2,7 @@ import Classes from "./DialogUser.module.css";
 import React from "react";
 import { NavLink } from "react-router-dom"; // Импорт NavLink для маршрутизации
 import { useActiveDialogUser } from "../../../../../../hooks/useActiveDialogUser"; // Хук для активного пользователя
-import Avatar from "../../../../../common/Avatar"; // Компонент для отображения аватара
+import ImageWithLoader from "../../../../../common/ImageWithLoader/ImageWithLoader";
 
 // Компонент для отображения пользователя в списке диалогов
 const DialogUser = ({ users, userId, idFromUrl }) => {
@@ -29,7 +29,7 @@ const DialogUser = ({ users, userId, idFromUrl }) => {
           }`}
         >
           {/* Отображение аватара пользователя */}
-          <Avatar src={avatar} alt="Avatar" className={Classes.avatar} />
+          <ImageWithLoader src={avatar} alt="Avatar" className={Classes.avatar} height='50px'/>
           {/* Отображение имени пользователя */}
           <span className={Classes.name}>{name}</span>
         </button>

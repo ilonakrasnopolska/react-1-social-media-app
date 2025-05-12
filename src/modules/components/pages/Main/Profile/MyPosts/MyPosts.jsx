@@ -5,6 +5,7 @@ import { useFetchAndDispatch } from "../../../../../hooks/useFetchAndDispatch"; 
 import { fetchPosts } from "../../../../../../api/profileAPI"; // Импорт функции для получения постов
 import DeletePostModal from "./Post/DeletePostModal"; // Импорт модалки для удаления поста
 import { useDeleteModal } from "../../../../../hooks/useDeletePostModal";
+import Preloader from "../../../../common/Preloader/Preloader";
 
 const MyPosts = ({ posts, isLoading, t }) => {
   const { isModalOpen, openModal, closeModal, confirmDelete } =
@@ -16,10 +17,7 @@ const MyPosts = ({ posts, isLoading, t }) => {
     <section className="myPosts section">
       <div className={Classes.content}>
         {isLoading && posts.length === 0 ? (
-          <div className={Classes.spinner}>
-            <ClipLoader color="#194770" size={50} />{" "}
-            {/* Спиннер для загрузки */}
-          </div>
+          <Preloader/>
         ) : (
           <ul className={Classes.list}>
             {posts.map((post) => (
