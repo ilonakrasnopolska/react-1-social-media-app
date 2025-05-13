@@ -3,10 +3,10 @@ import Classes from "./AnimeList.module.css";
 import AnimeItem from "./AnimeItem/AnimeItem";
 import { fetchAnime } from "../../../../../../api/animeAPI";
 import { useFetchAndDispatch } from "../../../../../hooks/useFetchAndDispatch";
-import { ClipLoader } from "react-spinners";
 import { Pagination } from "../../../../common/Pagination/Pagination";
 import { setCurrentPage } from "../../../../../../redux/AnimeReducer/anime-reducer";
 import { ANIME_LIST_TYPES } from "../../../../../../constants/constants";
+import Preloader from "../../../../common/Preloader/Preloader"
 
 const AnimeList = ({
   currentList,
@@ -30,9 +30,7 @@ const AnimeList = ({
   return (
     <div className={Classes.anime_list_box}>
       {isLoading ? (
-        <div className={Classes.spinner}>
-          <ClipLoader color="#194770" size={50} />
-        </div>
+        <Preloader/>
       ) : hasResults ? (
         <div>
           <ul className={Classes.list}>

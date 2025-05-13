@@ -65,6 +65,7 @@ export const en = {
     Follow: "Follow",
     Unfollow: "Unfollow",
     Find: "Find user",
+    City: "City"
   },
   settings: {
     PersonalAccount: "Personal account",
@@ -79,6 +80,7 @@ export const en = {
     EditProfile: "Edit your personal profile:",
     Edit: "Edit",
     Save: "Save",
+    SignOut: "Sign Out"
   },
   confidentiality: {
     Confidentiality: "Confidentiality",

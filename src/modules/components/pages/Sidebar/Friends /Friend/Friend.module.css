@@ -18,6 +18,12 @@
   /* Скругляем углы, чтобы аватар был кругом */
   border: 2px solid var(--button-background-1);
   /* Добавляем обводку вокруг аватара */
+  opacity: 60%;
+}
+
+.item .avatar:hover {
+  opacity: 100%;
+  border: 5px solid var(--button-background-1);
 }
 
 .user__name {
@@ -25,4 +31,9 @@
   /* Задаем цвет текста */
   font-size: 20px;
   /* Устанавливаем размер шрифта */
+}
+
+.item span {
+  display: flex;
+  justify-content: center;
 }

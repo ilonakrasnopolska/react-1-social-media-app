@@ -4,9 +4,9 @@ import Classes from "../FindFriends/FindFriends.module.css";
 import UserCardContainer from ".//UserCard/UserCardContainer";
 import { fetchUsers } from "../../../../../api/usersAPI";
 import { useFetchAndDispatch } from "../../../../hooks/useFetchAndDispatch";
-import { ClipLoader } from "react-spinners";
 import { Pagination } from "../../../common/Pagination/Pagination";
 import { setCurrentPage } from "../../../../../redux/FindFriendsReducer/find-friends-reducer";
+import Preloader from "../../../common/Preloader/Preloader";
 
 const FindFriends = ({
   t,
@@ -47,9 +47,7 @@ const FindFriends = ({
           <p className={Classes.text}>{t("Description")}</p>
 
           {isLoading ? (
-            <div className={Classes.spinner}>
-              <ClipLoader color={"#194770"} loading={true} size={50} />
-            </div>
+            <Preloader />
           ) : hasResults ? (
             <ul className={Classes.list}>
               {currentList.map((friend) => (

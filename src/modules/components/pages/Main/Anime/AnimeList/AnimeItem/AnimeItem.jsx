@@ -8,6 +8,7 @@ import {
   toggleWatchedList,
 } from "../../../../../../../redux/AnimeReducer/anime-reducer"; // Действия для управления списками
 import useToggleAnimeToList from "../../../../../../hooks/useToggleAnimeToList"; // Хук для добавления в списки
+import ImageWithLoader from "../../../../../common/ImageWithLoader/ImageWithLoader"
 
 // Компонент для отображения информации об одном аниме
 const AnimeItem = ({ anime, t }) => {
@@ -20,7 +21,7 @@ const AnimeItem = ({ anime, t }) => {
       {/* Блок для обложки аниме */}
       <div className={Classes.poster_wrapper}>
         {/* Обложка аниме */}
-        <img className={Classes.avatar} src={anime.cover} alt="Post avatar" />
+        <ImageWithLoader src={anime.cover} alt="Post avatar" className={Classes.avatar}/>
         <h4>
           {/* Количество эпизодов */}
           {t("Episodes")} {anime.episodes}

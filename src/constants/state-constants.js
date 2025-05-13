@@ -34,7 +34,6 @@ export const SETTINGS_LIST_TITLE = {
   LANGUAGE: 'Language', // Язык
   TERMS_AND_POLICY: 'TermsAndPolicy', // Условия и политика
   HELP: 'Help', // Помощь
-  OUT: 'Out', // Выйти
   EDIT_PROFILE: 'EditProfile' // Редактировать профиль
 };
 

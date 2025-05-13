@@ -65,6 +65,7 @@ export const ru = {
     Follow: "Добавить",
     Unfollow: "Удалить",
     Find: "Найти пользователя",
+    City: "Город"
   },
   settings: {
     PersonalAccount: "Личный аккаунт",
@@ -79,6 +80,7 @@ export const ru = {
     EditProfile: "Редактировать профиль:",
     Edit: "Редактировать",
     Save: "Сохранить",
+    SignOut: "Выйти"
   },
   confidentiality: {
     Confidentiality: "Приватность",

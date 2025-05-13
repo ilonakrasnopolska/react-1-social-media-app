@@ -21,6 +21,7 @@
 }
 
 .button {
+  opacity: 70%;
   padding: 15px;
   /* Внутренние отступы для кнопки */
   font-size: 20px;
@@ -34,10 +35,8 @@
 }
 
 .button:hover {
-  background-color: var(--white-color);
-  /* Цвет фона кнопки при наведении */
+  opacity: 100%;
   border: 1px solid var(--app-background);
-  /* Обводка кнопки при наведении */
 }
 
 .link {
@@ -47,18 +46,45 @@
   /* Внутренние отступы для ссылки */
 }
 
-.link:hover {
-  color: var(--app-background);
-  /* Цвет текста ссылки при наведении */
+.button_sign_out button {
+  min-width: 130px;
+  padding: 15px;
+  /* Внутренние отступы для кнопки */
+  font-size: 18px;
+  /* Размер шрифта для кнопки */
+  font-weight: bold;
+  /* Жирное начертание шрифта */
+  background-color: var(--button-background-1);
+  /* Цвет фона кнопки */
+  transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
+  /* Плавные переходы для изменения цветов */
+  color: var(--text-color-1);
+  opacity: 70%;
 }
 
-.spinner {
+.button_sign_out button:hover {
+  opacity: 100%;
+  border: 1px solid var(--app-background);
+  /* Обводка кнопки при наведении */
+}
+
+.profile_data {
   display: flex;
-  /* Используется flexbox для центрирования содержимого */
-  justify-content: center;
-  /* Центрирует по горизонтали */
-  align-items: center;
-  /* Центрирует по вертикали */
-  height: 300px;
-  /* Высота для контейнера спиннера */
+  width: 100%;
+}
+
+.image_wrapper {
+  min-width: 250px;
+}
+
+@media (max-width: 990px) {
+
+  .profile_data {
+    margin-bottom: 20px;
+  }
+
+  .button_sign_out {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
