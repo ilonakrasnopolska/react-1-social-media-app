@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import ImageWithLoader from "../../../../common/ImageWithLoader/ImageWithLoader";
 import Classes from "../UserCard/UserCard.module.css";
 
@@ -7,7 +8,9 @@ const UserCard = ({ friend, t, handleFollowToggle, openModal }) => {
     <li className={Classes.friend_card}>
       <div className={Classes.content}>
         <div className={Classes.avatar_wrapper}>
+          <NavLink to={'/profile/' + friend.userId}>
           <ImageWithLoader src={friend.avatar} alt="Avatar" className={Classes.avatar}/>
+          </NavLink>
           <button
             onClick={() => handleFollowToggle(friend)}
             className={Classes[friend.isFollow ? "btn_unFollow" : "btn_follow"]}

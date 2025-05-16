@@ -22,6 +22,7 @@
 
 .button {
   opacity: 70%;
+  /* Прозрачность */
   padding: 15px;
   /* Внутренние отступы для кнопки */
   font-size: 20px;
@@ -32,18 +33,15 @@
   /* Цвет фона кнопки */
   transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out;
   /* Плавные переходы для изменения цветов */
+  color: var(--text-color-1);
+  /* Цвет текста ссылки */
+  display: flex;
+  justify-content: center;
 }
 
 .button:hover {
   opacity: 100%;
   border: 1px solid var(--app-background);
-}
-
-.link {
-  color: var(--text-color-1);
-  /* Цвет текста ссылки */
-  padding: 15px 95px;
-  /* Внутренние отступы для ссылки */
 }
 
 .button_sign_out button {

@@ -74,6 +74,8 @@ export const en = {
     TermsAndPolicy: "Terms and policy",
     Help: "Help",
     Out: "Log Out",
+    AskIfOut: "Are you sure you want to sign out?",
+    SignOut: "Sign out"
   },
   personal: {
     PersonalSettings: "Personal Settings",
@@ -176,6 +178,9 @@ export const en = {
     Empty: "Nothing found",
     Delete: "Delete",
     SendMessage: "Send Message",
-    Cancel: "Cancel"
+    Cancel: "Cancel",
+    Send: "Send",
+    Sended: "Sended",
+    Saved: "Saved"
   },
 };

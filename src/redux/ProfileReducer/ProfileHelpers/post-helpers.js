@@ -1,6 +1,5 @@
 import avatars from "../../../assets/Avatars-src";
 import { CURRENT_USER_NAME } from "../../../constants/constants";
-import { current } from "@reduxjs/toolkit";
 
 // Функция для получения текущего времени в формате чч:мм
 const getData = () => {

@@ -1,4 +1,5 @@
 import avatars from "../../../assets/Avatars-src";
+import { v4 as uuidv4 } from "uuid";
 
 const CURRENT_USER_NAME = "Ilona Sue"
 const getData = () => {
@@ -21,7 +22,7 @@ export const addCommentHelper = (state, action) => {
     return;
   }
 
-  const newCommentId = post.commentData.messages.length + 1;
+  const newCommentId =  uuidv4();
   const newComment = {
     commentId: newCommentId,
     message: newCommentText,

@@ -28,7 +28,7 @@ const UserMessageModal = ({
         style={{ width: "100%" }}
       />
       <button onClick={onSend} disabled={newMessageText.trim() === ""}>
-        Send
+        {t('Send')}
       </button>
     </Modal>
   );

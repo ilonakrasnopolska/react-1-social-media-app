@@ -1,15 +1,15 @@
 import Classes from "./MyPosts.module.css"; // Импорт CSS модуля для стилей
 import PostContainer from "./Post/PostContainer"; // Импорт компонента контейнера для поста
-import { ClipLoader } from "react-spinners"; // Импорт спиннера для загрузки
 import { useFetchAndDispatch } from "../../../../../hooks/useFetchAndDispatch"; // Хук для выполнения запросов
 import { fetchPosts } from "../../../../../../api/profileAPI"; // Импорт функции для получения постов
 import DeletePostModal from "./Post/DeletePostModal"; // Импорт модалки для удаления поста
-import { useDeleteModal } from "../../../../../hooks/useDeletePostModal";
+import  useModal  from "../../../../../hooks/useModal";
 import Preloader from "../../../../common/Preloader/Preloader";
+import { usePostActions } from "../../../../../hooks/usePostActions";
 
 const MyPosts = ({ posts, isLoading, t }) => {
-  const { isModalOpen, openModal, closeModal, confirmDelete } =
-    useDeleteModal();
+  const { isModalOpen, openModal, closeModal, confirm } = useModal();
+  const { onDeletePost } = usePostActions();
 
   useFetchAndDispatch(fetchPosts(posts));
 
@@ -17,7 +17,7 @@ const MyPosts = ({ posts, isLoading, t }) => {
     <section className="myPosts section">
       <div className={Classes.content}>
         {isLoading && posts.length === 0 ? (
-          <Preloader/>
+          <Preloader />
         ) : (
           <ul className={Classes.list}>
             {posts.map((post) => (
@@ -25,7 +25,9 @@ const MyPosts = ({ posts, isLoading, t }) => {
                 key={post.postId}
                 post={post}
                 t={t}
-                onDelete={() => openModal(post)}
+                onDelete={() =>
+                  openModal(post, () => onDeletePost(post.postId))
+                }
               />
             ))}
           </ul>
@@ -36,7 +38,7 @@ const MyPosts = ({ posts, isLoading, t }) => {
       <DeletePostModal
         isOpen={isModalOpen}
         closeModal={closeModal}
-        onConfirmDelete={confirmDelete}
+        onConfirmDelete={confirm}
         t={t}
       />
     </section>

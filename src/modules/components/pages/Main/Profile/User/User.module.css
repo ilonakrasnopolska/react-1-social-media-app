@@ -58,24 +58,12 @@
 
 /* Элемент списка (пост или комментарий) */
 .item {
-  font-size: 20px;
+  font-size: 25px;
   /* Размер шрифта */
   color: var(--app-background);
   /* Цвет текста */
-  text-decoration-line: underline;
-  /* Подчеркивание текста */
-  cursor: pointer;
-  /* Курсор как указатель на элемент */
   transition: all 0.3s ease;
   /* Плавные переходы для улучшения взаимодействия */
-}
-
-/* Добавим эффект при наведении на элемент списка */
-.item:hover {
-  color: var(--hover-color, #4a90e2);
-  /* Цвет при наведении (используйте переменную или конкретный цвет) */
-  text-decoration-line: none;
-  /* Убираем подчеркивание при наведении */
 }
 
 .centeredLoader {

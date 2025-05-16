@@ -1,6 +1,7 @@
 import React from "react";
 import Classes from "./AddComment.module.css";
 import { useCommentActions } from "../../../../../../../../hooks/useCommentActions";
+import Button from "../../../../../../../common/Button";
 
 const AddComment = ({ postId, t }) => {
   // Получаем функции и переменные из хука useCommentActions
@@ -21,9 +22,12 @@ const AddComment = ({ postId, t }) => {
           placeholder={t("AddComment")} // Локализованный текст для placeholder
         />
         {/* Кнопка отправки комментария */}
-        <button onClick={handleAddComment} className={Classes.submit_button}>
-          {t("Add")} {/* Локализованный текст для кнопки */}
-        </button>
+        <Button
+              className={Classes.submit_button}
+              onClick={handleAddComment} // Функция для добавления поста
+              label={t("Add")} // Лейбл кнопки с переводом
+              disabled={!newCommentText.trim()}
+            />
       </form>
     </div>
   );

@@ -1,11 +1,11 @@
 import React from "react";
 import Modal from "../../../../../common/Modal/Modal";
-import Classes from "../ModalSignOut.module.css";
+import Classes from "./ModalSignOut.module.css";
 
 const ModalSignOut = ({
   isOpen,
   closeModal,
-  onConfirmDelete,
+  onConfirmOut,
   t,
 }) => {
   return (
@@ -18,7 +18,7 @@ const ModalSignOut = ({
         </h2>
 
         <div>
-          <button onClick={onConfirmDelete} className={Classes.button}>
+          <button onClick={onConfirmOut} className={Classes.button}>
             {t ? t("SignOut") : "Sign Out"}
           </button>
           <button onClick={closeModal} className={Classes.button}>

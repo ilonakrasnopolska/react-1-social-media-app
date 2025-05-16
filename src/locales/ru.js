@@ -74,6 +74,8 @@ export const ru = {
     TermsAndPolicy: "Правила и условия",
     Help: "Помощь",
     Out: "Выход",
+    AskIfOut: "Вы уверены что хотите выйти из вашего аккаунта?",
+    SignOut: "Выход"
   },
   personal: {
     PersonalSettings: "Личные настройки",
@@ -181,6 +183,9 @@ export const ru = {
     Empty: "Ничего не найдено",
     Delete: "Удалить",
     SendMessage: "Написать",
-    Cancel: "Отмена"
+    Cancel: "Отмена",
+    Send: "Отправить",
+    Sended: "Отправлено",
+    Saved: "Сохранено"
   },
 };
