@@ -1,10 +1,9 @@
 import React from "react";
-import {toggleTerm} from "../../../../redux/SettingsReducer/settings-reducer";
 import {useDispatch} from "react-redux";
 import { generateKey } from "../../../../constants/constants";
 
 
-export const AccordionButton = ({MainClass, ClassActive, term, t}) => {
+export const AccordionButton = ({MainClass, ClassActive, term, toggleTerm, t}) => {
   const dispatch = useDispatch();
   return (
     <button

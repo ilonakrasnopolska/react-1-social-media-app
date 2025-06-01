@@ -4,20 +4,32 @@ import PostMakerContainer from "./PostMaker/PostMakerContainer"; // Контей
 import MyPosts from "./MyPosts/MyPosts"; // Компонент для отображения постов пользователя
 import Hero from "./Hero/Hero"; // Компонент для отображения обоев или фонового изображения
 
-const Profile = ({ wallpaper, userData, t, isLoading, posts }) => {
+const Profile = ({
+  wallpaper,
+  userData,
+  t,
+  isLoading,
+  posts,
+  isOwnProfile,
+}) => {
   return (
     <div>
       {/* Компонент Hero для отображения обоев/фона */}
-      <Hero wallpaper={wallpaper} isLoading={isLoading}/>
+      <Hero wallpaper={wallpaper} isLoading={isLoading} />
 
       {/* Компонент User для отображения информации о пользователе */}
-      <User userData={userData} isLoading={isLoading} t={t} />
+      <User userData={userData} isLoading={isLoading} t={t} isOwnProfile={isOwnProfile}/>
 
       {/* Контейнер для создания постов */}
-      <PostMakerContainer t={t} />
+      {isOwnProfile && <PostMakerContainer t={t} />}
 
       {/* Компонент для отображения списка постов */}
-      <MyPosts posts={posts} isLoading={isLoading} t={t} />
+      <MyPosts
+        posts={posts}
+        isLoading={isLoading}
+        t={t}
+        isOwnProfile={isOwnProfile}
+      />
     </div>
   );
 };

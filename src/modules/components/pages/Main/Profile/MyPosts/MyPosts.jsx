@@ -1,23 +1,23 @@
 import Classes from "./MyPosts.module.css"; // Импорт CSS модуля для стилей
 import PostContainer from "./Post/PostContainer"; // Импорт компонента контейнера для поста
-import { useFetchAndDispatch } from "../../../../../hooks/useFetchAndDispatch"; // Хук для выполнения запросов
-import { fetchPosts } from "../../../../../../api/profileAPI"; // Импорт функции для получения постов
 import DeletePostModal from "./Post/DeletePostModal"; // Импорт модалки для удаления поста
-import  useModal  from "../../../../../hooks/useModal";
+import useModal from "../../../../../hooks/useModal";
 import Preloader from "../../../../common/Preloader/Preloader";
 import { usePostActions } from "../../../../../hooks/usePostActions";
 
-const MyPosts = ({ posts, isLoading, t }) => {
+const MyPosts = ({ posts, isLoading, isOwnProfile, t }) => {
   const { isModalOpen, openModal, closeModal, confirm } = useModal();
   const { onDeletePost } = usePostActions();
-
-  useFetchAndDispatch(fetchPosts(posts));
 
   return (
     <section className="myPosts section">
       <div className={Classes.content}>
         {isLoading && posts.length === 0 ? (
           <Preloader />
+        ) : posts.length === 0 ? (
+          <p className={Classes.emptyText}>
+           {t(`EmptyPostList`)}
+          </p>
         ) : (
           <ul className={Classes.list}>
             {posts.map((post) => (
@@ -25,6 +25,7 @@ const MyPosts = ({ posts, isLoading, t }) => {
                 key={post.postId}
                 post={post}
                 t={t}
+                isOwnProfile={isOwnProfile}
                 onDelete={() =>
                   openModal(post, () => onDeletePost(post.postId))
                 }

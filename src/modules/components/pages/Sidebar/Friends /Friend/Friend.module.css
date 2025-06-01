@@ -29,11 +29,15 @@
 .user__name {
   color: var(--primary-text-color);
   /* Задаем цвет текста */
-  font-size: 20px;
+  font-size: 18px;
   /* Устанавливаем размер шрифта */
 }
 
 .item span {
-  display: flex;
-  justify-content: center;
+  display: block;
+  width: 69px;               /* задай фиксированную ширину */
+  white-space: nowrap;        /* не переносить */
+  overflow: hidden;           /* скрывать лишнее */
+  text-overflow: ellipsis;    /* троеточие в конце */
+  direction: ltr;
 }

@@ -8,7 +8,12 @@ const ChatBubble = ({ message, t, openModal }) => {
     <li className={Classes.chatItem}>
       <div className={Classes.messageWrapper}>
         <div className={Classes.messageContent}>
-          <ImageWithLoader src={message.avatar} alt="avatar" className={Classes.avatar} height='50px'/>
+            <ImageWithLoader
+              src={message.avatar}
+              alt="avatar"
+              className={Classes.avatar}
+              height="50px"
+            />
           <div className={Classes.messageInfo}>
             <span>{message.name}</span>
             <div className={Classes.textContent}>
@@ -18,14 +23,11 @@ const ChatBubble = ({ message, t, openModal }) => {
           </div>
         </div>
         <div className={Classes.delete_btn}>
-          <button onClick={openModal}>
-            {t("Delete")}
-          </button>
+          <button onClick={openModal}>{t("Delete")}</button>
         </div>
       </div>
     </li>
   );
 };
-
 
 export default ChatBubble;

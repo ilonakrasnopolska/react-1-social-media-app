@@ -19,7 +19,8 @@ export const ru = {
     Add: "Добавить",
     Female: "Женский",
     Male: "Мужской",
-    AskIfDeletePost: "Вы уверены что хотите удалить пост?"
+    AskIfDeletePost: "Вы уверены что хотите удалить пост?",
+    EmptyPostList: `Этот пользователь еще ничего не опубликовал`
   },
   dialogs: {
     FindUser: "Найти пользователя",

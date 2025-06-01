@@ -2,7 +2,7 @@ import fetchData from "./fetchData"; // Импорт функции для за�
 import {
   setUsersList,
   setTotalUsersCount,
-  setLoadedPage
+  setLoadedPage,
 } from "../redux/FindFriendsReducer/find-friends-reducer"; // Импорт экшена для установки списка пользователей
 import {
   startLoading,
@@ -10,6 +10,9 @@ import {
 } from "../redux/SpinnerReducer/spinner-reducer"; // Импорт экшенов для управления состоянием загрузки
 import avatars from "../assets/Avatars-src"; // Импорт изображений аватаров
 import { baseMessageUrl } from "../constants/constants"; // Импорт базового URL для сообщений
+
+// Заглушки для данных
+const cities = [`Haifa`, `Kyiv`, `Moscow`, `Minsk`, `New York`];
 
 // Функция для загрузки пользователей
 export const fetchUsers =
@@ -30,22 +33,24 @@ export const fetchUsers =
 
     // Выполняем запрос на сервер для получения списка пользователей
     fetchData(
-      `https://randomuser.me/api/?results=${pageSize}&page=${currentPage}&seed=customseed`,
+      `https://social-network.samuraijs.com/api/1.0/users?count=${pageSize}&page=${currentPage}`,
       {}
     )
       .then((data) => {
         // Если данные получены, создаем массив пользователей
-        if (data && data.results) {
-          const usersArr = data.results.map((user) => {
+        if (data && data.items) {
+          const usersArr = data.items.map((user) => {
+            const randomCity =
+              cities[Math.floor(Math.random() * cities.length)];
             // Для каждого пользователя создаем объект с нужными данными
             return {
-              userId: user.login.uuid, // Уникальный ID пользователя
-              name: `${user.name.first} ${user.name.last}`, // Полное имя пользователя
+              userId: user.id, // Уникальный ID пользователя
+              name: `${user.name}`, // Полное имя пользователя
               isFollow: false, // Статус подписки (по умолчанию не подписан)
-              url: `${baseMessageUrl}${user.login.uuid}`, // Ссылка на сообщение с этим пользователем
+              url: `${baseMessageUrl}${user.id}`, // Ссылка на сообщение с этим пользователем
               IsActive: true, // Статус активности пользователя
-              city: user.location.city, // Город пользователя
-              avatar: user.picture?.large || avatars.defaultPic, // Аватар пользователя (если есть, иначе дефолтный)
+              city: randomCity, // Город пользователя
+              avatar: user.photos.small || avatars.defaultPic, // Аватар пользователя (если есть, иначе дефолтный)
             };
           });
 

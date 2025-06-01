@@ -7,7 +7,7 @@ import { deleteComment } from "../../../../../../../../redux/ProfileReducer/prof
 import DeleteCommentModal from "./DeleteCommentModal";
 import ImageWithLoader from "../../../../../../common/ImageWithLoader/ImageWithLoader";
 
-const Comments = memo(({ postId, t }) => {
+const Comments = memo(({ postId, t, isOwnProfile }) => {
   const { Messages, onReplyToComment } = useCommentActions(postId);
   const dispatch = useDispatch();
   const { isModalOpen, openModal, closeModal, confirm } = useModal();
@@ -39,19 +39,20 @@ const Comments = memo(({ postId, t }) => {
                   </div>
                 </div>
               </div>
-
-              <button
-                onClick={() =>
-                  openModal(
-                    { commentId: comment.commentId, postId },
-                    ({ commentId, postId }) =>
-                      dispatch(deleteComment({ commentId, postId }))
-                  )
-                }
-                className={Classes.delete}
-              >
-                ...
-              </button>
+              {isOwnProfile && (
+                <button
+                  onClick={() =>
+                    openModal(
+                      { commentId: comment.commentId, postId },
+                      ({ commentId, postId }) =>
+                        dispatch(deleteComment({ commentId, postId }))
+                    )
+                  }
+                  className={Classes.delete}
+                >
+                  ...
+                </button>
+              )}
             </li>
           ))
         ) : (

@@ -20,7 +20,8 @@ export const en = {
     Female: "Female",
     Male: "Male",
     AskIfDeletePost: "Are you sure you want to delete this post?",
-    DeleteCommentQuestion: "Are you sure you want to delete this comment?"
+    DeleteCommentQuestion: "Are you sure you want to delete this comment?",
+    EmptyPostList: `This user hasn't posted anything yet`
   },
   dialogs: {
     FindUser: "Find user",

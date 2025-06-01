@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "../../../../common/Avatar";
+import ImageWithLoader from "../../../../common/ImageWithLoader/ImageWithLoader";
 import Modal from "../../../../common/Modal/Modal";
 
 const UserMessageModal = ({
@@ -15,7 +15,7 @@ const UserMessageModal = ({
   return (
     <Modal isOpen={isOpen} close={closeModal}>
       <div>
-        <Avatar src={friend.avatar} alt="Avatar" />
+        <ImageWithLoader src={friend.avatar} alt="Avatar"/>
         <h2>{friend.name}</h2>
       </div>
       <textarea

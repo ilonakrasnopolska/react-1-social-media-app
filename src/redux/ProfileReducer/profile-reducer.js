@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { pictures } from "../../assets/Pictures-src";
 
 // Импорт хелперов для работы с постами и комментариями
 import {
   setPostsListHelper,
+  setViewedUserIdHelper,
   setProfileDataHelper,
   addPostHelper,
   deletePostHelper,
@@ -23,8 +23,8 @@ import {
 const initialState = {
   posts: [], // Список постов
   personalAccount: { userData: {} }, // Данные пользователя
-  profileCover: `${pictures.Cover}`, // Обложка профиля
   newPostText: "", // Текст нового поста
+  viewedUserId: null, //Пользователь чью страницу мы смотрим
 };
 
 // Слайс для управления профилем
@@ -35,6 +35,10 @@ const profileSlice = createSlice({
     // Установка списка постов
     setPostsList: (state, action) => {
       setPostsListHelper(state, action); // Вызов хелпера для установки списка постов
+    },
+    // Хелпер для установки id пользователя на чьей мы странице
+    setViewedUserId: (state, action) => {
+      setViewedUserIdHelper(state, action); // Вызов хелпера
     },
     // Установка данных профиля
     setProfileData: (state, action) => {
@@ -86,6 +90,7 @@ const profileSlice = createSlice({
 // Экспорт всех действий слайса
 export const {
   setPostsList,
+  setViewedUserId,
   setProfileData,
   addPost,
   deletePost,

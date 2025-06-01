@@ -1,8 +1,11 @@
 // Импортируем необходимые ресурсы
-import avatars from "../../assets/Avatars-src"; // Импорт изображений аватаров
 import { createSlice } from "@reduxjs/toolkit"; // Импортируем createSlice из Redux Toolkit
 import { v4 as uuidv4 } from "uuid"; // Импортируем uuid для генерации уникальных идентификаторов
 import { NAV_LIST_NAME, NAV_LIST_URL } from "../../constants/state-constants"; // Импортируем константы для названий и URL в навигации
+import {
+  setFriendsListHelper,
+  toggleFriendFollowHelper
+} from "./SidebarHelpers/sidebar-helpers";
 
 // Инициализация базового состояния
 const initialState = {
@@ -41,11 +44,8 @@ const initialState = {
     id: uuidv4(),
   },
   // Массив с друзьями, каждый объект включает имя, уникальный ID и аватар
-  friends: [
-    { name: "Sunny", userId: uuidv4(), avatar: `${avatars.sunnyPic}` }, // Друзья с их аватарами
-    { name: "Phillip", userId: uuidv4(), avatar: `${avatars.phillipPic}` },
-    { name: "Elon", userId: uuidv4(), avatar: `${avatars.elonPic}` },
-  ],
+  friends: [],
+  friendsListSize: 8, //Кол-во друзей в блоке
 };
 
 // Создание слайса для работы с сайдбаром (боковой панелью)
@@ -53,17 +53,18 @@ const sidebarSlice = createSlice({
   name: "sidebar", // Имя слайса
   initialState, // Начальное состояние
   reducers: {
-    // Экшен для отображения друзей (в данном случае просто выводит состояние в консоль)
-    showFriends: (state) => {
-      console.log(state); // Вывод состояния в консоль
+    // Экшен для установки друзей
+    setFriendsList: (state, action) => {
+      setFriendsListHelper(state, action); // Вывод состояния в консоль
     },
+    toggleFriendFollow: (state, action) => {
+      toggleFriendFollowHelper(state, action);
+    }
   },
 });
 
 // Экспортируем экшен для использования в компонентах
-export const {
-  showFriends, // Экспорт экшена showFriends
-} = sidebarSlice.actions;
+export const { setFriendsList, toggleFriendFollow } = sidebarSlice.actions;
 
 // Экспортируем редьюсер по умолчанию для использования в store
 export default sidebarSlice.reducer;

@@ -73,3 +73,15 @@
   min-height: 300px;
   /* или сколько нужно */
 }
+
+.actions {
+  display: flex;
+}
+
+.actions button {
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 18px;
+  background-color: var(--button-background-1);
+  color: var(--text-color-1);
+}

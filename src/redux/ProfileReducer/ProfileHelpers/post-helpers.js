@@ -14,6 +14,11 @@ export const setPostsListHelper = (state, action) => {
   state.posts = action.payload; // Устанавливаем список постов из payload
 };
 
+// Хелпер для установки id пользователя на чьей мы странице
+export const setViewedUserIdHelper = (state, action) => {
+  state.viewedUserId = action.payload; // Устанавливаем id
+};
+
 // Хелпер для установки данных профиля
 export const setProfileDataHelper = (state, action) => {
   state.personalAccount.userData = action.payload; // Устанавливаем данные пользователя из payload

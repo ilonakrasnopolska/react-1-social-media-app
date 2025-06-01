@@ -1,7 +1,7 @@
 import React from "react";
 import CommonClasses from "../../Settings.module.css"; // Импортируем общий стиль для компонента
 import Classes from "./PersonalAccount.module.css"; // Импортируем специфичный стиль для компонента
-import UserInfo from "../../../../../common/UserInfo/UserInfo"; // Импортируем компонент для отображения данных пользователя
+import UserInfo from "../../../../../common/UserInfo"; // Импортируем компонент для отображения данных пользователя
 import Title from "../../../../../common/Title"; // Импортируем компонент для заголовка
 import { usePersonalAccountData } from "../../../../../../hooks/useGetPersonalAccountData"; // Хук для получения данных пользователя
 import { useFetchAndDispatch } from "../../../../../../hooks/useFetchAndDispatch"; // Хук для выполнения запросов и диспатча данных

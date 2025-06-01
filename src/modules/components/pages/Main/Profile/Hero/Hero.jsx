@@ -6,7 +6,11 @@ const Hero = ({ wallpaper }) => {
   return (
     <section className="hero">
       <div className={Classes.background}>
-      <ImageWithLoader src={wallpaper} alt="wallpaper" className={Classes.spinnerWrapper} />
+        <ImageWithLoader
+          src={wallpaper}
+          alt="wallpaper"
+          className={Classes.spinnerWrapper}
+        />
       </div>
     </section>
   );
