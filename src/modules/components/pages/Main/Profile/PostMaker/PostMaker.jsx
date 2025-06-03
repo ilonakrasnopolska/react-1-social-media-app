@@ -33,6 +33,7 @@ const PostMaker = ({
               className={Classes.button}
               onClick={handleAddPost} // Функция для добавления поста
               label={t("Post")} // Лейбл кнопки с переводом
+              disabled={!newPostText.trim()}
             />
           </div>
         </form>

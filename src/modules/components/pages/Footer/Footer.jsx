@@ -5,19 +5,13 @@ import Classes from "./Footer.module.css"; // Импортируем стили 
 const Footer = () => {
   return (
     <footer className={Classes.footer}>
-      {" "}
-      {/* Обертка футера с классом для стилизации */}
+      {/* Вложенная обертка для элементов футера */}
       <div className={Classes.wrapper}>
-        {" "}
-        {/* Вложенная обертка для элементов футера */}
+        {/* Список социальных сетей */}
         <ul className={Classes.list}>
-          {" "}
-          {/* Список социальных сетей */}
           {/* Проходим по массиву socialLinks и отображаем каждый элемент как ссылку с иконкой */}
           {socialLinks.map(({ href, icon }, index) => (
             <li key={index}>
-              {" "}
-              {/* Для каждого элемента списка создаем <li> с уникальным ключом */}
               <a
                 className={Classes.icon} // Класс для стилизации иконки
                 href={href} // Устанавливаем ссылку для социальной сети
@@ -30,7 +24,6 @@ const Footer = () => {
           ))}
         </ul>
         <div className={Classes.copyright}>
-          {" "}
           {/* Блок с текстом о копирайте */}
           Copyright @ 2024 Chakra
         </div>

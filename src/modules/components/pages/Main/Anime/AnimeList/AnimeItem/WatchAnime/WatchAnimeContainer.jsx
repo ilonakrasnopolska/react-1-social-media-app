@@ -1,12 +1,11 @@
 import React from "react";
-import { ClipLoader } from "react-spinners";
 import { useParams } from "react-router-dom";
 import { useFetchAndDispatch } from "../../../../../../../hooks/useFetchAndDispatch";
 import { fetchAnime } from "../../../../../../../../api/animeAPI";
 import useGetDataAnime from "../../../../../../../hooks/useGetDataAnime";
 import useData from "../../../../../../../hooks/useData";
 import WatchAnime from "./WatchAnime";
-import Classes from "../WatchAnime/WatchAnime.module.css";
+import Preloader from "../../../../../../common/Preloader/Preloader";
 
 const WatchAnimeContainer = ({ t }) => {
   // Получаем состояние загрузки из хука useData
@@ -36,9 +35,7 @@ const WatchAnimeContainer = ({ t }) => {
   // Если данные еще загружаются, показываем спиннер
   if (isLoading) {
     return (
-      <div className={Classes.spinner}>
-        <ClipLoader color="#194770" size={50} />
-      </div>
+      <Preloader />
     );
   }
 

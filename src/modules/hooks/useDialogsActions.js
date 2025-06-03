@@ -50,11 +50,10 @@ export const useDialogsActions = () => {
   };
 
   // Функция для отправки сообщения
-  const handleSendMessageAndCloseModal = (newMessageText, friend, closeModal) => {
+  const handleSendMessageAndCloseModal = (newMessageText, userData, closeModal) => {
     if (newMessageText.trim() === "") return;
-
-    handleStartChat(friend, friend.userId);
-    dispatch(sendMessage({ userId: friend.userId }));
+    handleStartChat(userData, userData.userId);
+    dispatch(sendMessage({ userId: userData.userId }));
     closeModal();
   };
 

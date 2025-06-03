@@ -1,10 +1,10 @@
 import Classes from "./UsersList.module.css";
 import React from "react";
-import { ClipLoader } from "react-spinners";
 import DialogUser from "./DialogUser/DialogUser";
 import CreateNewChat from "./CreateNewChat/CreateNewChat";
 import { useFetchAndDispatch } from "../../../../../hooks/useFetchAndDispatch";
 import { fetchUsers } from "../../../../../../api/dialogsAPI";
+import Preloader from "../../../../common/Preloader/Preloader";
 
 // Компонент для отображения списка пользователей
 const UsersList = ({
@@ -17,16 +17,12 @@ const UsersList = ({
 }) => {
   // Хук для загрузки данных пользователей
   useFetchAndDispatch(fetchUsers(users));
-
   return (
     <section className="users section">
       <div className={Classes.content}>
         {/* Если данные загружаются, показываем спиннер */}
         {isLoading ? (
-          <div className={Classes.spinner}>
-            <ClipLoader color="#194770" size={50} />{" "}
-            {/* Спиннер для загрузки */}
-          </div>
+          <Preloader />
         ) : (
           <ul className={Classes.list}>
             {/* Отображаем каждого пользователя из списка */}

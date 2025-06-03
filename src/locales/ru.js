@@ -19,7 +19,8 @@ export const ru = {
     Add: "Добавить",
     Female: "Женский",
     Male: "Мужской",
-    AskIfDeletePost: "Вы уверены что хотите удалить пост?"
+    AskIfDeletePost: "Вы уверены что хотите удалить пост?",
+    EmptyPostList: `Этот пользователь еще ничего не опубликовал`
   },
   dialogs: {
     FindUser: "Найти пользователя",
@@ -65,6 +66,7 @@ export const ru = {
     Follow: "Добавить",
     Unfollow: "Удалить",
     Find: "Найти пользователя",
+    City: "Город"
   },
   settings: {
     PersonalAccount: "Личный аккаунт",
@@ -73,12 +75,15 @@ export const ru = {
     TermsAndPolicy: "Правила и условия",
     Help: "Помощь",
     Out: "Выход",
+    AskIfOut: "Вы уверены что хотите выйти из вашего аккаунта?",
+    SignOut: "Выход"
   },
   personal: {
     PersonalSettings: "Личные настройки",
     EditProfile: "Редактировать профиль:",
     Edit: "Редактировать",
     Save: "Сохранить",
+    SignOut: "Выйти"
   },
   confidentiality: {
     Confidentiality: "Приватность",
@@ -179,6 +184,9 @@ export const ru = {
     Empty: "Ничего не найдено",
     Delete: "Удалить",
     SendMessage: "Написать",
-    Cancel: "Отмена"
+    Cancel: "Отмена",
+    Send: "Отправить",
+    Sended: "Отправлено",
+    Saved: "Сохранено"
   },
 };

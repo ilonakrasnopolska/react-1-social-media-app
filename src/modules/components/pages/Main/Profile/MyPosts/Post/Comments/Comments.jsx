@@ -1,15 +1,16 @@
 import React, { memo } from "react";
+import { useDispatch } from "react-redux";
 import Classes from "./Comments.module.css";
 import { useCommentActions } from "../../../../../../../hooks/useCommentActions";
-import { useCommentDeleteModal } from "../../../../../../../hooks/useDeleteCommentModal";
-import Avatar from "../../../../../../common/Avatar";
+import useModal from "../../../../../../../hooks/useModal";
+import { deleteComment } from "../../../../../../../../redux/ProfileReducer/profile-reducer";
 import DeleteCommentModal from "./DeleteCommentModal";
+import ImageWithLoader from "../../../../../../common/ImageWithLoader/ImageWithLoader";
 
-const Comments = memo(({ postId, t }) => {
+const Comments = memo(({ postId, t, isOwnProfile }) => {
   const { Messages, onReplyToComment } = useCommentActions(postId);
-
-  const { isModalOpen, openModal, closeModal, confirmDelete } =
-    useCommentDeleteModal();
+  const dispatch = useDispatch();
+  const { isModalOpen, openModal, closeModal, confirm } = useModal();
 
   return (
     <>
@@ -17,12 +18,12 @@ const Comments = memo(({ postId, t }) => {
         {Messages.length > 0 ? (
           Messages.map((comment) => (
             <li key={comment.commentId} className={Classes.item}>
-              <Avatar
+              <ImageWithLoader
                 src={comment.avatar}
                 alt="User avatar"
                 className={Classes.avatar}
+                height="50px"
               />
-
               <div className={Classes.post}>
                 <div className={Classes.comment}>
                   <strong>{t(comment.user)} </strong>
@@ -38,13 +39,20 @@ const Comments = memo(({ postId, t }) => {
                   </div>
                 </div>
               </div>
-
-              <button
-                onClick={() => openModal(comment.commentId, postId)}
-                className={Classes.delete}
-              >
-                ...
-              </button>
+              {isOwnProfile && (
+                <button
+                  onClick={() =>
+                    openModal(
+                      { commentId: comment.commentId, postId },
+                      ({ commentId, postId }) =>
+                        dispatch(deleteComment({ commentId, postId }))
+                    )
+                  }
+                  className={Classes.delete}
+                >
+                  ...
+                </button>
+              )}
             </li>
           ))
         ) : (
@@ -55,7 +63,7 @@ const Comments = memo(({ postId, t }) => {
       <DeleteCommentModal
         isOpen={isModalOpen}
         closeModal={closeModal}
-        onConfirmDelete={confirmDelete}
+        onConfirmDelete={confirm}
         t={t}
       />
     </>

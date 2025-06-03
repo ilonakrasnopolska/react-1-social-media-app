@@ -7,7 +7,7 @@ const ModalSuccessMessage = ({ show, t }) => {
   return (
     <div className={Classes.modalBackdrop}>
       <div className={Classes.modal}>
-        <p>{t("Send")}</p>
+        <p>{t("Sended")}</p>
       </div>
     </div>
   );

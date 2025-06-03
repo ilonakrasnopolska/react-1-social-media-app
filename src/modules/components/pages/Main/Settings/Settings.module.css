@@ -70,13 +70,9 @@
 
 .user_data_edit .card {
   display: flex;
-  justify-content: center;
-  /* Выравнивание по центру */
   width: 100%;
   background-color: var(--primary-background);
-  /* Фон */
   padding: 30px;
-  /* Отступы */
 }
 
 /* Стили для блока "о пользователе" */
@@ -127,6 +123,7 @@
     /* Убираем отступ справа */
     margin-bottom: 20px;
     /* Добавляем отступ снизу */
+    width: 220px;
   }
 
   /* Изменение стилей для карточки данных пользователя */

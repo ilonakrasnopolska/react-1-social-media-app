@@ -2,7 +2,7 @@ import React from "react";
 import PostMaker from "./PostMaker"; // Импорт компонента для создания нового поста
 import { usePostActions } from "../../../../../hooks/usePostActions"; // Хук для обработки действий с постами
 
-const PostMakerContainer = ({ t }) => {
+const PostMakerContainer = ({t }) => {
   // Извлекаем необходимые функции и состояния из хука usePostActions
   const { newPostText, useTextChangeHandlers, handleKeyDown, handleAddPost } =
     usePostActions();

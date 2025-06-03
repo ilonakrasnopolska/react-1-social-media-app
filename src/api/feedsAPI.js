@@ -1,4 +1,5 @@
 import fetchData from "./fetchData";
+import { v4 as uuidv4 } from "uuid"; // Импортируем функцию для генерации уникальных ID
 import {
   startLoading,
   stopLoading,
@@ -44,6 +45,7 @@ export const fetchFeeds = (posts) => (dispatch) => {
           // Формируем объект для каждого поста
           return {
             feedId: post.mal_id, // ID поста
+            userId: uuidv4(), //генерируем уникальный ID
             name: post.title, // Название аниме
             avatar: post.images?.jpg?.image_url || avatars.defaultPic, // Используем изображение, если оно есть, или заглушку
             category: randomCategory, // Случайная категория

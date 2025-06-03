@@ -1,15 +1,16 @@
 import React from "react";
-import Classes from "./Hero.module.css"; // Импортируем стили для компонента Hero
+import Classes from "./Hero.module.css";
+import ImageWithLoader from "../../../../common/ImageWithLoader/ImageWithLoader";
 
 const Hero = ({ wallpaper }) => {
   return (
-    // Секция для отображения обоев в профиле
     <section className="hero">
       <div className={Classes.background}>
-        {" "}
-        {/* Используем CSS-модуль для фона */}
-        <img src={wallpaper} alt="wallpaper" />{" "}
-        {/* Отображаем изображение обоев, переданное через пропс */}
+        <ImageWithLoader
+          src={wallpaper}
+          alt="wallpaper"
+          className={Classes.spinnerWrapper}
+        />
       </div>
     </section>
   );

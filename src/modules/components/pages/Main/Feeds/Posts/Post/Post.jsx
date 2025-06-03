@@ -1,17 +1,23 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import ImageWithLoader from "../../../../../common/ImageWithLoader/ImageWithLoader";
 import Classes from "./Post.module.css"; // Импорт стилей для компонента Post
 
 const Post = ({ post, t }) => {
-  const { avatar, name, time, content, poster } = post; // Извлекаем нужные данные из объекта post
-
+  const { avatar, name, time, content, poster, userId } = post; // Извлекаем нужные данные из объекта post
   return (
     <li className={Classes.item}>
-      {" "}
       {/* Обертка для каждого поста */}
       <div className={Classes.container}>
         {/* Информация о пользователе, создавшем пост */}
         <div className={Classes.creator}>
-          <img className={Classes.avatar} src={avatar} alt="Post avatar" />{" "}
+          <NavLink to={'/profile/' + userId}>
+            <ImageWithLoader
+              src={avatar}
+              alt="Post avatar"
+              className={Classes.avatar}
+            />
+          </NavLink>
           {/* Аватар пользователя */}
           <div className={Classes.info}>
             <div>
@@ -21,7 +27,7 @@ const Post = ({ post, t }) => {
                 <span role="img" aria-label="verified">
                   ✔️
                 </span>
-              )}{" "}
+              )}
               {/* Если имя пользователя "AniHub", показываем значок верификации */}
             </div>
             <div>
@@ -36,8 +42,12 @@ const Post = ({ post, t }) => {
             {content} {/* Основное содержимое поста */}
           </span>
           {poster && (
-            <img src={poster} alt="Poster" className={Classes.poster} />
-          )}{" "}
+            <ImageWithLoader
+              src={poster}
+              alt="Poster"
+              className={Classes.poster}
+            />
+          )}
           {/* Если есть постер (изображение), выводим его */}
         </div>
       </div>

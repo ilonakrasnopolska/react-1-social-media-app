@@ -48,10 +48,6 @@ const initialState = {
       title: SETTINGS_LIST_TITLE.HELP,
       id: uuidv4(),
     },
-    {
-      title: SETTINGS_LIST_TITLE.OUT,
-      id: uuidv4(),
-    },
   ],
   personalAccount: {
     userData: {},

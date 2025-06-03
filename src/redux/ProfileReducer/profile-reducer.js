@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { pictures } from "../../assets/Pictures-src";
 
 // Импорт хелперов для работы с постами и комментариями
 import {
   setPostsListHelper,
+  setViewedUserIdHelper,
   setProfileDataHelper,
   addPostHelper,
   deletePostHelper,
@@ -11,6 +11,8 @@ import {
   handleLikeHelper,
   toggleCommentsHelper,
   updateProfileInfoHelper,
+  followHelper,
+  unFollowHelper,
 } from "./ProfileHelpers/post-helpers";
 import {
   updateNewCommentTextHelper,
@@ -23,8 +25,8 @@ import {
 const initialState = {
   posts: [], // Список постов
   personalAccount: { userData: {} }, // Данные пользователя
-  profileCover: `${pictures.Cover}`, // Обложка профиля
   newPostText: "", // Текст нового поста
+  viewedUserId: null, //Пользователь чью страницу мы смотрим
 };
 
 // Слайс для управления профилем
@@ -35,6 +37,10 @@ const profileSlice = createSlice({
     // Установка списка постов
     setPostsList: (state, action) => {
       setPostsListHelper(state, action); // Вызов хелпера для установки списка постов
+    },
+    // Хелпер для установки id пользователя на чьей мы странице
+    setViewedUserId: (state, action) => {
+      setViewedUserIdHelper(state, action); // Вызов хелпера
     },
     // Установка данных профиля
     setProfileData: (state, action) => {
@@ -80,12 +86,21 @@ const profileSlice = createSlice({
     updateProfileInfo: (state, action) => {
       updateProfileInfoHelper(state, action); // Вызов хелпера для обновления информации профиля
     },
+    // Редьюсер для подписки на пользователя
+    followFriend: (state, action) => {
+      followHelper(state, action); // Вызов хелпера для подписки
+    },
+    // Редьюсер для отписки от пользователя
+    unFollowFriend: (state, action) => {
+      unFollowHelper(state, action); // Вызов хелпера для отписки
+    },
   },
 });
 
 // Экспорт всех действий слайса
 export const {
   setPostsList,
+  setViewedUserId,
   setProfileData,
   addPost,
   deletePost,
@@ -97,6 +112,8 @@ export const {
   addComment,
   deleteComment,
   updateProfileInfo,
+  followFriend,
+  unFollowFriend
 } = profileSlice.actions;
 
 // Экспорт редьюсера слайса

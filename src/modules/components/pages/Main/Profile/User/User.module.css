@@ -11,6 +11,7 @@
   /* 2:10 — пропорции ширины колонок */
   grid-gap: 30px;
   /* Отступы между элементами */
+  align-items: center;
 }
 
 /* Стиль для аватара */
@@ -57,22 +58,46 @@
 
 /* Элемент списка (пост или комментарий) */
 .item {
-  font-size: 20px;
+  font-size: 25px;
   /* Размер шрифта */
   color: var(--app-background);
   /* Цвет текста */
-  text-decoration-line: underline;
-  /* Подчеркивание текста */
-  cursor: pointer;
-  /* Курсор как указатель на элемент */
   transition: all 0.3s ease;
   /* Плавные переходы для улучшения взаимодействия */
 }
 
-/* Добавим эффект при наведении на элемент списка */
-.item:hover {
-  color: var(--hover-color, #4a90e2);
-  /* Цвет при наведении (используйте переменную или конкретный цвет) */
-  text-decoration-line: none;
-  /* Убираем подчеркивание при наведении */
+.centeredLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  /* или сколько нужно */
+}
+
+.actions {
+  display: flex;
+}
+
+.actions button {
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 18px;
+  background-color: var(--button-background-1);
+  color: var(--text-color-1);
+  opacity: 70%;
+  transition: background-color .3s ease-out, opacity .3s ease-out;
+}
+
+.actions .btn_unFollow:hover {
+  background-color: var(--unFollow-btn);
+  opacity: 100%;
+}
+
+.actions .btn_follow:hover {
+  background-color: var(--follow-btn);
+  opacity: 100%;
+}
+
+.actions .send_message_btn:hover {
+  opacity: 100%;
 }

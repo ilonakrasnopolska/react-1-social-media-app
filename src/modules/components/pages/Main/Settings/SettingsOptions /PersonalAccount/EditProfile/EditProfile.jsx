@@ -2,9 +2,9 @@ import React from "react";
 import CommonClasses from "../../../Settings.module.css"; // Импорт общих стилей для настроек
 import Classes from "./EditProfile.module.css"; // Локальные стили для страницы редактирования профиля
 import EditForm from "./EditForm/EditForm"; // Импорт формы редактирования
-import Avatar from "../../../../../../common/Avatar"; // Импорт компонента для отображения аватара
 import Title from "../../../../../../common/Title"; // Импорт компонента заголовка
 import { useEditAccountForm } from "../../../../../../../hooks/useEditAccountForm"; // Хук для работы с редактированием аккаунта
+import ImageWithLoader from "../../../../../../common/ImageWithLoader/ImageWithLoader";
 
 const EditProfile = ({ personalAccount, t }) => {
   // Используем хук для получения данных пользователя и обработки ошибок
@@ -22,7 +22,7 @@ const EditProfile = ({ personalAccount, t }) => {
           <div className={CommonClasses.user_data_edit}>
             <div className={CommonClasses.card}>
               {/* Отображаем аватар пользователя */}
-              <Avatar
+              <ImageWithLoader
                 src={userData.avatar}
                 alt={"Avatar"}
                 className={CommonClasses.avatar}

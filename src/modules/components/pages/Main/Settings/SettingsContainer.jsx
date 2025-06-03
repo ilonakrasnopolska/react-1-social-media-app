@@ -4,6 +4,7 @@ import { useSettingsPageHandler } from "../../../../hooks/useSettingsPageHandler
 import useData from "../../../../hooks/useData"; // Хук для работы с данными, например, для отслеживания загрузки
 import SettingsOptions from "./SettingsOptions /SettingsOptions"; // Компонент для отображения выбранной опции настроек
 import Settings from "./Settings"; // Компонент для отображения всех настроек
+import Preloader from "../../../common/Preloader/Preloader";
 
 const SettingsContainer = ({ t }) => {
   // Получение параметра id из URL
@@ -18,7 +19,7 @@ const SettingsContainer = ({ t }) => {
     useSettingsPageHandler(title);
 
   if (isLoading || !settings) {
-    return <div>Loading...</div>; // Или спиннер
+    return <Preloader />
   }
 
   // Если настройки не найдены, показываем сообщение

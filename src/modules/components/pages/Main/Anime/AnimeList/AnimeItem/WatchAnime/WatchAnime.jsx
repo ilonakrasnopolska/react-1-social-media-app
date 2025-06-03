@@ -3,15 +3,14 @@ import Classes from "./WatchAnime.module.css";
 import Genres from "./Genres/Genres";
 import Rating from "./Rating/Rating";
 import { NavLink } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
+import Preloader from "../../../../../../common/Preloader/Preloader";
+import ImageWithLoader from "../../../../../../common/ImageWithLoader/ImageWithLoader";
 
 const WatchAnime = ({ animeById, isLoading, t }) => {
   // Проверяем, если идет загрузка, сразу возвращаем спиннер
   if (isLoading) {
     return (
-      <div className={Classes.spinner}>
-        <ClipLoader color="#194770" size={50} />
-      </div>
+      <Preloader />
     );
   }
 
@@ -29,10 +28,7 @@ const WatchAnime = ({ animeById, isLoading, t }) => {
         <div className={Classes.data}>
           <div className={Classes.cover}>
             {/* Показываем обложку аниме или используем изображение по умолчанию */}
-            <img
-              src={animeById.cover || "default-cover.jpg"}
-              alt={animeById.name}
-            />
+            <ImageWithLoader src={animeById.cover || "default-cover.jpg"} alt={animeById.name}/>
           </div>
           <div className={Classes.about}>
             <h2>{animeById.name}</h2> {/* Название аниме */}
@@ -72,7 +68,7 @@ const WatchAnime = ({ animeById, isLoading, t }) => {
               allowFullScreen
             />
           ) : (
-            <p>{t("NoTrailerAvailable")}</p>
+            <Preloader />
           )}
         </div>
       </div>

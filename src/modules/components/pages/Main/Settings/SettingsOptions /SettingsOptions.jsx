@@ -4,7 +4,6 @@ import Confidentiality from "./Confidentiality/Confidentiality"; // Импорт
 import Language from "./Language/Language"; // Импорт компонента для выбора языка
 import TermsAndPolicy from "./TermsAndPolice/TermsAndPolicy"; // Импорт компонента для политики и условий
 import HelpContainer from "./Help/HelpContainer"; // Импорт компонента для справки
-import LogOut from "./LogOut/LogOut"; // Импорт компонента для выхода из аккаунта
 import EditProfile from "./PersonalAccount/EditProfile/EditProfile"; // Импорт компонента для редактирования профиля
 import useData from "../../../../../hooks/useData"; // Импорт хука для получения данных
 
@@ -42,9 +41,6 @@ const SettingsOptions = ({ option, isLoading, t }) => {
       SettingComponent = (
         <HelpContainer helpCenter={settings.helpCenter} t={t} />
       );
-      break;
-    case "Out":
-      SettingComponent = <LogOut logOut={settings.logOut} t={t} />;
       break;
     case "EditProfile":
       SettingComponent = (
