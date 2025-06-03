@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import ImageWithLoader from "../../../../common/ImageWithLoader/ImageWithLoader";
 import Classes from "../UserCard/UserCard.module.css";
+import ToggleFollowButton from "../../../../common/ToggleFollowButton/ToggleFollowButton";
 
 // Компонент карточки пользователя
 const UserCard = ({ friend, t, handleFollowToggle, openModal }) => {
@@ -8,15 +9,20 @@ const UserCard = ({ friend, t, handleFollowToggle, openModal }) => {
     <li className={Classes.friend_card}>
       <div className={Classes.content}>
         <div className={Classes.avatar_wrapper}>
-          <NavLink to={'/profile/' + friend.userId}>
-          <ImageWithLoader src={friend.avatar} alt="Avatar" className={Classes.avatar}/>
+          <NavLink to={"/profile/" + friend.userId}>
+            <ImageWithLoader
+              src={friend.avatar}
+              alt="Avatar"
+              className={Classes.avatar}
+            />
           </NavLink>
-          <button
-            onClick={() => handleFollowToggle(friend)}
-            className={Classes[friend.isFollow ? "btn_unFollow" : "btn_follow"]}
-          >
-            {t(friend.isFollow ? "Unfollow" : "Follow")}
-          </button>
+          {/* Кнопка подписки-отписки */}
+          <ToggleFollowButton
+            handleFollowToggle={handleFollowToggle}
+            userData={friend}
+            Classes={Classes}
+            t={t}
+          />
         </div>
         <div className={Classes.user_info_wrapper}>
           <h3 className={Classes.title}>{friend.name}</h3>
@@ -31,7 +37,7 @@ const UserCard = ({ friend, t, handleFollowToggle, openModal }) => {
       </div>
 
       <div className={Classes.city}>
-        <h3>{t("City")+ ':'}</h3>
+        <h3>{t("City") + ":"}</h3>
         <span>{friend.city}</span>
       </div>
     </li>

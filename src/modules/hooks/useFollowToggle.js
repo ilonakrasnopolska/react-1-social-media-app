@@ -3,7 +3,11 @@ import {
   follow,
   unFollow,
 } from "../../redux/FindFriendsReducer/find-friends-reducer";
-import {toggleFriendFollow} from "../../redux/SidebarReducer/sidebar-reducer";
+import {
+  followFriend,
+  unFollowFriend,
+} from "../../redux/ProfileReducer/profile-reducer";
+import { toggleFriendFollow } from "../../redux/SidebarReducer/sidebar-reducer";
 
 // Кастомный хук для переключения состояния подписки (follow/unfollow)
 export const useFollowToggle = () => {
@@ -18,16 +22,22 @@ export const useFollowToggle = () => {
     //Проверяем есть ли пользователь в sidebar
     const isInSidebar = sidebarFriends.some((f) => f.userId === friend.userId);
     if (friend.isFollow) {
-      // Если уже подписаны — отписываемся
+      // Если уже подписаны — отписываемся в state friends
       dispatch(unFollow({ friend }));
+      // Если уже подписаны — отписываемся в state profiile
+      dispatch(unFollowFriend({ friend }));
       if (isInSidebar) {
-        dispatch(toggleFriendFollow({userId: friend.userId, isFollow: false}));
+        dispatch(
+          toggleFriendFollow({ userId: friend.userId, isFollow: false })
+        );
       }
     } else {
-      // Если не подписаны — подписываемся
+      // Если уже подписаны — отписываемся в state friends
       dispatch(follow({ friend }));
+      // Если уже подписаны — отписываемся в state profiile
+      dispatch(followFriend({ friend }));
       if (isInSidebar) {
-        dispatch(toggleFriendFollow({userId: friend.userId, isFollow: true}));
+        dispatch(toggleFriendFollow({ userId: friend.userId, isFollow: true }));
       }
     }
   };

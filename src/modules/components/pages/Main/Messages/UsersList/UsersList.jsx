@@ -17,7 +17,6 @@ const UsersList = ({
 }) => {
   // Хук для загрузки данных пользователей
   useFetchAndDispatch(fetchUsers(users));
-
   return (
     <section className="users section">
       <div className={Classes.content}>

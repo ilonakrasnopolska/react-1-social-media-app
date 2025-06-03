@@ -11,6 +11,8 @@ import {
   handleLikeHelper,
   toggleCommentsHelper,
   updateProfileInfoHelper,
+  followHelper,
+  unFollowHelper,
 } from "./ProfileHelpers/post-helpers";
 import {
   updateNewCommentTextHelper,
@@ -84,6 +86,14 @@ const profileSlice = createSlice({
     updateProfileInfo: (state, action) => {
       updateProfileInfoHelper(state, action); // Вызов хелпера для обновления информации профиля
     },
+    // Редьюсер для подписки на пользователя
+    followFriend: (state, action) => {
+      followHelper(state, action); // Вызов хелпера для подписки
+    },
+    // Редьюсер для отписки от пользователя
+    unFollowFriend: (state, action) => {
+      unFollowHelper(state, action); // Вызов хелпера для отписки
+    },
   },
 });
 
@@ -102,6 +112,8 @@ export const {
   addComment,
   deleteComment,
   updateProfileInfo,
+  followFriend,
+  unFollowFriend
 } = profileSlice.actions;
 
 // Экспорт редьюсера слайса

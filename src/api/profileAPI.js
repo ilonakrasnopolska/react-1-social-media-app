@@ -164,6 +164,7 @@ export const fetchProfileData = (userInfo, userId) => (dispatch) => {
           gender: data.gender || "Male",
           favoriteAnime: data.favoriteAnime || "Naruto",
           profileCover: `${pictures.DefaultWallpaper}`,
+          isFollow: false, // Статус подписки (по умолчанию не подписан)
         };
         dispatch(setProfileData(profileFromServer));
         dispatch(setProfileDataEdit(profileFromServer));

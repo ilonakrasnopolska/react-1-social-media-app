@@ -84,4 +84,20 @@
   font-size: 18px;
   background-color: var(--button-background-1);
   color: var(--text-color-1);
+  opacity: 70%;
+  transition: background-color .3s ease-out, opacity .3s ease-out;
+}
+
+.actions .btn_unFollow:hover {
+  background-color: var(--unFollow-btn);
+  opacity: 100%;
+}
+
+.actions .btn_follow:hover {
+  background-color: var(--follow-btn);
+  opacity: 100%;
+}
+
+.actions .send_message_btn:hover {
+  opacity: 100%;
 }

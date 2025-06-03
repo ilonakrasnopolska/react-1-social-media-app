@@ -1,5 +1,5 @@
 import React from "react";
-import User from "./User/User"; // Импортируем компонент для отображения информации о пользователе
+import UserContainer from "./User/UserContainer"; // Импортируем компонент для отображения информации о пользователе
 import PostMakerContainer from "./PostMaker/PostMakerContainer"; // Контейнер для создания постов
 import MyPosts from "./MyPosts/MyPosts"; // Компонент для отображения постов пользователя
 import Hero from "./Hero/Hero"; // Компонент для отображения обоев или фонового изображения
@@ -11,6 +11,7 @@ const Profile = ({
   isLoading,
   posts,
   isOwnProfile,
+  handleFollowToggle
 }) => {
   return (
     <div>
@@ -18,7 +19,7 @@ const Profile = ({
       <Hero wallpaper={wallpaper} isLoading={isLoading} />
 
       {/* Компонент User для отображения информации о пользователе */}
-      <User userData={userData} isLoading={isLoading} t={t} isOwnProfile={isOwnProfile}/>
+      <UserContainer userData={userData} isLoading={isLoading} t={t} isOwnProfile={isOwnProfile}  handleFollowToggle={handleFollowToggle}/>
 
       {/* Контейнер для создания постов */}
       {isOwnProfile && <PostMakerContainer t={t} />}

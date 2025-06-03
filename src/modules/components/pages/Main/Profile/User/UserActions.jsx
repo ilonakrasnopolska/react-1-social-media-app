@@ -1,21 +1,21 @@
-const UserActions = ({ Classes, t }) => {
+import ToggleFollowButton from "../../../../common/ToggleFollowButton/ToggleFollowButton";
+
+const UserActions = ({
+  Classes,
+  userData,
+  t,
+  handleFollowToggle,
+  openModal,
+}) => {
   return (
     <div className={Classes.actions}>
       {/* Кнопка, открывающая модальное окно */}
-      <button className={Classes.button}>
-        {t("SendMessage")}
-      </button>
-      <button
-      // onClick={() => handleFollowToggle(friend)}
-      // className={Classes[friend.isFollow ? "btn_unFollow" : "btn_follow"]}
-      >
-        {/* {t(friend.isFollow ? "Unfollow" : "Follow")} */}
-        Follow
-      </button>
+      <button className={Classes.send_message_btn} onClick={() => openModal(userData)}>{t("SendMessage")}</button>
+      {/* Кнопка подписки-отписки */}
+      <ToggleFollowButton handleFollowToggle={handleFollowToggle} userData={userData} Classes={Classes} t={t}/>
     </div>
   );
 };
 
 export default UserActions;
 
-// onClick={() => openModal(friend)}

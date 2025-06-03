@@ -7,10 +7,13 @@ import Profile from "./Profile"; // Компонент для отображен
 import { useParams } from "react-router-dom";
 import { fetchProfileData } from "../../../../../api/profileAPI";
 import { fetchPosts } from "../../../../../api/profileAPI";
+import { useFollowToggle } from "../../../../hooks/useFollowToggle";
 
 const ProfileContainer = ({ t }) => {
   const { userId } = useParams(); // <--- берём ID из URL
   const dispatch = useDispatch();
+  // Хук для подписки и отписки
+  const toggleFollow = useFollowToggle();
   // Получаем состояние загрузки через хук useData
   const isLoading = useData("loading");
   // Получаем профильные данные через хук useData
@@ -20,9 +23,10 @@ const ProfileContainer = ({ t }) => {
   const wallpaper = profileData.personalAccount.userData.profileCover; // Обои профиля
   const userData = profileData.personalAccount.userData; // Личные данные пользователя
   const posts = profileData.posts; // Посты пользователя
-  const viewedUserId = profileData.viewedUserId //id пользователя
+  const viewedUserId = profileData.viewedUserId; //id пользователя
   //Проверка отображать ли кнопку удаления комментариев и опцию добавлять посты
-  const isOwnProfile = !viewedUserId || viewedUserId === null || viewedUserId === undefined;
+  const isOwnProfile =
+    !viewedUserId || viewedUserId === null || viewedUserId === undefined;
 
   //  Правильный useEffect, реагирует на userId
   useEffect(() => {
@@ -34,7 +38,6 @@ const ProfileContainer = ({ t }) => {
   if (isLoading || !userData || Object.keys(userData).length === 0) {
     return <Preloader />;
   }
-
   return (
     // Передаем данные в компонент Profile
     <div>
@@ -45,6 +48,7 @@ const ProfileContainer = ({ t }) => {
         isLoading={isLoading}
         t={t}
         isOwnProfile={isOwnProfile}
+        handleFollowToggle={toggleFollow}
       />
     </div>
   );

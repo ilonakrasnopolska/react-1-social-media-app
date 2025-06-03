@@ -9,6 +9,11 @@ const getData = () => {
   return `${hours}:${minutes}`; // Возвращаем время в формате чч:мм
 };
 
+// Оптимизированная версия с использованием Map для быстрого поиска
+const updateFollowStatus = (state, newStatus) => {
+    state.personalAccount.userData.isFollow = newStatus;
+  }
+
 // Хелпер для установки списка постов
 export const setPostsListHelper = (state, action) => {
   state.posts = action.payload; // Устанавливаем список постов из payload
@@ -84,4 +89,14 @@ export const updateProfileInfoHelper = (state, action) => {
     ...state.personalAccount.userData,
     ...action.payload,
   }; // Обновляем данные профиля, объединяя старые и новые
+};
+
+// Хелпер для подписки
+export const followHelper = (state, action) => {
+  updateFollowStatus(state, true);
+};
+
+// Хелпер для отписки
+export const unFollowHelper = (state, action) => {
+  updateFollowStatus(state, false);
 };

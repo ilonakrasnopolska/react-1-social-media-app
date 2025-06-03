@@ -5,9 +5,8 @@ import Preloader from "../../../../common/Preloader/Preloader";
 import ImageWithLoader from "../../../../common/ImageWithLoader/ImageWithLoader";
 import UserActions from "./UserActions";
 
-const User = ({ userData, isLoading, t, isOwnProfile }) => {
+const User = ({ userData, isLoading, t, isOwnProfile, handleFollowToggle, openModal }) => {
   return (
-    <section className="user section">
       <article
         className={`${Classes.content} ${
           isLoading && Object.keys(userData).length === 0
@@ -27,13 +26,20 @@ const User = ({ userData, isLoading, t, isOwnProfile }) => {
             />
             <div className={Classes.about}>
               <h1>{userData.name}</h1>
-              <UserInfo userData={userData} Classes={Classes} t={t} />{" "}
-              {!isOwnProfile && <UserActions Classes={Classes} t={t}/> }
+              <UserInfo userData={userData} Classes={Classes} t={t} />
+              {!isOwnProfile && (
+                <UserActions
+                  Classes={Classes}
+                  userData={userData}
+                  t={t}
+                  handleFollowToggle={handleFollowToggle}
+                  openModal={openModal}
+                />
+              )}
             </div>
           </>
         )}
       </article>
-    </section>
   );
 };
 
